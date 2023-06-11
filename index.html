@@ -15,6 +15,7 @@
             --morado-texto-dark: color-mix(in srgb, var(--morado-texto) 30%, white);
             --morado-oscuro: #421152;
             --morado-claro: #785887;
+            --morado-claro-x2: color-mix(in srgb, var(--morado-claro)70%, white);
             --amarillo-claro: #f2bd2d;
             --amarillo-oscuro: #f4aa2e;
             --rojo-claro: #c5584d;
@@ -64,22 +65,17 @@
             gap: 0.5rem;
         }
 
-        form div#check-box-recordar input {           
+        form div#check-box-recordar input {
             -webkit-appearance: none;
             -moz-appearance: none;
             -o-appearance: none;
-            appearance: none;   
+            appearance: none;
 
         }
 
-        form div#check-box-recordar input:checked:after {
-            text-align: center;
-            font-size: x-large;
-            font-weight: bold;
-            content: '✓';
-        }
 
-        
+
+
 
 
         @media screen and (min-width: 100px) {
@@ -114,14 +110,15 @@
             form fieldset input {
                 font-size: larger;
                 border: 1vw solid;
-                border-radius: 3vw;
+                border-radius: 2.5vw;
                 width: 94%;
                 padding: 0.2rem 0.4rem;
                 margin: 1vw 0;
                 outline: none;
             }
 
-            form fieldset input:hover, form fieldset input:focus {
+            form fieldset input:hover,
+            form fieldset input:focus {
                 border: 3px solid;
             }
 
@@ -134,10 +131,25 @@
                 height: 1.5rem;
                 border: 1px solid;
                 border-radius: 1vw;
-            }            
+                cursor: pointer;
+            }
+
+            form div#check-box-recordar input:checked:after {
+                text-align: center;
+                font-size: x-large;
+                font-weight: bold;
+                content: '✓';
+                margin-left: 0.15rem;
+                margin-bottom: 0.15rem;
+            }
 
             form div#check-box-recordar label {
                 font-size: larger;
+            }
+
+            form div#check-box-recordar label:hover {
+                color: var(--rojo-claro);
+                cursor: pointer;
             }
 
             form button[type="submit"] {
@@ -146,19 +158,85 @@
                 padding: 0.6rem 0.8rem;
                 border: 2px solid;
                 border-radius: 3vw;
-                margin: 2rem auto;
+                margin: 5vh auto;
+                cursor: pointer;
             }
 
             div.opción {
                 text-align: center;
                 font-size: larger;
-                margin: 0.6rem 0;
+                margin: 3vh 0;
             }
 
         }
 
         @media screen and (min-width: 577px) {
+
             /* tablets */
+            html {
+                font-size: calc(var(--base-font-size)*1.6);
+            }
+
+            body {
+                max-width: 700px;
+                margin: 0px auto;
+            }
+
+            div#logotipo {
+                text-align: center;
+            }
+
+
+            div#logotipo img {
+                width: 100%;
+                max-width: 500px;
+                margin-top: 5vh;
+                padding: 0.5rem;
+            }
+
+            form fieldset {
+                margin: 1rem 0;
+                border: none;
+                border-radius: 3vw;
+            }
+
+            form fieldset input {
+                border: 4px solid;
+                border-radius: 0.4rem;
+                width: 94%;
+                padding: 0.2rem 0.4rem;
+                margin: 1vw 0;
+                outline: none;
+            }
+
+            form div#check-box-recordar {
+                padding: 0.5rem 0;
+            }
+
+            form div#check-box-recordar input {
+                border: 1px solid;
+                border-radius: 0.2rem;
+            }
+
+            form div#check-box-recordar input:hover {
+                background-color: var(--morado-claro-x2);
+            }
+
+            form div#check-box-recordar input:checked:after {
+                text-align: right;
+                font-size: xx-large;
+                content: "✓";
+                margin-left: 0.25rem;
+            }
+
+            form button[type="submit"] {
+                display: block;
+                font-size: 1.35rem;
+                padding: 1rem 1rem;
+                border: 2px solid;
+                border-radius: 2rem;
+                margin: 2rem auto;
+            }
         }
 
         @media screen and (min-width: 993px) {
@@ -189,10 +267,11 @@
                 background-color: color-mix(in srgb, whitesmoke 30%, white);
             }
 
-            form fieldset input:active, form fieldset input:focus {
+            form fieldset input:active,
+            form fieldset input:focus {
                 border-color: var(--amarillo-oscuro);
                 background-color: white;
-            } 
+            }
 
             form div#check-box-recordar input {
                 border-color: var(--morado-claro);
@@ -208,18 +287,18 @@
                 color: var(--rojo-oscuro);
             }
 
-            form button[type="submit"] {                
+            form button[type="submit"] {
                 border-color: var(--azul-mensaje);
                 color: white;
                 background-color: var(--azul-mensaje);
             }
 
-            form button[type="submit"]:hover {                
+            form button[type="submit"]:hover {
                 border-color: var(--azul-mensaje-claro);
                 background-color: var(--azul-mensaje-claro);
             }
 
-            form button[type="submit"]:active {                
+            form button[type="submit"]:active {
                 border-color: var(--azul-oscuro);
                 background-color: var(--azul-oscuro);
             }
@@ -243,7 +322,7 @@
             form fieldset input {
                 background-color: var(--dark-grey-11);
                 border-color: var(--azul-claro);
-                color:lightgray;
+                color: lightgray;
             }
 
             form fieldset input:hover {
@@ -251,10 +330,11 @@
                 background-color: var(--dark-grey-12);
             }
 
-            form fieldset input:active, form fieldset input:focus {
+            form fieldset input:active,
+            form fieldset input:focus {
                 border-color: var(--amarillo-oscuro);
                 background-color: var(--dark-grey-14);
-            } 
+            }
 
             form div#check-box-recordar input {
                 border-color: var(--crema-os);
@@ -270,18 +350,18 @@
                 color: var(--rojo-claro);
             }
 
-            form button[type="submit"] {                
+            form button[type="submit"] {
                 border-color: var(--azul-mensaje);
                 color: white;
                 background-color: var(--azul-mensaje);
             }
 
-            form button[type="submit"]:hover {                
+            form button[type="submit"]:hover {
                 border-color: var(--azul-mensaje-claro);
                 background-color: var(--azul-mensaje-claro);
             }
 
-            form button[type="submit"]:active {                
+            form button[type="submit"]:active {
                 border-color: var(--crema-oscuro);
                 background-color: var(--crema-oscuro);
             }
