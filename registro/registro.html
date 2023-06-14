@@ -42,7 +42,7 @@
     </div>
     <h1>Registro de nuevo usuario</h1>
     <form action="">
-        <div class="switch-statement">
+        <div class="switch-statement" id="switch-rol-de-usuario">
             <div class="texto-medio statement">
                 <strong>Yo</strong>
             </div>
@@ -62,20 +62,185 @@
         </div>
 
         <fieldset>
-            <legend><strong>nombre completo</strong></legend>
+            <legend><strong>mi nombre completo es</strong></legend>
             <input type="text" name="nombre completo" minlength="15" required>
+        </fieldset>
+
+        <div class="switch-statement" id="switch-proxy">
+            <div class="texto-medio statement">
+                <strong>Sería</strong>
+            </div>
+            <div class="switch-container" onclick="void swicheaOpción(event);">
+                <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                <strong class="izquierda seleccionado">Yo</strong>
+                <label class="switch" for="usa-proxy">
+                    <input type="checkbox" name="usa-proxy" id="usa-proxy" />
+                    <div class="slider round"></div>
+                </label>
+                <strong class="derecha">un familiar o persona de confianza</strong>
+
+            </div>
+            <div class="texto-medio statement">
+                <strong>quien manejará un correo electrónico, o un teléfono celular o un teléfono fijo para comunicarme
+                    con clientes o proveedores, así como con los administradores de la plataforma</strong>
+            </div>
+        </div>
+
+        <div class="switch-statement" id="switch-email-propio">
+            <div class="texto-medio statement">
+                <strong>Yo</strong>
+            </div>
+            <div class="switch-container" onclick="void swicheaOpción(event);">
+                <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                <strong class="izquierda seleccionado">SI</strong>
+                <label class="switch" for="tiene-email">
+                    <input type="checkbox" name="tiene-email" id="tiene-email" />
+                    <div class="slider round"></div>
+                </label>
+                <strong class="derecha">NO</strong>
+
+            </div>
+            <div class="texto-medio statement">
+                <strong>se utilizar y cuento con una dirección de correo electrónico propia</strong>
+            </div>
+        </div>
+
+        <fieldset id="fieldset-email">
+            <legend><strong>mi dirección de correo electrónico es</strong></legend>
+            <input type="email" name="email" minlength="10">
         </fieldset>
 
         <!-- cuento con correo electrónico, teléfono móvil, sino, teléfono fijo, si no, alguien me presta su teléfono móvil. Se despliega opción para cada uno. Al menos uno de ellos. -->
         <!-- hacer mas grande y mas chica opción de cada lado al tooglear -->
-        <fieldset>
-            <legend><strong>nombre completo</strong></legend>
-            <input type="text" name="nombre completo" minlength="15">
+
+        <div class="switch-statement" id="switch-tel-móvil">
+            <div class="texto-medio statement">
+                <strong>Yo</strong>
+            </div>
+            <div class="switch-container" onclick="void swicheaOpción(event);">
+                <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                <strong class="izquierda seleccionado">SI</strong>
+                <label class="switch" for="tiene-móvil">
+                    <input type="checkbox" name="tiene-móvil" id="tiene-móvil" />
+                    <div class="slider round"></div>
+                </label>
+                <strong class="derecha">NO</strong>
+
+            </div>
+            <div class="texto-medio statement">
+                <strong>se utilizar y cuento con un número de teléfono móvil propio y este tiene señal en este
+                    momento</strong>
+            </div>
+        </div>
+
+        <fieldset id="fieldset-tel">
+            <legend><strong>mi número de teléfono móvil a 10 dígitos es</strong></legend>
+            <input type="tel" name="teléfono-móvil" minlength="10" maxlength="10" oninput="void onlyNumbers(event);">
+            <small>sólo números, sin espacios ni güiones ni símbolos</small>
         </fieldset>
-        <fieldset>
-            <legend><strong>contraseña</strong></legend>
-            <input type="password" name="contraseña" id="">
+
+        <div class="switch-statement" id="switch-tel-fijo">
+            <div class="texto-medio statement">
+                <strong>Yo</strong>
+            </div>
+            <div class="switch-container" onclick="void swicheaOpción(event);">
+                <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                <strong class="izquierda seleccionado">SI</strong>
+                <label class="switch" for="tiene-tel-fijo">
+                    <input type="checkbox" name="tiene-tel-fijo" id="tiene-tel-fijo" />
+                    <div class="slider round"></div>
+                </label>
+                <strong class="derecha">NO</strong>
+
+            </div>
+            <div class="texto-medio statement">
+                <strong>se utilizar y cuento con un número de teléfono fijo propio</strong>
+            </div>
+        </div>
+
+        <fieldset id="fieldset-tel">
+            <legend><strong>mi número de teléfono fijo a 10 dígitos es</strong></legend>
+            <input type="tel" name="teléfono-fijo" minlength="10" maxlength="10" oninput="void onlyNumbers(event);">
+            <small>sólo números, sin espacios ni güiones ni símbolos</small>
         </fieldset>
+
+        <div class="switch-statement" id="switch-email-proxy">
+            <div class="texto-medio statement">
+                <strong>mi familiar o persona de confianza</strong>
+            </div>
+            <div class="switch-container" onclick="void swicheaOpción(event);">
+                <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                <strong class="izquierda seleccionado">SI</strong>
+                <label class="switch" for="tiene-email-proxy">
+                    <input type="checkbox" name="tiene-email-proxy" id="tiene-email-proxy" />
+                    <div class="slider round"></div>
+                </label>
+                <strong class="derecha">NO</strong>
+
+            </div>
+            <div class="texto-medio statement">
+                <strong>cuenta con una dirección de correo electrónico</strong>
+            </div>
+        </div>
+
+        <fieldset id="fieldset-email">
+            <legend><strong>la dirección de correo electrónico es</strong></legend>
+            <input type="email" name="email" minlength="10">
+        </fieldset>
+
+        <div class="switch-statement" id="switch-tel-móvil-proxy">
+            <div class="texto-medio statement">
+                <strong>mi familiar o persona de confianza</strong>
+            </div>
+            <div class="switch-container" onclick="void swicheaOpción(event);">
+                <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                <strong class="izquierda seleccionado">SI</strong>
+                <label class="switch" for="tiene-móvil">
+                    <input type="checkbox" name="tiene-móvil" id="tiene-móvil" />
+                    <div class="slider round"></div>
+                </label>
+                <strong class="derecha">NO</strong>
+
+            </div>
+            <div class="texto-medio statement">
+                <strong>cuenta con un número de teléfono móvil y este tiene señal en este momento</strong>
+            </div>
+        </div>
+
+        <fieldset id="fieldset-tel">
+            <legend><strong>el número de teléfono móvil a 10 dígitos es</strong></legend>
+            <input type="tel" name="teléfono-móvil" minlength="10" maxlength="10" oninput="void onlyNumbers(event);">
+            <small>sólo números, sin espacios ni güiones ni símbolos</small>
+        </fieldset>
+
+        <div class="switch-statement" id="switch-tel-fijo-proxy">
+            <div class="texto-medio statement">
+                <strong>mi familiar o persona de confianza</strong>
+            </div>
+            <div class="switch-container" onclick="void swicheaOpción(event);">
+                <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                <strong class="izquierda seleccionado">SI</strong>
+                <label class="switch" for="tiene-tel-fijo">
+                    <input type="checkbox" name="tiene-tel-fijo" id="tiene-tel-fijo" />
+                    <div class="slider round"></div>
+                </label>
+                <strong class="derecha">NO</strong>
+
+            </div>
+            <div class="texto-medio statement">
+                <strong>cuenta con un número de teléfono fijo</strong>
+            </div>
+        </div>
+
+        <fieldset id="fieldset-tel">
+            <legend><strong>el número de teléfono fijo a 10 dígitos es</strong></legend>
+            <input type="tel" name="teléfono-fijo" minlength="10" maxlength="10" oninput="void onlyNumbers(event);">
+            <small>sólo números, sin espacios ni güiones ni símbolos</small>
+        </fieldset>
+
+        <h1>Sin una forma de contactarte no podemos registrarte <br> :(</h1>
+
+
 
 
         <button type="submit"><strong>Iniciar sesión</strong></button>
@@ -88,6 +253,7 @@
             href="https://granero.alianzapornuestratortilla.org/granero/index.php?controlador=principal&accion=inicio#sec_ingreso">Registrarme</a>
     </div>
     <script src="../js/switch.js"></script>
+    <script src="../js/inputTel.js"></script>
 </body>
 
 </html>

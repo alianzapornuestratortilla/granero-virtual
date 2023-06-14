@@ -8,6 +8,7 @@
     --morado-oscuro: #421152;
     --morado-claro: #785887;
     --morado-claro-x2: color-mix(in srgb, var(--morado-claro)70%, white);
+    --morado-claro-x1-2: color-mix(in srgb, var(--morado-claro)85%, white);
     --amarillo-claro: #f2bd2d;
     --amarillo-oscuro: #f4aa2e;
     --rojo-claro: #c5584d;
@@ -26,7 +27,7 @@
     --dark-grey-14: color-mix(in srgb, var(--dark-grey) 86%, white);
     --separador: 1rem;
     --switch-izquierdo: var(--morado-claro);
-    --switch-izquierdo-dark: var(--azul-mensaje);
+    --switch-izquierdo-dark: var(--morado-claro-x2);
     --switch-derecho: var(--rojo-claro);
     --switch-derecho-dark: var(--rojo-claro);
 }
