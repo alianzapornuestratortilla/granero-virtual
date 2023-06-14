@@ -7,10 +7,68 @@
     <title>registro al granero virtual</title>
     <link rel="stylesheet" href="../css/styles.css">
     <style>
+        div.switch-statement#switch-proxy span.variable.izquierdo#switch-proxy-1:after {
+            content: 'Seré';
+        }
+
+        div.switch-statement#switch-proxy span.variable.derecho#switch-proxy-1:after {
+            content: 'Será';
+        }
+
+        div.switch-statement#switch-email-propio span.variable.izquierdo#switch-email-propio-1:after {
+            content: ' y';
+        }
+
+        div.switch-statement#switch-email-propio span.variable.derecho#switch-email-propio-1:after {
+            content: ', o no ';
+        }
+
+        div.switch-statement#switch-tel-móvil span.variable.izquierdo#switch-tel-móvil-1:after {
+            content: 'y';
+        }
+
+        div.switch-statement#switch-tel-móvil span.variable.izquierdo#switch-tel-móvil-2:after {
+            content: 'y';
+        }
+
+        div.switch-statement#switch-tel-móvil span.variable.derecho#switch-tel-móvil-1:after {
+            content: ' o no';
+        }
+
+        div.switch-statement#switch-tel-móvil span.variable.derecho#switch-tel-móvil-2:after {
+            content: 'o no';
+        }
+
+        div.switch-statement#switch-tel-fijo span.variable.izquierdo#switch-tel-fijo-1:after {
+            content: 'y';
+        }
+
+        div.switch-statement#switch-tel-fijo span.variable.derecho#switch-tel-fijo-1:after {
+            content: 'o no';
+        }
+
+        div.switch-statement#switch-tel-móvil-proxy span.variable.izquierdo#switch-tel-móvil-proxy-1:after {
+            content: 'y';
+        }
+
+        div.switch-statement#switch-tel-móvil-proxy span.variable.derecho#switch-tel-móvil-proxy-1:after {
+            content: 'o no';
+        }
+
         @media screen and (min-width: 100px) {
 
             /* teléfonos */
 
+            form div.switch-statement div.switch-container strong.muy-grande {
+                max-width: 40%;
+                transition: 0.4s;
+            }
+
+            form div.switch-statement div.switch-container strong.seleccionado.muy-grande {
+                max-width: 35%;
+                font-size: large;
+                transition: 0.4s;
+            }
         }
 
         @media screen and (min-width: 577px) {
@@ -68,7 +126,7 @@
 
         <div class="switch-statement" id="switch-proxy">
             <div class="texto-medio statement">
-                <strong>Sería</strong>
+                <strong><span class="variable izquierdo" id="switch-proxy-1"></span></strong>
             </div>
             <div class="switch-container" onclick="void swicheaOpción(event);">
                 <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
@@ -77,7 +135,7 @@
                     <input type="checkbox" name="usa-proxy" id="usa-proxy" />
                     <div class="slider round"></div>
                 </label>
-                <strong class="derecha">un familiar o persona de confianza</strong>
+                <strong class="derecha muy-grande">un familiar o persona de confianza</strong>
 
             </div>
             <div class="texto-medio statement">
@@ -101,7 +159,7 @@
 
             </div>
             <div class="texto-medio statement">
-                <strong>se utilizar y cuento con una dirección de correo electrónico propia</strong>
+                <strong>se utilizar<span class="variable izquierdo" id="switch-email-propio-1"></span> cuento con una dirección de correo electrónico propia</strong>
             </div>
         </div>
 
@@ -128,7 +186,7 @@
 
             </div>
             <div class="texto-medio statement">
-                <strong>se utilizar y cuento con un número de teléfono móvil propio y este tiene señal en este
+                <strong>se utilizar <span class="variable izquierdo" id="switch-tel-móvil-1"></span> cuento con un número de teléfono móvil propio <span class="variable izquierdo" id="switch-tel-móvil-2"></span> tiene señal en este
                     momento</strong>
             </div>
         </div>
@@ -154,7 +212,7 @@
 
             </div>
             <div class="texto-medio statement">
-                <strong>se utilizar y cuento con un número de teléfono fijo propio</strong>
+                <strong>se utilizar <span class="variable izquierdo" id="switch-tel-fijo-1"></span> cuento con un número de teléfono fijo propio</strong>
             </div>
         </div>
 
@@ -203,7 +261,7 @@
 
             </div>
             <div class="texto-medio statement">
-                <strong>cuenta con un número de teléfono móvil y este tiene señal en este momento</strong>
+                <strong>cuenta con un número de teléfono móvil <span class="variable izquierdo" id="switch-tel-móvil-proxy-1"></span> tiene señal en este momento</strong>
             </div>
         </div>
 
