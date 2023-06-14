@@ -27,6 +27,8 @@
     --separador: 1rem;
     --switch-izquierdo: var(--morado-claro);
     --switch-izquierdo-dark: var(--azul-mensaje);
+    --switch-derecho: var(--rojo-claro);
+    --switch-derecho-dark: var(--rojo-claro);
 }
 
 
@@ -113,7 +115,7 @@ form .switch .slider:before {
 }
 
 form .switch input:checked+.slider {
-    background-color: var(--rojo-claro)
+    background-color: var(--switch-derecho);
 }
 
 form .switch input:checked+.slider:before {
@@ -375,18 +377,23 @@ form fieldset input {
         color: var(--dark-grey);
     }
 
-
-    form div.switch-container strong.derecha, form div.switch-statement div.statement.derecho {
-        color: var(--rojo-claro);
+    form div.switch-statement div.statement {
+        color: var(--switch-izquierdo);
     }
 
     form .switch .slider {
         background-color: var(--switch-izquierdo);
     }
-    
+
     form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo {
         color: var(--switch-izquierdo);
     }
+
+    form div.switch-container strong.derecha, form div.switch-statement div.statement.derecho {
+        color: var(--switch-derecho);
+    }  
+    
+   
 
     form button[type="submit"] {
         border-color: var(--azul-mensaje);
@@ -468,17 +475,21 @@ form fieldset input {
         color: whitesmoke;
     }
 
-    form div.switch-container strong.derecha, form div.switch-statement div.statement.derecho {
-        color: var(--rojo-claro);
+    form div.switch-statement div.statement {
+        color: var(--switch-izquierdo-dark);
     }
 
     form .switch .slider {
         background-color: var(--switch-izquierdo-dark);
     }
-    
-    form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo  {
+
+    form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo {
         color: var(--switch-izquierdo-dark);
     }
+
+    form div.switch-container strong.derecha, form div.switch-statement div.statement.derecho {
+        color: var(--switch-derecho-dark);
+    } 
 
     form button[type="submit"] {
         border-color: var(--azul-mensaje);
