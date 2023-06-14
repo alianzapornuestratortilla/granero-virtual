@@ -25,6 +25,8 @@
     --dark-grey-12: color-mix(in srgb, var(--dark-grey) 88%, white);
     --dark-grey-14: color-mix(in srgb, var(--dark-grey) 86%, white);
     --separador: 1rem;
+    --switch-izquierdo: var(--morado-claro);
+    --switch-izquierdo-dark: var(--azul-mensaje);
 }
 
 
@@ -326,14 +328,6 @@ form fieldset input {
         color: var(--azul-claro);
     }
 
-    form div.check-box strong.compra {
-        color: var(--rojo-claro);
-    }
-
-    form div.check-box strong.vende {
-        color: var(--morado-claro);
-    }
-
     form fieldset {
         border-color: var(--rojo-claro);
     }
@@ -386,8 +380,12 @@ form fieldset input {
         color: var(--rojo-claro);
     }
 
-    form .switch .slider, form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo {
-        color: var(--morado-claro);
+    form .switch .slider {
+        background-color: var(--switch-izquierdo);
+    }
+    
+    form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo {
+        color: var(--switch-izquierdo);
     }
 
     form button[type="submit"] {
@@ -474,8 +472,12 @@ form fieldset input {
         color: var(--rojo-claro);
     }
 
-    form .switch .slider, form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo  {
-        color: var(--azul-mensaje);
+    form .switch .slider {
+        background-color: var(--switch-izquierdo-dark);
+    }
+    
+    form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo  {
+        color: var(--switch-izquierdo-dark);
     }
 
     form button[type="submit"] {
