@@ -5,454 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>registro al granero virtual</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <style>
-        :root {
-            --crema: #f7e6b5;
-            --crema-oscuro: #cbb051;
-            --germen: #f2e186;
-            --pedicelo: #ffeaad;
-            --morado-texto: #421052;
-            --morado-texto-dark: color-mix(in srgb, var(--morado-texto) 30%, white);
-            --morado-oscuro: #421152;
-            --morado-claro: #785887;
-            --morado-claro-x2: color-mix(in srgb, var(--morado-claro)70%, white);
-            --amarillo-claro: #f2bd2d;
-            --amarillo-oscuro: #f4aa2e;
-            --rojo-claro: #c5584d;
-            --rojo-oscuro: #831515;
-            --azul-claro: #3b648d;
-            --azul-oscuro: #00355f;
-
-            --verde-palido: #86BC42;
-            --azul-mensaje: #007fff;
-            --azul-mensaje-claro: color-mix(in srgb, var(--azul-mensaje)70%, white);
-            --verde-mas: #5cb85c;
-            --base-font-size: 17px;
-            --dark-grey: #121212;
-            --dark-grey-11: color-mix(in srgb, var(--dark-grey) 89%, white);
-            --dark-grey-12: color-mix(in srgb, var(--dark-grey) 88%, white);
-            --dark-grey-14: color-mix(in srgb, var(--dark-grey) 86%, white);
-        }
-
-
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Mono&family&display=swap');
-
-
-        html {
-            font-size: var(--base-font-size);
-            font-family: 'Noto Sans', sans-serif;
-        }
-
-        body {
-            display: flex;
-            flex-flow: column;
-            justify-content: space-around;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        form .switch {
-            display: inline-block;
-            height: 34px;
-            position: relative;
-            width: 70px;
-        }
-
-        form .switch input {
-            display: none;
-        }
-
-        form .slider {
-            background-color: var(--morado-claro);
-            bottom: 0;
-            cursor: pointer;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: .4s;
-        }
-
-        form .slider:before {
-            background-color: var(--germen);
-            bottom: 4px;
-            content: "";
-            height: 26px;
-            left: 4px;
-            position: absolute;
-            transition: .4s;
-            width: 26px;
-        }
-
-        form input:checked+.slider {
-            background-color: var(--rojo-claro)
-        }
-
-        form input:checked+.slider:before {
-            transform: translateX(36px);
-        }
-
-        form .slider.round {
-            border-radius: 34px;
-        }
-
-        form .slider.round:before {
-            border-radius: 50%;
-        }
-
-        form div.texto-medio {
-            text-align: center;
-        }
-
-        form div.texto-medio strong {
-
-            color: var(--morado-texto);
-            font-size: x-large;
-        }
-
-        form fieldset input {
-            font-family: 'Noto Sans Mono', monospace;
-            font-weight: bold;
-        }
-
-        form fieldset input {
-            
-        }
-
-        form div.check-box {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        form div.check-box input {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -o-appearance: none;
-            appearance: none;
-
-        }
-
-
-
-
-
-
+    
         @media screen and (min-width: 100px) {
 
             /* teléfonos */
-            body {
-                max-width: 100%;
-                margin: 0px 2%;
-            }
-
-            div#logotipo img {
-                width: 100%;
-                max-width: 360px;
-                margin-top: 0.5rem;
-            }
-
-            form {
-                margin-top: 0.5rem;
-                max-width: 100%;
-            }
-
-            form div.check-box strong {
-                font-size: x-large;
-            }
-
-            form fieldset {
-                margin: 5vh 0;
-                border: none;
-                border-radius: 3vw;
-            }
-
-            form fieldset legend {
-                font-size: larger;
-            }
-
-            form fieldset input {
-                font-size: larger;
-                border: 1vw solid;
-                border-radius: 2.5vw;
-                width: 94%;
-                padding: 0.2rem 0.4rem;
-                margin: 1vw 0;
-                outline: none;
-            }
-
-            form fieldset input:hover,
-            form fieldset input:focus {
-                border: 3px solid;
-            }
-
-            form div.check-box {
-                padding: 1rem 0;
-            }
-
-            form div.check-box input {
-                width: 1.5rem;
-                height: 1.5rem;
-                border: 1px solid;
-                border-radius: 1vw;
-                cursor: pointer;
-            }
-
-            form div.check-box input:checked:after {
-                text-align: center;
-                font-size: x-large;
-                font-weight: bold;
-                content: '✓';
-                margin-left: 0.15rem;
-                margin-bottom: 0.15rem;
-            }
-
-            form div.check-box label {
-                font-size: larger;
-            }
-
-            form div.check-box label:hover {
-                color: var(--rojo-claro);
-                cursor: pointer;
-            }
-
-            form button[type="submit"] {
-                display: block;
-                font-size: x-large;
-                padding: 0.6rem 0.8rem;
-                border: 2px solid;
-                border-radius: 3vw;
-                margin: 5vh auto;
-                cursor: pointer;
-            }
-
-            div.opción {
-                text-align: center;
-                font-size: larger;
-                margin: 3vh 0;
-            }
 
         }
 
         @media screen and (min-width: 577px) {
 
             /* tablets */
-            html {
-                font-size: calc(var(--base-font-size)*1.0);
-            }
+
 
             body {
-                max-width: 600px;
+                max-width: 500px;
                 margin: 0px auto;
             }
 
-            div#logotipo {
-                text-align: center;
-            }
-
-
-            div#logotipo img {
-                width: 100%;
-                max-width: 500px;
-                margin-top: 5vh;
-                padding: 0.5rem;
-            }
-
-            form fieldset {
-                margin: 1rem 0;
-                border: none;
-                border-radius: 3vw;
-            }
-
-            form fieldset input {
-                border: 4px solid;
-                border-radius: 0.4rem;
-                width: 94%;
-                padding: 0.2rem 0.4rem;
-                margin: 1vw 0;
-                outline: none;
-            }
-
-            form div.check-box {
-                padding: 0.5rem 0;
-            }
-
-            form div.check-box input {
-                border: 1px solid;
-                border-radius: 0.2rem;
-            }
-
-            form div.check-box input:hover {
-                background-color: var(--morado-claro-x2);
-            }
-
-            form div.check-box input:checked:after {
-                text-align: right;
-                font-size: xx-large;
-                content: "✓";
-                margin-left: 0.05rem;
-            }
-
-            form button[type="submit"] {
-                display: block;
-                font-size: 1.35rem;
-                padding: 1rem 1rem;
-                border: 2px solid;
-                border-radius: 2rem;
-                margin: 2rem auto;
-            }
         }
 
         @media screen and (min-width: 993px) {
             /* escritorio */
         }
 
-        @media (prefers-color-scheme: light) {
-            body {
-                background-color: whitesmoke;
-                color: var(--dark-grey);
-            }
+        @media (prefers-color-scheme: light) { 
 
-            h1 {
-                color: var(--azul-claro);
-            }
 
-            form div.check-box strong.compra {
-                color: var(--rojo-claro);
-            }
-
-            form div.check-box strong.vende {
-                color: var(--morado-claro);
-            }
-
-            form fieldset {
-                border-color: var(--rojo-claro);
-            }
-
-            form fieldset legend {
-                color: var(--morado-texto);
-            }
-
-            form fieldset input {
-                background-color: color-mix(in srgb, whitesmoke 40%, white);
-                border-color: var(--azul-claro);
-            }
-
-            form fieldset input:hover {
-                border-color: var(--crema);
-                background-color: color-mix(in srgb, whitesmoke 30%, white);
-            }
-
-            form fieldset input:active,
-            form fieldset input:focus {
-                border-color: var(--amarillo-oscuro);
-                background-color: white;
-            }
-
-            form div.check-box input {
-                border-color: var(--morado-claro);
-                background-color: var(--morado-claro);
-            }
-
-            form div.check-box input:checked {
-                color: white;
-                background-color: var(--morado-oscuro);
-            }
-
-            form div.check-box label {
-                color: var(--rojo-oscuro);
-            }
-
-            form button[type="submit"] {
-                border-color: var(--azul-mensaje);
-                color: white;
-                background-color: var(--azul-mensaje);
-            }
-
-            form button[type="submit"]:hover {
-                border-color: var(--azul-mensaje-claro);
-                background-color: var(--azul-mensaje-claro);
-            }
-
-            form button[type="submit"]:active {
-                border-color: var(--azul-oscuro);
-                background-color: var(--azul-oscuro);
-            }
         }
 
         @media (prefers-color-scheme: dark) {
-            body {
-                background-color: var(--dark-grey);
-                color: whitesmoke;
-            }
 
-            div#logotipo img {
-                border-radius: 2vw;
-                background-color: var(--crema-oscuro);
-            }
 
-            form fieldset legend {
-                color: var(--morado-texto-dark);
-            }
-
-            form fieldset input {
-                background-color: var(--dark-grey-11);
-                border-color: var(--azul-claro);
-                color: lightgray;
-            }
-
-            form fieldset input:hover {
-                border-color: var(--crema);
-                background-color: var(--dark-grey-12);
-            }
-
-            form fieldset input:active,
-            form fieldset input:focus {
-                border-color: var(--amarillo-oscuro);
-                background-color: var(--dark-grey-14);
-            }
-
-            form div.check-box input {
-                border-color: var(--crema-os);
-                background-color: var(--morado-claro);
-            }
-
-            form div.check-box input:checked {
-                color: lightgray;
-                background-color: var(--morado-oscuro);
-            }
-
-            form div.check-box label {
-                color: var(--rojo-claro);
-            }
-
-            form button[type="submit"] {
-                border-color: var(--azul-mensaje);
-                color: white;
-                background-color: var(--azul-mensaje);
-            }
-
-            form button[type="submit"]:hover {
-                border-color: var(--azul-mensaje-claro);
-                background-color: var(--azul-mensaje-claro);
-            }
-
-            form button[type="submit"]:active {
-                border-color: var(--crema-oscuro);
-                background-color: var(--crema-oscuro);
-            }
-
-            div.opción a:link {
-                color: var(--crema);
-            }
-
-            div.opción a:visited {
-                color: var(--crema-oscuro);
-            }
         }
     </style>
 </head>
@@ -467,13 +52,14 @@
         <div class="texto-medio">
             <strong>Yo</strong>
         </div>
-        <div class="check-box">
-            <strong class="vende">vendo</strong>
-            <label class="switch" for="checkbox">
-                <input type="checkbox" id="checkbox" />
+        <div class="switch-container" onclick="void swicheaOpción(event);">
+            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+            <strong class="izquierda seleccionado">vendo</strong>            
+            <label class="switch" for="rol-de-usuario">
+                <input type="checkbox" name="rol-de-usuario" id="rol-de-usuario" />
                 <div class="slider round"></div>
             </label>
-            <strong class="compra">compro</strong>
+            <strong class="derecha">compro</strong>
 
         </div>
         <div class="texto-medio">
@@ -505,12 +91,7 @@
         <a
             href="https://granero.alianzapornuestratortilla.org/granero/index.php?controlador=principal&accion=inicio#sec_ingreso">Registrarme</a>
     </div>
-    <script>
-        function checkDaBox() {
-            let daCheckbox = document.getElementById('recuérdame-checkbox');
-            daCheckbox.checked = !daCheckbox.checked;
-        }
-    </script>
+    <script src="../js/switch.js"></script>
 </body>
 
 </html>

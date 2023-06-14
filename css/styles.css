@@ -36,6 +36,10 @@ html {
     font-family: 'Noto Sans', sans-serif;
 }
 
+h1 {
+    text-align: center;
+}
+
 form div.check-box {
     display: flex;
     flex-flow: row nowrap;
@@ -52,6 +56,16 @@ form div.check-box input {
 
 }
 
+form div.switch-container strong {
+    opacity: 0.5;
+}
+
+form div.switch-container strong.seleccionado{
+    font-size: calc(var(--base-font-size)*1.6);
+    transition: .4s;
+    opacity: 1;
+}
+
 form div.switch-container {
     display: flex;
     flex-flow: row nowrap;
@@ -60,11 +74,18 @@ form div.switch-container {
     gap: 0.5rem;
 }
 
+form .switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 70px;
+}
+
 form .switch input {
     display: none;
 }
 
-form .slider {
+form .switch .slider {
     background-color: var(--morado-claro);
     bottom: 0;
     cursor: pointer;
@@ -75,7 +96,7 @@ form .slider {
     transition: .4s;
 }
 
-form .slider:before {
+form .switch .slider:before {
     background-color: var(--germen);
     bottom: 4px;
     content: "";
@@ -86,19 +107,19 @@ form .slider:before {
     width: 26px;
 }
 
-form input:checked+.slider {
+form .switch input:checked+.slider {
     background-color: var(--rojo-claro)
 }
 
-form input:checked+.slider:before {
+form .switch input:checked+.slider:before {
     transform: translateX(36px);
 }
 
-form .slider.round {
+form .switch .slider.round {
     border-radius: 34px;
 }
 
-form .slider.round:before {
+form .switch .slider.round:before {
     border-radius: 50%;
 }
 
@@ -107,8 +128,6 @@ form div.texto-medio {
 }
 
 form div.texto-medio strong {
-
-    color: var(--morado-texto);
     font-size: x-large;
 }
 
@@ -123,16 +142,21 @@ form fieldset input {
         margin: 0px 2%;
     }
 
+    div#logotipo {
+        text-align: center;
+    }
+
+    div#logotipo img {
+        border-radius: 0.4rem;
+        width: 100%;
+        max-width: 360px;
+        margin-top: 0.5rem;
+    }
+          
     form {
         margin-top: 0.5rem;
         max-width: 100%;
     }
-
-    form div.texto-medio strong {
-
-        color: var(--morado-texto);
-        font-size: x-large;
-    } 
 
     form fieldset {
         margin: 5vh 0;
@@ -224,11 +248,6 @@ form fieldset input {
         /* tablets */
         html {
             font-size: calc(var(--base-font-size)*1.0);
-        }
-
-        body {
-            max-width: 500px;
-            margin: 0px auto;
         }
 
         form fieldset {
@@ -334,7 +353,11 @@ form fieldset input {
     form fieldset input:focus {
         border-color: var(--amarillo-oscuro);
         background-color: white;
-    }     
+    }
+    
+    form div.texto-medio {
+        color: var(--morado-texto);
+    }
 
     form div.check-box input {
         border-color: var(--morado-claro);
@@ -354,6 +377,7 @@ form fieldset input {
     form fieldset label.input-contraseña svg{
         color: var(--dark-grey);
     }
+
 
     form div.switch-container strong.derecha {
         color: var(--rojo-claro);
@@ -387,6 +411,14 @@ form fieldset input {
         color: whitesmoke;
     }
 
+    h1 {
+        color: whitesmoke;
+    }
+
+    div#logotipo img {
+        background-color: var(--crema-oscuro);
+    }
+
     form fieldset legend {
         color: var(--morado-texto-dark);
     }
@@ -406,6 +438,10 @@ form fieldset input {
     form fieldset input:focus {
         border-color: var(--amarillo-oscuro);
         background-color: var(--dark-grey-14);
+    }
+
+    form div.texto-medio {
+        color: var(--morado-texto-dark);
     }
 
     form div.check-box input {
@@ -436,7 +472,7 @@ form fieldset input {
     }
 
     form div.switch-container strong.izquierda {
-        color: var(--morado-claro);
+        color: var(--morado-claro-x2);
     }
 
     form button[type="submit"] {

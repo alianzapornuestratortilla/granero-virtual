@@ -7,26 +7,23 @@
     <title>login granero virtual</title>
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-
         @media screen and (min-width: 100px) {
 
             /* teléfonos */
-            
-            div#logotipo {
-                text-align: center;
-            }
 
             div#logotipo img {
-                width: 100%;
-                max-width: 360px;
                 margin-top: 0.5rem;
-            }                    
-
+            }
         }
 
         @media screen and (min-width: 577px) {
 
-            /* tablets */      
+            /* tablets */
+
+            body {
+                max-width: 500px;
+                margin: 0px auto;
+            }
 
             div#logotipo img {
                 width: 100%;
@@ -34,30 +31,18 @@
                 margin-top: 5vh;
                 padding: 0.5rem;
             }
-            
+
         }
 
         @media screen and (min-width: 993px) {
+
             /* escritorio */
-            div#logotipo img {
-                margin-top: 0.25rem;
-            }   
+
         }
 
-        @media (prefers-color-scheme: light) {            
+        @media (prefers-color-scheme: light) {}
 
-            
-        }
-
-        @media (prefers-color-scheme: dark) {
-            
-
-            div#logotipo img {
-                border-radius: 2vw;
-                background-color: var(--crema-oscuro);
-            }
-            
-        }
+        @media (prefers-color-scheme: dark) {}
     </style>
 </head>
 
@@ -74,7 +59,7 @@
         <fieldset>
             <legend><strong>contraseña</strong></legend>
             <label for="contraseña" class="input-contraseña">
-                <input type="password" name="contraseña"  required minlength="5">
+                <input type="password" name="contraseña" required minlength="5">
 
             </label>
         </fieldset>
