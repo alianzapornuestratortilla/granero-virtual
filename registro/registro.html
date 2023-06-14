@@ -7,7 +7,6 @@
     <title>registro al granero virtual</title>
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-    
         @media screen and (min-width: 100px) {
 
             /* teléfonos */
@@ -30,15 +29,9 @@
             /* escritorio */
         }
 
-        @media (prefers-color-scheme: light) { 
+        @media (prefers-color-scheme: light) {}
 
-
-        }
-
-        @media (prefers-color-scheme: dark) {
-
-
-        }
+        @media (prefers-color-scheme: dark) {}
     </style>
 </head>
 
@@ -49,22 +42,25 @@
     </div>
     <h1>Registro de nuevo usuario</h1>
     <form action="">
-        <div class="texto-medio">
-            <strong>Yo</strong>
-        </div>
-        <div class="switch-container" onclick="void swicheaOpción(event);">
-            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-            <strong class="izquierda seleccionado">vendo</strong>            
-            <label class="switch" for="rol-de-usuario">
-                <input type="checkbox" name="rol-de-usuario" id="rol-de-usuario" />
-                <div class="slider round"></div>
-            </label>
-            <strong class="derecha">compro</strong>
+        <div class="switch-statement">
+            <div class="texto-medio statement">
+                <strong>Yo</strong>
+            </div>
+            <div class="switch-container" onclick="void swicheaOpción(event);">
+                <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                <strong class="izquierda seleccionado">vendo</strong>
+                <label class="switch" for="rol-de-usuario">
+                    <input type="checkbox" name="rol-de-usuario" id="rol-de-usuario" />
+                    <div class="slider round"></div>
+                </label>
+                <strong class="derecha">compro</strong>
 
+            </div>
+            <div class="texto-medio statement">
+                <strong>grano de maíz nativo</strong>
+            </div>
         </div>
-        <div class="texto-medio">
-            <strong>grano de maíz nativo</strong>
-        </div>
+
         <fieldset>
             <legend><strong>nombre completo</strong></legend>
             <input type="text" name="nombre completo" minlength="15" required>

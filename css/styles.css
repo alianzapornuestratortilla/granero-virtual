@@ -56,6 +56,10 @@ form div.check-box input {
 
 }
 
+form div.switch-statement div.statement {
+    transition: .4s;
+}
+
 form div.switch-container strong {
     opacity: 0.5;
 }
@@ -86,7 +90,6 @@ form .switch input {
 }
 
 form .switch .slider {
-    background-color: var(--morado-claro);
     bottom: 0;
     cursor: pointer;
     left: 0;
@@ -379,11 +382,11 @@ form fieldset input {
     }
 
 
-    form div.switch-container strong.derecha {
+    form div.switch-container strong.derecha, form div.switch-statement div.statement.derecho {
         color: var(--rojo-claro);
     }
 
-    form div.switch-container strong.izquierda {
+    form .switch .slider, form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo {
         color: var(--morado-claro);
     }
 
@@ -467,12 +470,12 @@ form fieldset input {
         color: whitesmoke;
     }
 
-    form div.switch-container strong.derecha {
+    form div.switch-container strong.derecha, form div.switch-statement div.statement.derecho {
         color: var(--rojo-claro);
     }
 
-    form div.switch-container strong.izquierda {
-        color: var(--morado-claro-x2);
+    form .switch .slider, form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo  {
+        color: var(--azul-mensaje);
     }
 
     form button[type="submit"] {
