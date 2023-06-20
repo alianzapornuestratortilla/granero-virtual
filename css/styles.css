@@ -61,12 +61,15 @@ form div.check-box input {
 
 }
 
-form div.switch-statement, form fieldset {
-    transition: .4s;
+form div.switch-statement,
+form fieldset {
+    margin-bottom: 2rem;
+
 }
 
-form div.switch-statement div.statement {
-    transition: .4s;
+form div.switch-statement.hide,
+form fieldset.hide {
+    display: none;
 }
 
 form div.switch-container strong {
@@ -74,7 +77,7 @@ form div.switch-container strong {
     cursor: pointer;
 }
 
-form div.switch-container strong.seleccionado{
+form div.switch-container strong.seleccionado {
     font-size: calc(var(--base-font-size)*1.6);
     transition: .4s;
     opacity: 1;
@@ -165,7 +168,7 @@ form fieldset input {
         max-width: 360px;
         margin-top: 0.5rem;
     }
-          
+
     form {
         margin-top: 0.5rem;
         max-width: 100%;
@@ -207,7 +210,7 @@ form fieldset input {
         border: 1px solid;
         border-radius: 1vw;
         cursor: pointer;
-    }    
+    }
 
     form div.check-box input:checked:after {
         text-align: center;
@@ -258,6 +261,7 @@ form fieldset input {
     }
 
     @media screen and (min-width: 577px) {
+
         /* tablets */
         html {
             font-size: calc(var(--base-font-size)*1.0);
@@ -310,6 +314,7 @@ form fieldset input {
     }
 
     @media screen and (min-width: 993px) {
+
         /* escritorio */
         form fieldset {
             margin: 0.8rem 0;
@@ -359,7 +364,7 @@ form fieldset input {
         border-color: var(--amarillo-oscuro);
         background-color: white;
     }
-    
+
     form div.texto-medio {
         color: var(--morado-texto);
     }
@@ -379,7 +384,7 @@ form fieldset input {
         color: var(--morado-texto);
     }
 
-    form fieldset label.input-contraseña svg{
+    form fieldset label.input-contraseña svg {
         color: var(--dark-grey);
     }
 
@@ -391,15 +396,17 @@ form fieldset input {
         background-color: var(--switch-izquierdo);
     }
 
-    form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo {
+    form div.switch-container strong.izquierda,
+    form div.switch-statement div.statement.izquierdo {
         color: var(--switch-izquierdo);
     }
 
-    form div.switch-container strong.derecha, form div.switch-statement div.statement.derecho {
+    form div.switch-container strong.derecha,
+    form div.switch-statement div.statement.derecho {
         color: var(--switch-derecho);
-    }  
-    
-   
+    }
+
+
 
     form button[type="submit"] {
         border-color: var(--azul-mensaje);
@@ -416,7 +423,7 @@ form fieldset input {
         border-color: var(--azul-oscuro);
         background-color: var(--azul-oscuro);
     }
-    
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -464,8 +471,8 @@ form fieldset input {
         outline-color: var(--morado-claro-x2);
     }
 
-    form div.check-box input:checked {    
-            
+    form div.check-box input:checked {
+
         background-color: var(--amarillo-oscuro);
     }
 
@@ -477,7 +484,7 @@ form fieldset input {
         color: var(--morado-texto-dark);
     }
 
-    form fieldset label.input-contraseña svg{
+    form fieldset label.input-contraseña svg {
         color: whitesmoke;
     }
 
@@ -489,13 +496,15 @@ form fieldset input {
         background-color: var(--switch-izquierdo-dark);
     }
 
-    form div.switch-container strong.izquierda, form div.switch-statement div.statement.izquierdo {
+    form div.switch-container strong.izquierda,
+    form div.switch-statement div.statement.izquierdo {
         color: var(--switch-izquierdo-dark);
     }
 
-    form div.switch-container strong.derecha, form div.switch-statement div.statement.derecho {
+    form div.switch-container strong.derecha,
+    form div.switch-statement div.statement.derecho {
         color: var(--switch-derecho-dark);
-    } 
+    }
 
     form button[type="submit"] {
         border-color: var(--azul-mensaje);

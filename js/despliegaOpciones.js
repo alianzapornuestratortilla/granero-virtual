@@ -42,15 +42,23 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
     
     let displayProperty
     for (const currentComponentKey in childrenOfParentComponent) {
+        
+
+        const currentComponent = childrenOfParentComponent[currentComponentKey];
+        const currentComponentInDOM = document.getElementById(currentComponentKey);
+        let isRequired
+        // debugger
         switch (show) {
             case "show":
-                // mostrarlo
-                displayProperty = "";
+                // mostrarlo                
+                currentComponentInDOM.classList.remove("hide");
+                isRequired = true;
                 break;
             // si es switch y en mostrar, evalua valor, si no                
             case "hide":
                 // solo ocultalo
-                displayProperty = "none";
+                currentComponentInDOM.classList.add("hide");
+                isRequired = false;
 
                 break;
 
@@ -59,8 +67,7 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
                 break;
         }
 
-        const currentComponent = childrenOfParentComponent[currentComponentKey];
-        document.getElementById(currentComponentKey).style.display = displayProperty;
+        currentComponentInDOM.querySelector('input').required = isRequired;
         // debugger
         if ((currentComponent.hasOwnProperty("izquierda") && currentComponent.hasOwnProperty("derecha"))) {
             //es switch
