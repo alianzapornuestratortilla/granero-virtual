@@ -61,12 +61,17 @@ form div.check-box input {
 
 }
 
+form div.switch-statement, form fieldset {
+    transition: .4s;
+}
+
 form div.switch-statement div.statement {
     transition: .4s;
 }
 
 form div.switch-container strong {
     opacity: 0.5;
+    cursor: pointer;
 }
 
 form div.switch-container strong.seleccionado{
