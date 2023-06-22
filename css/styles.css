@@ -32,6 +32,7 @@
     --switch-derecho-dark: var(--rojo-claro);
     --fondo-blanco: color-mix(in srgb, white 99%, black);
     --sticky-height-teléfono: 60px;
+    --rojo-dont: #cc0000;
 }
 
 
@@ -156,6 +157,16 @@ form div.texto-medio strong {
 form fieldset input {
     font-family: 'Noto Sans Mono', monospace;
     font-weight: bold;
+}
+
+form fieldset fieldset.lista-de-otros-container button.btn-añade {
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
 }
 
 @media screen and (min-width: 100px) {
@@ -327,10 +338,16 @@ form fieldset input {
         cursor: pointer;
     }
 
+    form div.check-box label.muy-grande {
+        max-width: 80%;
+    }
+
     form div.check-box label:hover {
         color: var(--rojo-claro);
         cursor: pointer;
-    }    
+    }
+
+    
 
     form fieldset label.input-contraseña {
         position: relative;
@@ -343,6 +360,47 @@ form fieldset input {
         width: 32px;
         height: 32px;
     }
+
+    form fieldset fieldset.lista-de-otros-container {
+        margin: 0 0.3rem;
+    }
+
+    form fieldset div.lista-de-otros fieldset {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 0.5rem;
+
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+    }
+
+    form fieldset div.lista-de-otros fieldset input {
+        max-width: 90%;
+
+    }
+
+    form fieldset div.lista-de-otros fieldset button.btn-cerrar-x {
+        font-size: xx-large;
+        line-height: 1;
+        padding: 0 7px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    form fieldset fieldset.lista-de-otros-container button.btn-añade {
+        font-size: xx-large;
+        line-height: 0.7;        
+       
+        height: 50px;
+        width: 50px;
+        margin: 0 auto;
+        
+    }
+
+
 
     form button[type="submit"] {
         display: block;
@@ -537,7 +595,22 @@ form fieldset input {
         color: var(--switch-derecho);
     }
 
+    form fieldset div.lista-de-otros fieldset button.btn-cerrar-x {
+        background-color: var(--rojo-dont);
+        color: var(--fondo-blanco);
+    }
+    
+    form fieldset div.lista-de-otros fieldset button.btn-cerrar-x:hover, form fieldset div.lista-de-otros fieldset button.btn-cerrar-x:focus {
+        background-color: var(--rojo-claro);
+        color: var(--fondo-blanco);
+    }
 
+    form fieldset fieldset.lista-de-otros-container button.btn-añade {
+        background-color: var(--verde-mas);
+        color: var(--fondo-blanco);
+        border: none;
+        
+    }
 
     form button[type="submit"] {
         border-color: var(--azul-mensaje);
