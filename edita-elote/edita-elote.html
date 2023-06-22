@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nuevo e-lote</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        div.switch-statement#switch-proxy span.variable.izquierdo#switch-proxy-1:after {
+            content: 'Seré';
+        }
+
+        div.switch-statement#switch-proxy span.variable.derecho#switch-proxy-1:after {
+            content: 'Será';
+        }
+
+        body {
+            max-width: 100%;
+
+        }
+
+        @media screen and (min-width: 100px) {
+
+            /* teléfonos */
+            form fieldset#usos-comunes {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-evenly;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            form div.check-box input {
+                position: static;
+            }
+
+            form div.check-box input:checked:after {
+                text-align: center;
+                font-size: xx-large;
+                font-weight: bold;
+                content: '✓';
+                margin-left: 0;
+                margin-bottom: 0;
+                position: relative;
+                right: 4px;
+                top: -14px;
+            }
+
+            @media screen and (min-width: 577px) {
+
+                /* tablets */
+
+
+
+
+            }
+
+            @media screen and (min-width: 993px) {
+                /* escritorio */
+            }
+
+            @media (prefers-color-scheme: light) {}
+
+            @media (prefers-color-scheme: dark) {}
+        }
+    </style>
+</head>
+
+<body>
+    <aside>
+        <section id="da-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+
+            <div id="logotipo">
+                <a href=""><img src="../media/images/logo.png" alt=""></a>
+            </div>
+        </section>
+
+        <dialog id="da-menu-dialog">
+            <nav>
+                <ul>
+                    <li><a href=""><strong>mi perfil</strong></a></li>
+                    <li><a href=""><strong>mi granero</strong></a></li>
+                </ul>
+            </nav>
+        </dialog>
+
+    </aside>
+    <main>
+        <header>
+            <div id="subtítulo-izquierdo">
+                <h4 id="subtíulo-top"><strong><span id="el-subtítulo"></span> e-lote</strong></h4>
+                <h3 id="subtíulo-bottom"><strong>nombre del e-lote</strong></h3>
+            </div>
+            <div id="subtítulo-derecho">
+                <a href=""><button type="button" class="cancelar"><strong>Cancelar</strong></button></a>
+            </div>
+        </header>
+        <form action="">
+
+            <fieldset>
+                <legend><strong>el nombre por el que le conocen a este maíz es</strong></legend>
+                <input type="text" name="nombre-completo" minlength="5" maxlength="30" required oninput="void actualizaNombreDeElote(event);">
+            </fieldset>
+
+            <fieldset id="usos-comunes">
+                <legend><strong>son usos comunes para este maíz</strong></legend>
+                <div class="check-box">
+                    <input type="checkbox" name="tortillas" id="tortillas-checkbox" onchange="void aChinga(event);">
+                    <label for="tortillas" onclick="checkDaBox(event)"><strong>tortillas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="quesadillas" id="quesadillas-checkbox">
+                    <label for="quesadillas" onclick="checkDaBox(event)"><strong>quesadillas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="gorditas"   id="gorditas-checkbox">
+                    <label for="gorditas" onclick="checkDaBox(event)"><strong>gorditas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="sopes" id="sopes-checkbox">
+                    <label for="sopes" onclick="checkDaBox(event)"><strong>sopes</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="huaraches" id="huaraches-checkbox">
+                    <label for="huaraches" onclick="checkDaBox(event)"><strong>huaraches</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="memelas" id="memelas-checkbox">
+                    <label for="memelas" onclick="checkDaBox(event)"><strong>memelas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tlacoyos" id="tlacoyos-checkbox">
+                    <label for="tlacoyos" onclick="checkDaBox(event)"><strong>tlacoyos</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tamales" id="tamales-checkbox">
+                    <label for="tamales" onclick="checkDaBox(event)"><strong>tamales y
+                            torundas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tostadas" id="tostadas-checkbox">
+                    <label for="tostadas" onclick="checkDaBox(event)"><strong>tostadas</strong></label>
+                </div>
+
+                <div class="check-box">
+                    <input type="checkbox" name="horneadas" id="horneadas-checkbox">
+                    <label for="horneadas" onclick="checkDaBox(event)"><strong>horneadas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="totopos" id="totopos-checkbox">
+                    <label for="totopos" onclick="checkDaBox(event)"><strong>totopos</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="chalupas" id="chalupas-checkbox">
+                    <label for="chalupas" onclick="checkDaBox(event)"><strong>chalupas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tlayudas" id="tlayudas-checkbox">
+                    <label for="tlayudas" onclick="checkDaBox(event)"><strong>tlayudas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tetelas" id="tetelas-checkbox">
+                    <label for="tetelas" onclick="checkDaBox(event)"><strong>tetelas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tlaxcales" id="tlaxcales-checkbox">
+                    <label for="tlaxcales" onclick="checkDaBox(event)"><strong>tlaxcales</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="molotes" id="molotes-checkbox">
+                    <label for="molotes" onclick="checkDaBox(event)"><strong>molotes</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tlacahuiles" id="tlacahuiles-checkbox">
+                    <label for="tlacahuiles" onclick="checkDaBox(event)"><strong>tlacahuiles
+                            (itacates)</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="petroleras" id="petroleras-checkbox">
+                    <label for="petroleras" onclick="checkDaBox(event)"><strong>petroleras</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="pozole" id="pozole-checkbox">
+                    <label for="pozole" onclick="checkDaBox(event)"><strong>pozole</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="palomitas" id="palomitas-checkbox">
+                    <label for="palomitas" onclick="checkDaBox(event)"><strong>palomitas</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="polcanes" id="polcanes-checkbox">
+                    <label for="polcanes" onclick="checkDaBox(event)"><strong>polcanes</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="panuchos" id="panuchos-checkbox">
+                    <label for="panuchos" onclick="checkDaBox(event)"><strong>panuchos</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="pinole" id="pinole-checkbox">
+                    <label for="pinole" onclick="checkDaBox(event)"><strong>pinole</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="atole" id="atole-checkbox">
+                    <label for="atole" onclick="checkDaBox(event)"><strong>atole</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="atole-agrio" id="atole-agrio-checkbox">
+                    <label for="atole-agrio" onclick="checkDaBox(event)"><strong>atole agrio</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tejate" id="tejate-checkbox">
+                    <label for="tejate" onclick="checkDaBox(event)"><strong>tejate</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tejuino" id="tejuino-checkbox">
+                    <label for="tejuino" onclick="checkDaBox(event)"><strong>tejuino</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="pozol" id="pozol-checkbox">
+                    <label for="pozol" onclick="checkDaBox(event)"><strong>pozol</strong></label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="tascalate" id="tascalate-checkbox">
+                    <label for="tascalate" onclick="checkDaBox(event)"><strong>tascalate</strong></label>
+                </div>
+                <div id="otros-usos">
+                    <div class="check-box">
+                        <input type="checkbox" name="otros" id="otros-checkbox">
+                        <label for="otros" onclick="checkDaBox(event)"><strong>Otros usos</strong></label>
+                    </div>
+                </div>
+
+            </fieldset>
+
+
+
+
+
+
+
+
+
+            <button type="submit"><strong><span id="btn-submit-text"></span></strong></button>
+        </form>
+
+    </main>
+
+
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const tipoDeEdición = urlParams.get('tEd');
+        // http://localhost:5500/edita-elote/edita-elote.html?tEd=new
+        // http://localhost:5500/edita-elote/edita-elote.html?tEd=edit
+        //?product=shirt&color=blue&newuser&size=m
+
+        const posDocVars = {
+            "new": {
+                "título": "nuevo e-lote",
+                "subtítulo": "registrando nuevo",
+                "btn-submit": "registrar"
+            },
+            "edit": {
+                "título": "nuevo e-lote",
+                "subtítulo": "modificando",
+                "btn-submit": "actualizar"
+            }
+        }
+        let cual
+        switch (tipoDeEdición) {
+
+            case "new":
+                cual = posDocVars["new"];
+                break;
+            case "edit":
+                cual = posDocVars["edit"];
+                break;
+
+            default:
+                break;
+        }
+
+        const docVars = cual;
+
+        document.title = docVars["título"];
+        document.getElementById('el-subtítulo').innerHTML = docVars["subtítulo"];
+        document.getElementById('btn-submit-text').innerHTML = docVars["btn-submit"];
+
+    </script>
+    <script src="../js/switch.js"></script>
+    <script>
+        const lasOpciones = {
+
+            "switch-proxy": {
+                "izquierda": {
+                    "switch-email": {
+                        "izquierda": {
+                            "fieldset-email": true
+                        },
+                        "derecha": {},
+                    },
+                    "switch-tel-móvil": {
+                        "izquierda": {
+                            "fieldset-tel-móvil": true
+                        },
+                        "derecha": {}
+                    },
+                    "switch-tel-fijo": {
+                        "izquierda": {
+                            "fieldset-tel-fijo": true
+                        },
+                        "derecha": {}
+                    }
+                },
+                "derecha": {
+                    "fieldset-nombre-proxy": true,
+                    "fieldset-relación-proxy": true,
+                    "switch-email-proxy": {
+                        "izquierda": {
+                            "fieldset-email-proxy": true
+                        },
+                        "derecha": {}
+                    },
+                    "switch-tel-móvil-proxy": {
+                        "izquierda": {
+                            "fieldset-tel-móvil-proxy": true
+                        },
+                        "derecha": {}
+                    },
+                    "switch-tel-fijo-proxy": {
+                        "izquierda": {
+                            "fieldset-tel-fijo-proxy": true
+                        },
+                        "derecha": {}
+                    }
+                }
+            }
+
+        };
+
+        const eitherOr = {
+            1: ["switch-email", "switch-tel-móvil", "switch-tel-fijo"],
+            2: ["switch-email-proxy", "switch-tel-móvil-proxy",
+                "switch-tel-fijo-proxy"]
+
+        }
+
+    </script>
+    <script src="../js/despliegaOpciones.js"></script>
+    <script>
+        void despliegalasOpciones(lasOpciones);
+    </script>
+    <script>
+        function actualizaNombreDeElote(event){
+            document.getElementById('subtíulo-bottom').innerHTML = event.target.value;
+        }
+    </script>
+    <script>
+        function aChinga(event){
+
+            console.log('a chingá');
+            console.log(event.target.checked);
+        }
+    </script>
+    <script async src="../js/checkDaBox.js"></script>
+</body>
+
+</html>

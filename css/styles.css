@@ -30,6 +30,8 @@
     --switch-izquierdo-dark: var(--morado-claro-x2);
     --switch-derecho: var(--rojo-claro);
     --switch-derecho-dark: var(--rojo-claro);
+    --fondo-blanco: color-mix(in srgb, white 99%, black);
+    --sticky-height-teléfono: 60px;
 }
 
 
@@ -41,8 +43,17 @@ html {
     font-family: 'Noto Sans', sans-serif;
 }
 
+aside ul {
+    list-style: none;
+    overflow: hidden;
+}
+
 h1 {
     text-align: center;
+}
+
+main header div#subtítulo-derecho button.cancelar {
+    cursor: pointer;
 }
 
 form div.check-box {
@@ -58,12 +69,6 @@ form div.check-box input {
     -moz-appearance: none;
     -o-appearance: none;
     appearance: none;
-
-}
-
-form div.switch-statement,
-form fieldset {
-    margin-bottom: 2rem;
 
 }
 
@@ -147,6 +152,7 @@ form div.texto-medio strong {
     font-size: x-large;
 }
 
+
 form fieldset input {
     font-family: 'Noto Sans Mono', monospace;
     font-weight: bold;
@@ -155,7 +161,38 @@ form fieldset input {
 @media screen and (min-width: 100px) {
     body {
         max-width: 100%;
-        margin: 0px 2%;
+        margin: 0 2%;
+    }
+
+    aside {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        background-color: var(--fondo-blanco);
+    }
+
+    aside section#da-menu {
+        margin-top: 10px;
+        width: 100%;
+        height: var(--sticky-height-teléfono);
+        z-index: 100;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    aside svg {
+        padding: 10px;
+        margin-left: 10px;
+        width: 10%;
+        cursor: pointer;
+    }
+
+    aside div#logotipo {
+        width: 65%;
+        margin-right: 30px;
     }
 
     div#logotipo {
@@ -167,6 +204,53 @@ form fieldset input {
         width: 100%;
         max-width: 360px;
         margin-top: 0.5rem;
+    }
+
+    main header {
+        margin: 15px 0;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        position: -webkit-sticky;
+        position: sticky;
+        top: var(--sticky-height-teléfono);
+        background-color: var(--fondo-blanco);
+        padding-bottom: 10px;
+    }
+
+    main header div#subtítulo-izquierdo {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        padding-left: 10px;
+
+    }
+
+    main header div#subtítulo-derecho {
+        padding-right: 10px;
+    }
+
+    main header div#subtítulo-izquierdo h4#subtíulo-top {
+        font-size: 0.7rem;
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+
+    main header div#subtítulo-izquierdo h3#subtíulo-bottom {
+        font-size: 1rem;
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+
+    main header div#subtítulo-derecho button.cancelar {
+        font-size: 1rem;
+        padding: 5px;
+        border-radius: 5px;
+
     }
 
     form {
@@ -199,6 +283,23 @@ form fieldset input {
         border: 3px solid;
     }
 
+    form div.switch-statement,
+    form fieldset {
+        margin-bottom: 2.5rem;
+
+    }
+
+    form div.switch-statement div.switch-container strong.muy-grande {
+        max-width: 40%;
+        transition: 0.4s;
+    }
+
+    form div.switch-statement div.switch-container strong.seleccionado.muy-grande {
+        max-width: 35%;
+        font-size: large;
+        transition: 0.4s;
+    }
+
     form div.check-box {
         padding: 1rem 0;
         gap: 0.5rem;
@@ -223,12 +324,13 @@ form fieldset input {
 
     form div.check-box label {
         font-size: larger;
+        cursor: pointer;
     }
 
     form div.check-box label:hover {
         color: var(--rojo-claro);
         cursor: pointer;
-    }
+    }    
 
     form fieldset label.input-contraseña {
         position: relative;
@@ -315,6 +417,10 @@ form fieldset input {
 
     @media screen and (min-width: 993px) {
 
+        html {
+            font-size: smaller;
+        }
+
         /* escritorio */
         form fieldset {
             margin: 0.8rem 0;
@@ -333,12 +439,37 @@ form fieldset input {
 
 @media (prefers-color-scheme: light) {
     body {
-        background-color: whitesmoke;
+        background-color: var(--fondo-blanco);
         color: var(--dark-grey);
     }
 
     h1 {
         color: var(--azul-claro);
+    }
+
+    main header div#subtítulo-izquierdo h4#subtíulo-top {
+        color: var(--azul-mensaje);
+    }
+
+    main header div#subtítulo-izquierdo h3#subtíulo-bottom {
+        color: var(--rojo-claro);
+    }
+
+    main header div#subtítulo-derecho button.cancelar {
+        background-color: var(--rojo-claro);
+        color: var(--fondo-blanco);
+        /* box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.666); */
+    }
+
+    main header div#subtítulo-derecho button.cancelar:hover,
+    main header div#subtítulo-derecho button.cancelar:focus {
+        background-color: var(--rojo-oscuro);
+        color: var(--fondo-blanco);
+    }
+
+    main header div#subtítulo-derecho button.cancelar:active {
+        background-color: var(--amarillo-oscuro);
+        color: var(--morado-texto);
     }
 
     form fieldset {
@@ -350,13 +481,13 @@ form fieldset input {
     }
 
     form fieldset input {
-        background-color: color-mix(in srgb, whitesmoke 40%, white);
+        background-color: color-mix(in srgb, var(--fondo-blanco) 40%, white);
         border-color: var(--azul-claro);
     }
 
     form fieldset input:hover {
         border-color: var(--crema);
-        background-color: color-mix(in srgb, whitesmoke 30%, white);
+        background-color: color-mix(in srgb, var(--fondo-blanco) 30%, white);
     }
 
     form fieldset input:active,
@@ -376,7 +507,7 @@ form fieldset input {
     }
 
     form div.check-box input:checked {
-        color: white;
+        color: var(--fondo-blanco);
         background-color: var(--amarillo-oscuro);
     }
 
@@ -429,15 +560,38 @@ form fieldset input {
 @media (prefers-color-scheme: dark) {
     body {
         background-color: var(--dark-grey);
-        color: whitesmoke;
+        color: var(--fondo-blanco);
     }
 
     h1 {
-        color: whitesmoke;
+        color: var(--fondo-blanco);
     }
 
     div#logotipo img {
         background-color: var(--crema-oscuro);
+    }
+
+    main header div#subtítulo-izquierdo h4#subtíulo-top {
+        color: var(--azul-mensaje);
+    }
+
+    main header div#subtítulo-izquierdo h3#subtíulo-bottom {
+        color: var(--rojo-claro);
+    }
+
+    main header div#subtítulo-derecho button.cancelar {
+        background-color: var(--rojo-oscuro);
+        box-shadow: 1px 1px 4px 0 rgba(254, 254, 254, 0.666);
+    }
+
+    main header div#subtítulo-derecho button.cancelar:hover,
+    main header div#subtítulo-derecho button.cancelar:focus {
+        background-color: var(--rojo-claro);
+    }
+
+    main header div#subtítulo-derecho button.cancelar:active {
+        background-color: var(--amarillo-oscuro);
+        color: var(--morado-texto);
     }
 
     form fieldset legend {
@@ -485,7 +639,7 @@ form fieldset input {
     }
 
     form fieldset label.input-contraseña svg {
-        color: whitesmoke;
+        color: var(--fondo-blanco);
     }
 
     form div.switch-statement div.statement {

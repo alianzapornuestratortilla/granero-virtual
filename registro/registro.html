@@ -60,16 +60,7 @@
 
             /* teléfonos */
 
-            form div.switch-statement div.switch-container strong.muy-grande {
-                max-width: 40%;
-                transition: 0.4s;
-            }
 
-            form div.switch-statement div.switch-container strong.seleccionado.muy-grande {
-                max-width: 35%;
-                font-size: large;
-                transition: 0.4s;
-            }
         }
 
         @media screen and (min-width: 577px) {
@@ -313,19 +304,29 @@
             <small>sólo números, sin espacios ni güiones ni símbolos</small>
         </fieldset>
 
-        <h1>Sin una forma de contactarte no podemos registrarte <br> :(</h1>
+        <fieldset>
+            <legend><strong>contraseña</strong></legend>
+            <label for="contraseña" class="input-contraseña">
+                <input type="password" name="contraseña" required minlength="5">
+
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend><strong>repite contraseña</strong></legend>
+            <label for="contraseña2" class="input-contraseña">
+                <input type="password" name="contraseña2" required minlength="5">
+
+            </label>
+        </fieldset>
 
 
 
 
-        <button type="submit"><strong>Iniciar sesión</strong></button>
+        <button type="submit"><strong>Registrarme</strong></button>
     </form>
     <div class="opción">
-        <a href="">Olvidé mi contraseña</a>
-    </div>
-    <div class="opción">
         <a
-            href="https://granero.alianzapornuestratortilla.org/granero/index.php?controlador=principal&accion=inicio#sec_ingreso">Registrarme</a>
+            href="https://granero.alianzapornuestratortilla.org/granero/index.php?controlador=principal&accion=inicio#sec_ingreso">Ya tengo cuenta</a>
     </div>
     <script src="../js/switch.js"></script>
     <script src="../js/inputTel.js"></script>
@@ -390,6 +391,10 @@
     <script src="../js/despliegaOpciones.js"></script>
     <script>
         void despliegalasOpciones(lasOpciones);
+    </script>
+    <script src="../js/passwordEye.js"></script>
+    <script>
+        void changeEyeIcon(document.querySelector("form fieldset label[for='contraseña']"), document.getElementById('icono-ver'));
     </script>
 </body>
 
