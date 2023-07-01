@@ -8,6 +8,7 @@ function swicheaOpción(event) {
     const textoDerecho = leSwitchContainer.querySelector('strong.derecha');
     const daCheckbox = leSwitchContainer.querySelector('input[type="checkbox"]');
     daCheckbox.checked = !daCheckbox.checked;
+    daCheckbox.dispatchEvent(new Event('change'));
     textoIzquierdo.classList.remove('seleccionado');
     textoDerecho.classList.remove('seleccionado');
     let ladoSeleccionado

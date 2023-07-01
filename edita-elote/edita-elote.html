@@ -7,12 +7,40 @@
     <title>nuevo e-lote</title>
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-        div.switch-statement#switch-proxy span.variable.izquierdo#switch-proxy-1:after {
-            content: 'Seré';
+        div.switch-statement#switch-diversidad-de-cultivo span.variable.izquierdo#switch-diversidad-de-cultivo-2:after {
+            content: 'de frijol, calabaza y quelites,';
         }
 
-        div.switch-statement#switch-proxy span.variable.derecho#switch-proxy-1:after {
-            content: 'Será';
+        div.switch-statement#switch-diversidad-de-cultivo span.variable.derecho#switch-diversidad-de-cultivo-2:after {
+            content: '';
+        }
+
+        div.switch-statement#switch-diversidad-de-cultivo span.variable.izquierdo#switch-diversidad-de-cultivo-1:after {
+            content: 'en milpa tradicional';
+        }
+
+        div.switch-statement#switch-diversidad-de-cultivo span.variable.derecho#switch-diversidad-de-cultivo-1:after {
+            content: 'maíz y nada más';
+        }
+
+        div.switch-statement#switch-servicios span.variable.izquierdo#switch-servicios-1:after {
+            content: 'solamente le vendo el grano así como está; quién lo compre viene por el y se lo lleva';
+        }
+
+        div.switch-statement#switch-ofrece-en-pié span.variable.derecho#switch-ofrece-en-pié-1:after {
+            content: 'En su caso, que venga quien lo compre a cosecharlo';
+        }
+
+        div.switch-statement#switch-ofrece-en-pié span.variable.izquierdo#switch-ofrece-en-pié-1:after {
+            content: 'Yo me encargaré de cosecharlo, secarlo y desgranarlo';
+        }
+
+        div.switch-statement#switch-secado span.variable.izquierdo#switch-secado-1:after {
+            content: 'al sol, en azotea o patio';
+        }
+
+        div.switch-statement#switch-secado span.variable.derecho#switch-secado-1:after {
+            content: 'en un equipo especializado, como un silo';
         }
 
         body {
@@ -47,6 +75,20 @@
                 top: -14px;
             }
 
+            form div.switch-container strong {
+                font-size: 0.8rem;
+                max-width: 30%;
+            }
+
+            form div.switch-container strong.seleccionado {
+                font-size: 1.4rem;
+                max-width: 40%;
+            }
+
+            form .switch .slider {
+                width: 70px;
+            }
+
             @media screen and (min-width: 577px) {
 
                 /* tablets */
@@ -60,7 +102,11 @@
                 /* escritorio */
             }
 
-            @media (prefers-color-scheme: light) {}
+            @media (prefers-color-scheme: light) {
+                form fieldset legend {
+                    color: var(--verde-palido);
+                }
+            }
 
             @media (prefers-color-scheme: dark) {}
         }
@@ -106,19 +152,23 @@
 
             <fieldset>
                 <legend><strong>el nombre por el que le conocen a este maíz es</strong></legend>
-                <input type="text" name="nombre-completo" minlength="5" maxlength="30" required oninput="void actualizaNombreDeElote(event);">
+                <input type="text" name="nombre-completo" minlength="5" maxlength="30" required
+                    oninput="void actualizaNombreDeElote(event);">
             </fieldset>
 
             <fieldset id="usos-comunes">
                 <legend><strong>son usos comunes para este maíz</strong></legend>
                 <div class="check-box">
                     <input type="checkbox" name="tortillas" id="tortillas-checkbox" onchange="void aChinga(event);">
-                    <label for="tortillas" onclick="checkDaBox(event)"><strong>tortillas para guisados, quesadillas y tacos</strong></label>
+                    <label for="tortillas" onclick="checkDaBox(event)"><strong>tortillas para guisados, quesadillas y
+                            tacos</strong></label>
                 </div>
                 <div class="check-box">
                     <input type="checkbox" name="garnachas" id="garnachas-checkbox">
-                    <label for="garnachas" onclick="checkDaBox(event)" class="muy-grande"><strong>para garnachas como gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas, tlaxcales, molotes polcanes y panuchos</strong></label>
-                </div>                
+                    <label for="garnachas" onclick="checkDaBox(event)" class="muy-grande"><strong>para garnachas como
+                            gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas, tlaxcales, molotes
+                            polcanes y panuchos</strong></label>
+                </div>
                 <div class="check-box">
                     <input type="checkbox" name="tamales" id="tamales-checkbox">
                     <label for="tamales" onclick="checkDaBox(event)"><strong>tamales y
@@ -126,7 +176,8 @@
                 </div>
                 <div class="check-box">
                     <input type="checkbox" name="tostadas" id="tostadas-checkbox">
-                    <label for="tostadas" onclick="checkDaBox(event)"><strong>tostadas, totopos y horneadas</strong></label>
+                    <label for="tostadas" onclick="checkDaBox(event)"><strong>tostadas, totopos y
+                            horneadas</strong></label>
                 </div>
                 <div class="check-box">
                     <input type="checkbox" name="tlayudas" id="tlayudas-checkbox">
@@ -153,26 +204,514 @@
                     <input type="checkbox" name="pozol" id="pozol-checkbox">
                     <label for="pozol" onclick="checkDaBox(event)"><strong>pozol</strong></label>
                 </div>
-                
+
                 <div class="check-box">
                     <input type="checkbox" name="tejate" id="tejate-checkbox">
                     <label for="tejate" onclick="checkDaBox(event)"><strong>tejate, tejuino o tascalate</strong></label>
                 </div>
-                
+
                 <fieldset class="lista-de-otros-container">
                     <div>
                         <div class="check-box">
-                            <input type="checkbox" class="input-otros" name="otros" id="otros-checkbox" otros="div.lista-de-otros button.btn-añade" onchange="showHideOtros(event)">
+                            <input type="checkbox" class="input-otros" name="otros" id="otros-checkbox"
+                                otros="div.lista-de-otros button.btn-añade" onchange="showHideOtros(event)">
                             <label for="otros" onclick="checkDaBox(event)"><strong>Otros usos</strong></label>
                         </div>
                     </div>
                     <div class="lista-de-otros" id="otros-usos" style="display: none;"></div>
-                    <button type="button" class="btn-añade" onclick="void añadeOtro('otros-usos','template-otro-uso');" style="display: none;">&plus;</button>
+                    <button type="button" class="btn-añade" onclick="void añadeOtro('otros-usos','template-otro-uso');"
+                        style="display: none;">&plus;</button>
                 </fieldset>
-                
+
 
             </fieldset>
 
+            <div class="switch-statement" id="switch-semilla-propia">
+                <div class="texto-medio statement">
+                    <strong>La semilla que sembré para obtener este maíz</strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda seleccionado">es propia, coservada de ciclos pasados</strong>
+                    <label class="switch" for="semilla-propia">
+                        <input type="checkbox" name="semilla-propia" id="si-es-semilla-propia"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">la conseguí de alguien más</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-comprada-truequeada">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda seleccionado">la compré</strong>
+                    <label class="switch" for="comprada-truequeada">
+                        <input type="checkbox" name="comprada-truequeada" id="es-omprada-truequeada"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">la intercambié</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-origen-distinto">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda seleccionado">SI</strong>
+                    <label class="switch" for="recuerda-origen-distinto">
+                        <input type="checkbox" name="recuerda-origen-distinto" id="usuario-recuerda-origen-distinto"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">NO</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>recuerdo de quién la obtuve</strong>
+                </div>
+            </div>
+
+            <fieldset id="fieldset-nombre-origen-distinto">
+                <legend><strong>el nombre de la persona u organización de quién la obtuve es</strong></legend>
+                <input type="text" name="nombre-origen-distinto" minlength="15" required>
+            </fieldset>
+
+            <fieldset id="fieldset-lugar-de-origen">
+                <legend><strong>el lugar de orígen de la semilla es</strong></legend>
+                <input type="text" name="lugar-de-origen" minlength="15" required>
+                <small>ej. comonfort, Guanajuato</small>
+            </fieldset>
+
+            <div class="switch-statement" id="switch-diversidad-de-cultivo">
+                <div class="texto-medio statement">
+                    <strong>El maíz que siembro está</strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">acompañado</strong>
+                    <label class="switch" for="diversidad-de-cultivo">
+                        <input type="checkbox" name="diversidad-de-cultivo" id="diversidad-de-cultivo"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">solito</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong><span class="variable izquierdo" id="switch-diversidad-de-cultivo-2"></span> es decir, <span
+                            class="variable izquierdo" id="switch-diversidad-de-cultivo-1"></span></strong>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-uso-de-agroquímicos">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <label class="switch" for="uso-de-agroquímicos">
+                        <input type="checkbox" name="uso-de-agroquímicos" id="uso-de-agroquímicos"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>utilicé fertilizantes químicos</strong>
+                    <br>
+                    <small>por ejemplo, urea, amoniaco, MAP, superfosfato, de liberación controlada, los que reparte el
+                        gobierno, etc.</small>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-uso-de-abonos">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">SI</strong>
+                    <label class="switch" for="uso-de-abonos">
+                        <input type="checkbox" name="uso-de-abonos" id="uso-de-abonos"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">NO</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>utilicé abonos naturales</strong>
+                    <br>
+                    <small>por ejemplo estiércol, bokashi, composta o lombricomposta, harína de roca, cal agrícola,
+                        abonos verdes, purin, biol, etc.</small>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-uso-de-venenos">
+                <div class="texto-medio statement">
+                    <strong>en la parcela donde sembré el maíz</strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <label class="switch" for="uso-de-venenos">
+                        <input type="checkbox" name="uso-de-venenos" id="uso-de-venenos"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>utilicé venenos químicos para el control de plagas, enfermedades y malezas</strong>
+                    <br>
+                    <small>conocidos como fungicidas, herbicidas, insecticidas; por ejemplo faena&reg; (glifosato),
+                        expander&reg;, regent&reg;, fastac&reg;, etc.</small>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-uso-de-control-biológico">
+                <div class="texto-medio statement">
+                    <strong>y</strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">SI</strong>
+                    <label class="switch" for="uso-de-control-biológico">
+                        <input type="checkbox" name="uso-de-control-biológico" id="uso-de-control-biológico"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">NO</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>utilicé alternativas mecánicas, de control biológico o sustancias permitidas en la
+                        agricultura orgánica para el control de plagas, enfermedades y malezas</strong>
+                    <br>
+                    <small>por ejemplo quitar los quelites a mano o con el azadón; bioles; caldos minerales como
+                        sulfocálcio, bordelés, ceniza; extractos y tés de composta; microorganismos benéficos como
+                        trichoderma, metarhizum, beauveria, etc. </small>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-uso-de-rastrojo">
+                <div class="texto-medio statement">
+                    <strong>en esa misma parcela</strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">SI</strong>
+                    <label class="switch" for="uso-de-rastrojo">
+                        <input type="checkbox" name="uso-de-rastrojo" id="uso-de-rastrojo"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">NO</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>conservé el rastrojo para proteger el suelo</strong>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-cuenta-con-certificación">
+                <div class="texto-medio statement">
+                    <strong>este cultivo de maíz que estoy ofreciendo</strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <label class="switch" for="cuenta-con-certificación">
+                        <input type="checkbox" name="cuenta-con-certificación" id="cuenta-con-certificación"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>cuenta con algún tipo de certificación</strong>
+                    <br>
+                    <small>por ejemplo: orgánico, orgánico-participativo, libre de OGM</small>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-cuenta-con-certificación-orgánica">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <label class="switch" for="cuenta-con-certificación-orgánica">
+                        <input type="checkbox" name="cuenta-con-certificación-orgánica"
+                            id="cuenta-con-certificación-orgánica" onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>cuenta con certificación orgánica mediante certificadora o mediante certficación
+                        participativa</strong>
+                    <br>
+                </div>
+            </div>
+
+            <fieldset id="fieldset-certificado-orgánico">
+                <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                <input type="file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000" required>
+            </fieldset>
+
+            <div class="switch-statement" id="switch-cuenta-con-certificación-libre-de-OGM">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <label class="switch" for="cuenta-con-certificación-libre-de-OGM">
+                        <input type="checkbox" name="cuenta-con-certificación-libre-de-OGM"
+                            id="cuenta-con-certificación-libre-de-OGM"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>cuenta con certificación de estar libre de organismos genéticamente modificados</strong>
+                </div>
+            </div>
+
+            <fieldset id="fieldset-certificado-libre-de-OGM">
+                <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                <input type="file" accept="image/*,.pdf" name="certificado-libre-de-OGM" max-size="10000000" required>
+            </fieldset>
+
+
+            <div class="switch-statement" id="switch-ofrece-en-pié">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda seleccionado">NO</strong>
+                    <label class="switch" for="ofrece-en-pié">
+                        <input type="checkbox" name="ofrece-en-pié" id="ofrece-en-pié"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>considero ofrecerlo en píe. <span class="variable izquierdo"
+                            id="switch-ofrece-en-pié-1"></span></strong>
+                </div>
+            </div>
+
+            <fieldset id="fieldset-precio-por-unidad-de-medida-en-pié" class="precio unidad-de-medida">
+                <legend><strong>el precio al que quiero vender este maíz en pié es de</strong></legend>
+                <div class="numero-opciones">
+                    <div class="cifra">
+                        <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
+                            class="valor-medido" name="precio-por-unidad-de-medida-en-pié"
+                            onchange="void valorVálido(event);" required>
+                        <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
+                    </div>
+                    <span>&nbsp;por&nbsp;</span><select name="opciones-unidad-de-medida-en-pié"
+                        class="opciones-unidad-de-medida" onchange="void actualizaUnidades(event);"></select>
+                </div>
+            </fieldset>
+
+            <fieldset id="fieldset-hectáreas-disponibles-en-pié">
+                <legend><strong>el número de hectáreas de este maíz que tengo disponible para vender en pié es
+                        de</strong></legend>
+                <input type="number" placeholder="2" min="1" step="0.1" max="1000" name="hectáreas-disponibles-en-pié"
+                    required> Has
+            </fieldset>
+
+            <fieldset id="fieldset-venta-mínima-en-pié">
+                <legend><strong>el número mínimo de hectáreas de este maíz que vendería en pié a un comprador individual
+                        es de</strong></legend>
+                <input type="number" placeholder="2" min="1" step="0.1" max="1000" name="venta-mínima-en-pié" required>
+                Has
+            </fieldset>
+
+            <div class="switch-statement" id="switch-ofrece-grano-per-se">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda seleccionado">SI</strong>
+                    <label class="switch" for="ofrece-grano-per-se">
+                        <input type="checkbox" name="ofrece-grano-per-se" id="ofrece-grano-per-se"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">NO</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>considero ofrecerlo ya cosechado, secado y desgranado.</strong>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-secado">
+                <div class="texto-medio statement">
+                    <strong>le he secado de forma</strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">artesanal</strong>
+                    <label class="switch" for="secado">
+                        <input type="checkbox" name="secado" id="secado"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">tecnificada</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong><span class="variable izquierdo" id="switch-secado-1"></span></strong>
+                </div>
+            </div>
+
+            <div class="switch-statement" id="switch-desgranado">
+                <div class="texto-medio statement">
+                    <strong>le he desgranado de forma</strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">artesanal</strong>
+                    <label class="switch" for="desgranado">
+                        <input type="checkbox" name="desgranado" id="desgranado"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">tecnificada</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong><span class="variable izquierdo" id="switch-secado-1"></span></strong>
+                </div>
+            </div>
+
+
+            <div class="switch-statement" id="switch-cuenta-con-análisis-de-aflatoxinas">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <label class="switch" for="cuenta-con-análisis-de-aflatoxinas">
+                        <input type="checkbox" name="cuenta-con-análisis-de-aflatoxinas"
+                            id="cuenta-con-análisis-de-aflatoxinas"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>cuenta con un análisis de aflatoxinas de acuerdo a la NOM-188-SSA1-2002</strong>
+                </div>
+            </div>
+
+            <fieldset id="fieldset-análisis-de-aflatoxinas">
+                <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000" required>
+            </fieldset>
+
+            <div class="switch-statement" id="switch-cuenta-con-NMX-FF-034">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <label class="switch" for="cuenta-con-NMX-FF-034">
+                        <input type="checkbox" name="cuenta-con-NMX-FF-034" id="cuenta-con-NMX-FF-034"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>cuenta con un al menos un análisis de la NMX-FF-034/1-SCFI-2002</strong>
+                </div>
+            </div>
+
+            <fieldset id="fieldset-análisis-NMX-FF-034">
+                <legend><strong>seleccione el o los archivos pdf o de imágen de los análisis</strong></legend>
+                <input type="file" accept="image/*,.pdf" name="análisis-NMX-FF-034" max-size="10000000" multiple
+                    required>
+            </fieldset>            
+
+            <div class="switch-statement" id="switch-servicios">
+                <div class="texto-medio statement">
+                    <strong></strong>
+                </div>
+                <div class="switch-container" onclick="void swicheaOpción(event);">
+                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <label class="switch" for="servicios">
+                        <input type="checkbox" name="servicios" id="servicios"
+                            onchange="void despliegalasOpciones(lasOpciones);" />
+                        <div class="slider round"></div>
+                    </label>
+                    <strong class="derecha">SI</strong>
+
+                </div>
+                <div class="texto-medio statement">
+                    <strong>puedo brindar algún servicio adicional, <span class="variable izquierdo"
+                            id="switch-servicios-1"></span></strong>
+                    <br>
+                    <small>por ejemplo: cribado, aquintalado, maniobras, flete, estiba, etc. </small>
+                </div>
+            </div>
+
+            <fieldset id="fieldset-servicios-descripción">
+                <legend><strong>describa cada uno de los servicios adicionales que tiene la capacidad de ofrecer, con datos específicos como tarifas, distancias, lugares, especificaciones técnicas, etc.</strong></legend>
+                <textarea name="servicios-descripción" id="" rows="5"></textarea>
+            </fieldset>   
+
+
+
+
+
+            acopiadora
+            seguro de transporte
+
+            cribado - impurezas y grano quebrado
+
+            estiba - acomodar en camión o la otra
+            almacenamiento
+            secado
+            fumigación - pastilla
+            aquintalado - meter en costales de 50 kg
 
 
 
@@ -185,9 +724,16 @@
         </form>
 
     </main>
-    <template id="template-otro-uso"><fieldset class="otro"> 
+    <template id="template-otro-uso">
+        <fieldset class="otro">
             <input class="input-otros" type="text" name="otro-uso" minlength="5" maxlength="30" required>
-            <button type="button" class="btn-cerrar-x" onclick="void killOtro(event);">&times;</button></fieldset> 
+            <button type="button" class="btn-cerrar-x" onclick="void killOtro(event);">&times;</button>
+        </fieldset>
+    </template>
+    <template id="template-options-unidad-de-medida">
+        <option value="kg">kilogramo<span class="pluralidad s plural"></span></option>
+        <option value="ton">tonelada<span class="pluralidad s plural"></span></option>
+        <option value="costal">costal<span class="pluralidad es plural"></span> de 50 kg</option>
     </template>
 
 
@@ -222,6 +768,7 @@
                 break;
 
             default:
+                cual = posDocVars["new"];
                 break;
         }
 
@@ -235,53 +782,125 @@
     <script src="../js/switch.js"></script>
     <script>
         const lasOpciones = {
-
-            "switch-proxy": {
-                "izquierda": {
-                    "switch-email": {
-                        "izquierda": {
-                            "fieldset-email": true
-                        },
-                        "derecha": {},
-                    },
-                    "switch-tel-móvil": {
-                        "izquierda": {
-                            "fieldset-tel-móvil": true
-                        },
-                        "derecha": {}
-                    },
-                    "switch-tel-fijo": {
-                        "izquierda": {
-                            "fieldset-tel-fijo": true
-                        },
-                        "derecha": {}
-                    }
-                },
+            "switch-semilla-propia": {
+                "izquierda": {},
                 "derecha": {
-                    "fieldset-nombre-proxy": true,
-                    "fieldset-relación-proxy": true,
-                    "switch-email-proxy": {
-                        "izquierda": {
-                            "fieldset-email-proxy": true
-                        },
+                    "switch-comprada-truequeada": {
+                        "izquierda": {},
                         "derecha": {}
                     },
-                    "switch-tel-móvil-proxy": {
+                    "switch-origen-distinto": {
                         "izquierda": {
-                            "fieldset-tel-móvil-proxy": true
-                        },
-                        "derecha": {}
-                    },
-                    "switch-tel-fijo-proxy": {
-                        "izquierda": {
-                            "fieldset-tel-fijo-proxy": true
+                            "fieldset-nombre-origen-distinto": true
                         },
                         "derecha": {}
                     }
                 }
+            },
+            "switch-cuenta-con-certificación": {
+                "izquierda": {},
+                "derecha": {
+                    "switch-cuenta-con-certificación-orgánica": {
+                        "izquierda": {},
+                        "derecha": {
+                            "fieldset-certificado-orgánico": true
+                        }
+                    },
+                    "switch-cuenta-con-certificación-libre-de-OGM": {
+                        "izquierda": {},
+                        "derecha": {
+                            "fieldset-certificado-libre-de-OGM": true
+                        }
+                    }
+                }
+            }, "switch-ofrece-en-pié": {
+                "izquierda": {},
+                "derecha": {
+                    "fieldset-precio-por-unidad-de-medida-en-pié": true,
+                    "fieldset-hectáreas-disponibles-en-pié": true,
+                    "fieldset-venta-mínima-en-pié": true
+                }
+            },
+            "switch-ofrece-grano-per-se": {
+                "izquierda": {
+                    "switch-secado": {
+                        "izquierda": {},
+                        "derecha": {}
+                    },
+                    "switch-cuenta-con-análisis-de-aflatoxinas": {
+                        "izquierda": {},
+                        "derecha": {
+                            "fieldset-análisis-de-aflatoxinas": true
+                        }
+                    },
+                    "switch-cuenta-con-NMX-FF-034": {
+                        "izquierda": {},
+                        "derecha": {
+                            "fieldset-análisis-NMX-FF-034": true
+                        }
+                    },
+                    "switch-servicios": {
+                        "izquierda": {},
+                        "derecha": {
+                            "fieldset-servicios-descripción":true
+                        }
+                    }
+                    
+                },
+                "derecha": {}
             }
 
+
         };
+
+        //  {
+
+        //     "switch-proxy": {
+        //         "izquierda": {
+        //             "switch-email": {
+        //                 "izquierda": {
+        //                     "fieldset-email": true
+        //                 },
+        //                 "derecha": {},
+        //             },
+        //             "switch-tel-móvil": {
+        //                 "izquierda": {
+        //                     "fieldset-tel-móvil": true
+        //                 },
+        //                 "derecha": {}
+        //             },
+        //             "switch-tel-fijo": {
+        //                 "izquierda": {
+        //                     "fieldset-tel-fijo": true
+        //                 },
+        //                 "derecha": {}
+        //             }
+        //         },
+        //         "derecha": {
+        //             "fieldset-nombre-proxy": true,
+        //             "fieldset-relación-proxy": true,
+        //             "switch-email-proxy": {
+        //                 "izquierda": {
+        //                     "fieldset-email-proxy": true
+        //                 },
+        //                 "derecha": {}
+        //             },
+        //             "switch-tel-móvil-proxy": {
+        //                 "izquierda": {
+        //                     "fieldset-tel-móvil-proxy": true
+        //                 },
+        //                 "derecha": {}
+        //             },
+        //             "switch-tel-fijo-proxy": {
+        //                 "izquierda": {
+        //                     "fieldset-tel-fijo-proxy": true
+        //                 },
+        //                 "derecha": {}
+        //             }
+        //         }
+        //     }
+
+        // };
 
         const eitherOr = {
             1: ["switch-email", "switch-tel-móvil", "switch-tel-fijo"],
@@ -296,14 +915,159 @@
         void despliegalasOpciones(lasOpciones);
     </script>
     <script>
-        function actualizaNombreDeElote(event){
+        function actualizaNombreDeElote(event) {
             document.getElementById('subtíulo-bottom').innerHTML = event.target.value;
         }
     </script>
     <script async src="../js/checkDaBox.js"></script>
     <script src="../js/otros.js"></script>
     <script>
-        void añadeOtro('otros-usos','template-otro-uso');
+        void añadeOtro('otros-usos', 'template-otro-uso');
+    </script>
+    <script>
+        let selectsUnidadDeMedida = document.querySelectorAll('select.opciones-unidad-de-medida');
+        for (let index = 0; index < selectsUnidadDeMedida.length; index++) {
+            const selectUnidadDeMedida = selectsUnidadDeMedida[index];
+            selectUnidadDeMedida.appendChild(document.getElementById("template-options-unidad-de-medida").content.cloneNode(true));
+            selectUnidadDeMedida.dispatchEvent(new Event('change'));
+
+        }
+
+        function actualizaUnidades(event) {
+            const daSelect = event.target;
+            const daFieldset = daSelect.closest('fieldset.unidad-de-medida');
+            let tipo
+            if (daFieldset.classList.contains('precio')) {
+                tipo = 'precio';
+            } else if (daFieldset.classList.contains('cantidad')) {
+                tipo = 'cantidad';
+            }
+
+            const daInput = daFieldset.querySelector('input.valor-medido');
+
+            let minValue;
+            let maxValue;
+            let leStep;
+            let suggestedValue;
+
+            switch (tipo) {
+                case 'precio':
+                    switch (daSelect.value) {
+                        case "kg":
+                            minValue = 7;
+                            maxValue = 99;
+                            leStep = 0.01;
+                            suggestedValue = 12;
+
+                            break;
+                        case "ton":
+                            minValue = 7000;
+                            maxValue = 99 * 7000;
+                            leStep = 1;
+                            suggestedValue = 12000;
+
+                            break;
+                        case "costal":
+                            minValue = 50 * 7;
+                            maxValue = 50 * 99;
+                            leStep = 1;
+                            suggestedValue = 50 * 12;
+
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    break;
+                case 'cantidad':
+                    switch (daSelect.value) {
+                        case "kg":
+                            minValue = 1;
+                            maxValue = undefined;
+                            leStep = 1;
+
+                            break;
+                        case "ton":
+                            minValue = 1;
+                            maxValue = undefined;
+                            leStep = 0.1;
+
+                            break;
+                        case "costal":
+                            minValue = 1;
+                            maxValue = undefined;
+                            leStep = 1;
+
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (minValue) {
+                daInput.setAttribute("min", minValue);
+            } else {
+                daInput.removeAttribute("min");
+            }
+
+            if (maxValue) {
+                daInput.setAttribute("max", maxValue);
+            } else {
+                daInput.removeAttribute("max");
+            }
+
+            if (leStep) {
+                daInput.setAttribute("step", leStep);
+            } else {
+                daInput.removeAttribute("step");
+            }
+
+            if (suggestedValue) {
+                daInput.setAttribute("placeHolder", suggestedValue);
+            } else {
+                daInput.removeAttribute("step");
+            }
+
+            daInput.dispatchEvent(new Event('change'));
+
+        }
+
+        function valorVálido(event) {
+            // debugger
+            const daInput = event.target;
+            const minValue = daInput.getAttribute('min');
+            const maxValue = daInput.getAttribute('max');
+
+            if (daInput.value) {
+                if (Number(daInput.value) < Number(minValue)) {
+                    daInput.value = minValue.toString();
+                } else if (Number(daInput.value) > Number(maxValue)) {
+                    daInput.value = maxValue.toString();
+                }
+                const decimales = {
+                    1: 0,
+                    0.1: 1,
+                    0.01: 2
+                };
+
+
+                // debugger
+                // console.log("isNaN:" + isNaN(daInput.value));
+                daInput.value = Number(daInput.value).toFixed(decimales[daInput.getAttribute('step')]).toString();
+            }
+
+
+
+
+        }
+
     </script>
 </body>
 

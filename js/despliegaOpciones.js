@@ -111,6 +111,7 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
 }
 
 function despliegalasOpciones(diccionarioDeOpciones) {
+    console.log('wtf');
     const daSwitches = document.querySelectorAll('label.switch input[type="checkbox"]');
     let daSwitchInventory = new Object();
     for (let i = 0; i < daSwitches.length; i++) {

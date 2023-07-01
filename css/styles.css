@@ -33,6 +33,7 @@
     --fondo-blanco: color-mix(in srgb, white 99%, black);
     --sticky-height-teléfono: 60px;
     --rojo-dont: #cc0000;
+    --pedicelo-claro-50: color-mix(in srgb, var(--pedicelo) 50%, white);
 }
 
 
@@ -43,6 +44,8 @@ html {
     font-size: var(--base-font-size);
     font-family: 'Noto Sans', sans-serif;
 }
+
+
 
 aside ul {
     list-style: none;
@@ -55,6 +58,10 @@ h1 {
 
 main header div#subtítulo-derecho button.cancelar {
     cursor: pointer;
+}
+
+form span.all-petite-caps {
+    font-variant-caps: all-petite-caps;
 }
 
 form div.check-box {
@@ -159,6 +166,17 @@ form fieldset input {
     font-weight: bold;
 }
 
+form fieldset.unidad-de-medida input[type=number]::-webkit-outer-spin-button,
+form fieldset.unidad-de-medida input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+form fieldset.unidad-de-medida input[type=number] {
+    appearance: texfield;
+    -moz-appearance: textfield;
+}
+
 form fieldset fieldset.lista-de-otros-container button.btn-añade {
     border-radius: 50%;
     cursor: pointer;
@@ -178,6 +196,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     aside {
         position: -webkit-sticky;
         position: sticky;
+        z-index: 100;
         top: 0;
         background-color: var(--fondo-blanco);
     }
@@ -186,7 +205,6 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         margin-top: 10px;
         width: 100%;
         height: var(--sticky-height-teléfono);
-        z-index: 100;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -225,6 +243,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         align-items: center;
         position: -webkit-sticky;
         position: sticky;
+        z-index: 100;
         top: var(--sticky-height-teléfono);
         background-color: var(--fondo-blanco);
         padding-bottom: 10px;
@@ -292,6 +311,42 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     form fieldset input:hover,
     form fieldset input:focus {
         border: 3px solid;
+    }
+
+    form fieldset.unidad-de-medida div.numero-opciones {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    form fieldset.unidad-de-medida div.cifra {
+        text-align: center;
+    }
+
+    form fieldset.unidad-de-medida div.cifra span.currency-companion {
+        font-size: calc(1.5*var(--base-font-size));
+    }
+
+    form fieldset.unidad-de-medida div.cifra input.valor-medido {
+        max-width: 50%;
+        text-align: center;
+        
+    }
+
+    form fieldset.unidad-de-medida select.opciones-unidad-de-medida {
+        font-size: calc(1.5*var(--base-font-size));
+        text-align: center;
+        max-width: 90%;
+        border-radius: 5px;
+
+    }
+
+    form fieldset textarea {
+        border-radius: 7px;
+        width: 90%;
+        font-size: calc(1*var(--base-font-size));
     }
 
     form div.switch-statement,
@@ -505,6 +560,11 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         color: var(--azul-claro);
     }
 
+    aside section#da-menu, main header {
+        background-color: var(--fondo-blanco);
+        opacity: 1;
+    }
+
     main header div#subtítulo-izquierdo h4#subtíulo-top {
         color: var(--azul-mensaje);
     }
@@ -552,6 +612,15 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     form fieldset input:focus {
         border-color: var(--amarillo-oscuro);
         background-color: white;
+    }
+
+    form fieldset input::placeholder, form fieldset input::-webkit-input-placeholder { /* Edge */
+        color: lightgray;
+      }
+
+      form fieldset.unidad-de-medida select.opciones-unidad-de-medida {
+        background-color: var(--pedicelo-claro-50);      
+
     }
 
     form div.texto-medio {
@@ -610,6 +679,10 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         color: var(--fondo-blanco);
         border: none;
         
+    }
+
+    form fieldset textarea {
+        background-color: var(--pedicelo-claro-50);
     }
 
     form button[type="submit"] {
@@ -731,6 +804,10 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     form div.switch-container strong.derecha,
     form div.switch-statement div.statement.derecho {
         color: var(--switch-derecho-dark);
+    }
+
+    form fieldset textarea {
+        background-color: var(--pedicelo);
     }
 
     form button[type="submit"] {
