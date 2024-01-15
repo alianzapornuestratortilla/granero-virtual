@@ -1,0 +1,13 @@
+- [x] Invertir orden de nombre y foto
+- [x] Animación de color morado grande a rojo pequeños también
+- [ ] Animación cambio de texto de abajo variable de uno a otro
+- [x] Animación de aparece desaparece registro
+- [ ] Dar estilo a los botones de el editor de las fotos
+- [ ] Agregar botón de agregar foto principal, cambia a 'agregar nueva fotografía', quitar selector de imágenes
+- [ ] Agregar 'código postal' de la ubicación donde lo tiene almacenado para el algoritmo de resultados por zona
+- [ ] Link a los métodos orgánicos en info
+- [x] entre el no y si parace mas grande el izquierdo cuando seleccionado 
+- [ ] pan(el-ote) general
+- [ ] menú lateral/de hamburgesa
+- [ ] corregir el tamaño de font de html para cada tamaño en lugar de recalcularlo para cada uno
+- [ ] mover estilos generales de vuelta al css específico fuera del html

@@ -66,9 +66,9 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
 
                 break;
         }
-
-        currentComponentInDOM.querySelector('input').required = isRequired;
-        // debugger
+        
+        // currentComponentInDOM.querySelector('input').required = isRequired;
+        
         if ((currentComponent.hasOwnProperty("izquierda") && currentComponent.hasOwnProperty("derecha"))) {
             //es switch
             let components2beDisplayed = new Array();
@@ -111,7 +111,7 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
 }
 
 function despliegalasOpciones(diccionarioDeOpciones) {
-    console.log('wtf');
+    
     const daSwitches = document.querySelectorAll('label.switch input[type="checkbox"]');
     let daSwitchInventory = new Object();
     for (let i = 0; i < daSwitches.length; i++) {

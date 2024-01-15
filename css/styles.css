@@ -80,21 +80,38 @@ form div.check-box input {
 
 }
 
+form div.switch-statement,
+form div.a-fieldset {
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    height: auto;
+    max-height: 1000px;/* necesario para que funcione la transición de altura aparecer-desaparecer*/
+
+}
+
 form div.switch-statement.hide,
-form fieldset.hide {
-    display: none;
+form div.a-fieldset.hide {
+    transition: all 0.5s 0s ease-in-out;
+    max-height: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    opacity: 0%;
 }
 
 form div.switch-container strong {
     opacity: 0.5;
     cursor: pointer;
+    transition: .6s;
 }
 
 form div.switch-container strong.seleccionado {
     font-size: calc(var(--base-font-size)*1.6);
-    transition: .4s;
+    transition: .6s;
     opacity: 1;
 }
+
 
 form div.switch-container {
     display: flex;
@@ -122,7 +139,7 @@ form .switch .slider {
     position: absolute;
     right: 0;
     top: 0;
-    transition: .4s;
+    transition: .3s;
 }
 
 form .switch .slider:before {
@@ -332,7 +349,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     form fieldset.unidad-de-medida div.cifra input.valor-medido {
         max-width: 50%;
         text-align: center;
-        
+
     }
 
     form fieldset.unidad-de-medida select.opciones-unidad-de-medida {
@@ -345,6 +362,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
     form fieldset textarea {
         border-radius: 7px;
+        max-width: 90%;
         width: 90%;
         font-size: calc(1*var(--base-font-size));
     }
@@ -369,6 +387,10 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     form div.check-box {
         padding: 1rem 0;
         gap: 0.5rem;
+    }
+
+    form div.check-box label.overboard {
+        max-width: 60%;
     }
 
     form div.check-box input {
@@ -402,7 +424,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         cursor: pointer;
     }
 
-    
+
 
     form fieldset label.input-contraseña {
         position: relative;
@@ -447,12 +469,30 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
     form fieldset fieldset.lista-de-otros-container button.btn-añade {
         font-size: xx-large;
-        line-height: 0.7;        
-       
+        line-height: 0.7;
+
         height: 50px;
         width: 50px;
         margin: 0 auto;
-        
+
+    }
+
+    form fieldset#fotografías-del-e-lote {
+        text-align: center;
+    }
+
+    form fieldset#fotografías-del-e-lote input#input-fotos {
+        margin-bottom: 8px;
+    }
+
+    form fieldset#fotografías-del-e-lote button#ya-estuvo,
+    form fieldset#fotografías-del-e-lote button#btn-cancelar {
+        margin: 8px auto;
+        padding: 6px;
+        font-size: var(--base-font-size);
+        border: 2px solid;
+        border-radius: 5px;
+        cursor: pointer;
     }
 
 
@@ -560,7 +600,8 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         color: var(--azul-claro);
     }
 
-    aside section#da-menu, main header {
+    aside section#da-menu,
+    main header {
         background-color: var(--fondo-blanco);
         opacity: 1;
     }
@@ -614,12 +655,14 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         background-color: white;
     }
 
-    form fieldset input::placeholder, form fieldset input::-webkit-input-placeholder { /* Edge */
+    form fieldset input::placeholder,
+    form fieldset input::-webkit-input-placeholder {
+        /* Edge */
         color: lightgray;
-      }
+    }
 
-      form fieldset.unidad-de-medida select.opciones-unidad-de-medida {
-        background-color: var(--pedicelo-claro-50);      
+    form fieldset.unidad-de-medida select.opciones-unidad-de-medida {
+        background-color: var(--pedicelo-claro-50);
 
     }
 
@@ -668,8 +711,9 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         background-color: var(--rojo-dont);
         color: var(--fondo-blanco);
     }
-    
-    form fieldset div.lista-de-otros fieldset button.btn-cerrar-x:hover, form fieldset div.lista-de-otros fieldset button.btn-cerrar-x:focus {
+
+    form fieldset div.lista-de-otros fieldset button.btn-cerrar-x:hover,
+    form fieldset div.lista-de-otros fieldset button.btn-cerrar-x:focus {
         background-color: var(--rojo-claro);
         color: var(--fondo-blanco);
     }
@@ -678,7 +722,17 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         background-color: var(--verde-mas);
         color: var(--fondo-blanco);
         border: none;
-        
+
+    }
+
+    form fieldset#fotografías-del-e-lote button#ya-estuvo {
+        background-color: var(--morado-oscuro);
+        color: var(--fondo-blanco);
+    }
+
+    form fieldset#fotografías-del-e-lote button#btn-cancelar {
+        background-color: var(--rojo-claro);
+        color: var(--fondo-blanco);
     }
 
     form fieldset textarea {

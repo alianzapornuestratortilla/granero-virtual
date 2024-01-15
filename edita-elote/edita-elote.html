@@ -5,8 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nuevo e-lote</title>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/image-formatter.css">
     <style>
+
+        div.switch-statement#switch-semilla-propia span.variable.izquierdo#switch-semilla-propia-1:after {
+            content: 'conservada de ciclos pasados';
+        }
+
+        div.switch-statement#switch-semilla-propia span.variable.derecho#switch-semilla-propia-1:after {
+            content: 'de alguien más';
+        }
+
         div.switch-statement#switch-diversidad-de-cultivo span.variable.izquierdo#switch-diversidad-de-cultivo-2:after {
             content: 'de frijol, calabaza y quelites,';
         }
@@ -92,6 +103,14 @@
             @media screen and (min-width: 577px) {
 
                 /* tablets */
+                body {
+                    max-width: 600px;
+                    margin: 0 auto;
+                }
+
+                html {
+                    font-size: larger;
+                }
 
 
 
@@ -150,6 +169,21 @@
         </header>
         <form action="">
 
+            <fieldset id="fotografías-del-e-lote">
+                <legend><strong>Fotografías de mi e-lote de maíz</strong></legend>
+                <div id="main-photo">
+
+                </div>
+                <div id="photo-bar">
+
+                </div>
+                <label for="imgs"><strong>Seleccione la imágen principal de su e-lote.</strong></label>
+                <input type="file" name="imgs" accept="image/*" onchange="treatImages(event)" id="input-fotos">
+                <button type="button" id="ya-estuvo" onclick="setPhotos(event)">Ya son todas las fotografías</button>
+                <button type="button" id="btn-cancelar" onclick="cancelBarImages(event)">Cancelar selección de
+                    imágenes</button>
+            </fieldset>
+
             <fieldset>
                 <legend><strong>el nombre por el que le conocen a este maíz es</strong></legend>
                 <input type="text" name="nombre-completo" minlength="5" maxlength="30" required
@@ -160,13 +194,14 @@
                 <legend><strong>son usos comunes para este maíz</strong></legend>
                 <div class="check-box">
                     <input type="checkbox" name="tortillas" id="tortillas-checkbox" onchange="void aChinga(event);">
-                    <label for="tortillas" onclick="checkDaBox(event)"><strong>tortillas para guisados, quesadillas y
+                    <label class="overboard" for="tortillas" onclick="checkDaBox(event)"><strong>tortillas y
                             tacos</strong></label>
                 </div>
                 <div class="check-box">
                     <input type="checkbox" name="garnachas" id="garnachas-checkbox">
-                    <label for="garnachas" onclick="checkDaBox(event)" class="muy-grande"><strong>para garnachas como
-                            gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas, tlaxcales, molotes
+                    <label for="garnachas" onclick="checkDaBox(event)" class="muy-grande overboard"><strong>
+                            quesadillas, gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas, tlaxcales,
+                            molotes
                             polcanes y panuchos</strong></label>
                 </div>
                 <div class="check-box">
@@ -176,7 +211,7 @@
                 </div>
                 <div class="check-box">
                     <input type="checkbox" name="tostadas" id="tostadas-checkbox">
-                    <label for="tostadas" onclick="checkDaBox(event)"><strong>tostadas, totopos y
+                    <label class="overboard" for="tostadas" onclick="checkDaBox(event)"><strong>tostadas, totopos y
                             horneadas</strong></label>
                 </div>
                 <div class="check-box">
@@ -232,17 +267,19 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">es propia, coservada de ciclos pasados</strong>
+                    <strong class="izquierda seleccionado">es propia,</strong>
                     <label class="switch" for="semilla-propia">
                         <input type="checkbox" name="semilla-propia" id="si-es-semilla-propia"
                             onchange="void despliegalasOpciones(lasOpciones);" />
                         <div class="slider round"></div>
                     </label>
-                    <strong class="derecha">la conseguí de alguien más</strong>
+                    <strong class="derecha">la conseguí</strong>
 
                 </div>
                 <div class="texto-medio statement">
-                    <strong></strong>
+                    <strong><span
+                        class="variable izquierdo" id="switch-semilla-propia-1"></span></strong>
+                    </strong>
                 </div>
             </div>
 
@@ -286,16 +323,20 @@
                 </div>
             </div>
 
-            <fieldset id="fieldset-nombre-origen-distinto">
-                <legend><strong>el nombre de la persona u organización de quién la obtuve es</strong></legend>
-                <input type="text" name="nombre-origen-distinto" minlength="15" required>
-            </fieldset>
+            <div class="a-fieldset" id="fieldset-nombre-origen-distinto">
+                <fieldset >
+                    <legend><strong>el nombre de la persona u organización de quién la obtuve es</strong></legend>
+                    <input type="text" name="nombre-origen-distinto" minlength="15" required>
+                </fieldset>
+            </div>
 
-            <fieldset id="fieldset-lugar-de-origen">
-                <legend><strong>el lugar de orígen de la semilla es</strong></legend>
-                <input type="text" name="lugar-de-origen" minlength="15" required>
-                <small>ej. comonfort, Guanajuato</small>
-            </fieldset>
+            <div class="a-fieldset" id="fieldset-lugar-de-origen">
+                <fieldset >
+                    <legend><strong>el lugar de orígen de la semilla es</strong></legend>
+                    <input type="text" name="lugar-de-origen" minlength="15" required>
+                    <small>ej. Comonfort, Guanajuato</small>
+                </fieldset>
+            </div>            
 
             <div class="switch-statement" id="switch-diversidad-de-cultivo">
                 <div class="texto-medio statement">
@@ -303,7 +344,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">acompañado</strong>
+                    <strong class="izquierda seleccionado">acompañado</strong>
                     <label class="switch" for="diversidad-de-cultivo">
                         <input type="checkbox" name="diversidad-de-cultivo" id="diversidad-de-cultivo"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -324,7 +365,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <strong class="izquierda seleccionado">NO</strong>
                     <label class="switch" for="uso-de-agroquímicos">
                         <input type="checkbox" name="uso-de-agroquímicos" id="uso-de-agroquímicos"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -347,7 +388,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">SI</strong>
+                    <strong class="izquierda seleccionado">SI</strong>
                     <label class="switch" for="uso-de-abonos">
                         <input type="checkbox" name="uso-de-abonos" id="uso-de-abonos"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -370,7 +411,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <strong class="izquierda seleccionado">NO</strong>
                     <label class="switch" for="uso-de-venenos">
                         <input type="checkbox" name="uso-de-venenos" id="uso-de-venenos"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -380,7 +421,7 @@
 
                 </div>
                 <div class="texto-medio statement">
-                    <strong>utilicé venenos químicos para el control de plagas, enfermedades y malezas</strong>
+                    <strong>utilicé químicos para el control de plagas, enfermedades y malezas</strong>
                     <br>
                     <small>conocidos como fungicidas, herbicidas, insecticidas; por ejemplo faena&reg; (glifosato),
                         expander&reg;, regent&reg;, fastac&reg;, etc.</small>
@@ -393,7 +434,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">SI</strong>
+                    <strong class="izquierda seleccionado">SI</strong>
                     <label class="switch" for="uso-de-control-biológico">
                         <input type="checkbox" name="uso-de-control-biológico" id="uso-de-control-biológico"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -418,7 +459,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">SI</strong>
+                    <strong class="izquierda seleccionado">SI</strong>
                     <label class="switch" for="uso-de-rastrojo">
                         <input type="checkbox" name="uso-de-rastrojo" id="uso-de-rastrojo"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -438,7 +479,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <strong class="izquierda seleccionado">NO</strong>
                     <label class="switch" for="cuenta-con-certificación">
                         <input type="checkbox" name="cuenta-con-certificación" id="cuenta-con-certificación"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -460,7 +501,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <strong class="izquierda seleccionado">NO</strong>
                     <label class="switch" for="cuenta-con-certificación-orgánica">
                         <input type="checkbox" name="cuenta-con-certificación-orgánica"
                             id="cuenta-con-certificación-orgánica" onchange="void despliegalasOpciones(lasOpciones);" />
@@ -476,10 +517,12 @@
                 </div>
             </div>
 
-            <fieldset id="fieldset-certificado-orgánico">
-                <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                <input type="file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000" required>
-            </fieldset>
+            <div class="a-fieldset" id="fieldset-certificado-orgánico"">
+                <fieldset >
+                    <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                    <input type="file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000" required>
+                </fieldset>
+            </div>            
 
             <div class="switch-statement" id="switch-cuenta-con-certificación-libre-de-OGM">
                 <div class="texto-medio statement">
@@ -487,7 +530,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <strong class="izquierda seleccionado">NO</strong>
                     <label class="switch" for="cuenta-con-certificación-libre-de-OGM">
                         <input type="checkbox" name="cuenta-con-certificación-libre-de-OGM"
                             id="cuenta-con-certificación-libre-de-OGM"
@@ -502,11 +545,12 @@
                 </div>
             </div>
 
-            <fieldset id="fieldset-certificado-libre-de-OGM">
-                <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                <input type="file" accept="image/*,.pdf" name="certificado-libre-de-OGM" max-size="10000000" required>
-            </fieldset>
-
+            <div class="a-fieldset" id="fieldset-certificado-libre-de-OGM">
+                <fieldset >
+                    <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                    <input type="file" accept="image/*,.pdf" name="certificado-libre-de-OGM" max-size="10000000" required>
+                </fieldset>
+            </div>
 
             <div class="switch-statement" id="switch-ofrece-en-pié">
                 <div class="texto-medio statement">
@@ -529,33 +573,39 @@
                 </div>
             </div>
 
-            <fieldset id="fieldset-precio-por-unidad-de-medida-en-pié" class="precio unidad-de-medida">
-                <legend><strong>el precio al que quiero vender este maíz en pié es de</strong></legend>
-                <div class="numero-opciones">
-                    <div class="cifra">
-                        <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
-                            class="valor-medido" name="precio-por-unidad-de-medida-en-pié"
-                            onchange="void valorVálido(event);" required>
-                        <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
+            <div class="a-fieldset" id="fieldset-precio-por-unidad-de-medida-en-pié">
+                <fieldset  class="precio unidad-de-medida">
+                    <legend><strong>el precio al que quiero vender este maíz en pié es de</strong></legend>
+                    <div class="numero-opciones">
+                        <div class="cifra">
+                            <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
+                                class="valor-medido" name="precio-por-unidad-de-medida-en-pié"
+                                onchange="void valorVálido(event);" required>
+                            <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
+                        </div>
+                        <span>&nbsp;por&nbsp;</span><select name="opciones-unidad-de-medida-en-pié"
+                            class="opciones-unidad-de-medida" onchange="void actualizaUnidades(event);"></select>
                     </div>
-                    <span>&nbsp;por&nbsp;</span><select name="opciones-unidad-de-medida-en-pié"
-                        class="opciones-unidad-de-medida" onchange="void actualizaUnidades(event);"></select>
-                </div>
-            </fieldset>
+                </fieldset>
+            </div>
 
-            <fieldset id="fieldset-hectáreas-disponibles-en-pié">
-                <legend><strong>el número de hectáreas de este maíz que tengo disponible para vender en pié es
-                        de</strong></legend>
-                <input type="number" placeholder="2" min="1" step="0.1" max="1000" name="hectáreas-disponibles-en-pié"
-                    required> Has
-            </fieldset>
+            <div class="a-fieldset" id="fieldset-hectáreas-disponibles-en-pié">
+                <fieldset >
+                    <legend><strong>el número de hectáreas de este maíz que tengo disponible para vender en pié es
+                            de</strong></legend>
+                    <input type="number" placeholder="2" min="1" step="0.1" max="1000" name="hectáreas-disponibles-en-pié"
+                        required> Has
+                </fieldset>
+            </div>
 
-            <fieldset id="fieldset-venta-mínima-en-pié">
-                <legend><strong>el número mínimo de hectáreas de este maíz que vendería en pié a un comprador individual
-                        es de</strong></legend>
-                <input type="number" placeholder="2" min="1" step="0.1" max="1000" name="venta-mínima-en-pié" required>
-                Has
-            </fieldset>
+<div class="a-fieldset" id="fieldset-venta-mínima-en-pié">
+    <fieldset >
+        <legend><strong>el número mínimo de hectáreas de este maíz que vendería en pié a un comprador individual
+                es de</strong></legend>
+        <input type="number" placeholder="2" min="1" step="0.1" max="1000" name="venta-mínima-en-pié" required>
+        Has
+    </fieldset>
+</div>
 
             <div class="switch-statement" id="switch-ofrece-grano-per-se">
                 <div class="texto-medio statement">
@@ -583,7 +633,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">artesanal</strong>
+                    <strong class="izquierda seleccionado">artesanal</strong>
                     <label class="switch" for="secado">
                         <input type="checkbox" name="secado" id="secado"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -603,7 +653,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">artesanal</strong>
+                    <strong class="izquierda seleccionado">artesanal</strong>
                     <label class="switch" for="desgranado">
                         <input type="checkbox" name="desgranado" id="desgranado"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -624,7 +674,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <strong class="izquierda seleccionado">NO</strong>
                     <label class="switch" for="cuenta-con-análisis-de-aflatoxinas">
                         <input type="checkbox" name="cuenta-con-análisis-de-aflatoxinas"
                             id="cuenta-con-análisis-de-aflatoxinas"
@@ -639,10 +689,12 @@
                 </div>
             </div>
 
-            <fieldset id="fieldset-análisis-de-aflatoxinas">
-                <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000" required>
-            </fieldset>
+            <div class="a-fieldset" id="fieldset-análisis-de-aflatoxinas">
+                <fieldset>
+                    <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                    <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000" required>
+                </fieldset>
+            </div>
 
             <div class="switch-statement" id="switch-cuenta-con-NMX-FF-034">
                 <div class="texto-medio statement">
@@ -650,7 +702,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <strong class="izquierda seleccionado">NO</strong>
                     <label class="switch" for="cuenta-con-NMX-FF-034">
                         <input type="checkbox" name="cuenta-con-NMX-FF-034" id="cuenta-con-NMX-FF-034"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -660,15 +712,18 @@
 
                 </div>
                 <div class="texto-medio statement">
-                    <strong>cuenta con un al menos un análisis de la NMX-FF-034/1-SCFI-2002</strong>
+                    <strong>cuenta con un al menos un análisis de calidad del grano conforme la
+                        NMX-FF-034/1-SCFI-2002</strong>
                 </div>
             </div>
 
-            <fieldset id="fieldset-análisis-NMX-FF-034">
-                <legend><strong>seleccione el o los archivos pdf o de imágen de los análisis</strong></legend>
-                <input type="file" accept="image/*,.pdf" name="análisis-NMX-FF-034" max-size="10000000" multiple
-                    required>
-            </fieldset>            
+            <div class="a-fieldset" id="fieldset-análisis-NMX-FF-034">
+                <fieldset >
+                    <legend><strong>seleccione el o los archivos pdf o de imágen de los análisis</strong></legend>
+                    <input type="file" accept="image/*,.pdf" name="análisis-NMX-FF-034" max-size="10000000" multiple
+                        required>
+                </fieldset>
+            </div>
 
             <div class="switch-statement" id="switch-servicios">
                 <div class="texto-medio statement">
@@ -676,7 +731,7 @@
                 </div>
                 <div class="switch-container" onclick="void swicheaOpción(event);">
                     <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda muy-grande seleccionado">NO</strong>
+                    <strong class="izquierda seleccionado">NO</strong>
                     <label class="switch" for="servicios">
                         <input type="checkbox" name="servicios" id="servicios"
                             onchange="void despliegalasOpciones(lasOpciones);" />
@@ -689,19 +744,21 @@
                     <strong>puedo brindar algún servicio adicional, <span class="variable izquierdo"
                             id="switch-servicios-1"></span></strong>
                     <br>
-                    <small>por ejemplo: cribado, aquintalado, maniobras, flete, estiba, etc. </small>
+                    <small>por ejemplo: cribado, aquintalado, fumigación/pastilla, maniobras, flete, estiba, etc.
+                    </small>
                 </div>
             </div>
 
-            <fieldset id="fieldset-servicios-descripción">
-                <legend><strong>describa cada uno de los servicios adicionales que tiene la capacidad de ofrecer, con datos específicos como tarifas, distancias, lugares, especificaciones técnicas, etc.</strong></legend>
-                <textarea name="servicios-descripción" id="" rows="5"></textarea>
-            </fieldset>   
+            <div class="a-fieldset" id="fieldset-servicios-descripción">
+                <fieldset >
+                    <legend><strong>describa cada uno de los servicios adicionales que tiene la capacidad de ofrecer, con
+                            datos específicos como tarifas, distancias, lugares, especificaciones técnicas, etc.</strong>
+                    </legend>
+                    <textarea name="servicios-descripción" id="" rows="5"></textarea>
+                </fieldset>
+            </div>
 
-
-
-
-
+            <!-- 
             acopiadora
             seguro de transporte
 
@@ -711,7 +768,7 @@
             almacenamiento
             secado
             fumigación - pastilla
-            aquintalado - meter en costales de 50 kg
+            aquintalado - meter en costales de 50 kg -->
 
 
 
@@ -724,6 +781,24 @@
         </form>
 
     </main>
+
+    <dialog id="photo-cropping-modal">
+        <div class="header">
+            <button class="photo-cropping-modal-close" onclick="closePhotoCroppingModal(event)">Cancelar
+                <strong>&times;</strong></button>
+        </div>
+        <div class="body">
+            Mantenga dentro del rectángulo lo que quiera conservar de la imágen.
+            <div id="canvas-container">
+                <div id="rectangle-container"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <button type="button" id="botón-descartar-foto">Descartar</button>
+            <button type="button" id="botón-así-mero">Agregar selección</button>
+        </div>
+    </dialog>
+
     <template id="template-otro-uso">
         <fieldset class="otro">
             <input class="input-otros" type="text" name="otro-uso" minlength="5" maxlength="30" required>
@@ -735,6 +810,462 @@
         <option value="ton">tonelada<span class="pluralidad s plural"></span></option>
         <option value="costal">costal<span class="pluralidad es plural"></span> de 50 kg</option>
     </template>
+
+    <section id="image-formatter-code">
+
+        <script>
+            var currentFoto = null;
+            var clicked = false;
+            const leMinWidthFoto = 800;
+            const leMinHeightFoto = 600;
+            //or 1080×720 pixels
+            const aspectRatioFoto = leMinWidthFoto / leMinHeightFoto;
+            var leCanvasWidth
+            var leCanvasHeight
+            var scaleFactor
+            var fileListAdHoc = [];
+            var webpURLArrAdHoc = [];
+        </script>
+
+        <script>
+            const lePhotoBar = document.getElementById('photo-bar');
+
+            const observer = new MutationObserver((mutationsList) => {
+                for (const mutation of mutationsList) {
+                    if (mutation.type === 'childList') {
+                        console.log('A child node has been added or removed.');
+                        //update formal files form
+                        if (!refreshFormPhotos(document.getElementById('input-img-def'), lePhotoBar)) {
+                            window.alert('algo salió mal al tratar de actualizar las fotos');
+                        }
+                    }
+                }
+            });
+
+            observer.observe(lePhotoBar, { childList: true });
+        </script>
+        <script>
+            function resetPhotoArrays() {
+                fileListAdHoc = [];
+                webpURLArrAdHoc = [];
+            }
+        </script>
+        <script>
+            function refreshFormPhotos(leInput, lePhotoBar) {
+                void resetPhotoArrays();
+                console.log(lePhotoBar.children);
+                for (laFoto of lePhotoBar.children) {
+
+                    console.log(laFoto);
+                    if (laFoto.tagName === "CANVAS") {
+                        // element is an image
+                        // convert to webp file and add to array
+                        //****
+                        //let a = document.createElement("a");
+                        //a.href = canvas2webpURL(laFoto);
+                        //a.download = "imagen.webp";
+                        //a.click();
+                        //*****
+                        let webpURL = canvas2webpURL(laFoto);
+                        console.log(webpURL);
+                        webpURLArrAdHoc.push(webpURL);
+                        fileListAdHoc.push(dataURLtoFile(url2Blob(webpURL), nameGenerator()));
+                        console.log(fileListAdHoc);
+                    }
+                }
+                return true;
+            }
+        </script>
+        <script>
+            function nameGenerator() {
+                const leDate = new Date();
+
+                return generateRandomCharacter() + '_' + leDate.getDay() + 'd' + leDate.getMonth() + 'm' + leDate.getFullYear() + 'y' + leDate.getHours() + 'h' + leDate.getMinutes() + 'm' + leDate.getSeconds() + 's' + leDate.getMilliseconds() + 'ms';
+            }
+            function generateRandomCharacter() {
+                //replace random char with user's unique identifier
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                var randomIndex = Math.floor(Math.random() * chars.length);
+                return chars[randomIndex];
+            }
+        </script>
+        <script>
+            function canvas2webpURL(canvas, fileName) {
+                return canvas.toDataURL("image/webp");
+            }
+        </script>
+
+        <script>
+            async function treatImages(evt) {
+                var fotografías = await handleFileInput(evt);
+                console.log(fotografías);
+                console.log(fotografías.length);
+                if (!(fotografías.length >= 1)) {
+                    return 0;
+                }
+                //now let's a pop up tha modal
+                document.getElementById('photo-cropping-modal').showModal();
+
+                try {
+
+                    currentFoto = fotografías[0];
+                    if (await resizeCanvas(currentFoto)) {
+                        console.log('first render done');
+                        //wait for acceptance
+                        let leInteraction = await interacción();
+                        console.log(leInteraction);
+                        switch (leInteraction) {
+                            case 'así-mero':
+                                document.getElementById('photo-cropping-modal').close();
+                                lePhotoBar.appendChild(await cropAndResize(currentFoto, leCanvasWidth, leCanvasHeight, aspectRatioFoto, scaleFactor));
+                                let leInput = evt.target;
+                                //modificar el query selector
+                                leInput.closest('form').querySelector("label[for='imgs']").innerHTML = 'Seleccione fotografías adicionales.'
+                                leInput.value = null;
+                                return 1;
+
+                            default:
+                                return 0;
+                        }
+
+                    } else {
+                        document.getElementById('photo-cropping-modal').close();
+                        return 0;
+                    }
+
+
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        </script>
+        <script>
+            async function interacción() {
+                try {
+                    console.log('inicia click listening');
+                    let presionaAlgo = new Promise((resolve, reject) => {
+                        //document.querySelector('button#photo-cropping-modal-close').addEventListener('click', resolve('cancelar'));//should be redundant
+                        document.querySelector('button#botón-descartar-foto').addEventListener('click', () => {
+                            console.log('presionaron descartar foto');
+                            resolve('descartar-foto');
+                        });
+                        document.querySelector('button#botón-así-mero').addEventListener('click', () => {
+                            console.log('presionaron así mero');
+                            resolve('así-mero');
+                        });
+                        document.querySelector('dialog#photo-cropping-modal').addEventListener('close', () => {
+                            console.log('presionaron cancelar');
+                            resolve('cancelar');
+                        });
+
+
+                    });
+
+                    return await presionaAlgo
+                        .then(result => {
+                            void deleteEventListener('button#botón-descartar-foto');
+                            void deleteEventListener('button#botón-así-mero');
+                            void deleteEventListener('dialog#photo-cropping-modal');
+                            return result;
+                        })
+                        .catch(error => {
+                            console.log('e1');
+                            console.error(error);
+                        });
+
+                } catch (error) {
+                    console.log('e2');
+                    console.error(error.message);
+                    return false;
+                }
+            }
+        </script>
+        <script>
+            function deleteEventListener(daQuerySelector) {
+                //reemplazando por clon es lo más fácil, dice bing
+                const el = document.querySelector(daQuerySelector);
+                const clone = el.cloneNode(true);
+                el.parentNode.replaceChild(clone, el);
+            }
+        </script>
+
+        <script>
+            async function loadImage(url) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.crossOrigin = 'anonymous';
+                    img.onload = () => resolve(img);
+                    img.onerror = (err) => reject(err);
+                    img.src = url;
+                });
+            }
+            async function drawImage(url) {
+
+                try {
+                    return await loadImage(url);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        </script>
+        <script>
+            async function logImageData(file, reader) {
+                try {
+                    const fileResult = await reader(file);
+                    return fileResult.result;
+                    // handle fileResult
+                } catch (err) {
+                    return err;
+                    // handle error
+                }
+            }
+        </script>
+        <script>
+            async function handleFileInput(evt) {
+                var files = event.target.files;
+                var lePhotos = [];
+                for (var i = 0; i <= (files.length - 1); i++) {
+                    let file = files[i]; //le current file
+                    // Only process image files.
+                    if (!file.type.match('image.*')) {
+                        continue;
+                    }
+
+                    const reader = (file) => new Promise((resolve, reject) => {
+                        const fr = new FileReader();
+                        fr.onload = () => resolve(fr);
+                        fr.onerror = (err) => reject(err);
+                        fr.readAsDataURL(file);
+                    });
+
+                    lePhotos.push(await logImageData(file, reader))
+
+                }
+                return lePhotos;
+            }
+        </script>
+        <script>
+            function closePhotoCroppingModal(event) {
+                event.target.closest('dialog#photo-cropping-modal').close();
+            }
+        </script>
+        <script>
+            window.onresize = () => {
+                console.log('allegedly resizing');
+                if (document.querySelector('dialog#photo-cropping-modal').open == true) {
+                    resizeCanvas(currentFoto);
+                }
+            };
+        </script>
+        <script>
+            async function resizeCanvas(foto) {
+                console.log('resizing Canvas');
+                if (document.querySelector('canvas.photo-cropping-canvas') !== null) {
+                    document.querySelector('canvas.photo-cropping-canvas').remove();
+
+                }
+                if (document.querySelector('#photo-cropping-rectangle') !== null) {
+                    document.querySelector('#photo-cropping-rectangle').remove();
+
+                }
+
+                let fotoImg = await drawImage(foto);
+
+                //check if min size
+                if (Math.min(fotoImg.naturalHeight / leMinHeightFoto, fotoImg.naturalWidth / leMinWidthFoto) < 1) {
+                    document.getElementById('input-fotos').value = null;
+                    window.alert('¡fotografía demasiado pequeña!\nTomar con mayor resolución\ny/o de forma horizontal.');
+                    return false;
+                }
+
+                let canvas = document.createElement("canvas");
+                canvas.setAttribute("class", "photo-cropping-canvas");
+                canvas.style.width = '100%';
+                canvas.style.height = '80%';
+                document.getElementById('canvas-container').appendChild(canvas);
+                canvas = document.querySelector('canvas.photo-cropping-canvas');
+
+                leCanvasWidth = parseFloat(window.getComputedStyle(canvas).getPropertyValue("width")
+                    .replace(/[^0-9.]/g, ""));
+                leCanvasHeight = parseFloat(window.getComputedStyle(canvas).getPropertyValue("height").replace(
+                    /[^0-9.]/g, ""));
+
+                scaleFactor = Math.min(leCanvasWidth / fotoImg.naturalWidth, leCanvasHeight / fotoImg
+                    .naturalHeight);
+                if (scaleFactor > 1) {
+                    scaleFactor = 1;
+                }
+
+                scaledImgWidth = scaleFactor * fotoImg.naturalWidth;
+                scaledImgHeight = scaleFactor * fotoImg.naturalHeight;
+                canvas.height = leCanvasHeight;
+                canvas.width = leCanvasWidth;
+                canvas.getContext('2d', { preserveDrawingBuffer: true }).drawImage(fotoImg, 0, 0, fotoImg.naturalWidth, fotoImg.naturalHeight, 0, 0,
+                    scaledImgWidth, scaledImgHeight);
+                let leRectangle = document.createElement('div');
+                leRectangle.setAttribute("id", "photo-cropping-rectangle");
+                leRectangle.style.width = leMinWidthFoto * scaleFactor + 'px';
+                leRectangle.style.height = leMinHeightFoto * scaleFactor + 'px';
+                let rectangleContainer = document.getElementById('rectangle-container');
+                rectangleContainer.style.width = scaledImgWidth + 'px';
+                rectangleContainer.style.height = scaledImgHeight + 'px';
+                rectangleContainer.appendChild(leRectangle);
+
+                interact('#photo-cropping-rectangle')
+                    .draggable({
+                        listeners: {
+                            move: function (event) {
+                                var target = event.target;
+                                var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                                var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+                                // restrict the movement of the rectangle within the rectangleContainer
+                                x = Math.min(Math.max(x, 0), scaledImgWidth - target.offsetWidth);
+                                y = Math.min(Math.max(y, 0), scaledImgHeight - target.offsetHeight);
+
+                                target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+                                target.setAttribute('data-x', x);
+                                target.setAttribute('data-y', y);
+                            }
+                        }
+                    })
+                    .resizable({
+                        modifiers: [
+                            interact.modifiers.aspectRatio({
+                                // make sure the aspect ratio is constant
+                                ratio: aspectRatioFoto,
+                                // also restrict the size by nesting another modifier
+                                modifiers: [
+                                    interact.modifiers.restrictSize({
+                                        min: {
+                                            width: leMinWidthFoto * scaleFactor,
+                                            height: leMinHeightFoto * scaleFactor
+                                        },
+                                        max: {
+                                            width: scaledImgWidth,
+                                            height: scaledImgHeight
+                                        }
+                                    }),
+                                    interact.modifiers.restrictEdges({
+                                        outer: 'parent',
+                                        endOnly: true
+                                    })
+                                ],
+                            }),
+                        ],
+                        edges: {
+                            left: false,
+                            right: true,
+                            bottom: true,
+                            top: false
+                        },
+                        inertia: true
+                    })
+                    .on('resizemove', function (event) {
+                        var target = event.target;
+                        var x = (parseFloat(target.getAttribute('data-x')) || 0);
+                        var y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+                        target.style.width = event.rect.width + 'px';
+                        target.style.height = event.rect.height + 'px';
+
+                        x += event.deltaRect.left;
+                        y += event.deltaRect.top;
+
+                        target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+                        target.setAttribute('data-x', x);
+                        target.setAttribute('data-y', y);
+                    });
+                return true;
+            }
+        </script>
+        <script>
+            async function cropAndResize(currentFoto, leCanvasWidth, leCanvasHeight, aspectRatioFoto, scaleFactor) {
+
+                let leRectangle = document.getElementById('photo-cropping-rectangle');
+                console.log(leRectangle.getAttribute("data-x"));
+                console.log(parseFloat(leRectangle.getAttribute("data-x")));
+
+                let scaledOriginX = parseFloat(leRectangle.getAttribute("data-x"));
+                console.log(scaledOriginX);
+                if (isNaN(scaledOriginX)) {
+                    scaledOriginX = 0;
+                }
+                let scaledOriginY = parseFloat(leRectangle.getAttribute("data-y"));
+                if (isNaN(scaledOriginY)) {
+                    scaledOriginY = 0;
+                }
+                let scaledHeight = parseFloat(leRectangle.style.height);
+                let scaledWidth = parseFloat(leRectangle.style.width);
+
+                //get unscaled positions and dimensions. Just divide by the scaling factor
+                //scaledOriginX/scaleFactor
+                //scaledOriginY/scaleFactor
+                //scaledHeight/scaleFactor
+                //scaledWidth/scaleFactor
+                // rescalated dimensions
+                // reScaledHeight = leMinHeightFoto;
+                // reScalatedWidth = leMinWidthFoto;
+
+                //create canvas with rescalated dimensions, draw croped and rescalated image
+
+                //const originalImage = await createImageBitmap(await url2Blob(currentFoto));
+                const originalImage = await drawImage(currentFoto);
+                let canvasAdHoc = document.createElement('canvas');
+                canvasAdHoc.width = leMinWidthFoto;
+                canvasAdHoc.height = leMinHeightFoto;
+                console.log(originalImage, (scaledOriginX / scaleFactor), (scaledOriginY / scaleFactor), (scaledWidth / scaleFactor), (scaledHeight / scaleFactor), 0, 0, leMinWidthFoto, leMinHeightFoto);
+                canvasAdHoc.getContext('2d', { preserveDrawingBuffer: true }).drawImage(originalImage, (scaledOriginX / scaleFactor), (scaledOriginY / scaleFactor), (scaledWidth / scaleFactor), (scaledHeight / scaleFactor), 0, 0, leMinWidthFoto, leMinHeightFoto);
+                //return await drawImage(canvasAdHoc.toDataURL());
+                return canvasAdHoc;
+            }
+        </script>
+        <script>
+            async function url2Blob(imageUrl) {
+                return await (await fetch(imageUrl)).blob();
+            }
+        </script>
+
+        <script>
+            function dataURLtoFile(webpBlob, filename) {
+                return new File([webpBlob], filename + ".webp", { type: "image/webp" });
+            }
+        </script>
+        <script>
+
+            function setPhotos(event) {
+                //set button unclickable
+                event.target.disabled = true;
+                let leInput = document.getElementById('input-fotos');
+                // set non editable
+                leInput.disabled = true;
+                // clear
+                leInput.value = null;
+                //add files
+                leInput.setAttribute('multiple', true);
+                // Al parecer no se puede añadir archivos a un input de forma programática, habría que alterar el formData ya que se vaya a enviar la form:
+                //const formData = new FormData();
+                //formData.append('file', file);
+                //habría que haerlo para cada file en el array fileListAdHoc
+            }
+        </script>
+        <script>
+            function cancelBarImages(event) {
+                void resetPhotoArrays();
+                let leInput = document.getElementById('input-fotos');
+                leInput.disabled = false;
+                document.getElementById('ya-estuvo').disabled = false;
+                leInput.value = null;
+
+                while (lePhotoBar.firstChild) {
+                    lePhotoBar.removeChild(lePhotoBar.firstChild);
+                }
+            }
+        </script>
+
+
+
+    </section>
 
 
     <script>
@@ -842,10 +1373,10 @@
                     "switch-servicios": {
                         "izquierda": {},
                         "derecha": {
-                            "fieldset-servicios-descripción":true
+                            "fieldset-servicios-descripción": true
                         }
                     }
-                    
+
                 },
                 "derecha": {}
             }
