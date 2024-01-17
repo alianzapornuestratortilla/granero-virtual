@@ -2,8 +2,8 @@
 - [x] Animación de color morado grande a rojo pequeños también
 - [ ] Animación cambio de texto de abajo variable de uno a otro
 - [x] Animación de aparece desaparece registro
-- [ ] Dar estilo a los botones de el editor de las fotos
-- [ ] Agregar botón de agregar foto principal, cambia a 'agregar nueva fotografía', quitar selector de imágenes
+- [x] Dar estilo a los botones de el editor de las fotos
+- [x] Agregar botón de agregar foto principal, cambia a 'agregar nueva fotografía', quitar selector de imágenes
 - [ ] Agregar 'código postal' de la ubicación donde lo tiene almacenado para el algoritmo de resultados por zona
 - [ ] Link a los métodos orgánicos en info
 - [x] entre el no y si parace mas grande el izquierdo cuando seleccionado 
@@ -11,3 +11,11 @@
 - [ ] menú lateral/de hamburgesa
 - [ ] corregir el tamaño de font de html para cada tamaño en lugar de recalcularlo para cada uno
 - [ ] mover estilos generales de vuelta al css específico fuera del html
+- [ ] dark styles
+- [ ] verificar edición
+- [ ] tres-4 lineas de link stylesheet noto sans para todas html
+- [ ] resumen de edición de e-lote
+- [ ] higlight cuando en hover
+- [ ] fecth del servidor para saber que presentar en el menú si es comprador, vendedor, flete
+- [ ] filter para reflow sidebar
+- [ ] ajustar el valor del fltro de reflow para las combinaciones ligt/dark

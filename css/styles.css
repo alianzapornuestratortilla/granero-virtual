@@ -34,22 +34,31 @@
     --sticky-height-teléfono: 60px;
     --rojo-dont: #cc0000;
     --pedicelo-claro-50: color-mix(in srgb, var(--pedicelo) 50%, white);
+    --ancho-nav-var-desktop: 15rem;
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Mono&family&display=swap');
+
 
 
 html {
     font-size: var(--base-font-size);
     font-family: 'Noto Sans', sans-serif;
+
 }
 
+body aside#side-menu nav#contenido-sidebar {
+    height: 90vh;
+    overflow-y: scroll;
+}
 
-
-aside ul {
-    list-style: none;
+body aside#side-menu ul {
+    list-style: disc;
     overflow: hidden;
+}
+
+body aside#side-menu ul li {
+    line-height: 2;
 }
 
 h1 {
@@ -85,7 +94,8 @@ form div.a-fieldset {
     overflow: hidden;
     transition: all 0.5s ease-in-out;
     height: auto;
-    max-height: 1000px;/* necesario para que funcione la transición de altura aparecer-desaparecer*/
+    max-height: 1000px;
+    /* necesario para que funcione la transición de altura aparecer-desaparecer*/
 
 }
 
@@ -107,7 +117,7 @@ form div.switch-container strong {
 }
 
 form div.switch-container strong.seleccionado {
-    font-size: calc(var(--base-font-size)*1.6);
+    font-size: 1.6rem;
     transition: .6s;
     opacity: 1;
 }
@@ -119,6 +129,7 @@ form div.switch-container {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+
 }
 
 form .switch {
@@ -207,21 +218,21 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 @media screen and (min-width: 100px) {
     body {
         max-width: 100%;
-        margin: 0 2%;
+        padding: 0 2vw;
     }
 
-    aside {
-        position: -webkit-sticky;
+    header.top {
+        /* position: -webkit-sticky;
         position: sticky;
         z-index: 100;
-        top: 0;
-        background-color: var(--fondo-blanco);
+        top: 0; */
+        
+        display: flex;
+        flex-direction: row;
     }
 
-    aside section#da-menu {
-        margin-top: 10px;
-        width: 100%;
-        height: var(--sticky-height-teléfono);
+    header.top #da-menu {
+
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -229,14 +240,13 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
     }
 
-    aside svg {
-        padding: 10px;
-        margin-left: 10px;
-        width: 10%;
+    header.top svg {
+        padding: 10px 20px;
+        width: 30px;
         cursor: pointer;
     }
 
-    aside div#logotipo {
+    header.top div#logotipo {
         width: 65%;
         margin-right: 30px;
     }
@@ -252,8 +262,32 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         margin-top: 0.5rem;
     }
 
-    main header {
-        margin: 15px 0;
+    body aside#side-menu {
+        max-height: 0;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        opacity: 0%;
+        transition: all 0.6s 0s ease-in-out;
+    }
+
+    body aside#side-menu.show {
+        transition: all 0.7s 0s ease-in-out;
+        overflow: auto;
+        max-height: 300vh;
+        padding: 1rem;
+        opacity: 100%;
+        max-width: 70vw;
+    }
+
+    body aside#side-menu nav#contenido-sidebar {
+        height: auto;
+        overflow-y: auto;
+    }
+
+    body main header {
+
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -261,12 +295,12 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         position: -webkit-sticky;
         position: sticky;
         z-index: 100;
-        top: var(--sticky-height-teléfono);
+        top: 0;
         background-color: var(--fondo-blanco);
         padding-bottom: 10px;
     }
 
-    main header div#subtítulo-izquierdo {
+    body main header div#subtítulo-izquierdo {
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
@@ -275,25 +309,25 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
     }
 
-    main header div#subtítulo-derecho {
+    body main header div#subtítulo-derecho {
         padding-right: 10px;
     }
 
-    main header div#subtítulo-izquierdo h4#subtíulo-top {
+    body main header div#subtítulo-izquierdo h4#subtíulo-top {
         font-size: 0.7rem;
         padding: 0;
         margin: 0;
         display: block;
     }
 
-    main header div#subtítulo-izquierdo h3#subtíulo-bottom {
+    body main header div#subtítulo-izquierdo h3#subtíulo-bottom {
         font-size: 1rem;
         padding: 0;
         margin: 0;
         display: block;
     }
 
-    main header div#subtítulo-derecho button.cancelar {
+    body main header div#subtítulo-derecho button.cancelar {
         font-size: 1rem;
         padding: 5px;
         border-radius: 5px;
@@ -340,37 +374,85 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
     form fieldset.unidad-de-medida div.cifra {
         text-align: center;
+        width: 100%;
     }
 
     form fieldset.unidad-de-medida div.cifra span.currency-companion {
-        font-size: calc(1.5*var(--base-font-size));
+        font-size: 1.5rem;
     }
 
     form fieldset.unidad-de-medida div.cifra input.valor-medido {
-        max-width: 50%;
+        max-width: 8ch;
         text-align: center;
 
     }
 
     form fieldset.unidad-de-medida select.opciones-unidad-de-medida {
-        font-size: calc(1.5*var(--base-font-size));
+        font-size: 1.5rem;
         text-align: center;
         max-width: 90%;
         border-radius: 5px;
 
     }
 
-    form fieldset textarea {
+    form fieldset textarea[role="textbox"] {
         border-radius: 7px;
-        max-width: 90%;
-        width: 90%;
-        font-size: calc(1*var(--base-font-size));
+        width: calc(100% - 30px);
+        font-size: 0.9rem;
+        max-width: 100%;
+        padding: 5px;
+        cursor: pointer;
+        /* height: 10rem; */
+        min-height: 5rem;
+        margin-top: 20px;
+        resize: vertical;
+        line-height: 1.2;
+    }
+
+    form div.check-box input {
+        position: static;
+    }
+
+    form div.check-box input:checked:after {
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bold;
+        content: '✓';
+        margin-left: 0;
+        margin-bottom: 0;
+        position: relative;
+        right: 4px;
+        top: -14px;
+    }
+
+    form div.switch-container strong {
+        font-size: 0.8rem;
+        max-width: 30%;
+    }
+
+    form div.switch-container strong.seleccionado {
+        font-size: 1.4rem;
+        max-width: 40%;
+    }
+
+    form .switch .slider {
+        width: 70px;
     }
 
     form div.switch-statement,
     form fieldset {
         margin-bottom: 2.5rem;
 
+    }
+
+    form div.switch-container strong.izquierda:hover,
+    form div.switch-container strong.derecha:hover,
+    form .switch .slider:hover {
+        filter: brightness(2);
+    }
+
+    form .switch .slider:hover {
+        filter: brightness(1.2);
     }
 
     form div.switch-statement div.switch-container strong.muy-grande {
@@ -382,6 +464,10 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         max-width: 35%;
         font-size: large;
         transition: 0.4s;
+    }
+
+    form div.switch-statement div.switch-container strong.seleccionado.texto-grande-móvil {
+        font-size: 1.1rem;
     }
 
     form div.check-box {
@@ -485,11 +571,11 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         margin-bottom: 8px;
     }
 
-    form fieldset#fotografías-del-e-lote button#ya-estuvo,
-    form fieldset#fotografías-del-e-lote button#btn-cancelar {
+    button.botón {
         margin: 8px auto;
-        padding: 6px;
-        font-size: var(--base-font-size);
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: bold;
         border: 2px solid;
         border-radius: 5px;
         cursor: pointer;
@@ -519,8 +605,14 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
         /* tablets */
         html {
-            font-size: calc(var(--base-font-size)*1.0);
+            font-size: larger;
         }
+
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
 
         form fieldset {
             margin: 1rem 0;
@@ -570,13 +662,70 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
     @media screen and (min-width: 993px) {
 
+        /* desktop escritorio */
         html {
-            font-size: smaller;
+            font-size: calc(var(--base-font-size)*1.2);
         }
 
-        /* escritorio */
-        form fieldset {
-            margin: 0.8rem 0;
+        header.top div#da-menu {
+            display: none;
+        }
+
+        body {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        body header.top {
+            width: 100%;
+        }
+
+        body div.contenido-pantalla {
+            display: table;
+            table-layout: fixed;
+        }
+
+        body aside#side-menu {
+            max-height: fit-content;
+            display: table-cell;
+            width: var(--ancho-nav-var-desktop);
+            padding: 1rem;  
+            opacity: 100%;
+        }
+
+        body aside#side-menu nav#contenido-sidebar {
+            position: sticky;
+            top: 3rem;
+            max-height: 80vh;
+        }
+
+        body div.contenido-pantalla {
+            width: 100%;
+        }
+
+        body main {
+            display: table-cell;
+            width: max-content;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        
+        form fieldset,
+        form div.switch-statement {
+            margin: 3rem 0;
+        }
+
+        form fieldset legend {
+            text-align: center;
+        }
+
+        form small {
+            font-size: 1rem;
+        }
+
+        form div.switch-container strong {
+            font-size: 1.1rem;
+            max-width: 30%;
         }
 
         form div.check-box input:checked:after {
@@ -600,7 +749,11 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         color: var(--azul-claro);
     }
 
-    aside section#da-menu,
+    header.top {
+        background-color: var(--fondo-blanco);
+    }
+
+    header.top #da-menu,
     main header {
         background-color: var(--fondo-blanco);
         opacity: 1;
@@ -707,6 +860,8 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         color: var(--switch-derecho);
     }
 
+
+
     form fieldset div.lista-de-otros fieldset button.btn-cerrar-x {
         background-color: var(--rojo-dont);
         color: var(--fondo-blanco);
@@ -725,17 +880,17 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
     }
 
-    form fieldset#fotografías-del-e-lote button#ya-estuvo {
+    button.botón-morado {
         background-color: var(--morado-oscuro);
         color: var(--fondo-blanco);
     }
 
-    form fieldset#fotografías-del-e-lote button#btn-cancelar {
+    button.botón-rojo {
         background-color: var(--rojo-claro);
         color: var(--fondo-blanco);
     }
 
-    form fieldset textarea {
+    form fieldset textarea[role="textbox"] {
         background-color: var(--pedicelo-claro-50);
     }
 
@@ -860,7 +1015,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         color: var(--switch-derecho-dark);
     }
 
-    form fieldset textarea {
+    form fieldset textarea[role="textbox"] {
         background-color: var(--pedicelo);
     }
 

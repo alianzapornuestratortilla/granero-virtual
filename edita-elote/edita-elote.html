@@ -5,10 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nuevo e-lote</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/image-formatter.css">
     <style>
+        :root {
+            --current-main-max-width: 700px;
+        }
+
+        /*especificar para cada tipo de pantalla dependiendo del contenido*/
 
         div.switch-statement#switch-semilla-propia span.variable.izquierdo#switch-semilla-propia-1:after {
             content: 'conservada de ciclos pasados';
@@ -54,11 +63,6 @@
             content: 'en un equipo especializado, como un silo';
         }
 
-        body {
-            max-width: 100%;
-
-        }
-
         @media screen and (min-width: 100px) {
 
             /* teléfonos */
@@ -70,55 +74,19 @@
                 gap: 0.5rem;
             }
 
-            form div.check-box input {
-                position: static;
-            }
 
-            form div.check-box input:checked:after {
-                text-align: center;
-                font-size: xx-large;
-                font-weight: bold;
-                content: '✓';
-                margin-left: 0;
-                margin-bottom: 0;
-                position: relative;
-                right: 4px;
-                top: -14px;
-            }
-
-            form div.switch-container strong {
-                font-size: 0.8rem;
-                max-width: 30%;
-            }
-
-            form div.switch-container strong.seleccionado {
-                font-size: 1.4rem;
-                max-width: 40%;
-            }
-
-            form .switch .slider {
-                width: 70px;
-            }
 
             @media screen and (min-width: 577px) {
 
                 /* tablets */
-                body {
-                    max-width: 600px;
-                    margin: 0 auto;
-                }
-
-                html {
-                    font-size: larger;
-                }
-
-
-
-
             }
-
             @media screen and (min-width: 993px) {
-                /* escritorio */
+                /* escritorio desktop*/
+
+                body main div#contenido-main {                    
+                    max-width: var(--current-main-max-width);
+                    margin: 0 auto;                    
+                }
             }
 
             @media (prefers-color-scheme: light) {
@@ -133,654 +101,759 @@
 </head>
 
 <body>
-    <aside>
-        <section id="da-menu">
+    <header class="top">
+        <div id="da-menu" onclick="despliegaMenú(event)">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
                 stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
+        </div>
 
-            <div id="logotipo">
-                <a href=""><img src="../media/images/logo.png" alt=""></a>
-            </div>
-        </section>
+        <div id="logotipo">
+            <a href=""><img src="../media/images/logo.png" alt=""></a>
+        </div>
 
-        <dialog id="da-menu-dialog">
-            <nav>
+    </header>
+    <div class="contenido-pantalla">
+        <aside id="side-menu">
+            <nav id="contenido-sidebar">
+                <h3>general</h3>
                 <ul>
+                    <li><a href=""><strong>mensajes</strong></a></li>
                     <li><a href=""><strong>mi perfil</strong></a></li>
-                    <li><a href=""><strong>mi granero</strong></a></li>
                 </ul>
+                <h3>venta de grano</h3>
+                <ul>
+                    <li><a href=""><strong>mi granero</strong></a></li>
+                    <li><a href=""><strong>crear nuevo e-lote</strong></a></li>
+                    <li><a href=""><strong>editar e-lote</strong></a></li>
+                    <li><a href=""><strong>actualización de inventarios</strong></a></li>
+                </ul>
+                <h3>compra de grano</h3>
+                <ul>
+                    <li><a href=""><strong>consultar oferta de maíz</strong></a></li>
+                </ul>
+                <h3>flete</h3>
+                <ul>
+                    <li><a href=""><strong>solicitar flete</strong></a></li>
+                    <li><a href=""><strong>fletes vacantes</strong></a></li>
+                    <li><a href=""><strong>ofertar servicio de flete</strong></a></li>
+                    <li><a href=""><strong>estatus de flete</strong></a></li>
+                </ul>
+                <h3>almacenamiento</h3>
+                <ul>
+                    <li><a href=""><strong>estatus</strong></a></li>
+                    <li><a href=""><strong>solicitud de retiro</strong></a></li>
+                    <li><a href=""><strong>solicitud de ingreso</strong></a></li>
+                </ul>
+                <h3>análisis</h3>
+                <ul>
+                    <li><a href=""><strong>solicitud de análisis</strong></a></li>
+                    <li><a href=""><strong>compartir análisis</strong></a></li>
+                    <li><a href=""><strong>añadir a e-lote</strong></a></li>
+                    <li><a href=""><strong>reporte de análisis</strong></a></li>
+                </ul>
+
             </nav>
-        </dialog>
+        </aside>
+        <main>
+            <div id="contenido-main">
+                <header>
+                    <div id="subtítulo-izquierdo">
+                        <h4 id="subtíulo-top"><strong><span id="el-subtítulo"></span> e-lote</strong></h4>
+                        <h3 id="subtíulo-bottom"><strong>nombre del e-lote</strong></h3>
+                    </div>
+                    <div id="subtítulo-derecho">
+                        <a href=""><button type="button" class="cancelar"><strong>Cancelar</strong></button></a>
+                    </div>
+                </header>
+                <form action="">
 
-    </aside>
-    <main>
-        <header>
-            <div id="subtítulo-izquierdo">
-                <h4 id="subtíulo-top"><strong><span id="el-subtítulo"></span> e-lote</strong></h4>
-                <h3 id="subtíulo-bottom"><strong>nombre del e-lote</strong></h3>
-            </div>
-            <div id="subtítulo-derecho">
-                <a href=""><button type="button" class="cancelar"><strong>Cancelar</strong></button></a>
-            </div>
-        </header>
-        <form action="">
+                    <fieldset id="fotografías-del-e-lote">
+                        <legend><strong>Fotografías de mi e-lote de maíz</strong></legend>
+                        <div id="main-photo">
 
-            <fieldset id="fotografías-del-e-lote">
-                <legend><strong>Fotografías de mi e-lote de maíz</strong></legend>
-                <div id="main-photo">
+                        </div>
+                        <div id="photo-bar">
 
-                </div>
-                <div id="photo-bar">
+                        </div>
+                        <label for="imgs"><strong>Seleccione la imágen principal de su e-lote.</strong></label>
+                        <input type="file" name="imgs" accept="image/*" onchange="treatImages(event)" id="input-fotos">
+                        <br>
+                        <button type="button" id="ya-estuvo" onclick="addPhoto(event)"
+                            class="botón botón-morado">Agregar
+                            nueva
+                            fotografía</button>
+                        <button type="button" id="btn-cancelar" onclick="cancelBarImages(event)"
+                            class="botón botón-rojo">Cancelar
+                            selección de
+                            imágenes</button>
+                    </fieldset>
 
-                </div>
-                <label for="imgs"><strong>Seleccione la imágen principal de su e-lote.</strong></label>
-                <input type="file" name="imgs" accept="image/*" onchange="treatImages(event)" id="input-fotos">
-                <button type="button" id="ya-estuvo" onclick="setPhotos(event)">Ya son todas las fotografías</button>
-                <button type="button" id="btn-cancelar" onclick="cancelBarImages(event)">Cancelar selección de
-                    imágenes</button>
-            </fieldset>
+                    <fieldset>
+                        <legend><strong>el nombre por el que le conocen a este maíz es</strong></legend>
+                        <input type="text" name="nombre-completo" minlength="5" maxlength="30" required
+                            oninput="void actualizaNombreDeElote(event);">
+                    </fieldset>
 
-            <fieldset>
-                <legend><strong>el nombre por el que le conocen a este maíz es</strong></legend>
-                <input type="text" name="nombre-completo" minlength="5" maxlength="30" required
-                    oninput="void actualizaNombreDeElote(event);">
-            </fieldset>
-
-            <fieldset id="usos-comunes">
-                <legend><strong>son usos comunes para este maíz</strong></legend>
-                <div class="check-box">
-                    <input type="checkbox" name="tortillas" id="tortillas-checkbox" onchange="void aChinga(event);">
-                    <label class="overboard" for="tortillas" onclick="checkDaBox(event)"><strong>tortillas y
-                            tacos</strong></label>
-                </div>
-                <div class="check-box">
-                    <input type="checkbox" name="garnachas" id="garnachas-checkbox">
-                    <label for="garnachas" onclick="checkDaBox(event)" class="muy-grande overboard"><strong>
-                            quesadillas, gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas, tlaxcales,
-                            molotes
-                            polcanes y panuchos</strong></label>
-                </div>
-                <div class="check-box">
-                    <input type="checkbox" name="tamales" id="tamales-checkbox">
-                    <label for="tamales" onclick="checkDaBox(event)"><strong>tamales y
-                            torundas</strong></label>
-                </div>
-                <div class="check-box">
-                    <input type="checkbox" name="tostadas" id="tostadas-checkbox">
-                    <label class="overboard" for="tostadas" onclick="checkDaBox(event)"><strong>tostadas, totopos y
-                            horneadas</strong></label>
-                </div>
-                <div class="check-box">
-                    <input type="checkbox" name="tlayudas" id="tlayudas-checkbox">
-                    <label for="tlayudas" onclick="checkDaBox(event)"><strong>tlayudas</strong></label>
-                </div>
-                <div class="check-box">
-                    <input type="checkbox" name="pozole" id="pozole-checkbox">
-                    <label for="pozole" onclick="checkDaBox(event)"><strong>pozole</strong></label>
-                </div>
-                <div class="check-box">
-                    <input type="checkbox" name="palomitas" id="palomitas-checkbox">
-                    <label for="palomitas" onclick="checkDaBox(event)"><strong>palomitas</strong></label>
-                </div>
-                <div class="check-box">
-                    <input type="checkbox" name="pinole" id="pinole-checkbox">
-                    <label for="pinole" onclick="checkDaBox(event)"><strong>pinole</strong></label>
-                </div>
-                <div class="check-box">
-                    <input type="checkbox" name="atole" id="atole-checkbox">
-                    <label for="atole" onclick="checkDaBox(event)"><strong>atole y atole agrio</strong></label>
-                </div>
-
-                <div class="check-box">
-                    <input type="checkbox" name="pozol" id="pozol-checkbox">
-                    <label for="pozol" onclick="checkDaBox(event)"><strong>pozol</strong></label>
-                </div>
-
-                <div class="check-box">
-                    <input type="checkbox" name="tejate" id="tejate-checkbox">
-                    <label for="tejate" onclick="checkDaBox(event)"><strong>tejate, tejuino o tascalate</strong></label>
-                </div>
-
-                <fieldset class="lista-de-otros-container">
-                    <div>
+                    <fieldset id="usos-comunes">
+                        <legend><strong>son usos comunes para este maíz</strong></legend>
                         <div class="check-box">
-                            <input type="checkbox" class="input-otros" name="otros" id="otros-checkbox"
-                                otros="div.lista-de-otros button.btn-añade" onchange="showHideOtros(event)">
-                            <label for="otros" onclick="checkDaBox(event)"><strong>Otros usos</strong></label>
+                            <input type="checkbox" name="tortillas" id="tortillas-checkbox"
+                                onchange="void aChinga(event);">
+                            <label class="overboard" for="tortillas" onclick="checkDaBox(event)"><strong>tortillas y
+                                    tacos</strong></label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" name="garnachas" id="garnachas-checkbox">
+                            <label for="garnachas" onclick="checkDaBox(event)" class="muy-grande overboard"><strong>
+                                    quesadillas, gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas,
+                                    tlaxcales,
+                                    molotes
+                                    polcanes y panuchos</strong></label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" name="tamales" id="tamales-checkbox">
+                            <label for="tamales" onclick="checkDaBox(event)"><strong>tamales y
+                                    torundas</strong></label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" name="tostadas" id="tostadas-checkbox">
+                            <label class="overboard" for="tostadas" onclick="checkDaBox(event)"><strong>tostadas,
+                                    totopos y
+                                    horneadas</strong></label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" name="tlayudas" id="tlayudas-checkbox">
+                            <label for="tlayudas" onclick="checkDaBox(event)"><strong>tlayudas</strong></label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" name="pozole" id="pozole-checkbox">
+                            <label for="pozole" onclick="checkDaBox(event)"><strong>pozole</strong></label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" name="palomitas" id="palomitas-checkbox">
+                            <label for="palomitas" onclick="checkDaBox(event)"><strong>palomitas</strong></label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" name="pinole" id="pinole-checkbox">
+                            <label for="pinole" onclick="checkDaBox(event)"><strong>pinole</strong></label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" name="atole" id="atole-checkbox">
+                            <label for="atole" onclick="checkDaBox(event)"><strong>atole y atole agrio</strong></label>
+                        </div>
+
+                        <div class="check-box">
+                            <input type="checkbox" name="pozol" id="pozol-checkbox">
+                            <label for="pozol" onclick="checkDaBox(event)"><strong>pozol</strong></label>
+                        </div>
+
+                        <div class="check-box">
+                            <input type="checkbox" name="tejate" id="tejate-checkbox">
+                            <label for="tejate" onclick="checkDaBox(event)"><strong>tejate, tejuino o
+                                    tascalate</strong></label>
+                        </div>
+
+                        <fieldset class="lista-de-otros-container">
+                            <div>
+                                <div class="check-box">
+                                    <input type="checkbox" class="input-otros" name="otros" id="otros-checkbox"
+                                        otros="div.lista-de-otros button.btn-añade" onchange="showHideOtros(event)">
+                                    <label for="otros" onclick="checkDaBox(event)"><strong>Otros usos</strong></label>
+                                </div>
+                            </div>
+                            <div class="lista-de-otros" id="otros-usos" style="display: none;"></div>
+                            <button type="button" class="btn-añade"
+                                onclick="void añadeOtro('otros-usos','template-otro-uso');"
+                                style="display: none;">&plus;</button>
+                        </fieldset>
+
+
+                    </fieldset>
+
+                    <div class="switch-statement" id="switch-semilla-propia">
+                        <div class="texto-medio statement">
+                            <strong>La semilla que sembré para obtener este maíz</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda texto-grande-móvil seleccionado">es propia,</strong>
+                            <label class="switch" for="semilla-propia">
+                                <input type="checkbox" name="semilla-propia" id="si-es-semilla-propia"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha texto-grande-móvil">la conseguí</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong><span class="variable izquierdo" id="switch-semilla-propia-1"></span></strong>
+                            </strong>
                         </div>
                     </div>
-                    <div class="lista-de-otros" id="otros-usos" style="display: none;"></div>
-                    <button type="button" class="btn-añade" onclick="void añadeOtro('otros-usos','template-otro-uso');"
-                        style="display: none;">&plus;</button>
-                </fieldset>
 
-
-            </fieldset>
-
-            <div class="switch-statement" id="switch-semilla-propia">
-                <div class="texto-medio statement">
-                    <strong>La semilla que sembré para obtener este maíz</strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">es propia,</strong>
-                    <label class="switch" for="semilla-propia">
-                        <input type="checkbox" name="semilla-propia" id="si-es-semilla-propia"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">la conseguí</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong><span
-                        class="variable izquierdo" id="switch-semilla-propia-1"></span></strong>
-                    </strong>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-comprada-truequeada">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">la compré</strong>
-                    <label class="switch" for="comprada-truequeada">
-                        <input type="checkbox" name="comprada-truequeada" id="es-omprada-truequeada"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">la intercambié</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-origen-distinto">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">SI</strong>
-                    <label class="switch" for="recuerda-origen-distinto">
-                        <input type="checkbox" name="recuerda-origen-distinto" id="usuario-recuerda-origen-distinto"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">NO</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>recuerdo de quién la obtuve</strong>
-                </div>
-            </div>
-
-            <div class="a-fieldset" id="fieldset-nombre-origen-distinto">
-                <fieldset >
-                    <legend><strong>el nombre de la persona u organización de quién la obtuve es</strong></legend>
-                    <input type="text" name="nombre-origen-distinto" minlength="15" required>
-                </fieldset>
-            </div>
-
-            <div class="a-fieldset" id="fieldset-lugar-de-origen">
-                <fieldset >
-                    <legend><strong>el lugar de orígen de la semilla es</strong></legend>
-                    <input type="text" name="lugar-de-origen" minlength="15" required>
-                    <small>ej. Comonfort, Guanajuato</small>
-                </fieldset>
-            </div>            
-
-            <div class="switch-statement" id="switch-diversidad-de-cultivo">
-                <div class="texto-medio statement">
-                    <strong>El maíz que siembro está</strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">acompañado</strong>
-                    <label class="switch" for="diversidad-de-cultivo">
-                        <input type="checkbox" name="diversidad-de-cultivo" id="diversidad-de-cultivo"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">solito</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong><span class="variable izquierdo" id="switch-diversidad-de-cultivo-2"></span> es decir, <span
-                            class="variable izquierdo" id="switch-diversidad-de-cultivo-1"></span></strong>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-uso-de-agroquímicos">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="uso-de-agroquímicos">
-                        <input type="checkbox" name="uso-de-agroquímicos" id="uso-de-agroquímicos"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>utilicé fertilizantes químicos</strong>
-                    <br>
-                    <small>por ejemplo, urea, amoniaco, MAP, superfosfato, de liberación controlada, los que reparte el
-                        gobierno, etc.</small>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-uso-de-abonos">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">SI</strong>
-                    <label class="switch" for="uso-de-abonos">
-                        <input type="checkbox" name="uso-de-abonos" id="uso-de-abonos"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">NO</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>utilicé abonos naturales</strong>
-                    <br>
-                    <small>por ejemplo estiércol, bokashi, composta o lombricomposta, harína de roca, cal agrícola,
-                        abonos verdes, purin, biol, etc.</small>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-uso-de-venenos">
-                <div class="texto-medio statement">
-                    <strong>en la parcela donde sembré el maíz</strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="uso-de-venenos">
-                        <input type="checkbox" name="uso-de-venenos" id="uso-de-venenos"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>utilicé químicos para el control de plagas, enfermedades y malezas</strong>
-                    <br>
-                    <small>conocidos como fungicidas, herbicidas, insecticidas; por ejemplo faena&reg; (glifosato),
-                        expander&reg;, regent&reg;, fastac&reg;, etc.</small>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-uso-de-control-biológico">
-                <div class="texto-medio statement">
-                    <strong>y</strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">SI</strong>
-                    <label class="switch" for="uso-de-control-biológico">
-                        <input type="checkbox" name="uso-de-control-biológico" id="uso-de-control-biológico"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">NO</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>utilicé alternativas mecánicas, de control biológico o sustancias permitidas en la
-                        agricultura orgánica para el control de plagas, enfermedades y malezas</strong>
-                    <br>
-                    <small>por ejemplo quitar los quelites a mano o con el azadón; bioles; caldos minerales como
-                        sulfocálcio, bordelés, ceniza; extractos y tés de composta; microorganismos benéficos como
-                        trichoderma, metarhizum, beauveria, etc. </small>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-uso-de-rastrojo">
-                <div class="texto-medio statement">
-                    <strong>en esa misma parcela</strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">SI</strong>
-                    <label class="switch" for="uso-de-rastrojo">
-                        <input type="checkbox" name="uso-de-rastrojo" id="uso-de-rastrojo"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">NO</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>conservé el rastrojo para proteger el suelo</strong>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-cuenta-con-certificación">
-                <div class="texto-medio statement">
-                    <strong>este cultivo de maíz que estoy ofreciendo</strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="cuenta-con-certificación">
-                        <input type="checkbox" name="cuenta-con-certificación" id="cuenta-con-certificación"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>cuenta con algún tipo de certificación</strong>
-                    <br>
-                    <small>por ejemplo: orgánico, orgánico-participativo, libre de OGM</small>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-cuenta-con-certificación-orgánica">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="cuenta-con-certificación-orgánica">
-                        <input type="checkbox" name="cuenta-con-certificación-orgánica"
-                            id="cuenta-con-certificación-orgánica" onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>cuenta con certificación orgánica mediante certificadora o mediante certficación
-                        participativa</strong>
-                    <br>
-                </div>
-            </div>
-
-            <div class="a-fieldset" id="fieldset-certificado-orgánico"">
-                <fieldset >
-                    <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                    <input type="file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000" required>
-                </fieldset>
-            </div>            
-
-            <div class="switch-statement" id="switch-cuenta-con-certificación-libre-de-OGM">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="cuenta-con-certificación-libre-de-OGM">
-                        <input type="checkbox" name="cuenta-con-certificación-libre-de-OGM"
-                            id="cuenta-con-certificación-libre-de-OGM"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>cuenta con certificación de estar libre de organismos genéticamente modificados</strong>
-                </div>
-            </div>
-
-            <div class="a-fieldset" id="fieldset-certificado-libre-de-OGM">
-                <fieldset >
-                    <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                    <input type="file" accept="image/*,.pdf" name="certificado-libre-de-OGM" max-size="10000000" required>
-                </fieldset>
-            </div>
-
-            <div class="switch-statement" id="switch-ofrece-en-pié">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="ofrece-en-pié">
-                        <input type="checkbox" name="ofrece-en-pié" id="ofrece-en-pié"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>considero ofrecerlo en píe. <span class="variable izquierdo"
-                            id="switch-ofrece-en-pié-1"></span></strong>
-                </div>
-            </div>
-
-            <div class="a-fieldset" id="fieldset-precio-por-unidad-de-medida-en-pié">
-                <fieldset  class="precio unidad-de-medida">
-                    <legend><strong>el precio al que quiero vender este maíz en pié es de</strong></legend>
-                    <div class="numero-opciones">
-                        <div class="cifra">
-                            <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
-                                class="valor-medido" name="precio-por-unidad-de-medida-en-pié"
-                                onchange="void valorVálido(event);" required>
-                            <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
+                    <div class="switch-statement" id="switch-comprada-truequeada">
+                        <div class="texto-medio statement">
+                            <strong></strong>
                         </div>
-                        <span>&nbsp;por&nbsp;</span><select name="opciones-unidad-de-medida-en-pié"
-                            class="opciones-unidad-de-medida" onchange="void actualizaUnidades(event);"></select>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">la compré</strong>
+                            <label class="switch" for="comprada-truequeada">
+                                <input type="checkbox" name="comprada-truequeada" id="es-omprada-truequeada"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">la intercambié</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
                     </div>
-                </fieldset>
+
+                    <div class="switch-statement" id="switch-origen-distinto">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">SI</strong>
+                            <label class="switch" for="recuerda-origen-distinto">
+                                <input type="checkbox" name="recuerda-origen-distinto"
+                                    id="usuario-recuerda-origen-distinto"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">NO</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>recuerdo de quién la obtuve</strong>
+                        </div>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-nombre-origen-distinto">
+                        <fieldset>
+                            <legend><strong>el nombre de la persona u organización de quién la obtuve es</strong>
+                            </legend>
+                            <input type="text" name="nombre-origen-distinto" minlength="15">
+                        </fieldset>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-lugar-de-origen">
+                        <fieldset>
+                            <legend><strong>el lugar de orígen de la semilla es</strong></legend>
+                            <input type="text" name="lugar-de-origen" minlength="15" required>
+                            <small>ej. Comonfort, Guanajuato</small>
+                        </fieldset>
+                    </div>
+
+                    <div class="switch-statement" id="switch-diversidad-de-cultivo">
+                        <div class="texto-medio statement">
+                            <strong>El maíz que siembro está</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda texto-grande-móvil seleccionado">acompañado</strong>
+                            <label class="switch" for="diversidad-de-cultivo">
+                                <input type="checkbox" name="diversidad-de-cultivo" id="diversidad-de-cultivo"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">solito</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong><span class="variable izquierdo" id="switch-diversidad-de-cultivo-2"></span> es
+                                decir,
+                                <span class="variable izquierdo" id="switch-diversidad-de-cultivo-1"></span></strong>
+                        </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-uso-de-agroquímicos">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="uso-de-agroquímicos">
+                                <input type="checkbox" name="uso-de-agroquímicos" id="uso-de-agroquímicos"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>utilicé fertilizantes químicos</strong>
+                            <br>
+                            <small>por ejemplo, urea, amoniaco, MAP, superfosfato, de liberación controlada, los que
+                                reparte
+                                el
+                                gobierno, etc.</small>
+                        </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-uso-de-abonos">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">SI</strong>
+                            <label class="switch" for="uso-de-abonos">
+                                <input type="checkbox" name="uso-de-abonos" id="uso-de-abonos"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">NO</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>utilicé abonos naturales</strong>
+                            <br>
+                            <small>por ejemplo estiércol, bokashi, composta o lombricomposta, harína de roca, cal
+                                agrícola,
+                                abonos verdes, purin, biol, etc.</small>
+                        </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-uso-de-venenos">
+                        <div class="texto-medio statement">
+                            <strong>en la parcela donde sembré el maíz</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="uso-de-venenos">
+                                <input type="checkbox" name="uso-de-venenos" id="uso-de-venenos"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>utilicé químicos para el control de plagas, enfermedades y malezas</strong>
+                            <br>
+                            <small>conocidos como fungicidas, herbicidas, insecticidas; por ejemplo faena&reg;
+                                (glifosato),
+                                expander&reg;, regent&reg;, fastac&reg;, etc.</small>
+                        </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-uso-de-control-biológico">
+                        <div class="texto-medio statement">
+                            <strong>y</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">SI</strong>
+                            <label class="switch" for="uso-de-control-biológico">
+                                <input type="checkbox" name="uso-de-control-biológico" id="uso-de-control-biológico"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">NO</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>utilicé alternativas mecánicas, de control biológico o sustancias permitidas en la
+                                agricultura orgánica para el control de plagas, enfermedades y malezas</strong>
+                            <br>
+                            <small>por ejemplo quitar los quelites a mano o con el azadón; bioles; caldos minerales como
+                                sulfocálcio, bordelés, ceniza; extractos y tés de composta; microorganismos benéficos
+                                como
+                                trichoderma, metarhizum, beauveria, etc. </small>
+                        </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-uso-de-rastrojo">
+                        <div class="texto-medio statement">
+                            <strong>en esa misma parcela</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">SI</strong>
+                            <label class="switch" for="uso-de-rastrojo">
+                                <input type="checkbox" name="uso-de-rastrojo" id="uso-de-rastrojo"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">NO</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>conservé el rastrojo para proteger el suelo</strong>
+                        </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-cuenta-con-certificación">
+                        <div class="texto-medio statement">
+                            <strong>este cultivo de maíz que estoy ofreciendo</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="cuenta-con-certificación">
+                                <input type="checkbox" name="cuenta-con-certificación" id="cuenta-con-certificación"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>cuenta con algún tipo de certificación</strong>
+                            <br>
+                            <small>por ejemplo: orgánico, orgánico-participativo, libre de OGM</small>
+                        </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-cuenta-con-certificación-orgánica">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="cuenta-con-certificación-orgánica">
+                                <input type="checkbox" name="cuenta-con-certificación-orgánica"
+                                    id="cuenta-con-certificación-orgánica"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>cuenta con certificación orgánica mediante certificadora o mediante certficación
+                                participativa</strong>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-certificado-orgánico"">
+                        <fieldset >
+                            <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                            <input type=" file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000">
+                        </fieldset>
+                    </div>
+
+                    <div class="switch-statement" id="switch-cuenta-con-certificación-libre-de-OGM">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="cuenta-con-certificación-libre-de-OGM">
+                                <input type="checkbox" name="cuenta-con-certificación-libre-de-OGM"
+                                    id="cuenta-con-certificación-libre-de-OGM"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>cuenta con certificación de estar libre de organismos genéticamente
+                                modificados</strong>
+                        </div>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-certificado-libre-de-OGM">
+                        <fieldset>
+                            <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                            <input type="file" accept="image/*,.pdf" name="certificado-libre-de-OGM"
+                                max-size="10000000">
+                        </fieldset>
+                    </div>
+
+                    <div class="switch-statement" id="switch-ofrece-en-pié">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="ofrece-en-pié">
+                                <input type="checkbox" name="ofrece-en-pié" id="ofrece-en-pié"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>considero ofrecerlo en píe. <span class="variable izquierdo"
+                                    id="switch-ofrece-en-pié-1"></span></strong>
+                        </div>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-precio-por-unidad-de-medida-en-pié">
+                        <fieldset class="precio unidad-de-medida">
+                            <legend><strong>el precio al que quiero vender este maíz en pié es de</strong></legend>
+                            <div class="numero-opciones">
+                                <div class="cifra">
+                                    <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
+                                        class="valor-medido" name="precio-por-unidad-de-medida-en-pié"
+                                        onchange="void valorVálido(event);">
+                                    <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
+                                </div>
+                                <span>&nbsp;por&nbsp;</span><select name="opciones-unidad-de-medida-en-pié"
+                                    class="opciones-unidad-de-medida"
+                                    onchange="void actualizaUnidades(event);"></select>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-hectáreas-disponibles-en-pié">
+                        <fieldset>
+                            <legend><strong>el número de hectáreas de este maíz que tengo disponible para vender en pié
+                                    es
+                                    de</strong></legend>
+                            <input type="number" placeholder="2" min="1" step="0.1" max="1000"
+                                name="hectáreas-disponibles-en-pié"> Has
+                        </fieldset>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-venta-mínima-en-pié">
+                        <fieldset>
+                            <legend><strong>el número mínimo de hectáreas de este maíz que vendería en pié a un
+                                    comprador
+                                    individual
+                                    es de</strong></legend>
+                            <input type="number" placeholder="2" min="1" step="0.1" max="1000"
+                                name="venta-mínima-en-pié">
+                            Has
+                        </fieldset>
+                    </div>
+
+                    <div class="switch-statement" id="switch-ofrece-grano-per-se">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">SI</strong>
+                            <label class="switch" for="ofrece-grano-per-se">
+                                <input type="checkbox" name="ofrece-grano-per-se" id="ofrece-grano-per-se"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">NO</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>considero ofrecerlo ya cosechado, secado y desgranado.</strong>
+                        </div>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-precio-por-unidad-de-medida-per-sé">
+                        <fieldset class="precio unidad-de-medida">
+                            <legend><strong>el precio al que quiero vender este grano de maíz es de</strong></legend>
+                            <div class="numero-opciones">
+                                <div class="cifra">
+                                    <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
+                                        class="valor-medido" min="0" name="precio-por-unidad-de-medidaper-sé"
+                                        onchange="void valorVálido(event);">
+                                    <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
+                                </div>
+                                <span>&nbsp;por&nbsp;</span><select name="opciones-unidad-de-medida-per-sé-precio"
+                                    class="opciones-unidad-de-medida"
+                                    onchange="void actualizaUnidades(event);"></select>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-cantidad-de-grano-disponible-per-sé">
+                        <fieldset class="unidad-de-medida">
+                            <legend><strong>la cantidad de grano que tengo disponible para venta en este lote de grano
+                                    de
+                                    maíz
+                                    es de</strong></legend>
+                            <div class="numero-opciones">
+                                <div class="cifra">
+                                    <input type="number" min="0" step="0.01" class="valor-medido" placeholder="86"
+                                        name="cantidad-de-grano-disponible-per-sé">
+                                </div>
+                                <select name="opciones-unidad-de-medida-per-sé-cantidad"
+                                    class="opciones-unidad-de-medida"></select>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="switch-statement" id="switch-secado">
+                        <div class="texto-medio statement">
+                            <strong>le he secado de forma</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">artesanal</strong>
+                            <label class="switch" for="secado">
+                                <input type="checkbox" name="secado" id="secado"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">tecnificada</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong><span class="variable izquierdo" id="switch-secado-1"></span></strong>
+                        </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-desgranado">
+                        <div class="texto-medio statement">
+                            <strong>le he desgranado de forma</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">artesanal</strong>
+                            <label class="switch" for="desgranado">
+                                <input type="checkbox" name="desgranado" id="desgranado"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">tecnificada</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong><span class="variable izquierdo" id="switch-secado-1"></span></strong>
+                        </div>
+                    </div>
+
+
+                    <div class="switch-statement" id="switch-cuenta-con-análisis-de-aflatoxinas">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="cuenta-con-análisis-de-aflatoxinas">
+                                <input type="checkbox" name="cuenta-con-análisis-de-aflatoxinas"
+                                    id="cuenta-con-análisis-de-aflatoxinas"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>cuenta con un análisis de aflatoxinas de acuerdo a la NOM-188-SSA1-2002</strong>
+                        </div>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-análisis-de-aflatoxinas">
+                        <fieldset>
+                            <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
+                            <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000">
+                        </fieldset>
+                    </div>
+
+                    <div class="switch-statement" id="switch-cuenta-con-NMX-FF-034">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="cuenta-con-NMX-FF-034">
+                                <input type="checkbox" name="cuenta-con-NMX-FF-034" id="cuenta-con-NMX-FF-034"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>cuenta con un al menos un análisis de calidad del grano conforme la
+                                NMX-FF-034/1-SCFI-2002</strong>
+                        </div>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-análisis-NMX-FF-034">
+                        <fieldset>
+                            <legend><strong>seleccione el o los archivos pdf o de imágen de los análisis</strong>
+                            </legend>
+                            <input type="file" accept="image/*,.pdf" name="análisis-NMX-FF-034" max-size="10000000"
+                                multiple>
+                        </fieldset>
+                    </div>
+
+                    <div class="switch-statement" id="switch-servicios">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="servicios">
+                                <input type="checkbox" name="servicios" id="servicios"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>puedo brindar algún servicio adicional, <span class="variable izquierdo"
+                                    id="switch-servicios-1"></span></strong>
+                            <br>
+                            <small>por ejemplo: cribado, aquintalado, fumigación/pastilla, maniobras, flete, estiba,
+                                etc.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-servicios-descripción">
+                        <fieldset>
+                            <legend><strong>describa cada uno de los servicios adicionales que tiene la capacidad de
+                                    ofrecer,
+                                    con
+                                    datos específicos como tarifas, distancias, lugares, especificaciones técnicas,
+                                    etc.</strong>
+                            </legend>
+                            <textarea class="input" role="textbox" name="servicios-descripción" rows="10"
+                                placeholder="aqui escribo mis servicios" wrap="soft" cols="20"></textarea>
+                        </fieldset>
+                    </div>
+
+                    <!-- 
+                    acopiadora
+                    seguro de transporte
+        
+                    cribado - impurezas y grano quebrado
+        
+                    estiba - acomodar en camión o la otra
+                    almacenamiento
+                    secado
+                    fumigación - pastilla
+                    aquintalado - meter en costales de 50 kg -->
+
+
+
+
+
+
+
+
+                    <button type="submit"><strong><span id="btn-submit-text"></span></strong></button>
+                </form>
             </div>
 
-            <div class="a-fieldset" id="fieldset-hectáreas-disponibles-en-pié">
-                <fieldset >
-                    <legend><strong>el número de hectáreas de este maíz que tengo disponible para vender en pié es
-                            de</strong></legend>
-                    <input type="number" placeholder="2" min="1" step="0.1" max="1000" name="hectáreas-disponibles-en-pié"
-                        required> Has
-                </fieldset>
-            </div>
 
-<div class="a-fieldset" id="fieldset-venta-mínima-en-pié">
-    <fieldset >
-        <legend><strong>el número mínimo de hectáreas de este maíz que vendería en pié a un comprador individual
-                es de</strong></legend>
-        <input type="number" placeholder="2" min="1" step="0.1" max="1000" name="venta-mínima-en-pié" required>
-        Has
-    </fieldset>
-</div>
-
-            <div class="switch-statement" id="switch-ofrece-grano-per-se">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">SI</strong>
-                    <label class="switch" for="ofrece-grano-per-se">
-                        <input type="checkbox" name="ofrece-grano-per-se" id="ofrece-grano-per-se"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">NO</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>considero ofrecerlo ya cosechado, secado y desgranado.</strong>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-secado">
-                <div class="texto-medio statement">
-                    <strong>le he secado de forma</strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">artesanal</strong>
-                    <label class="switch" for="secado">
-                        <input type="checkbox" name="secado" id="secado"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">tecnificada</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong><span class="variable izquierdo" id="switch-secado-1"></span></strong>
-                </div>
-            </div>
-
-            <div class="switch-statement" id="switch-desgranado">
-                <div class="texto-medio statement">
-                    <strong>le he desgranado de forma</strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">artesanal</strong>
-                    <label class="switch" for="desgranado">
-                        <input type="checkbox" name="desgranado" id="desgranado"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">tecnificada</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong><span class="variable izquierdo" id="switch-secado-1"></span></strong>
-                </div>
-            </div>
-
-
-            <div class="switch-statement" id="switch-cuenta-con-análisis-de-aflatoxinas">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="cuenta-con-análisis-de-aflatoxinas">
-                        <input type="checkbox" name="cuenta-con-análisis-de-aflatoxinas"
-                            id="cuenta-con-análisis-de-aflatoxinas"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>cuenta con un análisis de aflatoxinas de acuerdo a la NOM-188-SSA1-2002</strong>
-                </div>
-            </div>
-
-            <div class="a-fieldset" id="fieldset-análisis-de-aflatoxinas">
-                <fieldset>
-                    <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                    <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000" required>
-                </fieldset>
-            </div>
-
-            <div class="switch-statement" id="switch-cuenta-con-NMX-FF-034">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="cuenta-con-NMX-FF-034">
-                        <input type="checkbox" name="cuenta-con-NMX-FF-034" id="cuenta-con-NMX-FF-034"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>cuenta con un al menos un análisis de calidad del grano conforme la
-                        NMX-FF-034/1-SCFI-2002</strong>
-                </div>
-            </div>
-
-            <div class="a-fieldset" id="fieldset-análisis-NMX-FF-034">
-                <fieldset >
-                    <legend><strong>seleccione el o los archivos pdf o de imágen de los análisis</strong></legend>
-                    <input type="file" accept="image/*,.pdf" name="análisis-NMX-FF-034" max-size="10000000" multiple
-                        required>
-                </fieldset>
-            </div>
-
-            <div class="switch-statement" id="switch-servicios">
-                <div class="texto-medio statement">
-                    <strong></strong>
-                </div>
-                <div class="switch-container" onclick="void swicheaOpción(event);">
-                    <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
-                    <strong class="izquierda seleccionado">NO</strong>
-                    <label class="switch" for="servicios">
-                        <input type="checkbox" name="servicios" id="servicios"
-                            onchange="void despliegalasOpciones(lasOpciones);" />
-                        <div class="slider round"></div>
-                    </label>
-                    <strong class="derecha">SI</strong>
-
-                </div>
-                <div class="texto-medio statement">
-                    <strong>puedo brindar algún servicio adicional, <span class="variable izquierdo"
-                            id="switch-servicios-1"></span></strong>
-                    <br>
-                    <small>por ejemplo: cribado, aquintalado, fumigación/pastilla, maniobras, flete, estiba, etc.
-                    </small>
-                </div>
-            </div>
-
-            <div class="a-fieldset" id="fieldset-servicios-descripción">
-                <fieldset >
-                    <legend><strong>describa cada uno de los servicios adicionales que tiene la capacidad de ofrecer, con
-                            datos específicos como tarifas, distancias, lugares, especificaciones técnicas, etc.</strong>
-                    </legend>
-                    <textarea name="servicios-descripción" id="" rows="5"></textarea>
-                </fieldset>
-            </div>
-
-            <!-- 
-            acopiadora
-            seguro de transporte
-
-            cribado - impurezas y grano quebrado
-
-            estiba - acomodar en camión o la otra
-            almacenamiento
-            secado
-            fumigación - pastilla
-            aquintalado - meter en costales de 50 kg -->
-
-
-
-
-
-
-
-
-            <button type="submit"><strong><span id="btn-submit-text"></span></strong></button>
-        </form>
-
-    </main>
+        </main>
+        
+    </div>
+    <footer><code>CC NC SA 2024 Alianza por Nuestra Tortilla – Hecha con ♥ en México.</code></footer>
 
     <dialog id="photo-cropping-modal">
         <div class="header">
@@ -794,14 +867,14 @@
             </div>
         </div>
         <div class="footer">
-            <button type="button" id="botón-descartar-foto">Descartar</button>
-            <button type="button" id="botón-así-mero">Agregar selección</button>
+            <button type="button" id="botón-descartar-foto" class="botón botón-rojo">Descartar</button>
+            <button type="button" id="botón-así-mero" class="botón botón-morado">Agregar selección</button>
         </div>
     </dialog>
 
     <template id="template-otro-uso">
         <fieldset class="otro">
-            <input class="input-otros" type="text" name="otro-uso" minlength="5" maxlength="30" required>
+            <input class="input-otros" type="text" name="otro-uso" minlength="5" maxlength="30">
             <button type="button" class="btn-cerrar-x" onclick="void killOtro(event);">&times;</button>
         </fieldset>
     </template>
@@ -1232,7 +1305,7 @@
             }
         </script>
         <script>
-
+            // borrar esta función, ya no se usa
             function setPhotos(event) {
                 //set button unclickable
                 event.target.disabled = true;
@@ -1247,6 +1320,11 @@
                 //const formData = new FormData();
                 //formData.append('file', file);
                 //habría que haerlo para cada file en el array fileListAdHoc
+            }
+
+            function addPhoto(event) {
+                let leInput = document.getElementById('input-fotos');
+                leInput.click();
             }
         </script>
         <script>
@@ -1267,6 +1345,11 @@
 
     </section>
 
+    <script>
+        function despliegaMenú(event) {
+            document.getElementById('side-menu').classList.toggle("show");
+        }
+    </script>
 
     <script>
 
@@ -1354,7 +1437,13 @@
             },
             "switch-ofrece-grano-per-se": {
                 "izquierda": {
+                    "fieldset-precio-por-unidad-de-medida-per-sé": true,
+                    "fieldset-cantidad-de-grano-disponible-per-sé": true,
                     "switch-secado": {
+                        "izquierda": {},
+                        "derecha": {}
+                    },
+                    "switch-desgranado": {
                         "izquierda": {},
                         "derecha": {}
                     },
