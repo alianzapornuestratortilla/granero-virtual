@@ -66,3 +66,6 @@ Se probara corregir id name igual para todos los input, select, textarea
 Thursday, January 18, 2024 @ 12:25:22 PM surgió problema con la función de seleccionar el checkbox ocn clik, el problema es que cuando los atributos name de input y label son iguales al ID del input se revierte el efecto de checarlo programaticmanete. hay que reportarlo como bug a chromium
 
 Thursday, January 18, 2024 @ 04:54:30 PM | Ya quedo la funcion de recogerdor deinputs, ahora a blobificarlo
+
+Thursday, January 18, 2024 @ 07:29:55 PM | Agregue las notas del vendedor, Empiezo a ordenar el js para luego hacer la pñagina de como se ven ya reportado el 
+Se ordenó el JS del image formatter, ahora son dos archivos js externos. Se ocupa uno antes en el head y otro después del body, creo porque se definen unas funciones antes pero se ocupan unos eleemntos despuès.odría limpiarse màs

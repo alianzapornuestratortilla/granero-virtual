@@ -8,9 +8,9 @@
 - [ ] Link a los métodos orgánicos en info
 - [x] entre el no y si parace mas grande el izquierdo cuando seleccionado 
 - [ ] pan(el-ote) general
-- [ ] menú lateral/de hamburgesa
-- [ ] corregir el tamaño de font de html para cada tamaño en lugar de recalcularlo para cada uno
-- [ ] mover estilos generales de vuelta al css específico fuera del html
+- [x] menú lateral/de hamburgesa
+- [x] corregir el tamaño de font de html para cada tamaño en lugar de recalcularlo para cada uno
+- [x] mover estilos generales de vuelta al css específico fuera del html
 - [ ] dark styles
 - [ ] tres-4 lineas de link stylesheet noto sans para todas html
 - [ ] resumen de edición de e-lote
@@ -19,5 +19,6 @@
 - [ ] filter para reflow sidebar
 - [ ] ajustar el valor del fltro de reflow para las combinaciones ligt/dark
 - [ ] hecho en méxico logo en elfooter
-- [ ] textbox para comentarios extras que quieran abundar
+- [x] textbox para comentarios extras que quieran abundar
 - [ ] chromium report bug checkboxes
+- [x] reorganizar el js del image generator,

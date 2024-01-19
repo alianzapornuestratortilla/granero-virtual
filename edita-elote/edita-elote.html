@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script src="../js/blob2urL.js"></script>
+    <script src="../js/nameGenerator.js"></script>
+    <script src="../js/imageFormatter.js"></script>
+    <script src="../js/switch.js"></script>
+    <script src="../js/formScraperReduced.js"></script>
+
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/image-formatter.css">
     <style>
@@ -834,8 +839,13 @@
 
                     <div class="a-fieldset" id="fieldset-notas-del-vendedor">
                         <fieldset>
-                            <legend><strong>Describa notas adicionales sobre el maíz que esta vendiendo como la historia de esta raza, de como llegó a sus manos, de cuantos años le ha cultivado, de las particularidades del cultivo, de las recetas, de sus memorias, de lo que le conecte a usted con este maicito <br>También puede poner detalles de este cultivo, de las dichas y dificultades, de los abonos y las aplicaciones, de las labores y las andanzas.
-                            </strong>
+                            <legend><strong>Describa notas adicionales sobre el maíz que esta vendiendo como la historia
+                                    de esta raza, de como llegó a sus manos, de cuantos años le ha cultivado, de las
+                                    particularidades del cultivo, de las recetas, de sus memorias, de lo que le conecte
+                                    a usted con este maicito <br>También puede poner detalles de este cultivo, de las
+                                    dichas y dificultades, de los abonos y las aplicaciones, de las labores y las
+                                    andanzas.
+                                </strong>
                             </legend>
                             <textarea class="input" role="textbox" name="notas-del-vendedor" rows="10"
                                 placeholder="aquí escribo la historia de mi maíz" wrap="soft" cols="20"></textarea>
@@ -902,846 +912,318 @@
 
     <section id="image-formatter-code">
 
-        <script>
-            var currentFoto = null;
-            var clicked = false;
-            const leMinWidthFoto = 800;
-            const leMinHeightFoto = 600;
-            //or 1080×720 pixels
-            const aspectRatioFoto = leMinWidthFoto / leMinHeightFoto;
-            var leCanvasWidth
-            var leCanvasHeight
-            var scaleFactor
-
-            // var fileListAdHoc = []; // not used
-            var webpURLArrAdHoc = [];
-        </script>
+        <script src="../js/imageFormatterAfter.js"></script>
 
         <script>
-            const lePhotoBar = document.getElementById('photo-bar');
-
-            const observer = new MutationObserver((mutationsList) => {
-                for (const mutation of mutationsList) {
-                    if (mutation.type === 'childList') {
-                        console.log('A child node has been added or removed.');
-                        //update formal files form
-                        if (!refreshFormPhotos(document.getElementById('input-img-def'), lePhotoBar)) {
-                            window.alert('algo salió mal al tratar de actualizar las fotos');
-                        }
-                    }
-                }
-            });
-
-            observer.observe(lePhotoBar, { childList: true });
-        </script>
-        <script>
-            function resetPhotoArrays() {
-                //fileListAdHoc = [];
-                webpURLArrAdHoc = [];
-            }
-        </script>
-        <script>
-            function refreshFormPhotos(leInput, lePhotoBar) {
-                void resetPhotoArrays();
-                console.log(lePhotoBar.children);
-                for (laFoto of lePhotoBar.children) {
-
-                    console.log(laFoto);
-                    if (laFoto.tagName === "CANVAS") {
-                        // element is an image
-                        // convert to webp file and add to array
-                        //****
-                        //let a = document.createElement("a");
-                        //a.href = canvas2webpURL(laFoto);
-                        //a.download = "imagen.webp";
-                        //a.click();
-                        //*****
-                        let webpURL = canvas2webpURL(laFoto);
-                        console.log(webpURL);
-                        console.log('separador');
-                        //comented out, not to be used
-                        webpURLArrAdHoc.push(webpURL);
-
-                        //fileListAdHoc.push(dataURLtoFile(url2Blob(webpURL), nameGenerator()));                        
-                        //console.log(fileListAdHoc);
-                    }
-                }
-                return true;
-            }
-
-        </script>
-        <script>
-            function nameGenerator() {
-                const leDate = new Date();
-
-                return generateRandomCharacter() + '_' + leDate.getDay() + 'd' + leDate.getMonth() + 'm' + leDate.getFullYear() + 'y' + leDate.getHours() + 'h' + leDate.getMinutes() + 'm' + leDate.getSeconds() + 's' + leDate.getMilliseconds() + 'ms';
-            }
-            function generateRandomCharacter() {
-                //replace random char with user's unique identifier
-                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-                var randomIndex = Math.floor(Math.random() * chars.length);
-                return chars[randomIndex];
-            }
-        </script>
-        <script>
-            function canvas2webpURL(canvas, fileName) {
-                return canvas.toDataURL("image/webp");
+            function despliegaMenú(event) {
+                document.getElementById('side-menu').classList.toggle("show");
             }
         </script>
 
         <script>
-            async function treatImages(evt) {
-                var fotografías = await handleFileInput(evt);
-                console.log(fotografías);
-                console.log(fotografías.length);
-                if (!(fotografías.length >= 1)) {
-                    return 0;
-                }
-                //now let's a pop up tha modal
-                document.getElementById('photo-cropping-modal').showModal();
+            async function buildFormData(form) {
 
                 try {
 
-                    currentFoto = fotografías[0];
-                    if (await resizeCanvas(currentFoto)) {
-                        console.log('first render done');
-                        //wait for acceptance
-                        let leInteraction = await interacción();
-                        console.log(leInteraction);
-                        switch (leInteraction) {
-                            case 'así-mero':
-                                document.getElementById('photo-cropping-modal').close();
-                                lePhotoBar.appendChild(await cropAndResize(currentFoto, leCanvasWidth, leCanvasHeight, aspectRatioFoto, scaleFactor));
-                                let leInput = evt.target;
-                                //modificar el query selector
-                                leInput.closest('form').querySelector("label[for='imgs']").innerHTML = 'Seleccione fotografías adicionales.'
-                                leInput.value = null;
-                                return 1;
-
-                            default:
-                                return 0;
-                        }
-
-                    } else {
-                        document.getElementById('photo-cropping-modal').close();
-                        return 0;
+                    let formData = new FormData(form);
+                    // for (const key of formData.keys()) {
+                    //     console.log(key);
+                    // }
+                    for (let index = 0; index < webpURLArrAdHoc.length; index++) {
+                        const webpURL = webpURLArrAdHoc[index];
+                        formData.append('fotografía[' + index + ']', await dataURL2Blob(webpURL), nameGenerator());
                     }
-
+                    formData.append('forms-JSON', new Blob([JSON.stringify(formScraper(form))], { type: "application/json" }), nameGenerator())
+                    for (const key of formData.keys()) {
+                        console.log(key);
+                    }
+                    return formData;
 
                 } catch (error) {
-                    console.log(error)
+                    console.error(error);
                 }
-            }
-        </script>
-        <script>
-            async function interacción() {
-                try {
-                    console.log('inicia click listening');
-                    let presionaAlgo = new Promise((resolve, reject) => {
-                        //document.querySelector('button#photo-cropping-modal-close').addEventListener('click', resolve('cancelar'));//should be redundant
-                        document.querySelector('button#botón-descartar-foto').addEventListener('click', () => {
-                            console.log('presionaron descartar foto');
-                            resolve('descartar-foto');
-                        });
-                        document.querySelector('button#botón-así-mero').addEventListener('click', () => {
-                            console.log('presionaron así mero');
-                            resolve('así-mero');
-                        });
-                        document.querySelector('dialog#photo-cropping-modal').addEventListener('close', () => {
-                            console.log('presionaron cancelar');
-                            resolve('cancelar');
-                        });
-
-
-                    });
-
-                    return await presionaAlgo
-                        .then(result => {
-                            void deleteEventListener('button#botón-descartar-foto');
-                            void deleteEventListener('button#botón-así-mero');
-                            void deleteEventListener('dialog#photo-cropping-modal');
-                            return result;
-                        })
-                        .catch(error => {
-                            console.log('e1');
-                            console.error(error);
-                        });
-
-                } catch (error) {
-                    console.log('e2');
-                    console.error(error.message);
-                    return false;
-                }
-            }
-        </script>
-        <script>
-            function deleteEventListener(daQuerySelector) {
-                //reemplazando por clon es lo más fácil, dice bing
-                const el = document.querySelector(daQuerySelector);
-                const clone = el.cloneNode(true);
-                el.parentNode.replaceChild(clone, el);
             }
         </script>
 
         <script>
-            async function loadImage(url) {
-                return new Promise((resolve, reject) => {
-                    const img = new Image();
-                    img.crossOrigin = 'anonymous';
-                    img.onload = () => resolve(img);
-                    img.onerror = (err) => reject(err);
-                    img.src = url;
-                });
-            }
-            async function drawImage(url) {
 
-                try {
-                    return await loadImage(url);
-                } catch (err) {
-                    console.log(err);
-                }
-            }
-        </script>
-        <script>
-            async function logImageData(file, reader) {
-                try {
-                    const fileResult = await reader(file);
-                    return fileResult.result;
-                    // handle fileResult
-                } catch (err) {
-                    return err;
-                    // handle error
-                }
-            }
-        </script>
-        <script>
-            async function handleFileInput(evt) {
-                var files = event.target.files;
-                var lePhotos = [];
-                for (var i = 0; i <= (files.length - 1); i++) {
-                    let file = files[i]; //le current file
-                    // Only process image files.
-                    if (!file.type.match('image.*')) {
-                        continue;
-                    }
+            const urlParams = new URLSearchParams(window.location.search);
+            const tipoDeEdición = urlParams.get('tEd');
+            // http://localhost:5500/edita-elote/edita-elote.html?tEd=new
+            // http://localhost:5500/edita-elote/edita-elote.html?tEd=edit
+            //?product=shirt&color=blue&newuser&size=m
 
-                    const reader = (file) => new Promise((resolve, reject) => {
-                        const fr = new FileReader();
-                        fr.onload = () => resolve(fr);
-                        fr.onerror = (err) => reject(err);
-                        fr.readAsDataURL(file);
-                    });
-
-                    lePhotos.push(await logImageData(file, reader))
-
-                }
-                return lePhotos;
-            }
-        </script>
-        <script>
-            function closePhotoCroppingModal(event) {
-                event.target.closest('dialog#photo-cropping-modal').close();
-            }
-        </script>
-        <script>
-            window.onresize = () => {
-                console.log('allegedly resizing');
-                if (document.querySelector('dialog#photo-cropping-modal').open == true) {
-                    resizeCanvas(currentFoto);
-                }
-            };
-        </script>
-        <script>
-            async function resizeCanvas(foto) {
-                console.log('resizing Canvas');
-                if (document.querySelector('canvas.photo-cropping-canvas') !== null) {
-                    document.querySelector('canvas.photo-cropping-canvas').remove();
-
-                }
-                if (document.querySelector('#photo-cropping-rectangle') !== null) {
-                    document.querySelector('#photo-cropping-rectangle').remove();
-
-                }
-
-                let fotoImg = await drawImage(foto);
-
-                //check if min size
-                if (Math.min(fotoImg.naturalHeight / leMinHeightFoto, fotoImg.naturalWidth / leMinWidthFoto) < 1) {
-                    document.getElementById('input-fotos').value = null;
-                    window.alert('¡fotografía demasiado pequeña!\nTomar con mayor resolución\ny/o de forma horizontal.');
-                    return false;
-                }
-
-                let canvas = document.createElement("canvas");
-                canvas.setAttribute("class", "photo-cropping-canvas");
-                canvas.style.width = '100%';
-                canvas.style.height = '80%';
-                document.getElementById('canvas-container').appendChild(canvas);
-                canvas = document.querySelector('canvas.photo-cropping-canvas');
-
-                leCanvasWidth = parseFloat(window.getComputedStyle(canvas).getPropertyValue("width")
-                    .replace(/[^0-9.]/g, ""));
-                leCanvasHeight = parseFloat(window.getComputedStyle(canvas).getPropertyValue("height").replace(
-                    /[^0-9.]/g, ""));
-
-                scaleFactor = Math.min(leCanvasWidth / fotoImg.naturalWidth, leCanvasHeight / fotoImg
-                    .naturalHeight);
-                if (scaleFactor > 1) {
-                    scaleFactor = 1;
-                }
-
-                scaledImgWidth = scaleFactor * fotoImg.naturalWidth;
-                scaledImgHeight = scaleFactor * fotoImg.naturalHeight;
-                canvas.height = leCanvasHeight;
-                canvas.width = leCanvasWidth;
-                canvas.getContext('2d', { preserveDrawingBuffer: true }).drawImage(fotoImg, 0, 0, fotoImg.naturalWidth, fotoImg.naturalHeight, 0, 0,
-                    scaledImgWidth, scaledImgHeight);
-                let leRectangle = document.createElement('div');
-                leRectangle.setAttribute("id", "photo-cropping-rectangle");
-                leRectangle.style.width = leMinWidthFoto * scaleFactor + 'px';
-                leRectangle.style.height = leMinHeightFoto * scaleFactor + 'px';
-                let rectangleContainer = document.getElementById('rectangle-container');
-                rectangleContainer.style.width = scaledImgWidth + 'px';
-                rectangleContainer.style.height = scaledImgHeight + 'px';
-                rectangleContainer.appendChild(leRectangle);
-
-                interact('#photo-cropping-rectangle')
-                    .draggable({
-                        listeners: {
-                            move: function (event) {
-                                var target = event.target;
-                                var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-                                var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-                                // restrict the movement of the rectangle within the rectangleContainer
-                                x = Math.min(Math.max(x, 0), scaledImgWidth - target.offsetWidth);
-                                y = Math.min(Math.max(y, 0), scaledImgHeight - target.offsetHeight);
-
-                                target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-                                target.setAttribute('data-x', x);
-                                target.setAttribute('data-y', y);
-                            }
-                        }
-                    })
-                    .resizable({
-                        modifiers: [
-                            interact.modifiers.aspectRatio({
-                                // make sure the aspect ratio is constant
-                                ratio: aspectRatioFoto,
-                                // also restrict the size by nesting another modifier
-                                modifiers: [
-                                    interact.modifiers.restrictSize({
-                                        min: {
-                                            width: leMinWidthFoto * scaleFactor,
-                                            height: leMinHeightFoto * scaleFactor
-                                        },
-                                        max: {
-                                            width: scaledImgWidth,
-                                            height: scaledImgHeight
-                                        }
-                                    }),
-                                    interact.modifiers.restrictEdges({
-                                        outer: 'parent',
-                                        endOnly: true
-                                    })
-                                ],
-                            }),
-                        ],
-                        edges: {
-                            left: false,
-                            right: true,
-                            bottom: true,
-                            top: false
-                        },
-                        inertia: true
-                    })
-                    .on('resizemove', function (event) {
-                        var target = event.target;
-                        var x = (parseFloat(target.getAttribute('data-x')) || 0);
-                        var y = (parseFloat(target.getAttribute('data-y')) || 0);
-
-                        target.style.width = event.rect.width + 'px';
-                        target.style.height = event.rect.height + 'px';
-
-                        x += event.deltaRect.left;
-                        y += event.deltaRect.top;
-
-                        target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-                        target.setAttribute('data-x', x);
-                        target.setAttribute('data-y', y);
-                    });
-                return true;
-            }
-        </script>
-        <script>
-            async function cropAndResize(currentFoto, leCanvasWidth, leCanvasHeight, aspectRatioFoto, scaleFactor) {
-
-                let leRectangle = document.getElementById('photo-cropping-rectangle');
-                console.log(leRectangle.getAttribute("data-x"));
-                console.log(parseFloat(leRectangle.getAttribute("data-x")));
-
-                let scaledOriginX = parseFloat(leRectangle.getAttribute("data-x"));
-                console.log(scaledOriginX);
-                if (isNaN(scaledOriginX)) {
-                    scaledOriginX = 0;
-                }
-                let scaledOriginY = parseFloat(leRectangle.getAttribute("data-y"));
-                if (isNaN(scaledOriginY)) {
-                    scaledOriginY = 0;
-                }
-                let scaledHeight = parseFloat(leRectangle.style.height);
-                let scaledWidth = parseFloat(leRectangle.style.width);
-
-                //get unscaled positions and dimensions. Just divide by the scaling factor
-                //scaledOriginX/scaleFactor
-                //scaledOriginY/scaleFactor
-                //scaledHeight/scaleFactor
-                //scaledWidth/scaleFactor
-                // rescalated dimensions
-                // reScaledHeight = leMinHeightFoto;
-                // reScalatedWidth = leMinWidthFoto;
-
-                //create canvas with rescalated dimensions, draw croped and rescalated image
-
-                //const originalImage = await createImageBitmap(await url2Blob(currentFoto));
-                const originalImage = await drawImage(currentFoto);
-                let canvasAdHoc = document.createElement('canvas');
-                canvasAdHoc.width = leMinWidthFoto;
-                canvasAdHoc.height = leMinHeightFoto;
-                ///--> -->
-                // --> --> --> commented but is useful
-                //console.log(originalImage, (scaledOriginX / scaleFactor), (scaledOriginY / scaleFactor), (scaledWidth / scaleFactor), (scaledHeight / scaleFactor), 0, 0, leMinWidthFoto, leMinHeightFoto);
-                canvasAdHoc.getContext('2d', { preserveDrawingBuffer: true }).drawImage(originalImage, (scaledOriginX / scaleFactor), (scaledOriginY / scaleFactor), (scaledWidth / scaleFactor), (scaledHeight / scaleFactor), 0, 0, leMinWidthFoto, leMinHeightFoto);
-                //return await drawImage(canvasAdHoc.toDataURL());
-                return canvasAdHoc;
-            }
-        </script>
-        <script src="../js/formScraperReduced.js"></script>
-        <script>
-            async function url2Blob(imageUrl) {
-                return await (await fetch(imageUrl)).blob();
-            }
-        </script>
-
-        <script>
-            function dataURLtoFile(webpBlob, filename) {
-                return new File([webpBlob], filename + ".webp", { type: "image/webp" });
-            }
-        </script>
-        <script>
-            // borrar esta función, ya no se usa
-            function setPhotos(event) {
-                //set button unclickable
-                event.target.disabled = true;
-                let leInput = document.getElementById('input-fotos');
-                // set non editable
-                leInput.disabled = true;
-                // clear
-                leInput.value = null;
-                //add files
-                leInput.setAttribute('multiple', true);
-                // Al parecer no se puede añadir archivos a un input de forma programática, habría que alterar el formData ya que se vaya a enviar la form:
-                //const formData = new FormData();
-                //formData.append('file', file);
-                //habría que haerlo para cada file en el array fileListAdHoc
-            }
-
-            function addPhoto(event) {
-                let leInput = document.getElementById('input-fotos');
-                leInput.click();
-            }
-        </script>
-        <script>
-            function cancelBarImages(event) {
-                void resetPhotoArrays();
-                let leInput = document.getElementById('input-fotos');
-                leInput.disabled = false;
-                document.getElementById('ya-estuvo').disabled = false;
-                leInput.value = null;
-
-                while (lePhotoBar.firstChild) {
-                    lePhotoBar.removeChild(lePhotoBar.firstChild);
-                }
-            }
-        </script>
-
-
-
-    </section>
-
-    <script>
-
-    </script>
-    <script>
-        function despliegaMenú(event) {
-            document.getElementById('side-menu').classList.toggle("show");
-        }
-    </script>
-
-    <script>
-        async function buildFormData(form) {
-
-            try {
-
-                let formData = new FormData(form);
-                // for (const key of formData.keys()) {
-                //     console.log(key);
-                // }
-                for (let index = 0; index < webpURLArrAdHoc.length; index++) {
-                    const webpURL = webpURLArrAdHoc[index];
-                    formData.append('fotografía[' + index + ']', await dataURL2Blob(webpURL), nameGenerator());
-                }
-                formData.append('forms-JSON', new Blob([JSON.stringify(formScraper(form) )], { type: "application/json" }), nameGenerator() )
-                for (const key of formData.keys()) {
-                    console.log(key);
-                }
-                return formData;
-
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    </script>
-
-    <script>
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const tipoDeEdición = urlParams.get('tEd');
-        // http://localhost:5500/edita-elote/edita-elote.html?tEd=new
-        // http://localhost:5500/edita-elote/edita-elote.html?tEd=edit
-        //?product=shirt&color=blue&newuser&size=m
-
-        const posDocVars = {
-            "new": {
-                "título": "nuevo e-lote",
-                "subtítulo": "registrando nuevo",
-                "btn-submit": "registrar"
-            },
-            "edit": {
-                "título": "nuevo e-lote",
-                "subtítulo": "modificando",
-                "btn-submit": "actualizar"
-            }
-        }
-        let cual
-        switch (tipoDeEdición) {
-
-            case "new":
-                cual = posDocVars["new"];
-                break;
-            case "edit":
-                cual = posDocVars["edit"];
-                break;
-
-            default:
-                cual = posDocVars["new"];
-                break;
-        }
-
-        const docVars = cual;
-
-        document.title = docVars["título"];
-        document.getElementById('el-subtítulo').innerHTML = docVars["subtítulo"];
-        document.getElementById('btn-submit-text').innerHTML = docVars["btn-submit"];
-
-    </script>
-    <script src="../js/switch.js"></script>
-    <script>
-        const lasOpciones = {
-            "switch-semilla-propia": {
-                "izquierda": {},
-                "derecha": {
-                    "switch-comprada-truequeada": {
-                        "izquierda": {},
-                        "derecha": {}
-                    },
-                    "switch-origen-distinto": {
-                        "izquierda": {
-                            "fieldset-nombre-origen-distinto": true
-                        },
-                        "derecha": {}
-                    }
-                }
-            },
-            "switch-cuenta-con-certificación": {
-                "izquierda": {},
-                "derecha": {
-                    "switch-cuenta-con-certificación-orgánica": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-certificado-orgánico": true
-                        }
-                    },
-                    "switch-cuenta-con-certificación-libre-de-OGM": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-certificado-libre-de-OGM": true
-                        }
-                    }
-                }
-            }, "switch-ofrece-en-pié": {
-                "izquierda": {},
-                "derecha": {
-                    "fieldset-precio-por-unidad-de-medida-en-pié": true,
-                    "fieldset-hectáreas-disponibles-en-pié": true,
-                    "fieldset-venta-mínima-en-pié": true
-                }
-            },
-            "switch-ofrece-grano-per-se": {
-                "izquierda": {
-                    "fieldset-precio-por-unidad-de-medida-per-sé": true,
-                    "fieldset-cantidad-de-grano-disponible-per-sé": true,
-                    "switch-secado": {
-                        "izquierda": {},
-                        "derecha": {}
-                    },
-                    "switch-desgranado": {
-                        "izquierda": {},
-                        "derecha": {}
-                    },
-                    "switch-cuenta-con-análisis-de-aflatoxinas": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-análisis-de-aflatoxinas": true
-                        }
-                    },
-                    "switch-cuenta-con-NMX-FF-034": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-análisis-NMX-FF-034": true
-                        }
-                    },
-                    "fieldset-notas-del-vendedor":true,
-                    "switch-servicios": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-servicios-descripción": true
-                        }
-                    }
-
+            const posDocVars = {
+                "new": {
+                    "título": "nuevo e-lote",
+                    "subtítulo": "registrando nuevo",
+                    "btn-submit": "registrar"
                 },
-                "derecha": {}
+                "edit": {
+                    "título": "nuevo e-lote",
+                    "subtítulo": "modificando",
+                    "btn-submit": "actualizar"
+                }
             }
+            let cual
+            switch (tipoDeEdición) {
 
-
-        };
-
-        //  {
-
-        //     "switch-proxy": {
-        //         "izquierda": {
-        //             "switch-email": {
-        //                 "izquierda": {
-        //                     "fieldset-email": true
-        //                 },
-        //                 "derecha": {},
-        //             },
-        //             "switch-tel-móvil": {
-        //                 "izquierda": {
-        //                     "fieldset-tel-móvil": true
-        //                 },
-        //                 "derecha": {}
-        //             },
-        //             "switch-tel-fijo": {
-        //                 "izquierda": {
-        //                     "fieldset-tel-fijo": true
-        //                 },
-        //                 "derecha": {}
-        //             }
-        //         },
-        //         "derecha": {
-        //             "fieldset-nombre-proxy": true,
-        //             "fieldset-relación-proxy": true,
-        //             "switch-email-proxy": {
-        //                 "izquierda": {
-        //                     "fieldset-email-proxy": true
-        //                 },
-        //                 "derecha": {}
-        //             },
-        //             "switch-tel-móvil-proxy": {
-        //                 "izquierda": {
-        //                     "fieldset-tel-móvil-proxy": true
-        //                 },
-        //                 "derecha": {}
-        //             },
-        //             "switch-tel-fijo-proxy": {
-        //                 "izquierda": {
-        //                     "fieldset-tel-fijo-proxy": true
-        //                 },
-        //                 "derecha": {}
-        //             }
-        //         }
-        //     }
-
-        // };
-
-        const eitherOr = {
-            1: ["switch-email", "switch-tel-móvil", "switch-tel-fijo"],
-            2: ["switch-email-proxy", "switch-tel-móvil-proxy",
-                "switch-tel-fijo-proxy"]
-
-        }
-
-    </script>
-    <script src="../js/despliegaOpciones.js"></script>
-    <script>
-        void despliegalasOpciones(lasOpciones);
-    </script>
-    <script>
-        function actualizaNombreDeElote(event) {
-            document.getElementById('subtíulo-bottom').innerHTML = event.target.value;
-        }
-    </script>
-    <script async src="../js/checkDaBox.js"></script>
-    <script src="../js/otros.js"></script>
-    <script>
-        void añadeOtro('otros-usos', 'template-otro-uso');
-    </script>
-    <script>
-        let selectsUnidadDeMedida = document.querySelectorAll('select.opciones-unidad-de-medida');
-        for (let index = 0; index < selectsUnidadDeMedida.length; index++) {
-            const selectUnidadDeMedida = selectsUnidadDeMedida[index];
-            selectUnidadDeMedida.appendChild(document.getElementById("template-options-unidad-de-medida").content.cloneNode(true));
-            selectUnidadDeMedida.dispatchEvent(new Event('change'));
-
-        }
-
-        function actualizaUnidades(event) {
-            const daSelect = event.target;
-            const daFieldset = daSelect.closest('fieldset.unidad-de-medida');
-            let tipo
-            if (daFieldset.classList.contains('precio')) {
-                tipo = 'precio';
-            } else if (daFieldset.classList.contains('cantidad')) {
-                tipo = 'cantidad';
-            }
-
-            const daInput = daFieldset.querySelector('input.valor-medido');
-
-            let minValue;
-            let maxValue;
-            let leStep;
-            let suggestedValue;
-
-            switch (tipo) {
-                case 'precio':
-                    switch (daSelect.value) {
-                        case "kg":
-                            minValue = 7;
-                            maxValue = 99;
-                            leStep = 0.01;
-                            suggestedValue = 12;
-
-                            break;
-                        case "ton":
-                            minValue = 7000;
-                            maxValue = 99 * 7000;
-                            leStep = 1;
-                            suggestedValue = 12000;
-
-                            break;
-                        case "costal":
-                            minValue = 50 * 7;
-                            maxValue = 50 * 99;
-                            leStep = 1;
-                            suggestedValue = 50 * 12;
-
-                            break;
-
-                        default:
-                            break;
-                    }
-
+                case "new":
+                    cual = posDocVars["new"];
                     break;
-                case 'cantidad':
-                    switch (daSelect.value) {
-                        case "kg":
-                            minValue = 1;
-                            maxValue = undefined;
-                            leStep = 1;
-
-                            break;
-                        case "ton":
-                            minValue = 1;
-                            maxValue = undefined;
-                            leStep = 0.1;
-
-                            break;
-                        case "costal":
-                            minValue = 1;
-                            maxValue = undefined;
-                            leStep = 1;
-
-                            break;
-
-                        default:
-                            break;
-                    }
-
+                case "edit":
+                    cual = posDocVars["edit"];
                     break;
 
                 default:
+                    cual = posDocVars["new"];
                     break;
             }
 
-            if (minValue) {
-                daInput.setAttribute("min", minValue);
-            } else {
-                daInput.removeAttribute("min");
-            }
+            const docVars = cual;
 
-            if (maxValue) {
-                daInput.setAttribute("max", maxValue);
-            } else {
-                daInput.removeAttribute("max");
-            }
+            document.title = docVars["título"];
+            document.getElementById('el-subtítulo').innerHTML = docVars["subtítulo"];
+            document.getElementById('btn-submit-text').innerHTML = docVars["btn-submit"];
 
-            if (leStep) {
-                daInput.setAttribute("step", leStep);
-            } else {
-                daInput.removeAttribute("step");
-            }
+        </script>
+        
+        <script>
+            const lasOpciones = {
+                "switch-semilla-propia": {
+                    "izquierda": {},
+                    "derecha": {
+                        "switch-comprada-truequeada": {
+                            "izquierda": {},
+                            "derecha": {}
+                        },
+                        "switch-origen-distinto": {
+                            "izquierda": {
+                                "fieldset-nombre-origen-distinto": true
+                            },
+                            "derecha": {}
+                        }
+                    }
+                },
+                "switch-cuenta-con-certificación": {
+                    "izquierda": {},
+                    "derecha": {
+                        "switch-cuenta-con-certificación-orgánica": {
+                            "izquierda": {},
+                            "derecha": {
+                                "fieldset-certificado-orgánico": true
+                            }
+                        },
+                        "switch-cuenta-con-certificación-libre-de-OGM": {
+                            "izquierda": {},
+                            "derecha": {
+                                "fieldset-certificado-libre-de-OGM": true
+                            }
+                        }
+                    }
+                }, "switch-ofrece-en-pié": {
+                    "izquierda": {},
+                    "derecha": {
+                        "fieldset-precio-por-unidad-de-medida-en-pié": true,
+                        "fieldset-hectáreas-disponibles-en-pié": true,
+                        "fieldset-venta-mínima-en-pié": true
+                    }
+                },
+                "switch-ofrece-grano-per-se": {
+                    "izquierda": {
+                        "fieldset-precio-por-unidad-de-medida-per-sé": true,
+                        "fieldset-cantidad-de-grano-disponible-per-sé": true,
+                        "switch-secado": {
+                            "izquierda": {},
+                            "derecha": {}
+                        },
+                        "switch-desgranado": {
+                            "izquierda": {},
+                            "derecha": {}
+                        },
+                        "switch-cuenta-con-análisis-de-aflatoxinas": {
+                            "izquierda": {},
+                            "derecha": {
+                                "fieldset-análisis-de-aflatoxinas": true
+                            }
+                        },
+                        "switch-cuenta-con-NMX-FF-034": {
+                            "izquierda": {},
+                            "derecha": {
+                                "fieldset-análisis-NMX-FF-034": true
+                            }
+                        },
+                        "fieldset-notas-del-vendedor": true,
+                        "switch-servicios": {
+                            "izquierda": {},
+                            "derecha": {
+                                "fieldset-servicios-descripción": true
+                            }
+                        }
 
-            if (suggestedValue) {
-                daInput.setAttribute("placeHolder", suggestedValue);
-            } else {
-                daInput.removeAttribute("step");
-            }
-
-            daInput.dispatchEvent(new Event('change'));
-
-        }
-
-        function valorVálido(event) {
-            // debugger
-            const daInput = event.target;
-            const minValue = daInput.getAttribute('min');
-            const maxValue = daInput.getAttribute('max');
-
-            if (daInput.value) {
-                if (Number(daInput.value) < Number(minValue)) {
-                    daInput.value = minValue.toString();
-                } else if (Number(daInput.value) > Number(maxValue)) {
-                    daInput.value = maxValue.toString();
+                    },
+                    "derecha": {}
                 }
-                const decimales = {
-                    1: 0,
-                    0.1: 1,
-                    0.01: 2
-                };
 
 
-                // debugger
-                // console.log("isNaN:" + isNaN(daInput.value));
-                daInput.value = Number(daInput.value).toFixed(decimales[daInput.getAttribute('step')]).toString();
+            };
+
+        </script>
+        <script src="../js/despliegaOpciones.js"></script>
+        <script>
+            void despliegalasOpciones(lasOpciones);
+        </script>
+        <script>
+            function actualizaNombreDeElote(event) {
+                document.getElementById('subtíulo-bottom').innerHTML = event.target.value;
+            }
+        </script>
+        <script async src="../js/checkDaBox.js"></script>
+        <script src="../js/otros.js"></script>
+        <script>
+            void añadeOtro('otros-usos', 'template-otro-uso');
+        </script>
+        <script>
+            let selectsUnidadDeMedida = document.querySelectorAll('select.opciones-unidad-de-medida');
+            for (let index = 0; index < selectsUnidadDeMedida.length; index++) {
+                const selectUnidadDeMedida = selectsUnidadDeMedida[index];
+                selectUnidadDeMedida.appendChild(document.getElementById("template-options-unidad-de-medida").content.cloneNode(true));
+                selectUnidadDeMedida.dispatchEvent(new Event('change'));
+
             }
 
+            function actualizaUnidades(event) {
+                const daSelect = event.target;
+                const daFieldset = daSelect.closest('fieldset.unidad-de-medida');
+                let tipo
+                if (daFieldset.classList.contains('precio')) {
+                    tipo = 'precio';
+                } else if (daFieldset.classList.contains('cantidad')) {
+                    tipo = 'cantidad';
+                }
+
+                const daInput = daFieldset.querySelector('input.valor-medido');
+
+                let minValue;
+                let maxValue;
+                let leStep;
+                let suggestedValue;
+
+                switch (tipo) {
+                    case 'precio':
+                        switch (daSelect.value) {
+                            case "kg":
+                                minValue = 7;
+                                maxValue = 99;
+                                leStep = 0.01;
+                                suggestedValue = 12;
+
+                                break;
+                            case "ton":
+                                minValue = 7000;
+                                maxValue = 99 * 7000;
+                                leStep = 1;
+                                suggestedValue = 12000;
+
+                                break;
+                            case "costal":
+                                minValue = 50 * 7;
+                                maxValue = 50 * 99;
+                                leStep = 1;
+                                suggestedValue = 50 * 12;
+
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        break;
+                    case 'cantidad':
+                        switch (daSelect.value) {
+                            case "kg":
+                                minValue = 1;
+                                maxValue = undefined;
+                                leStep = 1;
+
+                                break;
+                            case "ton":
+                                minValue = 1;
+                                maxValue = undefined;
+                                leStep = 0.1;
+
+                                break;
+                            case "costal":
+                                minValue = 1;
+                                maxValue = undefined;
+                                leStep = 1;
+
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        break;
+
+                    default:
+                        break;
+                }
+
+                if (minValue) {
+                    daInput.setAttribute("min", minValue);
+                } else {
+                    daInput.removeAttribute("min");
+                }
+
+                if (maxValue) {
+                    daInput.setAttribute("max", maxValue);
+                } else {
+                    daInput.removeAttribute("max");
+                }
+
+                if (leStep) {
+                    daInput.setAttribute("step", leStep);
+                } else {
+                    daInput.removeAttribute("step");
+                }
+
+                if (suggestedValue) {
+                    daInput.setAttribute("placeHolder", suggestedValue);
+                } else {
+                    daInput.removeAttribute("step");
+                }
+
+                daInput.dispatchEvent(new Event('change'));
+
+            }
+
+            function valorVálido(event) {
+                // debugger
+                const daInput = event.target;
+                const minValue = daInput.getAttribute('min');
+                const maxValue = daInput.getAttribute('max');
+
+                if (daInput.value) {
+                    if (Number(daInput.value) < Number(minValue)) {
+                        daInput.value = minValue.toString();
+                    } else if (Number(daInput.value) > Number(maxValue)) {
+                        daInput.value = maxValue.toString();
+                    }
+                    const decimales = {
+                        1: 0,
+                        0.1: 1,
+                        0.01: 2
+                    };
 
 
+                    // debugger
+                    // console.log("isNaN:" + isNaN(daInput.value));
+                    daInput.value = Number(daInput.value).toFixed(decimales[daInput.getAttribute('step')]).toString();
+                }
+            }
 
-        }
-
-    </script>
+        </script>
 </body>
 
 </html>
