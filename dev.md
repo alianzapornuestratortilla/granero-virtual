@@ -12,10 +12,12 @@
 - [ ] corregir el tamaño de font de html para cada tamaño en lugar de recalcularlo para cada uno
 - [ ] mover estilos generales de vuelta al css específico fuera del html
 - [ ] dark styles
-- [ ] verificar edición
 - [ ] tres-4 lineas de link stylesheet noto sans para todas html
 - [ ] resumen de edición de e-lote
 - [ ] higlight cuando en hover
 - [ ] fecth del servidor para saber que presentar en el menú si es comprador, vendedor, flete
 - [ ] filter para reflow sidebar
 - [ ] ajustar el valor del fltro de reflow para las combinaciones ligt/dark
+- [ ] hecho en méxico logo en elfooter
+- [ ] textbox para comentarios extras que quieran abundar
+- [ ] chromium report bug checkboxes

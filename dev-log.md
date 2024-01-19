@@ -42,4 +42,27 @@ se trabajó la barra de navegación
 se añadió el footer, hay que darle formato
 parece que de css salvo colores ya casi no faltamás que lo de los colores en light y dark mode, el footer, los links del menu, etc.
 Procederé a meter los blob url de las imágenes en el paquete del form y luego a hacer la página de ver un e-lote
+## Wednesday, January 17, 2024 @ 06:14:54 
+Puede que lo mejor sea guardar en dataUrl formato webP y guardar y desplegar eso no más let webpURL = canvas2webpURL(laFoto);
 
+### Wednesday, January 17, 2024 @ 08:34:49 PM
+mejor siempre con blob, logre que funcionara y se ahorra un 25% de espacio
+
+### Wednesday, January 17, 2024 @ 09:19:41 PM
+al parecer el blob se agrega bien, pero los checkbox no estan en en formdata
+probando el metodo del hidden input
+nah, habrá que crear una funcion que convierta todos los input textarea, select, etc. (y los textos auxiliares, amtesm depsues, de la opcion elejida) del form a un JSON, stringificarlo, y luego a blob
+
+```js
+const json = { "name": "John", "age": 30, "city": "New York" };
+const blob = new Blob([JSON.stringify(json)], { type: "application/json" });
+
+```
+
+>The square brackets around JSON.stringify(json) are used to create an array containing the stringified JSON object. The Blob constructor expects an array of data as its first argument, so the square brackets are necessary to create an array with a single element that contains the stringified JSON object.
+
+## Thursday, January 18, 2024 @ 11:38:36 AM
+Se probara corregir id name igual para todos los input, select, textarea
+Thursday, January 18, 2024 @ 12:25:22 PM surgió problema con la función de seleccionar el checkbox ocn clik, el problema es que cuando los atributos name de input y label son iguales al ID del input se revierte el efecto de checarlo programaticmanete. hay que reportarlo como bug a chromium
+
+Thursday, January 18, 2024 @ 04:54:30 PM | Ya quedo la funcion de recogerdor deinputs, ahora a blobificarlo

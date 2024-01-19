@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="../js/blob2urL.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/image-formatter.css">
     <style>
@@ -80,12 +81,13 @@
 
                 /* tablets */
             }
+
             @media screen and (min-width: 993px) {
                 /* escritorio desktop*/
 
-                body main div#contenido-main {                    
+                body main div#contenido-main {
                     max-width: var(--current-main-max-width);
-                    margin: 0 auto;                    
+                    margin: 0 auto;
                 }
             }
 
@@ -169,111 +171,115 @@
                         <a href=""><button type="button" class="cancelar"><strong>Cancelar</strong></button></a>
                     </div>
                 </header>
-                <form action="">
+                <form id="form-principal" action="">
+                    <div class="a-fieldset">
+                        <fieldset id="fotografías-del-e-lote">
+                            <legend><strong>Fotografías de mi e-lote de maíz</strong></legend>
+                            <div id="main-photo">
 
-                    <fieldset id="fotografías-del-e-lote">
-                        <legend><strong>Fotografías de mi e-lote de maíz</strong></legend>
-                        <div id="main-photo">
-
-                        </div>
-                        <div id="photo-bar">
-
-                        </div>
-                        <label for="imgs"><strong>Seleccione la imágen principal de su e-lote.</strong></label>
-                        <input type="file" name="imgs" accept="image/*" onchange="treatImages(event)" id="input-fotos">
-                        <br>
-                        <button type="button" id="ya-estuvo" onclick="addPhoto(event)"
-                            class="botón botón-morado">Agregar
-                            nueva
-                            fotografía</button>
-                        <button type="button" id="btn-cancelar" onclick="cancelBarImages(event)"
-                            class="botón botón-rojo">Cancelar
-                            selección de
-                            imágenes</button>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend><strong>el nombre por el que le conocen a este maíz es</strong></legend>
-                        <input type="text" name="nombre-completo" minlength="5" maxlength="30" required
-                            oninput="void actualizaNombreDeElote(event);">
-                    </fieldset>
-
-                    <fieldset id="usos-comunes">
-                        <legend><strong>son usos comunes para este maíz</strong></legend>
-                        <div class="check-box">
-                            <input type="checkbox" name="tortillas" id="tortillas-checkbox"
-                                onchange="void aChinga(event);">
-                            <label class="overboard" for="tortillas" onclick="checkDaBox(event)"><strong>tortillas y
-                                    tacos</strong></label>
-                        </div>
-                        <div class="check-box">
-                            <input type="checkbox" name="garnachas" id="garnachas-checkbox">
-                            <label for="garnachas" onclick="checkDaBox(event)" class="muy-grande overboard"><strong>
-                                    quesadillas, gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas,
-                                    tlaxcales,
-                                    molotes
-                                    polcanes y panuchos</strong></label>
-                        </div>
-                        <div class="check-box">
-                            <input type="checkbox" name="tamales" id="tamales-checkbox">
-                            <label for="tamales" onclick="checkDaBox(event)"><strong>tamales y
-                                    torundas</strong></label>
-                        </div>
-                        <div class="check-box">
-                            <input type="checkbox" name="tostadas" id="tostadas-checkbox">
-                            <label class="overboard" for="tostadas" onclick="checkDaBox(event)"><strong>tostadas,
-                                    totopos y
-                                    horneadas</strong></label>
-                        </div>
-                        <div class="check-box">
-                            <input type="checkbox" name="tlayudas" id="tlayudas-checkbox">
-                            <label for="tlayudas" onclick="checkDaBox(event)"><strong>tlayudas</strong></label>
-                        </div>
-                        <div class="check-box">
-                            <input type="checkbox" name="pozole" id="pozole-checkbox">
-                            <label for="pozole" onclick="checkDaBox(event)"><strong>pozole</strong></label>
-                        </div>
-                        <div class="check-box">
-                            <input type="checkbox" name="palomitas" id="palomitas-checkbox">
-                            <label for="palomitas" onclick="checkDaBox(event)"><strong>palomitas</strong></label>
-                        </div>
-                        <div class="check-box">
-                            <input type="checkbox" name="pinole" id="pinole-checkbox">
-                            <label for="pinole" onclick="checkDaBox(event)"><strong>pinole</strong></label>
-                        </div>
-                        <div class="check-box">
-                            <input type="checkbox" name="atole" id="atole-checkbox">
-                            <label for="atole" onclick="checkDaBox(event)"><strong>atole y atole agrio</strong></label>
-                        </div>
-
-                        <div class="check-box">
-                            <input type="checkbox" name="pozol" id="pozol-checkbox">
-                            <label for="pozol" onclick="checkDaBox(event)"><strong>pozol</strong></label>
-                        </div>
-
-                        <div class="check-box">
-                            <input type="checkbox" name="tejate" id="tejate-checkbox">
-                            <label for="tejate" onclick="checkDaBox(event)"><strong>tejate, tejuino o
-                                    tascalate</strong></label>
-                        </div>
-
-                        <fieldset class="lista-de-otros-container">
-                            <div>
-                                <div class="check-box">
-                                    <input type="checkbox" class="input-otros" name="otros" id="otros-checkbox"
-                                        otros="div.lista-de-otros button.btn-añade" onchange="showHideOtros(event)">
-                                    <label for="otros" onclick="checkDaBox(event)"><strong>Otros usos</strong></label>
-                                </div>
                             </div>
-                            <div class="lista-de-otros" id="otros-usos" style="display: none;"></div>
-                            <button type="button" class="btn-añade"
-                                onclick="void añadeOtro('otros-usos','template-otro-uso');"
-                                style="display: none;">&plus;</button>
+                            <div id="photo-bar">
+
+                            </div>
+                            <label for="input-fotos"><strong>Seleccione la imágen principal de su
+                                    e-lote.</strong></label>
+                            <input type="file" name="input-fotos" accept="image/*" onchange="treatImages(event)"
+                                id="input-fotos">
+                            <br>
+                            <button type="button" id="ya-estuvo" onclick="addPhoto(event)"
+                                class="botón botón-morado">Agregar
+                                nueva
+                                fotografía</button>
+                            <button type="button" id="btn-cancelar" onclick="cancelBarImages(event)"
+                                class="botón botón-rojo">Cancelar
+                                selección de
+                                imágenes</button>
                         </fieldset>
+                    </div>
+                    <div class="a-fieldset" id="fieldset-nombre-maíz">
+                        <fieldset>
+                            <legend><strong>el nombre por el que le conocen a este maíz es</strong></legend>
+                            <input type="text" name="input-nombre-completo" id="input-nombre-completo" minlength="5"
+                                maxlength="30" oninput="void actualizaNombreDeElote(event);">
+                        </fieldset>
+                    </div>
+                    <div class="a-fieldset">
+                        <fieldset id="usos-comunes">
+                            <legend><strong>son usos comunes para este maíz</strong></legend>
+                            <div class="check-box">
+                                <input type="checkbox" name="tortillas-checkbox" id="tortillas-checkbox">
+                                <label class="overboard" onclick="checkDaBox(event)"><strong>tortillas y
+                                        tacos</strong></label>
+                            </div>
+                            <div class="check-box">
+                                <input type="checkbox" name=garnachas-checkbox" id="garnachas-checkbox">
+                                <label onclick="checkDaBox(event)" class="muy-grande overboard"><strong>
+                                        quesadillas, gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas,
+                                        tlaxcales,
+                                        molotes
+                                        polcanes y panuchos</strong></label>
+                            </div>
+                            <div class="check-box">
+                                <input type="checkbox" name="tamales-checkbox" id="tamales-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>tamales y
+                                        torundas</strong></label>
+                            </div>
+                            <div class="check-box">
+                                <input type="checkbox" name="tostadas-checkbox" id="tostadas-checkbox">
+                                <label class="overboard" onclick="checkDaBox(event)"><strong>tostadas,
+                                        totopos y
+                                        horneadas</strong></label>
+                            </div>
+                            <div class="check-box">
+                                <input type="checkbox" name="tlayudas-checkbox" id="tlayudas-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>tlayudas</strong></label>
+                            </div>
+                            <div class="check-box">
+                                <input type="checkbox" name="pozole-checkbox" id="pozole-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>pozole</strong></label>
+                            </div>
+                            <div class="check-box">
+                                <input type="checkbox" name="palomitas-checkbox" id="palomitas-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>palomitas</strong></label>
+                            </div>
+                            <div class="check-box">
+                                <input type="checkbox" name="pinole-checkbox" id="pinole-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>pinole</strong></label>
+                            </div>
+                            <div class="check-box">
+                                <input type="checkbox" name="atole-checkbox" id="atole-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>atole y atole agrio</strong></label>
+                            </div>
+
+                            <div class="check-box">
+                                <input type="checkbox" name="pozol-checkbox" id="pozol-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>pozol</strong></label>
+                            </div>
+
+                            <div class="check-box">
+                                <input type="checkbox" name="tejate-checkbox" id="tejate-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>tejate, tejuino o
+                                        tascalate</strong></label>
+                            </div>
+
+                            <fieldset class="lista-de-otros-container">
+                                <div>
+                                    <div class="check-box">
+                                        <input type="checkbox" class="input-otros" name="otros-checkbox"
+                                            id="otros-checkbox" otros="div.lista-de-otros button.btn-añade"
+                                            onchange="showHideOtros(event)">
+                                        <label onclick="checkDaBox(event)"><strong>Otros usos</strong></label>
+                                    </div>
+                                </div>
+                                <div class="lista-de-otros" id="otros-usos" style="display: none;"></div>
+                                <button type="button" class="btn-añade"
+                                    onclick="void añadeOtro('otros-usos','template-otro-uso');"
+                                    style="display: none;">&plus;</button>
+                            </fieldset>
 
 
-                    </fieldset>
-
+                        </fieldset>
+                    </div>
                     <div class="switch-statement" id="switch-semilla-propia">
                         <div class="texto-medio statement">
                             <strong>La semilla que sembré para obtener este maíz</strong>
@@ -281,8 +287,8 @@
                         <div class="switch-container" onclick="void swicheaOpción(event);">
                             <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
                             <strong class="izquierda texto-grande-móvil seleccionado">es propia,</strong>
-                            <label class="switch" for="semilla-propia">
-                                <input type="checkbox" name="semilla-propia" id="si-es-semilla-propia"
+                            <label class="switch" for="si-es-semilla-propia">
+                                <input type="checkbox" name="si-es-semilla-propia" id="si-es-semilla-propia"
                                     onchange="void despliegalasOpciones(lasOpciones);" />
                                 <div class="slider round"></div>
                             </label>
@@ -302,8 +308,8 @@
                         <div class="switch-container" onclick="void swicheaOpción(event);">
                             <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
                             <strong class="izquierda seleccionado">la compré</strong>
-                            <label class="switch" for="comprada-truequeada">
-                                <input type="checkbox" name="comprada-truequeada" id="es-omprada-truequeada"
+                            <label class="switch" for="es-omprada-truequeada">
+                                <input type="checkbox" name="es-omprada-truequeada" id="es-omprada-truequeada"
                                     onchange="void despliegalasOpciones(lasOpciones);" />
                                 <div class="slider round"></div>
                             </label>
@@ -322,8 +328,8 @@
                         <div class="switch-container" onclick="void swicheaOpción(event);">
                             <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
                             <strong class="izquierda seleccionado">SI</strong>
-                            <label class="switch" for="recuerda-origen-distinto">
-                                <input type="checkbox" name="recuerda-origen-distinto"
+                            <label class="switch" for="usuario-recuerda-origen-distinto">
+                                <input type="checkbox" name="usuario-recuerda-origen-distinto"
                                     id="usuario-recuerda-origen-distinto"
                                     onchange="void despliegalasOpciones(lasOpciones);" />
                                 <div class="slider round"></div>
@@ -347,7 +353,7 @@
                     <div class="a-fieldset" id="fieldset-lugar-de-origen">
                         <fieldset>
                             <legend><strong>el lugar de orígen de la semilla es</strong></legend>
-                            <input type="text" name="lugar-de-origen" minlength="15" required>
+                            <input type="text" name="lugar-de-origen" minlength="15">
                             <small>ej. Comonfort, Guanajuato</small>
                         </fieldset>
                     </div>
@@ -851,7 +857,7 @@
 
 
         </main>
-        
+
     </div>
     <footer><code>CC NC SA 2024 Alianza por Nuestra Tortilla – Hecha con ♥ en México.</code></footer>
 
@@ -896,7 +902,8 @@
             var leCanvasWidth
             var leCanvasHeight
             var scaleFactor
-            var fileListAdHoc = [];
+
+            // var fileListAdHoc = []; // not used
             var webpURLArrAdHoc = [];
         </script>
 
@@ -919,7 +926,7 @@
         </script>
         <script>
             function resetPhotoArrays() {
-                fileListAdHoc = [];
+                //fileListAdHoc = [];
                 webpURLArrAdHoc = [];
             }
         </script>
@@ -941,13 +948,17 @@
                         //*****
                         let webpURL = canvas2webpURL(laFoto);
                         console.log(webpURL);
+                        console.log('separador');
+                        //comented out, not to be used
                         webpURLArrAdHoc.push(webpURL);
-                        fileListAdHoc.push(dataURLtoFile(url2Blob(webpURL), nameGenerator()));
-                        console.log(fileListAdHoc);
+
+                        //fileListAdHoc.push(dataURLtoFile(url2Blob(webpURL), nameGenerator()));                        
+                        //console.log(fileListAdHoc);
                     }
                 }
                 return true;
             }
+
         </script>
         <script>
             function nameGenerator() {
@@ -1287,12 +1298,15 @@
                 let canvasAdHoc = document.createElement('canvas');
                 canvasAdHoc.width = leMinWidthFoto;
                 canvasAdHoc.height = leMinHeightFoto;
-                console.log(originalImage, (scaledOriginX / scaleFactor), (scaledOriginY / scaleFactor), (scaledWidth / scaleFactor), (scaledHeight / scaleFactor), 0, 0, leMinWidthFoto, leMinHeightFoto);
+                ///--> -->
+                // --> --> --> commented but is useful
+                //console.log(originalImage, (scaledOriginX / scaleFactor), (scaledOriginY / scaleFactor), (scaledWidth / scaleFactor), (scaledHeight / scaleFactor), 0, 0, leMinWidthFoto, leMinHeightFoto);
                 canvasAdHoc.getContext('2d', { preserveDrawingBuffer: true }).drawImage(originalImage, (scaledOriginX / scaleFactor), (scaledOriginY / scaleFactor), (scaledWidth / scaleFactor), (scaledHeight / scaleFactor), 0, 0, leMinWidthFoto, leMinHeightFoto);
                 //return await drawImage(canvasAdHoc.toDataURL());
                 return canvasAdHoc;
             }
         </script>
+        <script src="../js/formScraperReduced.js"></script>
         <script>
             async function url2Blob(imageUrl) {
                 return await (await fetch(imageUrl)).blob();
@@ -1346,8 +1360,36 @@
     </section>
 
     <script>
+
+    </script>
+    <script>
         function despliegaMenú(event) {
             document.getElementById('side-menu').classList.toggle("show");
+        }
+    </script>
+
+    <script>
+        async function buildFormData(form) {
+
+            try {
+
+                let formData = new FormData(form);
+                // for (const key of formData.keys()) {
+                //     console.log(key);
+                // }
+                for (let index = 0; index < webpURLArrAdHoc.length; index++) {
+                    const webpURL = webpURLArrAdHoc[index];
+                    formData.append('fotografía[' + index + ']', await dataURL2Blob(webpURL), nameGenerator());
+                }
+                formData.append('forms-JSON', new Blob([JSON.stringify(formScraper(form) )], { type: "application/json" }), nameGenerator() )
+                for (const key of formData.keys()) {
+                    console.log(key);
+                }
+                return formData;
+
+            } catch (error) {
+                console.error(error);
+            }
         }
     </script>
 
