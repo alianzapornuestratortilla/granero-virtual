@@ -69,3 +69,11 @@ Thursday, January 18, 2024 @ 04:54:30 PM | Ya quedo la funcion de recogerdor dei
 
 Thursday, January 18, 2024 @ 07:29:55 PM | Agregue las notas del vendedor, Empiezo a ordenar el js para luego hacer la pñagina de como se ven ya reportado el 
 Se ordenó el JS del image formatter, ahora son dos archivos js externos. Se ocupa uno antes en el head y otro después del body, creo porque se definen unas funciones antes pero se ocupan unos eleemntos despuès.odría limpiarse màs
+
+Thursday, January 18, 2024 @ 09:19:58 PM | puse edita elote como solo lectura para evitar cambios accidentales con `chmod 444 ./edita-elote/edita-elote.html `sh de regreso con 774 creo
+
+## Thursday, January 25, 2024 @ 01:25:50 PM
+
+Se empezó mejor con el listado de e-llotes para caso de ver no más como vendedor y para caso de comprador
+Se agregó un stilo width 100% para telefono y tablet al body y auto para monitor
+SAlen dos '\\' en el Json stringify de `JSON.stringify( formScraper(document.getElementById('form-principal')))`. Hay que revisar después

@@ -35,6 +35,8 @@
     --rojo-dont: #cc0000;
     --pedicelo-claro-50: color-mix(in srgb, var(--pedicelo) 50%, white);
     --ancho-nav-var-desktop: 15rem;
+    --alto-foto-lista-desktop: 23rem;
+    --ancho-border-foto-secundaria: 3px;
 }
 
 
@@ -215,10 +217,86 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     align-content: center;
 }
 
+div.un-e-lote {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    margin: 1rem;
+    border: var(--ancho-border-foto-secundaria);
+    border-style: solid;
+    border-radius: 1rem;
+    min-width: 0;
+    /*flex*/
+    gap: 0.5rem;
+}
+
+div.un-e-lote div.multi-foto {
+    display: flex;
+    flex-direction: row;
+    max-width: 50%;
+    gap: 0.3rem;
+}
+
+ div.foto.principal {
+
+    flex-grow: 1;
+    flex-basis: 1;
+}
+
+
+div.un-e-lote div.foto img {
+    border-radius: 5%;
+    max-width: 95%;
+    border-width: var(--ancho-border-foto-secundaria);
+    border-style: solid;
+
+}
+
+div.un-e-lote div.foto.secundaria {
+    display: flex;
+    min-height: 0;
+    /*flex*/
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div.un-e-lote div.foto.secundaria img {
+border-radius: 10%;
+border-width: calc( var(--ancho-border-foto-secundaria) * 0.75 );
+}
+
+
+div.un-e-lote div.resumen-compacto-elote-lista {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow: hidden;
+    max-height: var(--alto-foto-lista-desktop);
+
+}
+
+div.un-e-lote div.resumen-extendido-elote-lista {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow: hidden;
+    max-height: var(--alto-foto-lista-desktop);
+    max-width: 50%;
+
+}
+
+
 @media screen and (min-width: 100px) {
+
+    /*phone*/
     body {
+        /* width: 100%; */
         max-width: 100%;
         padding: 0 2vw;
+        /* overflow: hidden; */
     }
 
     header.top {
@@ -226,7 +304,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         position: sticky;
         z-index: 100;
         top: 0; */
-        
+
         display: flex;
         flex-direction: row;
     }
@@ -361,7 +439,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
     form fieldset input:hover,
     form fieldset input:focus {
-        border: 3px solid;
+        border: var(--ancho-border-foto-secundaria) solid;
     }
 
     form fieldset.unidad-de-medida div.numero-opciones {
@@ -601,6 +679,31 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         margin: 3vh 0;
     }
 
+    div.un-e-lote {
+        font-size: 0.8rem;
+    }
+
+    div.un-e-lote div.multi-foto {
+        max-width: 30%;
+    }
+
+    div.un-e-lote div.resumen-compacto-elote-lista div legend {
+        display: none;
+    }
+
+    div.un-e-lote div.resumen-compacto-elote-lista div strong span.show-monitor {
+        display: inline;
+    }
+
+    div.un-e-lote div.resumen-extendido-elote-lista {
+        display: none;
+        
+    }
+
+    div.un-e-lote div.foto.secundaria {
+        display: none;
+    }
+
     @media screen and (min-width: 577px) {
 
         /* tablets */
@@ -634,7 +737,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         }
 
         form div.check-box input {
-            border: 3px solid;
+            border: var(--ancho-border-foto-secundaria) solid;
             border-radius: 0.2rem;
             outline: 2px solid;
         }
@@ -661,6 +764,9 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     }
 
     @media screen and (min-width: 993px) {
+        :root {
+            --alto-foto-lista-desktop: 15rem;
+        }
 
         /* desktop escritorio */
         html {
@@ -673,6 +779,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
 
         body {
             max-width: 100%;
+            width: auto;
             margin: 0 auto;
         }
 
@@ -689,7 +796,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
             max-height: fit-content;
             display: table-cell;
             width: var(--ancho-nav-var-desktop);
-            padding: 1rem;  
+            padding: 1rem;
             opacity: 100%;
         }
 
@@ -709,7 +816,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
             padding: 0.5rem;
             text-align: center;
         }
-        
+
         form fieldset,
         form div.switch-statement {
             margin: 3rem 0;
@@ -734,6 +841,52 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
             content: "✓";
             margin-left: 0.05rem;
             margin-bottom: 0.1rem;
+        }
+
+        div.un-e-lote {
+            height: calc(var(--alto-foto-lista-desktop)+ 2rem);
+
+        }
+
+        div.un-e-lote div.multi-foto {
+            max-width: 50%;
+        }
+
+
+        div.un-e-lote div.foto img.primaria {
+            max-height: var(--alto-foto-lista-desktop);
+        }
+        
+        div.un-e-lote div.foto.secundaria {
+            display: flex;
+        }
+
+        div.un-e-lote div.foto img.secundaria {
+            max-height: calc(var(--alto-foto-lista-desktop) * 0.95 * 0.3);
+        }
+
+        div.un-e-lote div.resumen-compacto-elote-lista {
+            min-width: 10rem;
+            padding: 0 0.5rem;
+        }
+
+        div.un-e-lote div.resumen-extendido-elote-lista {
+            display: flex;
+            column-gap: 1rem;
+            row-gap: 0.5rem;
+        }
+
+        div.un-e-lote div.resumen-compacto-elote-lista div legend {
+            display: block;
+            text-align: left;
+        }
+
+        div.un-e-lote div.resumen-compacto-elote-lista div strong span.show-monitor {
+            display: none;
+        }
+
+        div.un-e-lote div.resumen-extendido-elote-lista {
+            text-align: left;
         }
     }
 
@@ -789,7 +942,7 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
     }
 
     form fieldset legend {
-        color: var(--morado-texto);
+        color: var(--verde-palido);
     }
 
     form fieldset input {
@@ -910,7 +1063,14 @@ form fieldset fieldset.lista-de-otros-container button.btn-añade {
         background-color: var(--azul-oscuro);
     }
 
+    div.un-e-lote div.foto img {
+
+        border-color: orange;
+    }
+
 }
+
+
 
 @media (prefers-color-scheme: dark) {
     body {

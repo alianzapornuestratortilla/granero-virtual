@@ -39,8 +39,8 @@ function ladoOpuesto(elLado) {
 
 
 function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSwitches) {
+    //debugger
     
-    let displayProperty
     for (const currentComponentKey in childrenOfParentComponent) {
         
 
@@ -50,15 +50,19 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
         // debugger
         switch (show) {
             case "show":
-                // mostrarlo                
-                currentComponentInDOM.classList.remove("hide");
-                isRequired = true;
+                // mostrarlo si está oculto
+                
+                if (currentComponentInDOM.classList.contains('hide')) {
+                    currentComponentInDOM.classList.remove("hide");
+                }
+                
+                //isRequired = true;
                 break;
             // si es switch y en mostrar, evalua valor, si no                
             case "hide":
                 // solo ocultalo
                 currentComponentInDOM.classList.add("hide");
-                isRequired = false;
+                //isRequired = false;
 
                 break;
 

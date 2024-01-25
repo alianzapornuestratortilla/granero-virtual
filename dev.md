@@ -22,3 +22,6 @@
 - [x] textbox para comentarios extras que quieran abundar
 - [ ] chromium report bug checkboxes
 - [x] reorganizar el js del image generator,
+- [ ] corregiry separar script que corrige los titulos de la página, `botón-header`
+- [ ] agregar técnica de conservación junto al secado, etc.
+- [ ] refactorizar a SASS `https://youtu.be/9J__JAgQbS0`
