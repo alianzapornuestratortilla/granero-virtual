@@ -69,40 +69,22 @@
             content: 'en un equipo especializado, como un silo';
         }
 
-        @media screen and (min-width: 100px) {
-
-            /* teléfonos */
-            form fieldset#usos-comunes {
+        form fieldset#usos-comunes {
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: space-evenly;
                 align-items: center;
                 gap: 0.5rem;
+                column-gap: 1rem;
             }
 
+        @media screen and (min-width: 993px) {
+            /* escritorio desktop*/
 
-
-            @media screen and (min-width: 577px) {
-
-                /* tablets */
+            body main div#contenido-main {
+                max-width: var(--current-main-max-width);
+                margin: 0 auto;
             }
-
-            @media screen and (min-width: 993px) {
-                /* escritorio desktop*/
-
-                body main div#contenido-main {
-                    max-width: var(--current-main-max-width);
-                    margin: 0 auto;
-                }
-            }
-
-            @media (prefers-color-scheme: light) {
-                form fieldset legend {
-                    color: var(--verde-palido);
-                }
-            }
-
-            @media (prefers-color-scheme: dark) {}
         }
     </style>
 </head>
@@ -326,6 +308,29 @@
                         </div>
                     </div>
 
+                    <div class="switch-statement" id="switch-nativo">
+                        <div class="texto-medio statement">
+                            <strong>este grano de maíz es</strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">nativo o criollito</strong>
+                            <label class="switch" for="nativo">
+                                <input type="checkbox" name="nativo" id="nativo"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">híbrido</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong><span></span></strong>
+                            <small>El maíz <a href="">nativo o criollo</a> es aquel que la semilla se conserva de ciclo a ciclo y conserva sus características. Es una herencia de nuestros antepasados y nuestro patrimonio biológico y cultural.</small>
+                            <br>
+                            <small>El maíz <a href="">híbrido</a> es el que venden las semilleras para usarse con paquetes tecnológicos que también le venden. Su enfoque es el rendimento en peso en lugar de calidad del grano.</small>
+                        </div>
+                    </div>
+
                     <div class="switch-statement" id="switch-origen-distinto">
                         <div class="texto-medio statement">
                             <strong></strong>
@@ -359,6 +364,7 @@
                         <fieldset>
                             <legend><strong>el lugar de orígen de la semilla es</strong></legend>
                             <input type="text" name="lugar-de-origen" minlength="15">
+                            <br>
                             <small>ej. Comonfort, Guanajuato</small>
                         </fieldset>
                     </div>
@@ -672,7 +678,7 @@
                             <div class="numero-opciones">
                                 <div class="cifra">
                                     <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
-                                        class="valor-medido" min="0" name="precio-por-unidad-de-medidaper-sé"
+                                        class="valor-medido" min="0" name="precio-por-unidad-de-medidaper-sé" id="precio-por-unidad-de-medidaper-sé"
                                         onchange="void valorVálido(event);">
                                     <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
                                 </div>
@@ -692,7 +698,21 @@
                             <div class="numero-opciones">
                                 <div class="cifra">
                                     <input type="number" min="0" step="0.01" class="valor-medido" placeholder="86"
-                                        name="cantidad-de-grano-disponible-per-sé">
+                                        name="cantidad-de-grano-disponible-per-sé" id="cantidad-de-grano-disponible-per-sé">
+                                </div>
+                                <select name="opciones-unidad-de-medida-per-sé-cantidad"
+                                    class="opciones-unidad-de-medida"></select>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="a-fieldset" id="fieldset-cantidad-mínima-de-venta">
+                        <fieldset class="unidad-de-medida">
+                            <legend><strong>la cantidad mínima de grano que vendo es de</strong></legend>
+                            <div class="numero-opciones">
+                                <div class="cifra">
+                                    <input type="number" min="0" step="0.01" class="valor-medido" placeholder="86"
+                                        name="cantidad-mínima-de-venta" id="cantidad-mínima-de-venta">
                                 </div>
                                 <select name="opciones-unidad-de-medida-per-sé-cantidad"
                                     class="opciones-unidad-de-medida"></select>
@@ -738,6 +758,51 @@
                         <div class="texto-medio statement">
                             <strong><span class="variable izquierdo" id="switch-secado-1"></span></strong>
                         </div>
+                    </div>
+
+                    <div class="switch-statement" id="switch-conservación">
+                        <div class="texto-medio statement">
+                            <strong></strong>
+                        </div>
+                        <div class="switch-container" onclick="void swicheaOpción(event);">
+                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            <strong class="izquierda seleccionado">NO</strong>
+                            <label class="switch" for="conservación-del-grano">
+                                <input type="checkbox" name="conservación-del-grano" id="conservación-del-grano"
+                                    onchange="void despliegalasOpciones(lasOpciones);" />
+                                <div class="slider round"></div>
+                            </label>
+                            <strong class="derecha">SI</strong>
+
+                        </div>
+                        <div class="texto-medio statement">
+                            <strong>utilicé algún método para protegerlo de insectos<span></span></strong>
+                            <br>
+                            <small> se utiliza normalmente la cal o pastilla de fosfuro de aluminio</small>
+                        </div>
+                        
+                    </div>
+
+                    <div class="a-fieldset" id="cual-conservación">
+                        <fieldset>
+                    
+                            <legend><strong>utilicé</strong></legend>
+                            <div class="check-box">
+                                <input type="checkbox" name="cal-checkbox" id="cal-checkbox">
+                                <label class="overboard" onclick="checkDaBox(event)"><strong>cal</strong></label>
+                            </div>
+                    
+                            <div class="check-box">
+                                <input type="checkbox" name="fosfuro-checkbox" id="fosfuro-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>pastilla de fosfuro de aluminio</strong></label>
+                            </div>
+                    
+                            <div>
+                                <legend><strong>Otros</strong>
+                                </legend>
+                                <input type="text" name="conservación-otros" minlength="4">
+                            </div>
+                        </fieldset>
                     </div>
 
 
@@ -883,11 +948,11 @@
 
     <dialog id="photo-cropping-modal">
         <div class="header">
-            <button class="photo-cropping-modal-close" onclick="closePhotoCroppingModal(event)">Cancelar
-                <strong>&times;</strong></button>
+            <!-- <button class="photo-cropping-modal-close" onclick="closePhotoCroppingModal(event)">Cancelar
+                <strong>&times;</strong></button> -->
         </div>
         <div class="body">
-            Mantenga dentro del rectángulo lo que quiera conservar de la imágen.
+            <p>Mantenga dentro del rectángulo lo que quiera conservar de la imágen.</p>
             <div id="canvas-container">
                 <div id="rectangle-container"></div>
             </div>
@@ -987,12 +1052,20 @@
             document.getElementById('btn-submit-text').innerHTML = docVars["btn-submit"];
 
         </script>
-        
+
         <script>
             const lasOpciones = {
                 "switch-semilla-propia": {
-                    "izquierda": {},
+                    "izquierda": {
+                        "fieldset-notas-del-vendedor": true,
+                    },
                     "derecha": {
+                        "switch-nativo": {
+                            "izquierda": {
+                                "fieldset-notas-del-vendedor": true,
+                            },
+                            "derecha": {}
+                        },
                         "switch-comprada-truequeada": {
                             "izquierda": {},
                             "derecha": {}
@@ -1033,6 +1106,7 @@
                     "izquierda": {
                         "fieldset-precio-por-unidad-de-medida-per-sé": true,
                         "fieldset-cantidad-de-grano-disponible-per-sé": true,
+                        "fieldset-cantidad-mínima-de-venta": true, 
                         "switch-secado": {
                             "izquierda": {},
                             "derecha": {}
@@ -1040,6 +1114,12 @@
                         "switch-desgranado": {
                             "izquierda": {},
                             "derecha": {}
+                        },
+                        "switch-conservación": {
+                            "izquierda": {},
+                            "derecha": {
+                                "cual-conservación":true
+                            }
                         },
                         "switch-cuenta-con-análisis-de-aflatoxinas": {
                             "izquierda": {},
@@ -1052,8 +1132,7 @@
                             "derecha": {
                                 "fieldset-análisis-NMX-FF-034": true
                             }
-                        },
-                        "fieldset-notas-del-vendedor": true,
+                        },                        
                         "switch-servicios": {
                             "izquierda": {},
                             "derecha": {

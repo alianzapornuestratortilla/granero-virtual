@@ -6,7 +6,7 @@
     height: calc((100vh - 6px) - 0em);
     user-select: text;
     overflow: auto;
-    background-color: rgba(255, 255, 255, 0.7);
+
 }
 
 dialog#photo-cropping-modal div.body {
@@ -52,12 +52,21 @@ div#photo-bar {
 
 div#photo-bar img,
 div#photo-bar canvas {
-    max-width: 45%;
+    max-width: 90%;
     margin: 5px;
     border: 3px;
     border-style: solid;
     border-color: orange;
     border-radius: 5%;
+}
+
+@media screen and (min-width: 577px) {
+
+    div#photo-bar img,
+    div#photo-bar canvas {
+        max-width: 45%;
+
+    }
 }
 
 #input-fotos {

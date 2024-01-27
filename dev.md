@@ -23,5 +23,8 @@
 - [ ] chromium report bug checkboxes
 - [x] reorganizar el js del image generator,
 - [ ] corregiry separar script que corrige los titulos de la página, `botón-header`
-- [ ] agregar técnica de conservación junto al secado, etc.
+- [ ] agregar técnica de conservación (pastilla, cal) junto al secado, etc.
 - [ ] refactorizar a SASS `https://youtu.be/9J__JAgQbS0`
+- [ ] agregar nativo/híbrido
+- [ ] agregar cantidad mínima de grano
+- [ ] agregar codigo postal donde lo tengo almacenado o en  donde está guardado

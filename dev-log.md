@@ -77,3 +77,5 @@ Thursday, January 18, 2024 @ 09:19:58 PM | puse edita elote como solo lectura pa
 Se empezó mejor con el listado de e-llotes para caso de ver no más como vendedor y para caso de comprador
 Se agregó un stilo width 100% para telefono y tablet al body y auto para monitor
 SAlen dos '\\' en el Json stringify de `JSON.stringify( formScraper(document.getElementById('form-principal')))`. Hay que revisar después
+
+Thursday, January 25, 2024 @ 10:12:44 PM | se está pasando a scss, se quedño en linea 720 del css copy, form fieldset

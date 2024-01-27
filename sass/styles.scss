@@ -1,0 +1,1176 @@
+$crema: #f7e6b5;
+$crema-oscuro: #cbb051;
+$germen: #f2e186;
+$pedicelo: #ffeaad;
+$morado-texto: #421052;
+$morado-texto-dark: color-mix(in srgb, $morado-texto 30%, white);
+$morado-oscuro: #421152;
+$morado-claro: #785887;
+$morado-claro-x2: color-mix(in srgb, $morado-claro 70%, white);
+$morado-claro-x1-2: color-mix(in srgb, $morado-claro 85%, white);
+$amarillo-claro: #f2bd2d;
+$amarillo-oscuro: #f4aa2e;
+$rojo-claro: #c5584d;
+$rojo-oscuro: #831515;
+$azul-claro: #3b648d;
+$azul-oscuro: #00355f;
+
+$verde-palido: #86BC42;
+$azul-mensaje: #007fff;
+$azul-mensaje-claro: color-mix(in srgb, $azul-mensaje 70%, white);
+$verde-mas: #5cb85c;
+
+$dark-grey: #121212;
+$lighter-dark-gray-1: lighten($dark-grey, 5%);
+$lighter-dark-gray-2: lighten($dark-grey, 10%);
+$lighter-dark-gray-3: lighten($dark-grey, 15%);
+$separador: 1rem;
+$switch-izquierdo: $morado-claro;
+$switch-izquierdo-dark: $morado-claro-x2;
+$switch-derecho: $rojo-claro;
+$switch-derecho-dark: $rojo-claro;
+$fondo-blanco: color-mix(in srgb, white 99%, black);
+$sticky-height-teléfono: 60px;
+$rojo-dont: #cc0000;
+$pedicelo-claro-50: color-mix(in srgb, $pedicelo 50%, white);
+$ancho-nav-var-desktop: 15rem;
+$alto-foto-lista-desktop: 23rem;
+$ancho-border-foto-secundaria: 3px;
+$base-font-size: 17px;
+
+
+html {
+
+
+    font-size: $base-font-size;
+    font-family: 'Noto Sans', sans-serif;
+
+    @media screen and (min-width: 577px) {
+        font-size: larger;
+    }
+
+    @media screen and (min-width: 993px) {
+
+        $base-font-size: calc(17px*1.2);
+        font-size: $base-font-size;
+    }
+
+}
+
+h1 {
+    text-align: center;
+
+    color: $azul-claro;
+
+    @media (prefers-color-scheme: dark) {
+        color: $fondo-blanco;
+    }
+}
+
+span.all-petite-caps {
+    font-variant-caps: all-petite-caps;
+}
+
+button.botón-morado {
+    background-color: $morado-claro;
+    color: $fondo-blanco;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $morado-oscuro;
+        color: $crema;
+    }
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+button.botón-rojo {
+    background-color: $rojo-claro;
+    color: $fondo-blanco;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $rojo-oscuro;
+        color: $crema;
+    }
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+}
+
+dialog {
+    @media (prefers-color-scheme: dark) {
+        background-color: $lighter-dark-gray-1;
+    }
+
+    div.body {
+        @media (prefers-color-scheme: dark) {
+            color: $fondo-blanco;
+        }
+    }
+}
+
+body {
+    max-width: 100%;
+    padding: 0 2vw;
+
+    @media screen and (min-width: 577px) {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media screen and (min-width: 993px) {
+        max-width: 100%;
+        width: auto;
+        margin: 0 auto;
+
+        div.contenido-pantalla {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        main {
+            display: table-cell;
+            width: max-content;
+            padding: 0.5rem;
+            text-align: center;
+        }
+    }
+
+    background-color: $fondo-blanco;
+    color: $dark-grey;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $dark-grey;
+        color: $fondo-blanco;
+    }
+
+
+}
+
+// body header
+
+body header.top {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $lighter-dark-gray-1;
+    }
+
+    #da-menu {
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        @media screen and (min-width: 993px) {
+            display: none;
+        }
+
+    }
+
+    svg {
+        padding: 10px 20px;
+        width: 30px;
+        cursor: pointer;
+
+        @media screen and (min-width: 577px) {
+            width: 40px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            stroke: $crema;
+        }
+    }
+
+    div#logotipo {
+        width: 65%;
+        margin-right: 30px;
+        text-align: center;
+
+        img {
+            border-radius: 0.4rem;
+            width: 100%;
+            max-width: 360px;
+            margin-top: 0.5rem;
+
+            @media (prefers-color-scheme: dark) {
+                background-color: $crema-oscuro;
+            }
+        }
+    }
+}
+
+//aside
+
+@mixin sidebar-desktop {
+    @media screen and (min-width: 993px) {
+        max-height: fit-content;
+        display: table-cell;
+        width: $ancho-nav-var-desktop;
+        padding: 1rem;
+        opacity: 100%;
+
+        visibility: visible;
+    }
+}
+
+aside#side-menu {
+
+    max-height: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    opacity: 0%;
+    visibility: hidden;
+    transition: all 0.6s 0s ease-in-out;
+
+    @include sidebar-desktop;
+
+    &.show {
+        transition: all 0.7s 0s ease-in-out;
+        visibility: visible;
+        overflow: auto;
+        max-height: 300vh;
+        padding: 1rem;
+        opacity: 100%;
+        max-width: 70vw;
+        @include sidebar-desktop;
+
+        nav#contenido-sidebar {
+
+            height: auto;
+            overflow-y: auto;
+
+            @media screen and (min-width: 993px) {
+                position: sticky;
+                top: 3rem;
+                max-height: 80vh;
+
+            }
+
+        }
+
+    }
+
+    nav#contenido-sidebar {
+        ul {
+            list-style: disc;
+            overflow: hidden;
+
+            li {
+                line-height: 2;
+            }
+        }
+    }
+
+}
+
+
+//main
+
+main header {
+
+    display: flex;
+    flex-flow: row nowrap; //nowrap?
+    justify-content: space-between;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    background-color: $fondo-blanco;
+    padding-bottom: 10px;
+
+
+    @media screen and (min-width: 993px) {
+        width: 100%;
+    }
+
+    background-color: $fondo-blanco;
+    opacity: 1;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $lighter-dark-gray-1;
+        padding: 0.5rem;
+    }
+
+    div#subtítulo-derecho {
+        padding-right: 10px;
+
+        button.cancelar {
+            font-size: 1rem;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+
+            background-color: $rojo-claro;
+            color: $fondo-blanco;
+
+            @media (prefers-color-scheme: dark) {
+                background-color: $rojo-oscuro;
+                box-shadow: 1px 1px 4px 0 rgba(254, 254, 254, 0.666);
+            }
+
+            &:hover,
+            &:focus {
+                background-color: $rojo-oscuro;
+
+                @media (prefers-color-scheme: dark) {
+                    background-color: $rojo-claro;
+                }
+            }
+
+            &:active {
+                background-color: $amarillo-oscuro;
+                color: $morado-texto;
+
+                @media (prefers-color-scheme: dark) {
+                    background-color: $amarillo-oscuro;
+                    color: $morado-texto;
+                }
+            }
+        }
+    }
+
+
+
+    background-color: $fondo-blanco;
+    opacity: 1;
+
+
+
+
+
+    div#subtítulo-izquierdo {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        padding-left: 10px;
+
+        h4#subtíulo-top {
+            font-size: 0.7rem;
+            padding: 0;
+            margin: 0;
+            display: block;
+
+            color: $azul-mensaje;
+
+            @media (prefers-color-scheme: dark) {
+                color: $azul-mensaje;
+            }
+        }
+
+        h3#subtíulo-bottom {
+            font-size: 1rem;
+            padding: 0;
+            margin: 0;
+            display: block;
+
+            color: $rojo-claro;
+
+            @media (prefers-color-scheme: dark) {
+                color: $rojo-claro;
+            }
+        }
+
+    }
+}
+
+
+
+//form
+
+form {
+    margin-top: 0.5rem;
+    max-width: 100%;
+
+    fieldset {
+        margin: 5vh 0;
+        border: none;
+        border-radius: 3vw;
+
+        @media screen and (min-width: 577px) {
+            margin: 1rem 0;
+            border: none;
+            border-radius: 3vw;
+        }
+
+        border-color: $rojo-claro;
+
+        legend {
+            font-size: larger;
+
+            @media screen and (min-width: 993px) {
+                text-align: center;
+            }
+
+            color: $verde-palido;
+
+            @media (prefers-color-scheme: dark) {
+                color: $morado-texto-dark;
+            }
+        }
+
+        input {
+            font-size: larger;
+            border: $ancho-border-foto-secundaria solid;
+            border-radius: 2.5vw;
+            width: 94%;
+            padding: 0.2rem 0.4rem;
+            margin: 1vw 0;
+            outline: none;
+
+            @media (prefers-color-scheme: dark) {
+                background-color: $lighter-dark-gray-2;
+                border-color: $crema-oscuro;
+                color: lightgray;
+            }
+
+            &:hover,
+            &:focus {
+                border: $ancho-border-foto-secundaria solid;
+                border-color: $crema;
+                background-color: color-mix(in srgb, $fondo-blanco) 30%, white;
+
+                @media (prefers-color-scheme: dark) {
+                    border-color: $crema;
+                    background-color: $lighter-dark-gray-2;
+                }
+            }
+
+            &:active {
+                border-color: $amarillo-oscuro;
+                background-color: white;
+
+                @media (prefers-color-scheme: dark) {
+                    border-color: $amarillo-oscuro;
+                    background-color: $lighter-dark-gray-3;
+                }
+            }
+
+            &::placeholder,
+            &::-webkit-input-placeholder {
+                /* Edge */
+                color: lightgray;
+                @media (prefers-color-scheme: dark) {
+                    color: $lighter-dark-gray-3;
+                }
+            }
+
+            background-color: color-mix(in srgb, $fondo-blanco) 40%,
+            white;
+            border-color: $azul-claro;
+
+
+        }
+
+        small {
+            @media screen and (min-width: 993px) {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+form fieldset.unidad-de-medida {
+    div.numero-opciones {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    div.cifra {
+        text-align: center;
+        width: 100%;
+
+        span.currency-companion {
+            font-size: 1.5rem;
+        }
+
+        input.valor-medido {
+            max-width: 8ch;
+            text-align: center;
+
+        }
+    }
+
+    select.opciones-unidad-de-medida {
+        font-size: 1.5rem;
+        text-align: center;
+        max-width: 90%;
+        border-radius: 5px;
+
+        background-color: $pedicelo-claro-50;
+
+        @media (prefers-color-scheme: dark) {
+            background-color: $lighter-dark-gray-2;
+            color: lightgray;
+        }
+
+    }
+}
+
+form fieldset textarea[role="textbox"] {
+    border-radius: 7px;
+    width: calc(100% - 30px);
+    font-size: 0.9rem;
+    max-width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    /* height: 10rem; */
+    min-height: 5rem;
+    margin-top: 20px;
+    resize: vertical;
+    line-height: 1.5;
+
+    background-color: $pedicelo-claro-50;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $lighter-dark-gray-2;
+        color: lightgray;
+    }
+}
+
+form div.check-box {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 0;
+
+
+    @media screen and (min-width: 993px) {
+        padding: 0;
+        margin: 0.5rem 0;
+        line-height: 1;
+    }
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+
+
+
+    input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        position: static;
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 1px solid;
+        border-radius: 1vw;
+        cursor: pointer;
+
+        @media screen and (min-width: 577px) {
+            border: --ancho-border-foto-secundaria solid;
+            border-radius: 0.2rem;
+            outline: 2px solid;
+
+        }
+
+        border-color: $morado-claro;
+        background-color: $crema;
+        outline-color: $morado-texto;
+
+        @media (prefers-color-scheme: dark) {
+            background-color: $azul-claro;
+        }
+
+        &:hover {
+            background-color: $morado-claro-x2;
+        }
+
+        &:checked {
+            color: $fondo-blanco;
+            background-color: $amarillo-oscuro;
+        }
+
+        &:checked:after {
+            text-align: center;
+            font-size: x-large;
+            font-weight: bold;
+            content: '✓';
+            margin-left: 0.15rem;
+            margin-bottom: 0.15rem;
+            position: relative;
+            right: 4px;
+            top: -14px;
+
+            @media screen and (min-width: 577px) {
+                text-align: right;
+                font-size: xx-large;
+                content: "✓";
+                margin-left: 0.25rem;
+            }
+
+            @media screen and (min-width: 993px) {
+                text-align: right;
+                font-size: xx-large;
+                content: "✓";
+                margin-left: 0.05rem;
+                margin-bottom: 0.1rem;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                color: $morado-texto;
+            }
+        }
+
+    }
+
+    label {
+        font-size: larger;
+        cursor: pointer;
+
+        color: $morado-texto;
+
+        @media (prefers-color-scheme: dark) {
+            color: $morado-texto-dark;
+        }
+
+        &:hover {
+            color: $rojo-claro;
+            cursor: pointer;
+        }
+
+        &.muy-grande {
+            max-width: 80%;
+        }
+
+    }
+}
+
+form fieldset label.input-contraseña {
+    position: relative;
+
+    svg {
+        position: absolute;
+        top: -6px;
+        right: 7px;
+        width: 32px;
+        height: 32px;
+
+        color: $dark-grey;
+
+        @media (prefers-color-scheme: dark) {
+            color: $fondo-blanco;
+        }
+    }
+}
+
+form fieldset fieldset.lista-de-otros-container {
+    margin: 0 0.3rem;
+
+    button.btn-añade {
+        font-size: xx-large;
+        line-height: 0.7;
+
+        height: 50px;
+        width: 50px;
+        margin: 0 auto;
+
+    }
+}
+
+form fieldset div.lista-de-otros fieldset {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.5rem;
+
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+
+    input {
+        max-width: 90%;
+
+    }
+
+    button.btn-cerrar-x {
+        font-size: xx-large;
+        line-height: 1;
+        padding: 0 7px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+
+        background-color: $rojo-dont;
+        color: $fondo-blanco;
+
+        &:hover,
+        &.focus {
+            background-color: $rojo-claro;
+            color: $fondo-blanco;
+        }
+    }
+
+}
+
+form fieldset#fotografías-del-e-lote {
+    text-align: center;
+
+    input#input-fotos {
+        margin-bottom: 8px;
+    }
+
+    button {
+        margin: 0.5rem;
+    }
+}
+
+button.botón {
+    margin: 8px auto;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button[type="submit"] {
+    display: block;
+    font-size: x-large;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid;
+    border-radius: 3vw;
+    margin: 5vh auto;
+    cursor: pointer;
+
+    @media screen and (min-width: 577px) {
+        display: block;
+        font-size: 1.35rem;
+        padding: 1rem 1rem;
+        border: 2px solid;
+        border-radius: 2rem;
+        margin: 2rem auto;
+    }
+
+    border-color: $azul-mensaje;
+    color: white;
+    background-color: $azul-mensaje;
+
+    @media (prefers-color-scheme: dark) {
+        border-color: $azul-mensaje;
+        color: white;
+        background-color: $azul-mensaje;
+    }
+
+    &:hover,
+    &:focus {
+
+        border-color: $azul-mensaje-claro;
+        background-color: $azul-mensaje-claro;
+
+        @media (prefers-color-scheme: dark) {
+            border-color: $azul-mensaje-claro;
+            background-color: $azul-mensaje-claro;
+        }
+    }
+
+    &:active {
+        border-color: $azul-oscuro;
+        background-color: $azul-oscuro;
+
+        @media (prefers-color-scheme: dark) {
+            border-color: $crema-oscuro;
+            background-color: $crema-oscuro;
+        }
+    }
+}
+
+form div.switch-statement,
+form div.a-fieldset {
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    height: auto;
+    max-height: 1000px;
+    margin: 0.75rem 0;
+
+    /* necesario para que funcione la transición de altura aparecer-desaparecer*/
+    &.hide {
+        transition: all 0.5s 0s ease-in-out;
+        max-height: 0;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        opacity: 0%;
+    }
+}
+
+form div.switch-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media screen and (min-width: 993px) {
+        margin: 0.75rem 0;
+    }
+
+    strong {
+        opacity: 0.5;
+        cursor: pointer;
+        transition: .6s;
+        font-size: 0.8rem;
+        max-width: 30%;
+
+        @media screen and (min-width: 993px) {
+            font-size: 1.1rem;
+            max-width: 30%;
+        }
+
+        &.muy-grande {
+            max-width: 40%;
+        }
+
+        &.izquierda {
+            color: $switch-izquierdo;
+
+            @media (prefers-color-scheme: dark) {
+                color: $switch-izquierdo-dark;
+            }
+        }
+
+        &.derecha {
+            color: $switch-derecho;
+
+            @media (prefers-color-scheme: dark) {
+                color: $switch-derecho-dark;
+            }
+        }
+
+        &.izquierda:hover,
+        &.derecha:hover {
+            filter: brightness(1.3);
+            transition: 0.3s;
+            font-size: larger;
+        }
+
+        &.seleccionado {
+            font-size: 1.6rem;
+            transition: .6s;
+            opacity: 1;
+            font-size: 1.4rem;
+            max-width: 40%;
+
+            &.muy-grande {
+                max-width: 35%;
+                font-size: large;
+            }
+
+            &.texto-grande-móvil {
+                font-size: 1.1rem;
+            }
+        }
+
+    }
+
+}
+
+form div.switch-statement div.statement {
+    color: $switch-izquierdo;
+
+    @media (prefers-color-scheme: dark) {
+        color: $switch-izquierdo-dark;
+    }
+
+    &.izquierdo {
+        color: $switch-izquierdo;
+
+        @media (prefers-color-scheme: dark) {
+            color: $switch-izquierdo-dark;
+        }
+    }
+
+    &.derecho {
+        color: $switch-derecho;
+
+        @media (prefers-color-scheme: dark) {
+            color: $switch-derecho-dark;
+        }
+    }
+}
+
+form .switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 70px;
+
+    input {
+        display: none;
+    }
+
+    .slider {
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: .3s;
+        width: 70px;
+
+        background-color: $switch-izquierdo;
+
+        @media (prefers-color-scheme: dark) {
+            background-color: $switch-izquierdo-dark;
+        }
+
+        &:hover {
+            filter: brightness(1.1);
+        }
+
+        &:before {
+            background-color: $germen;
+            bottom: 4px;
+            content: "";
+            height: 26px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 26px;
+        }
+
+        &.round {
+            border-radius: 34px;
+
+            &:before {
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+form .switch input:checked+.slider {
+    background-color: $switch-derecho;
+
+    &:before {
+        transform: translateX(36px);
+    }
+}
+
+form div.texto-medio {
+    text-align: center;
+
+    color: $morado-texto;
+
+    @media (prefers-color-scheme: dark) {
+        color: $morado-texto-dark;
+    }
+
+    strong {
+
+        font-size: larger;
+
+        @media screen and (min-width: 577px) {
+            font-size: x-large;
+        }
+
+    }
+}
+
+form fieldset input {
+    font-family: 'Noto Sans Mono', monospace;
+    font-weight: bold;
+}
+
+form fieldset.unidad-de-medida input[type=number] {
+
+    appearance: texfield;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+form fieldset fieldset.lista-de-otros-container button.btn-añade {
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    border: none;
+
+    background-color: $verde-mas;
+    color: $fondo-blanco;
+
+}
+
+//opcion
+
+div.opción {
+    text-align: center;
+    font-size: larger;
+    margin: 3vh 0;
+
+    a:link {
+        @media (prefers-color-scheme: dark) {
+            color: $crema;
+        }
+
+    }
+
+    a:visited {
+        @media (prefers-color-scheme: dark) {
+            color: $crema-oscuro;
+        }
+    }
+}
+
+// un-e-lote
+
+div.un-e-lote {
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    margin: 1rem;
+    border: $ancho-border-foto-secundaria;
+    border-style: solid;
+    border-radius: 1rem;
+    min-width: 0;
+    /*flex*/
+    gap: 0.5rem;
+
+    @media screen and (min-width: 993px) {
+        height: calc($alto-foto-lista-desktop) + 2rem;
+    }
+}
+
+div.un-e-lote div.multi-foto {
+    display: flex;
+    flex-direction: row;
+    max-width: 30%;
+    gap: 0.3rem;
+
+    @media screen and (min-width: 993px) {
+        max-width: 50%;
+    }
+
+    div.foto img {
+        border-radius: 5%;
+        max-width: 95%;
+        border-width: $ancho-border-foto-secundaria;
+        border-style: solid;
+
+        border-color: orange;
+
+    }
+
+    div.foto.principal {
+
+        flex-grow: 1;
+        flex-basis: 1;
+
+        @media screen and (min-width: 993px) {
+            img.primaria {
+                max-height: $alto-foto-lista-desktop;
+            }
+        }
+    }
+
+    div.un-e-lote div.foto.secundaria {
+        display: none;
+        min-height: 0;
+        /*flex*/
+        flex-direction: column;
+        justify-content: space-between;
+
+        @media screen and (min-width: 993px) {
+            display: flex;
+        }
+
+        img {
+            border-radius: 10%;
+            border-width: calc($ancho-border-foto-secundaria * 0.75);
+
+            @media screen and (min-width: 993px) {
+                max-height: calc($alto-foto-lista-desktop) * 0.95 * 0.3;
+            }
+        }
+    }
+}
+
+div.un-e-lote div.resumen-compacto-elote-lista {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow: hidden;
+    max-height: $alto-foto-lista-desktop;
+
+    @media screen and (min-width: 993px) {
+        display: flex;
+        min-width: 10rem;
+        padding: 0 0.5rem;
+
+        div legend {
+            display: block;
+            text-align: left;
+        }
+    }
+
+    div legend {
+        display: none;
+
+        @media screen and (min-width: 993px) {
+            display: block;
+        }
+    }
+
+    div strong span.show-monitor {
+        display: inline;
+
+        @media screen and (min-width: 993px) {
+            display: none;
+        }
+    }
+
+}
+
+div.un-e-lote div.resumen-extendido-elote-lista {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow: hidden;
+    max-height: $alto-foto-lista-desktop;
+    max-width: 50%;
+
+    @media screen and (min-width: 993px) {
+        display: flex;
+        text-align: left;
+    }
+
+}
+
+@media screen and (min-width: 993px) {}
+
+@media screen and (min-width: 577px) {}
+
+@media (prefers-color-scheme: light) {}
+
+@media (prefers-color-scheme: dark) {}
