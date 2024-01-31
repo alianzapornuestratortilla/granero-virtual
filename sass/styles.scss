@@ -34,10 +34,15 @@ $sticky-height-teléfono: 60px;
 $rojo-dont: #cc0000;
 $pedicelo-claro-50: color-mix(in srgb, $pedicelo 50%, white);
 $ancho-nav-var-desktop: 15rem;
-$alto-foto-lista-desktop: 23rem;
+$alto-foto-lista-desktop: 17rem;
 $ancho-border-foto-secundaria: 3px;
 $base-font-size: 17px;
 
+
+$tablet: "screen and (min-width: 577px)";
+$desktop: "screen and (min-width: 993px)";
+$light: "(prefers-color-scheme: light)";
+$dark: "(prefers-color-scheme: dark)";
 
 html {
 
@@ -45,11 +50,11 @@ html {
     font-size: $base-font-size;
     font-family: 'Noto Sans', sans-serif;
 
-    @media screen and (min-width: 577px) {
+    @media #{$tablet} {
         font-size: larger;
     }
 
-    @media screen and (min-width: 993px) {
+    @media #{$desktop} {
 
         $base-font-size: calc(17px*1.2);
         font-size: $base-font-size;
@@ -62,12 +67,13 @@ h1 {
 
     color: $azul-claro;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         color: $fondo-blanco;
     }
 }
 
-span.all-petite-caps {
+span.all-petite-caps,
+li.all-petite-caps {
     font-variant-caps: all-petite-caps;
 }
 
@@ -75,7 +81,7 @@ button.botón-morado {
     background-color: $morado-claro;
     color: $fondo-blanco;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         background-color: $morado-oscuro;
         color: $crema;
     }
@@ -89,7 +95,7 @@ button.botón-rojo {
     background-color: $rojo-claro;
     color: $fondo-blanco;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         background-color: $rojo-oscuro;
         color: $crema;
     }
@@ -100,12 +106,12 @@ button.botón-rojo {
 }
 
 dialog {
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         background-color: $lighter-dark-gray-1;
     }
 
     div.body {
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             color: $fondo-blanco;
         }
     }
@@ -113,17 +119,19 @@ dialog {
 
 body {
     max-width: 100%;
-    padding: 0 2vw;
 
-    @media screen and (min-width: 577px) {
+
+    @media #{$tablet} {
         max-width: 800px;
         margin: 0 auto;
+        padding: 0 1vw;
     }
 
-    @media screen and (min-width: 993px) {
+    @media #{$desktop} {
         max-width: 100%;
         width: auto;
         margin: 0 auto;
+
 
         div.contenido-pantalla {
             display: table;
@@ -140,9 +148,8 @@ body {
     }
 
     background-color: $fondo-blanco;
-    color: $dark-grey;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         background-color: $dark-grey;
         color: $fondo-blanco;
     }
@@ -157,7 +164,7 @@ body header.top {
     display: flex;
     flex-direction: row;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         background-color: $lighter-dark-gray-1;
     }
 
@@ -168,7 +175,7 @@ body header.top {
         justify-content: space-between;
         align-items: center;
 
-        @media screen and (min-width: 993px) {
+        @media #{$desktop} {
             display: none;
         }
 
@@ -179,12 +186,13 @@ body header.top {
         width: 30px;
         cursor: pointer;
 
-        @media screen and (min-width: 577px) {
+        @media #{$tablet} {
             width: 40px;
         }
 
-        @media (prefers-color-scheme: dark) {
-            stroke: $crema;
+        @media #{$dark} {
+            stroke: none;
+            fill: $fondo-blanco;
         }
     }
 
@@ -199,7 +207,7 @@ body header.top {
             max-width: 360px;
             margin-top: 0.5rem;
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 background-color: $crema-oscuro;
             }
         }
@@ -209,19 +217,17 @@ body header.top {
 //aside
 
 @mixin sidebar-desktop {
-    @media screen and (min-width: 993px) {
+    @media #{$desktop} {
         max-height: fit-content;
         display: table-cell;
         width: $ancho-nav-var-desktop;
         padding: 1rem;
         opacity: 100%;
-
         visibility: visible;
     }
 }
 
-aside#side-menu {
-
+@mixin le-hide {
     max-height: 0;
     padding-top: 0px;
     padding-bottom: 0px;
@@ -229,17 +235,26 @@ aside#side-menu {
     margin-bottom: 0px;
     opacity: 0%;
     visibility: hidden;
+    transition: all 0.3s 0s ease-in-out;
+}
+
+@mixin le-show {
     transition: all 0.6s 0s ease-in-out;
+    visibility: visible;
+    opacity: 100%;
+}
+
+aside#side-menu {
+
+    @include le-hide;
 
     @include sidebar-desktop;
 
     &.show {
-        transition: all 0.7s 0s ease-in-out;
-        visibility: visible;
+        @include le-show;
         overflow: auto;
         max-height: 300vh;
         padding: 1rem;
-        opacity: 100%;
         max-width: 70vw;
         @include sidebar-desktop;
 
@@ -248,7 +263,7 @@ aside#side-menu {
             height: auto;
             overflow-y: auto;
 
-            @media screen and (min-width: 993px) {
+            @media #{$desktop} {
                 position: sticky;
                 top: 3rem;
                 max-height: 80vh;
@@ -289,14 +304,14 @@ main header {
     padding-bottom: 10px;
 
 
-    @media screen and (min-width: 993px) {
+    @media #{$desktop} {
         width: 100%;
     }
 
     background-color: $fondo-blanco;
     opacity: 1;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         background-color: $lighter-dark-gray-1;
         padding: 0.5rem;
     }
@@ -313,7 +328,7 @@ main header {
             background-color: $rojo-claro;
             color: $fondo-blanco;
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 background-color: $rojo-oscuro;
                 box-shadow: 1px 1px 4px 0 rgba(254, 254, 254, 0.666);
             }
@@ -322,7 +337,7 @@ main header {
             &:focus {
                 background-color: $rojo-oscuro;
 
-                @media (prefers-color-scheme: dark) {
+                @media #{$dark} {
                     background-color: $rojo-claro;
                 }
             }
@@ -331,7 +346,7 @@ main header {
                 background-color: $amarillo-oscuro;
                 color: $morado-texto;
 
-                @media (prefers-color-scheme: dark) {
+                @media #{$dark} {
                     background-color: $amarillo-oscuro;
                     color: $morado-texto;
                 }
@@ -363,7 +378,7 @@ main header {
 
             color: $azul-mensaje;
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 color: $azul-mensaje;
             }
         }
@@ -376,7 +391,7 @@ main header {
 
             color: $rojo-claro;
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 color: $rojo-claro;
             }
         }
@@ -397,7 +412,7 @@ form {
         border: none;
         border-radius: 3vw;
 
-        @media screen and (min-width: 577px) {
+        @media #{$tablet} {
             margin: 1rem 0;
             border: none;
             border-radius: 3vw;
@@ -408,13 +423,13 @@ form {
         legend {
             font-size: larger;
 
-            @media screen and (min-width: 993px) {
+            @media #{$desktop} {
                 text-align: center;
             }
 
             color: $verde-palido;
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 color: $morado-texto-dark;
             }
         }
@@ -428,7 +443,7 @@ form {
             margin: 1vw 0;
             outline: none;
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 background-color: $lighter-dark-gray-2;
                 border-color: $crema-oscuro;
                 color: lightgray;
@@ -440,7 +455,7 @@ form {
                 border-color: $crema;
                 background-color: color-mix(in srgb, $fondo-blanco) 30%, white;
 
-                @media (prefers-color-scheme: dark) {
+                @media #{$dark} {
                     border-color: $crema;
                     background-color: $lighter-dark-gray-2;
                 }
@@ -450,7 +465,7 @@ form {
                 border-color: $amarillo-oscuro;
                 background-color: white;
 
-                @media (prefers-color-scheme: dark) {
+                @media #{$dark} {
                     border-color: $amarillo-oscuro;
                     background-color: $lighter-dark-gray-3;
                 }
@@ -460,7 +475,8 @@ form {
             &::-webkit-input-placeholder {
                 /* Edge */
                 color: lightgray;
-                @media (prefers-color-scheme: dark) {
+
+                @media #{$dark} {
                     color: $lighter-dark-gray-3;
                 }
             }
@@ -473,7 +489,7 @@ form {
         }
 
         small {
-            @media screen and (min-width: 993px) {
+            @media #{$desktop} {
                 font-size: 1rem;
             }
         }
@@ -512,7 +528,7 @@ form fieldset.unidad-de-medida {
 
         background-color: $pedicelo-claro-50;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             background-color: $lighter-dark-gray-2;
             color: lightgray;
         }
@@ -535,7 +551,7 @@ form fieldset textarea[role="textbox"] {
 
     background-color: $pedicelo-claro-50;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         background-color: $lighter-dark-gray-2;
         color: lightgray;
     }
@@ -550,7 +566,7 @@ form div.check-box {
     padding: 1rem 0;
 
 
-    @media screen and (min-width: 993px) {
+    @media #{$desktop} {
         padding: 0;
         margin: 0.5rem 0;
         line-height: 1;
@@ -574,7 +590,7 @@ form div.check-box {
         border-radius: 1vw;
         cursor: pointer;
 
-        @media screen and (min-width: 577px) {
+        @media #{$tablet} {
             border: --ancho-border-foto-secundaria solid;
             border-radius: 0.2rem;
             outline: 2px solid;
@@ -585,7 +601,7 @@ form div.check-box {
         background-color: $crema;
         outline-color: $morado-texto;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             background-color: $azul-claro;
         }
 
@@ -609,14 +625,14 @@ form div.check-box {
             right: 4px;
             top: -14px;
 
-            @media screen and (min-width: 577px) {
+            @media #{$tablet} {
                 text-align: right;
                 font-size: xx-large;
                 content: "✓";
                 margin-left: 0.25rem;
             }
 
-            @media screen and (min-width: 993px) {
+            @media #{$desktop} {
                 text-align: right;
                 font-size: xx-large;
                 content: "✓";
@@ -624,7 +640,7 @@ form div.check-box {
                 margin-bottom: 0.1rem;
             }
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 color: $morado-texto;
             }
         }
@@ -637,7 +653,7 @@ form div.check-box {
 
         color: $morado-texto;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             color: $morado-texto-dark;
         }
 
@@ -665,7 +681,7 @@ form fieldset label.input-contraseña {
 
         color: $dark-grey;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             color: $fondo-blanco;
         }
     }
@@ -751,7 +767,7 @@ form button[type="submit"] {
     margin: 5vh auto;
     cursor: pointer;
 
-    @media screen and (min-width: 577px) {
+    @media #{$tablet} {
         display: block;
         font-size: 1.35rem;
         padding: 1rem 1rem;
@@ -764,7 +780,7 @@ form button[type="submit"] {
     color: white;
     background-color: $azul-mensaje;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         border-color: $azul-mensaje;
         color: white;
         background-color: $azul-mensaje;
@@ -776,7 +792,7 @@ form button[type="submit"] {
         border-color: $azul-mensaje-claro;
         background-color: $azul-mensaje-claro;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             border-color: $azul-mensaje-claro;
             background-color: $azul-mensaje-claro;
         }
@@ -786,7 +802,7 @@ form button[type="submit"] {
         border-color: $azul-oscuro;
         background-color: $azul-oscuro;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             border-color: $crema-oscuro;
             background-color: $crema-oscuro;
         }
@@ -820,7 +836,7 @@ form div.switch-container {
     align-items: center;
     gap: 0.5rem;
 
-    @media screen and (min-width: 993px) {
+    @media #{$desktop} {
         margin: 0.75rem 0;
     }
 
@@ -831,7 +847,7 @@ form div.switch-container {
         font-size: 0.8rem;
         max-width: 30%;
 
-        @media screen and (min-width: 993px) {
+        @media #{$desktop} {
             font-size: 1.1rem;
             max-width: 30%;
         }
@@ -843,7 +859,7 @@ form div.switch-container {
         &.izquierda {
             color: $switch-izquierdo;
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 color: $switch-izquierdo-dark;
             }
         }
@@ -851,7 +867,7 @@ form div.switch-container {
         &.derecha {
             color: $switch-derecho;
 
-            @media (prefers-color-scheme: dark) {
+            @media #{$dark} {
                 color: $switch-derecho-dark;
             }
         }
@@ -887,14 +903,14 @@ form div.switch-container {
 form div.switch-statement div.statement {
     color: $switch-izquierdo;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         color: $switch-izquierdo-dark;
     }
 
     &.izquierdo {
         color: $switch-izquierdo;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             color: $switch-izquierdo-dark;
         }
     }
@@ -902,7 +918,7 @@ form div.switch-statement div.statement {
     &.derecho {
         color: $switch-derecho;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             color: $switch-derecho-dark;
         }
     }
@@ -930,7 +946,7 @@ form .switch {
 
         background-color: $switch-izquierdo;
 
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             background-color: $switch-izquierdo-dark;
         }
 
@@ -972,7 +988,7 @@ form div.texto-medio {
 
     color: $morado-texto;
 
-    @media (prefers-color-scheme: dark) {
+    @media #{$dark} {
         color: $morado-texto-dark;
     }
 
@@ -980,7 +996,7 @@ form div.texto-medio {
 
         font-size: larger;
 
-        @media screen and (min-width: 577px) {
+        @media #{$tablet} {
             font-size: x-large;
         }
 
@@ -1027,27 +1043,51 @@ div.opción {
     margin: 3vh 0;
 
     a:link {
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             color: $crema;
         }
 
     }
 
     a:visited {
-        @media (prefers-color-scheme: dark) {
+        @media #{$dark} {
             color: $crema-oscuro;
         }
     }
 }
 
-// un-e-lote
+// un-e-lote en lista
+:root {
+    --ancho-multi-fotos: calc(calc((100vw - 1rem)) * 0.4);
+
+    @media #{$tablet} {
+
+        --ancho-multi-fotos: calc(calc((100vw - #{$ancho-nav-var-desktop})) * 0.8);
+    }
+
+    @media #{$desktop} {
+        --ancho-multi-fotos: calc(calc((100vw - #{$ancho-nav-var-desktop})) * 0.4);
+    }
+
+}
+
+:root {
+    --alto-foto-lista: calc(var(--ancho-multi-fotos) * 0.75 * 0.75);
+}
+
+@mixin altura-tarjeta-ancha {
+
+    max-height: var(--alto-foto-lista)
+}
 
 div.un-e-lote {
-    font-size: 0.8rem;
+    position: relative;
+    font-size: 3.5vw;
     display: flex;
     flex-direction: row;
-    padding: 1rem;
-    margin: 1rem;
+    justify-content: space-around;
+    padding: 0.4rem 0.3rem;
+    margin: 1rem 0.2rem;
     border: $ancho-border-foto-secundaria;
     border-style: solid;
     border-radius: 1rem;
@@ -1055,20 +1095,28 @@ div.un-e-lote {
     /*flex*/
     gap: 0.5rem;
 
-    @media screen and (min-width: 993px) {
-        height: calc($alto-foto-lista-desktop) + 2rem;
+    @media #{$tablet} {
+        padding: 1rem;
+        font-size: 0.8rem;
+        justify-content: start;
+
+    }
+
+    border-color: $verde-palido;
+
+    & * {
+        @include altura-tarjeta-ancha;
     }
 }
 
 div.un-e-lote div.multi-foto {
     display: flex;
     flex-direction: row;
-    max-width: 30%;
+    width: calc(var(--ancho-multi-fotos) *(3 / 4) + 0.2rem);
+    min-width: calc(var(--ancho-multi-fotos) *(3 / 4) + 0.2rem);
     gap: 0.3rem;
 
-    @media screen and (min-width: 993px) {
-        max-width: 50%;
-    }
+
 
     div.foto img {
         border-radius: 5%;
@@ -1085,21 +1133,20 @@ div.un-e-lote div.multi-foto {
         flex-grow: 1;
         flex-basis: 1;
 
-        @media screen and (min-width: 993px) {
-            img.primaria {
-                max-height: $alto-foto-lista-desktop;
-            }
+        img {
+            max-height: 95%;
         }
+
     }
 
-    div.un-e-lote div.foto.secundaria {
+    div.foto.secundaria {
         display: none;
         min-height: 0;
         /*flex*/
         flex-direction: column;
         justify-content: space-between;
 
-        @media screen and (min-width: 993px) {
+        @media screen and (min-width: 557px) {
             display: flex;
         }
 
@@ -1107,25 +1154,52 @@ div.un-e-lote div.multi-foto {
             border-radius: 10%;
             border-width: calc($ancho-border-foto-secundaria * 0.75);
 
-            @media screen and (min-width: 993px) {
-                max-height: calc($alto-foto-lista-desktop) * 0.95 * 0.3;
+            @media screen and (min-width: 557px) {
+                max-height: calc(var(--alto-foto-lista) * 0.95 * 0.22);
+            }
+
+            @media #{$desktop} {
+                max-height: calc(var(--alto-foto-lista) * 0.95 * 0.3);
             }
         }
     }
 }
 
-div.un-e-lote div.resumen-compacto-elote-lista {
-    display: none;
+div.un-e-lote div.resumen {
+    legend {
+        font-weight: bold;
+        color: $verde-palido;
+    }
+
+    strong {
+        text-wrap: nowrap;
+        overflow: hidden;
+
+        @media #{$tablet} {
+            text-wrap: wrap;
+        }
+
+        color: $morado-texto;
+
+        @media #{$dark} {
+            color: $morado-claro;
+        }
+    }
+}
+
+div.un-e-lote div.resumen.compacto.elote-lista {
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     flex-wrap: wrap;
     overflow: hidden;
-    max-height: $alto-foto-lista-desktop;
+    padding-right: var(--le3-button-diameter);
 
-    @media screen and (min-width: 993px) {
-        display: flex;
+    @media #{$tablet} {
+
         min-width: 10rem;
         padding: 0 0.5rem;
+        column-gap: 0.7rem;
 
         div legend {
             display: block;
@@ -1136,7 +1210,9 @@ div.un-e-lote div.resumen-compacto-elote-lista {
     div legend {
         display: none;
 
-        @media screen and (min-width: 993px) {
+        @media #{$tablet} {}
+
+        @media #{$desktop} {
             display: block;
         }
     }
@@ -1144,33 +1220,165 @@ div.un-e-lote div.resumen-compacto-elote-lista {
     div strong span.show-monitor {
         display: inline;
 
-        @media screen and (min-width: 993px) {
+        @media #{$desktop} {
             display: none;
         }
     }
 
 }
 
-div.un-e-lote div.resumen-extendido-elote-lista {
+div.un-e-lote div.resumen.extendido.elote-lista {
     display: none;
     flex-direction: column;
     justify-content: space-around;
     flex-wrap: wrap;
     overflow: hidden;
-    max-height: $alto-foto-lista-desktop;
     max-width: 50%;
+    row-gap: 0.5rem;
+    column-gap: 1rem;
 
-    @media screen and (min-width: 993px) {
+    @media #{$tablet} {
         display: flex;
         text-align: left;
     }
 
 }
 
-@media screen and (min-width: 993px) {}
+:root {
+    --le3-button-diameter: 2.5rem;
 
-@media screen and (min-width: 577px) {}
+    @media #{$tablet} {
+        --le3-button-diameter: 2.5rem;
+    }
 
-@media (prefers-color-scheme: light) {}
+    @media #{$desktop} {
+        --le3-button-diameter: 2.5rem;
+    }
+}
 
-@media (prefers-color-scheme: dark) {}
+div.un-e-lote button.le3-dots {
+
+    height: var(--le3-button-diameter);
+    width: var(--le3-button-diameter);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-evenly;
+
+    border-radius: calc(var(--le3-button-diameter) / 3);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+
+
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 1rem;
+    border-width: $ancho-border-foto-secundaria;
+    border-color: $verde-palido;
+    background-color: $fondo-blanco;
+
+    @media #{$dark} {
+        background-color: $lighter-dark-gray-1;
+    }
+
+    svg {
+        max-height: calc(var(--le3-button-diameter) / 2);
+
+        stroke: $lighter-dark-gray-1;
+        fill: $lighter-dark-gray-1;
+        color: $lighter-dark-gray-1;
+
+        @media #{$dark} {
+            stroke: $fondo-blanco;
+            fill: $fondo-blanco;
+            color: $fondo-blanco;
+        }
+
+    }
+}
+
+div.un-e-lote menu.le3-dots {
+    position: absolute;
+    top: 0px;
+    right: calc(var(--le3-button-diameter) + 0.1rem);
+    @include le-hide;
+    height: 0px;
+    z-index: 100;
+    list-style: none;
+    border-bottom-left-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-style: solid;
+    border-width: $ancho-border-foto-secundaria;
+    border-top-width: 0;
+    background-color: $fondo-blanco;
+    border-color: $verde-palido;
+
+    @media #{$dark} {
+        background-color: $lighter-dark-gray-2;
+    }
+
+    &.show {
+        @include le-show;
+
+        height: fit-content;
+        max-height: fit-content;
+        padding: 0.5rem 0.25rem;
+    }
+
+    li {
+        text-align: center;
+        letter-spacing: 0.1rem;
+        font-size: large;
+        font-weight: bold;
+        line-height: 2.5;
+        padding: 0.15rem 0.5rem;
+        margin: 0.5rem 0.3rem;
+        border-radius: 0.4rem;
+        background-color: $crema;
+
+        @media #{$dark} {
+
+            background-color: $lighter-dark-gray-3;
+        }
+
+        &.le3-dots-inventario {
+            color: $amarillo-oscuro;
+        }
+
+        &.le3-dots-ver {
+            color: $verde-mas;
+
+            @media #{$dark} {
+                color: $verde-palido;
+            }
+        }
+
+        &.le3-dots-eliminar {
+            color: $rojo-dont;
+
+            @media #{$dark} {
+                color: $rojo-claro;
+            }
+        }
+
+        &.le3-dots-editar {
+            color: $morado-texto;
+
+            @media #{$dark} {
+                color: $morado-texto-dark;
+            }
+        }
+
+        &.le3-dots-chats {
+            color: $azul-mensaje;
+
+            @media #{$dark} {
+                color: darkcyan;
+            }
+        }
+    }
+}
