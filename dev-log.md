@@ -79,3 +79,4 @@ Se agregó un stilo width 100% para telefono y tablet al body y auto para monito
 SAlen dos '\\' en el Json stringify de `JSON.stringify( formScraper(document.getElementById('form-principal')))`. Hay que revisar después
 
 Thursday, January 25, 2024 @ 10:12:44 PM | se está pasando a scss, se quedño en linea 720 del css copy, form fieldset
+Wednesday, January 31, 2024 @ 06:37:48 PM | funcionalidad de que se cierra el menú cuado das click donde sea pero en el menu

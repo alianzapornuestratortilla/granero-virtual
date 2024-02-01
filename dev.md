@@ -28,3 +28,5 @@
 - [ ] agregar nativo/híbrido
 - [ ] agregar cantidad mínima de grano
 - [ ] agregar codigo postal donde lo tengo almacenado o en  donde está guardado
+- [ ] se cierra menu al dar click o con el dedo en cualquier otro aldo
+- [ ] comprar https://www.etsy.com/es/listing/1398507346/hecho-en-mexico-svg-hecho-en-mexico

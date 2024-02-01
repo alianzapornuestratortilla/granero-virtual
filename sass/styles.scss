@@ -235,7 +235,7 @@ body header.top {
     margin-bottom: 0px;
     opacity: 0%;
     visibility: hidden;
-    transition: all 0.3s 0s ease-in-out;
+    
 }
 
 @mixin le-show {
@@ -247,6 +247,7 @@ body header.top {
 aside#side-menu {
 
     @include le-hide;
+    transition: all 0.5s 0s ease-in-out;
 
     @include sidebar-desktop;
 
@@ -1059,21 +1060,21 @@ div.opción {
 // un-e-lote en lista
 :root {
     --ancho-multi-fotos: calc(calc((100vw - 1rem)) * 0.4);
+    --alto-foto-lista: calc(var(--ancho-multi-fotos) * 0.75 * 0.75);
 
     @media #{$tablet} {
 
         --ancho-multi-fotos: calc(calc((100vw - #{$ancho-nav-var-desktop})) * 0.8);
+        --alto-foto-lista: calc(var(--ancho-multi-fotos) * 0.75 * 0.75 * .8 );
     }
 
     @media #{$desktop} {
         --ancho-multi-fotos: calc(calc((100vw - #{$ancho-nav-var-desktop})) * 0.4);
+        
     }
 
 }
 
-:root {
-    --alto-foto-lista: calc(var(--ancho-multi-fotos) * 0.75 * 0.75);
-}
 
 @mixin altura-tarjeta-ancha {
 
