@@ -3,7 +3,7 @@ const lePhotoBar = document.getElementById('photo-bar');
 const observer = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
         if (mutation.type === 'childList') {
-            console.log('A child node has been added or removed.');
+            //--console.log('A child node has been added or removed.');
             //update formal files form
             if (!refreshFormPhotos(document.getElementById('input-img-def'), lePhotoBar)) {
                 window.alert('algo salió mal al tratar de actualizar las fotos');
@@ -18,8 +18,8 @@ observer.observe(lePhotoBar, { childList: true });
 
 async function treatImages(evt) {
     var fotografías = await handleFileInput(evt);
-    console.log(fotografías);
-    console.log(fotografías.length);
+    //--console.log(fotografías);
+    //--console.log(fotografías.length);
     if (!(fotografías.length >= 1)) {
         return 0;
     }
@@ -30,10 +30,10 @@ async function treatImages(evt) {
 
         currentFoto = fotografías[0];
         if (await resizeCanvas(currentFoto)) {
-            console.log('first render done');
+            //--console.log('first render done');
             //wait for acceptance
             let leInteraction = await interacción();
-            console.log(leInteraction);
+            //--console.log(leInteraction);
             switch (leInteraction) {
                 case 'así-mero':
                     document.getElementById('photo-cropping-modal').close();
@@ -61,7 +61,7 @@ async function treatImages(evt) {
 //--------------------------------------
 
 async function resizeCanvas(foto) {
-    console.log('resizing Canvas');
+    //--console.log('resizing Canvas');
     if (document.querySelector('canvas.photo-cropping-canvas') !== null) {
         document.querySelector('canvas.photo-cropping-canvas').remove();
 
@@ -186,11 +186,11 @@ async function resizeCanvas(foto) {
 async function cropAndResize(currentFoto, leCanvasWidth, leCanvasHeight, aspectRatioFoto, scaleFactor) {
 
     let leRectangle = document.getElementById('photo-cropping-rectangle');
-    console.log(leRectangle.getAttribute("data-x"));
-    console.log(parseFloat(leRectangle.getAttribute("data-x")));
+    //--console.log(leRectangle.getAttribute("data-x"));
+    //--console.log(parseFloat(leRectangle.getAttribute("data-x")));
 
     let scaledOriginX = parseFloat(leRectangle.getAttribute("data-x"));
-    console.log(scaledOriginX);
+    //--console.log(scaledOriginX);
     if (isNaN(scaledOriginX)) {
         scaledOriginX = 0;
     }

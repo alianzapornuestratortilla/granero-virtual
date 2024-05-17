@@ -40,9 +40,9 @@ function ladoOpuesto(elLado) {
 
 function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSwitches) {
     //debugger
-    
+
     for (const currentComponentKey in childrenOfParentComponent) {
-        
+
 
         const currentComponent = childrenOfParentComponent[currentComponentKey];
         const currentComponentInDOM = document.getElementById(currentComponentKey);
@@ -51,18 +51,18 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
         switch (show) {
             case "show":
                 // mostrarlo si está oculto
-                
+
                 if (currentComponentInDOM.classList.contains('hide')) {
                     currentComponentInDOM.classList.remove("hide");
                 }
-                
-                //isRequired = true;
+
+                isRequired = true;
                 break;
             // si es switch y en mostrar, evalua valor, si no                
             case "hide":
                 // solo ocultalo
                 currentComponentInDOM.classList.add("hide");
-                //isRequired = false;
+                isRequired = false;
 
                 break;
 
@@ -70,9 +70,23 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
 
                 break;
         }
-        
+
+        let leInput = currentComponentInDOM.querySelector('input');
+        console.log(leInput);
+
+        if (leInput) {
+            if (leInput.type == "text" || leInput.type == "number") {
+                if (!leInput.classList.contains("not-required")) {
+                    console.log(leInput.name + "  |  " + leInput.type);
+                    leInput.required = isRequired;
+                }
+
+            }
+        }
+
+
         // currentComponentInDOM.querySelector('input').required = isRequired;
-        
+
         if ((currentComponent.hasOwnProperty("izquierda") && currentComponent.hasOwnProperty("derecha"))) {
             //es switch
             let components2beDisplayed = new Array();
@@ -94,13 +108,13 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
 
                 default:
                     break;
-            }           
+            }
 
             //ocultar lado opuesto y todos los descendientes
             components2beHidden.forEach(component => {
                 void despliegaOcultaOpciones(component, "hide", inventarioDeSwitches);
             });
-            
+
             // mostrar lado seleccionado evaluando
             components2beDisplayed.forEach(component => {
                 void despliegaOcultaOpciones(component, "show", inventarioDeSwitches);
@@ -115,7 +129,7 @@ function despliegaOcultaOpciones(childrenOfParentComponent, show, inventarioDeSw
 }
 
 function despliegalasOpciones(diccionarioDeOpciones) {
-    
+
     const daSwitches = document.querySelectorAll('label.switch input[type="checkbox"]');
     let daSwitchInventory = new Object();
     for (let i = 0; i < daSwitches.length; i++) {

@@ -1,13 +1,29 @@
 function formScraper(form) {
 
-    let entries = [];
-    form.querySelectorAll('div.a-fieldset,switch-statement').forEach(cContainer => {
-        let cJSON = [];
-        cContainer.querySelectorAll("input,select,textarea,option").forEach(variable => {
+    let entries = new Object();
+    form.querySelectorAll('div.a-fieldset,div.switch-statement').forEach(cContainer => {
+        let contenedor = new Object();
+        // contenedor["id"] = cContainer.id;
+        contenedor["hide"] = cContainer.classList.contains("hide");
+        let cJSON = new Object();
+        //borré option, probablemente no sea necesario
+        cContainer.querySelectorAll("input,select,textarea").forEach(variable => {
+            // console.log(variable.name);
             var valorPropiedad;
+            let entri = {};
+            // entri["hide"] = cContainer.classList.contains("hide");
             switch (variable.type) {
                 case 'checkbox':
+                    // debugger
                     valorPropiedad = variable.checked;
+                    if ( variable.closest("div.switch-container") ) {
+                        
+                        entri["slider"] = true;
+                        let sliderContainer = variable.closest("div.switch-container");
+                        entri["izquierda"] = sliderContainer.querySelector("strong.izquierda").innerText;
+                        entri["derecha"] = sliderContainer.querySelector("strong.derecha").innerText;
+                        
+                    }
                     break;
                 case 'file':
                     let losFiles = [];
@@ -26,15 +42,16 @@ function formScraper(form) {
                     valorPropiedad = variable.value;
                     break;
             }
-            cJSON.push({
-                "tag": variable.tagName,
-                "id": variable.id,
-                "name": variable.getAttribute('name'),
-                "tipo": variable.type,
-                "valor": valorPropiedad
-            });
+            entri["tag"] = variable.tagName;
+            entri["id"] = variable.id;
+            entri["name"] = variable.name;
+            entri["tipo"] = variable.type;
+            entri["valor"] = valorPropiedad;
+            // entri["parent"] = cContainer.id;
+            cJSON[variable.name] = entri;
         });
-        entries.push(cJSON);
+        contenedor["elements"] = cJSON;
+        entries[cContainer.id] = (contenedor);
     });
     return entries;
 }

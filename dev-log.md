@@ -77,6 +77,43 @@ Thursday, January 18, 2024 @ 09:19:58 PM | puse edita elote como solo lectura pa
 Se empezó mejor con el listado de e-llotes para caso de ver no más como vendedor y para caso de comprador
 Se agregó un stilo width 100% para telefono y tablet al body y auto para monitor
 SAlen dos '\\' en el Json stringify de `JSON.stringify( formScraper(document.getElementById('form-principal')))`. Hay que revisar después
+`JSON.stringify(buildFormData( document.getElementById('form-principal') ) )`
+`(await buildFormData( document.getElementById('form-principal') ) ).get('forms-JSON')`
+`buildFormData( document.getElementById('form-principal') ) `
+`new Blob([JSON.stringify(formScraper(document.getElementById('form-principal')) )], { type: "application/json" });`
 
 Thursday, January 25, 2024 @ 10:12:44 PM | se está pasando a scss, se quedño en linea 720 del css copy, form fieldset
 Wednesday, January 31, 2024 @ 06:37:48 PM | funcionalidad de que se cierra el menú cuado das click donde sea pero en el menu
+Thursday, February 1, 2024 @ 08:49:05 PM | acabar campos.json los ocndiconales y los que faltan
+
+## Tuesday, February 6, 2024 @ 05:28:10 PM
+
+se concluyó que el formData no se puede ocnvertir en blob, entonces se dificulta que vaya como regrese. de mientras se movió el arbol de opcions y se definió el arbol de entries para resolver como desplegar en dialog. No verifico los criterios elboton de submit. Habrá que hacer un punto común en el que regresan los blob, eliminar en piés de los archivos y lás imágenes más el json de los valores, también para editar el e-lote.
+
+## Friday, February 9, 2024 @ 02:57:42 PM
+
+Friday, February 9, 2024 @ 05:59:56 PM | se corrigió lo del campo requerido vía html. ahora el texto y las cifras que se mmuestran son forzosas, salvo las excepciones con clase `not-required`
+popover es muy nuevo y no lohe de usar :(  Usaré dialog que esta soportado desde 2013 en chrome, mas reciente en los demás, pero los demás han de estar más actualizados: edge - microsoft, safari - apple.
+
+agrengando el johnosn su
+falta hacer la página de los microorganismos
+
+se agrgó el logo svg con dark mde también
+
+## Sunday, February 11, 2024 @ 03:27:43 PM
+
+se agregó el loader con la flor de maíz
+se tiene que quitar la funcion onclick o onmousedown para el botton submit para que chequee los criterios mínimos. ahora se deja no mas porara evitar los revise paradesarrollo
+
+pendiente `function viewELoteDOMg(`js
+
+## Monday, February 12, 2024 @ 04:45:22 PM
+
+edita elote form submit 
+
+aa=(await buildFormData( document.getElementById('form-principal') ))
+
+me quyedé en edita elote form submit línea 97 para evaliar el precio del maíz
+podría no más dejar para depsues la validaciñón? no, tengo que saber si lo muestro o lo ignoro ademñas de si están o no mostrados.... o na más se va a ver vacío .... hmmmm
+
+otas web para convertir y usar el File

@@ -1,0 +1,292 @@
+{
+    "input-fotos": false,
+    "input-nombre-completo": {
+        "condicional": "válido",
+        "válido": {
+            "len":{
+                ">":5
+            }
+        }
+    },
+    "tortillas-checkbox": {
+        "condicional": true,
+        "texto": "tortillas normales, festivas y taqueras"
+    },
+    "garnachas-checkbox": {
+        "condicional": true,
+        "texto": "quesadillas, gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas, tlaxcales, molotes, polcanes y panuchos"
+    },
+    "tamales-checkbox": {
+        "condicional": true,
+        "texto": "tamales"
+    },
+    "tostadas-checkbox": {
+        "condicional": true,
+        "texto": "tostadas"
+    },
+    "tlayudas-checkbox": {
+        "condicional": true,
+        "texto": "tlayudas"
+    },
+    "pozole-checkbox": {
+        "condicional": true,
+        "texto": "pozole"
+    },
+    "palomitas-checkbox": {
+        "condicional": true,
+        "texto": "palomitas"
+    },
+    "pinole-checkbox": {
+        "condicional": true,
+        "texto": "pinole"
+    },
+    "atole-checkbox": {
+        "condicional": true,
+        "texto": "atole"
+    },
+    "pozol-checkbox": {
+        "condicional": true,
+        "texto": "pozol"
+    },
+    "tejate-checkbox": {
+        "condicional": true,
+        "texto": "tejate, tejuino o tascalate"
+    },
+    "otros-checkbox": false,
+    "otro-uso": 2,
+    "si-es-semilla-propia": {
+        "título": "este grano viene de una semilla",
+        "es propia,": "propia, conservada de ciclos pasados",
+        "la conseguí": "conseguída de alguien más"
+    },
+    "es-comprada-truequeada": {
+        "título": "la conseguí",
+        "la compré": "comprándola",
+        "la intercambié": "por trueque"
+    },
+    "nativo": {
+        "título": "esta semilla es",
+        "nativo o criollito": "nativa / criolla",
+        "híbrido": "híbrida"
+    },
+    "usuario-recuerda-origen-distinto": {
+        "título": "recuerda donde la consiguió",
+        "SI": "Si",
+        "NO": "No"
+    },
+    "nombre-origen-distinto": "la obtuve de",
+    "lugar-de-origen": "la conseguí en",
+    "diversidad-de-cultivo": {
+        "título": "este maíz esta sembrado",
+        "acompañado": "en milpa tradicional, acompañado de frijol, calabaza y quelites",
+        "solito": "solito, es decir, solito maíz solito y nada mas"
+    },
+    "uso-de-agroquímicos": {
+        "título": "fertilizantes químicos",
+        "SI": "Si se utilizaron",
+        "NO": "No se utilizaron"
+    },
+    "uso-de-abonos": {
+        "título": "abonos",
+        "SI": "Si se utilizaron",
+        "NO": "No se utilizaron"
+    },
+    "uso-de-venenos": {
+        "título": "químicos para el control de plagas y enfermedades",
+        "SI": "Si se utilizaron",
+        "NO": "No se utilizaron"
+    },
+    "uso-de-control-biológico": {
+        "título": "control biológico para el control de plagas y enfermedades",
+        "SI": "Si se utilizaron",
+        "NO": "No se utilizaron"
+    },
+    "uso-de-rastrojo": {
+        "título": "se dejó el rastrojo y esquilmos para proteger el suelo",
+        "SI": "Si, se dejaron",
+        "NO": "No, se removieron o quemaron"
+    },
+    "cuenta-con-certificación": false,
+   "cuenta-con-certificación-orgánica": false,
+    "certificado-orgánico": {
+        "condicional": "válido",
+        "válido": {
+            "len":{
+                ">":0
+            }
+        }
+    },
+    "cuenta-con-certificación-libre-de-OGM": false,
+    "certificado-libre-de-OGM": {
+        "condicional": "válido",
+        "ignorar": {
+            "len":{
+                "==":0
+            }
+        },
+        "válido": {
+            "len":{
+                ">":0
+            }
+        }
+    },
+    "ofrece-en-pié": true,
+    "precio-por-unidad-de-medida-en-pié": true,
+    "opciones-unidad-de-medida-en-pié": false,
+    "hectáreas-disponibles-en-pié": true,
+    "venta-mínima-en-pié": true,
+    "ofrece-grano-per-se": true,
+    "precio-por-unidad-de-medida-per-sé": {
+        "condicional":"válido",
+        "tipo": {
+            "nativo": {
+                "kg": {
+                    "válido":{
+                        "valor": {
+                            ">":12
+                        }
+                    }                    
+                },
+                "tonelada": {
+                    "válido": {
+                        "valor": {
+                            ">":12000
+                        }
+                    }
+                    
+                },
+                "costal": {
+                    "válido": {
+                        "valor": {
+                            ">":600
+                        }
+                    }                    
+                }
+            },
+            "híbrido": {
+                "kg": {
+                    "válido":{
+                        "valor": {
+                            ">":12
+                        }
+                    }                    
+                },
+                "tonelada": {
+                    "válido": {
+                        "valor": {
+                            ">":12000
+                        }
+                    }
+                    
+                },
+                "costal": {
+                    "válido": {
+                        "valor": {
+                            ">":600
+                        }
+                    }                    
+                }
+            }
+        },
+        "título": "precio a la venta"
+    },
+    "unidad-de-medida-precio-per-sé": true,
+    "cantidad-de-grano-disponible-per-sé": true,
+    "unidad-de-medida-cantidad-per-sé": true,
+    "cantidad-mínima-de-venta": true,
+    "unidad-de-medida-cantidad-per-sé-mínima-de-venta": true,
+    "secado": {
+        "título": "químicos para el control de plagas y enfermedades",
+        "SI": "Si se utilizaron",
+        "NO": "No se utilizaron"
+    },
+    "desgranado": {
+        "título": "químicos para el control de plagas y enfermedades",
+        "SI": "Si se utilizaron",
+        "NO": "No se utilizaron"
+    },
+    "conservación-del-grano": {
+        "título": "Productos para la conservación del grano",
+        "SI": "Si se utilizaron",
+        "NO": "No se utilizaron"
+    },
+    "cal-checkbox": {
+        "condicional": true,
+        "texto": "Se utilizó cal para la conservación"
+    },
+    "fosfuro-checkbox": {
+        "condicional": true,
+        "texto": "Se utilizaron pastillas de fosfuro"
+    },
+    "conservación-otros": {
+        "condicional": "válido",
+        "ignorar": {
+            "len":{
+                "==":0
+            }
+        },
+        "válido": {
+            "len":{
+                ">":2
+            }
+        }
+    },
+    "lugar-de-almacén":{
+        "condicional": "válido",
+        "ignorar": {
+            "len":{
+                "==":0
+            }
+        },
+        "válido": {
+            "len":{
+                "==":5
+            }
+        }
+    },
+    "cuenta-con-análisis-de-aflatoxinas": false,
+    "análisis-de-aflatoxinas": {
+        "condicional": "válido",
+        "ignorar": {
+            "len":{
+                "==":0
+            }
+        },
+        "válido": {
+            "len":{
+                ">":0
+            }
+        }
+    },
+    "cuenta-con-NMX-FF-034": false,
+    "análisis-NMX-FF-034": {
+        "condicional": "válido",
+        "ignorar": {
+            "len":{
+                "==":0
+            }
+        },
+        "válido": {
+            "len":{
+                ">":0
+            }
+        }
+    },
+    "servicios": false,
+    "servicios-descripción": {
+        "condicional": "válido",        
+        "válido": {
+            "len":{
+                ">":10
+            }
+        }
+    },
+    "notas-del-vendedor": {
+        "condicional": "válido",        
+        "válido": {
+            "len":{
+                ">":10
+            }
+        }
+    }
+}

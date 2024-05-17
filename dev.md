@@ -23,10 +23,14 @@
 - [ ] chromium report bug checkboxes
 - [x] reorganizar el js del image generator,
 - [ ] corregiry separar script que corrige los titulos de la página, `botón-header`
-- [ ] agregar técnica de conservación (pastilla, cal) junto al secado, etc.
-- [ ] refactorizar a SASS `https://youtu.be/9J__JAgQbS0`
-- [ ] agregar nativo/híbrido
-- [ ] agregar cantidad mínima de grano
+- [x] agregar técnica de conservación (pastilla, cal) junto al secado, etc.
+- [x] migrar a scss `https://youtu.be/9J__JAgQbS0`
+- [x] agregar nativo/híbrido
+- [x] agregar cantidad mínima de grano
 - [ ] agregar codigo postal donde lo tengo almacenado o en  donde está guardado
 - [ ] se cierra menu al dar click o con el dedo en cualquier otro aldo
 - [ ] comprar https://www.etsy.com/es/listing/1398507346/hecho-en-mexico-svg-hecho-en-mexico
+- [x] reuse svg https://codepen.io/peter-mouland/pen/JErvZY migrate viewbox to the symbol thing, try using defs : https://dev.to/bmstefanski/reusing-svg-elements-in-html-without-copy-pasting-it-3hfo
+- [ ] input background color invalid
+- [ ] sanitize values with scraper
+- [ ] remove non-file inputs in the formData while scraping

@@ -1,0 +1,611 @@
+[
+    [
+        {
+            "tag": "INPUT",
+            "id": "input-fotos",
+            "name": "input-fotos",
+            "tipo": "file",
+            "valor": [],
+            "parent": ""
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "input-nombre-completo",
+            "name": "input-nombre-completo",
+            "tipo": "text",
+            "valor": "prueba chica 3",
+            "parent": "fieldset-nombre-maíz"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "tortillas-checkbox",
+            "name": "tortillas-checkbox",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "garnachas-checkbox",
+            "name": "garnachas-checkbox",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "tamales-checkbox",
+            "name": "tamales-checkbox",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "tostadas-checkbox",
+            "name": "tostadas-checkbox",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "tlayudas-checkbox",
+            "name": "tlayudas-checkbox",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "pozole-checkbox",
+            "name": "pozole-checkbox",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "palomitas-checkbox",
+            "name": "palomitas-checkbox",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "pinole-checkbox",
+            "name": "pinole-checkbox",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "atole-checkbox",
+            "name": "atole-checkbox",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "pozol-checkbox",
+            "name": "pozol-checkbox",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "tejate-checkbox",
+            "name": "tejate-checkbox",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "otros-checkbox",
+            "name": "otros-checkbox",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "usos-comunes"
+        },
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "otro-uso",
+            "tipo": "text",
+            "valor": "",
+            "parent": "usos-comunes"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "es propia,",
+            "derecha": "la conseguí",
+            "tag": "INPUT",
+            "id": "si-es-semilla-propia",
+            "name": "si-es-semilla-propia",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "switch-semilla-propia"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "la compré",
+            "derecha": "la intercambié",
+            "tag": "INPUT",
+            "id": "es-comprada-truequeada",
+            "name": "es-comprada-truequeada",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-comprada-truequeada"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "nativo o criollito",
+            "derecha": "híbrido",
+            "tag": "INPUT",
+            "id": "nativo",
+            "name": "nativo",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-nativo"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "SI",
+            "derecha": "NO",
+            "tag": "INPUT",
+            "id": "usuario-recuerda-origen-distinto",
+            "name": "usuario-recuerda-origen-distinto",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-origen-distinto"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "nombre-origen-distinto",
+            "tipo": "text",
+            "valor": "Juan Camaney",
+            "parent": "fieldset-nombre-origen-distinto"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "lugar-de-origen",
+            "tipo": "text",
+            "valor": "el Rancho de Andrés Manuel",
+            "parent": "fieldset-lugar-de-origen"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "acompañado",
+            "derecha": "solito",
+            "tag": "INPUT",
+            "id": "diversidad-de-cultivo",
+            "name": "diversidad-de-cultivo",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-diversidad-de-cultivo"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "uso-de-agroquímicos",
+            "name": "uso-de-agroquímicos",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-uso-de-agroquímicos"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "SI",
+            "derecha": "NO",
+            "tag": "INPUT",
+            "id": "uso-de-abonos",
+            "name": "uso-de-abonos",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-uso-de-abonos"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "uso-de-venenos",
+            "name": "uso-de-venenos",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-uso-de-venenos"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "SI",
+            "derecha": "NO",
+            "tag": "INPUT",
+            "id": "uso-de-control-biológico",
+            "name": "uso-de-control-biológico",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-uso-de-control-biológico"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "SI",
+            "derecha": "NO",
+            "tag": "INPUT",
+            "id": "uso-de-rastrojo",
+            "name": "uso-de-rastrojo",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "switch-uso-de-rastrojo"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "cuenta-con-certificación",
+            "name": "cuenta-con-certificación",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-cuenta-con-certificación"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "cuenta-con-certificación-orgánica",
+            "name": "cuenta-con-certificación-orgánica",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-cuenta-con-certificación-orgánica"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "certificado-orgánico",
+            "tipo": "file",
+            "valor": [],
+            "parent": "fieldset-certificado-orgánico"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "cuenta-con-certificación-libre-de-OGM",
+            "name": "cuenta-con-certificación-libre-de-OGM",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-cuenta-con-certificación-libre-de-OGM"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "certificado-libre-de-OGM",
+            "tipo": "file",
+            "valor": [],
+            "parent": "fieldset-certificado-libre-de-OGM"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "ofrece-en-pié",
+            "name": "ofrece-en-pié",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-ofrece-en-pié"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "precio-por-unidad-de-medida-en-pié",
+            "tipo": "number",
+            "valor": "",
+            "parent": "fieldset-precio-por-unidad-de-medida-en-pié"
+        },
+        {
+            "tag": "SELECT",
+            "id": "",
+            "name": "opciones-unidad-de-medida-en-pié",
+            "tipo": "select-one",
+            "valor": "kg",
+            "parent": "fieldset-precio-por-unidad-de-medida-en-pié"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "hectáreas-disponibles-en-pié",
+            "tipo": "number",
+            "valor": "",
+            "parent": "fieldset-hectáreas-disponibles-en-pié"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "venta-mínima-en-pié",
+            "tipo": "number",
+            "valor": "",
+            "parent": "fieldset-venta-mínima-en-pié"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "SI",
+            "derecha": "NO",
+            "tag": "INPUT",
+            "id": "ofrece-grano-per-se",
+            "name": "ofrece-grano-per-se",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-ofrece-grano-per-se"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "precio-por-unidad-de-medida-per-sé",
+            "name": "precio-por-unidad-de-medida-per-sé",
+            "tipo": "number",
+            "valor": "20.00",
+            "parent": "fieldset-precio-por-unidad-de-medida-per-sé"
+        },
+        {
+            "tag": "SELECT",
+            "id": "",
+            "name": "unidad-de-medida-precio-per-sé",
+            "tipo": "select-one",
+            "valor": "kg",
+            "parent": "fieldset-precio-por-unidad-de-medida-per-sé"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "cantidad-de-grano-disponible-per-sé",
+            "name": "cantidad-de-grano-disponible-per-sé",
+            "tipo": "number",
+            "valor": "25",
+            "parent": "fieldset-cantidad-de-grano-disponible-per-sé"
+        },
+        {
+            "tag": "SELECT",
+            "id": "",
+            "name": "unidad-de-medida-cantidad-per-sé",
+            "tipo": "select-one",
+            "valor": "ton",
+            "parent": "fieldset-cantidad-de-grano-disponible-per-sé"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "cantidad-mínima-de-venta",
+            "name": "cantidad-mínima-de-venta",
+            "tipo": "number",
+            "valor": "1",
+            "parent": "fieldset-cantidad-mínima-de-venta"
+        },
+        {
+            "tag": "SELECT",
+            "id": "",
+            "name": "unidad-de-medida-cantidad-per-sé-mínima-de-venta",
+            "tipo": "select-one",
+            "valor": "ton",
+            "parent": "fieldset-cantidad-mínima-de-venta"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "artesanal",
+            "derecha": "tecnificada",
+            "tag": "INPUT",
+            "id": "secado",
+            "name": "secado",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "switch-secado"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "artesanal",
+            "derecha": "tecnificada",
+            "tag": "INPUT",
+            "id": "desgranado",
+            "name": "desgranado",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "switch-desgranado"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "conservación-del-grano",
+            "name": "conservación-del-grano",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "switch-conservación"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "cal-checkbox",
+            "name": "cal-checkbox",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "fieldset-cual-conservación"
+        },
+        {
+            "tag": "INPUT",
+            "id": "fosfuro-checkbox",
+            "name": "fosfuro-checkbox",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "fieldset-cual-conservación"
+        },
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "conservación-otros",
+            "tipo": "text",
+            "valor": "",
+            "parent": "fieldset-cual-conservación"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "lugar-de-almacén",
+            "tipo": "number",
+            "valor": "07970",
+            "parent": "fieldset-lugar-de-almacén"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "cuenta-con-análisis-de-aflatoxinas",
+            "name": "cuenta-con-análisis-de-aflatoxinas",
+            "tipo": "checkbox",
+            "valor": true,
+            "parent": "switch-cuenta-con-análisis-de-aflatoxinas"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "análisis-de-aflatoxinas",
+            "tipo": "file",
+            "valor": [
+                "228-aflatoxinas.pdf"
+            ],
+            "parent": "fieldset-análisis-de-aflatoxinas"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "cuenta-con-NMX-FF-034",
+            "name": "cuenta-con-NMX-FF-034",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-cuenta-con-NMX-FF-034"
+        }
+    ],
+    [
+        {
+            "tag": "INPUT",
+            "id": "",
+            "name": "análisis-NMX-FF-034",
+            "tipo": "file",
+            "valor": [],
+            "parent": "fieldset-análisis-NMX-FF-034"
+        }
+    ],
+    [
+        {
+            "slider": true,
+            "izquierda": "NO",
+            "derecha": "SI",
+            "tag": "INPUT",
+            "id": "servicios",
+            "name": "servicios",
+            "tipo": "checkbox",
+            "valor": false,
+            "parent": "switch-servicios"
+        }
+    ],
+    [
+        {
+            "tag": "TEXTAREA",
+            "id": "",
+            "name": "servicios-descripción",
+            "tipo": "textarea",
+            "valor": "",
+            "parent": "fieldset-servicios-descripción"
+        }
+    ],
+    [
+        {
+            "tag": "TEXTAREA",
+            "id": "",
+            "name": "notas-del-vendedor",
+            "tipo": "textarea",
+            "valor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin maximus, magna et iaculis feugiat, purus ex consectetur libero, id mollis nisl leo ut dui. Donec laoreet egestas ex, a sagittis lorem vulputate eu. Fusce scelerisque faucibus purus vitae iaculis. Cras ultrices enim et tortor aliquet, eu rutrum sapien semper. Quisque quis turpis tellus. Duis eu lobortis ipsum, nec tincidunt nisi. Phasellus scelerisque purus at risus luctus, eget luctus justo porta. Etiam molestie ultricies congue. Nulla facilisi.",
+            "parent": "fieldset-notas-del-vendedor"
+        }
+    ]
+]

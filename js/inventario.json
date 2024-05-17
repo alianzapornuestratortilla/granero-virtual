@@ -1,0 +1,17 @@
+{
+    "registrado": {
+        "cantidad": 5,
+        "unidad": "tonelada",
+        "título": "cantidad registrada originalmente"
+    },
+    "vendido":{
+        "cantidad": 5,
+        "unidad": "tonelada",
+        "título": "cantidad vendida hasta ahora"
+    },
+    "merma": {
+        "cantidad": 5,
+        "unidad": "tonelada",
+        "título": "cantidad que perdí"
+    }
+}

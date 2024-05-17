@@ -32,14 +32,14 @@ function showHideOtros(event) {
         // debugger
         if (element.tagName == "DIV" && element.classList.contains('lista-de-otros')) {
 
-            const required = isChecked;
+            // const required = isChecked;
             // debugger
             const fieldsetsDeOtro = element.childNodes;
 
             for (let index = 0; index < fieldsetsDeOtro.length; index++) {
                 const fieldsetDeOtro = fieldsetsDeOtro[index];
                 if (fieldsetDeOtro.tagName == "FIELDSET") {                    
-                    fieldsetDeOtro.querySelector('input.input-otros').required = required;
+                    // fieldsetDeOtro.querySelector('input.input-otros').required = required;
                 }
 
             }

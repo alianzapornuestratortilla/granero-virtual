@@ -26,10 +26,10 @@ function resetPhotoArrays() {
 
 function refreshFormPhotos(leInput, lePhotoBar) {
     void resetPhotoArrays();
-    console.log(lePhotoBar.children);
+    //--console.log(lePhotoBar.children);
     for (laFoto of lePhotoBar.children) {
 
-        console.log(laFoto);
+        //--console.log(laFoto);
         if (laFoto.tagName === "CANVAS") {
             // element is an image
             // convert to webp file and add to array
@@ -40,8 +40,8 @@ function refreshFormPhotos(leInput, lePhotoBar) {
             //a.click();
             //*****
             let webpURL = canvas2webpURL(laFoto);
-            console.log(webpURL);
-            console.log('separador');
+            //-- console.log(webpURL);
+            //-- console.log('separador');
             //comented out, not to be used
             webpURLArrAdHoc.push(webpURL);
 
@@ -64,7 +64,7 @@ function canvas2webpURL(canvas, fileName) {
 
 async function interacción() {
     try {
-        console.log('inicia click listening');
+        //console.log('inicia click listening');
         let presionaAlgo = new Promise((resolve, reject) => {
             //document.querySelector('button#photo-cropping-modal-close').addEventListener('click', resolve('cancelar'));//should be redundant
             document.querySelector('button#botón-descartar-foto').addEventListener('click', () => {
@@ -72,7 +72,7 @@ async function interacción() {
                 resolve('descartar-foto');
             });
             document.querySelector('button#botón-así-mero').addEventListener('click', () => {
-                console.log('presionaron así mero');
+                //console.log('presionaron así mero');
                 resolve('así-mero');
             });
             document.querySelector('dialog#photo-cropping-modal').addEventListener('close', () => {
@@ -189,19 +189,17 @@ function closePhotoCroppingModal(event) {
 
 //-------------------------------------------
 
-/*
-        <script>
+
+
             async function url2Blob(imageUrl) {
                 return await (await fetch(imageUrl)).blob();
             }
-        </script>
 
-        <script>
             function dataURLtoFile(webpBlob, filename) {
                 return new File([webpBlob], filename + ".webp", { type: "image/webp" });
             }
-        </script>
-*/
+
+
 
 
 

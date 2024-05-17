@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nuevo e-lote</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+   
+    <script src="../js/switch.js"></script>    
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        :root {
+            --current-main-max-width: 800px;
+        }
+
+        @media screen and (min-width: 100px) {
+
+            /* teléfonos */
+
+            @media screen and (min-width: 577px) {
+
+                /* tablets */
+            }
+
+            @media screen and (min-width: 993px) {
+                /* escritorio desktop*/
+
+                body main div#contenido-main {
+                    max-width: var(--current-main-max-width);
+                    margin: 0 auto;
+                }
+            }
+
+            @media (prefers-color-scheme: light) {
+
+            }
+
+            @media (prefers-color-scheme: dark) {}
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top">
+        <div id="da-menu" onclick="despliegaMenú(event)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </div>
+
+        <div id="logotipo">
+            <a href=""><img src="../media/images/logo.png" alt=""></a>
+        </div>
+
+    </header>
+    <div class="contenido-pantalla">
+        <aside id="side-menu">
+            <nav id="contenido-sidebar">
+                <h3>general</h3>
+                <ul>
+                    <li><a href=""><strong>mensajes</strong></a></li>
+                    <li><a href=""><strong>mi perfil</strong></a></li>
+                </ul>
+                <h3>venta de grano</h3>
+                <ul>
+                    <li><a href=""><strong>mi granero</strong></a></li>
+                    <li><a href=""><strong>crear nuevo e-lote</strong></a></li>
+                    <li><a href=""><strong>editar e-lote</strong></a></li>
+                    <li><a href=""><strong>actualización de inventarios</strong></a></li>
+                </ul>
+                <h3>compra de grano</h3>
+                <ul>
+                    <li><a href=""><strong>consultar oferta de maíz</strong></a></li>
+                </ul>
+                <h3>flete</h3>
+                <ul>
+                    <li><a href=""><strong>solicitar flete</strong></a></li>
+                    <li><a href=""><strong>fletes vacantes</strong></a></li>
+                    <li><a href=""><strong>ofertar servicio de flete</strong></a></li>
+                    <li><a href=""><strong>estatus de flete</strong></a></li>
+                </ul>
+                <h3>almacenamiento</h3>
+                <ul>
+                    <li><a href=""><strong>estatus</strong></a></li>
+                    <li><a href=""><strong>solicitud de retiro</strong></a></li>
+                    <li><a href=""><strong>solicitud de ingreso</strong></a></li>
+                </ul>
+                <h3>análisis</h3>
+                <ul>
+                    <li><a href=""><strong>solicitud de análisis</strong></a></li>
+                    <li><a href=""><strong>compartir análisis</strong></a></li>
+                    <li><a href=""><strong>añadir a e-lote</strong></a></li>
+                    <li><a href=""><strong>reporte de análisis</strong></a></li>
+                </ul>
+
+            </nav>
+        </aside>
+        <main>
+            <div id="contenido-main">
+                <header>
+                    <div id="subtítulo-izquierdo">
+                        <h4 id="subtíulo-top"><strong><span id="el-subtítulo"></span> e-lote</strong></h4>
+                        <h3 id="subtíulo-bottom"><strong>nombre del e-lote</strong></h3>
+                    </div>
+                    <div id="subtítulo-derecho">
+                        <a href=""><button type="button" class="botón botón-rojo"><strong>🡠 Regresar</strong></button></a>
+                    </div>
+                </header>
+                <article id="article-principal" >
+                    <div class="a-fieldset" id="fotografías-del-e-lote">
+                        <fieldset >
+                            <legend><strong>Fotografías del e-lote de maíz</strong></legend>
+                            <div id="main-photo">
+
+                            </div>
+                            <div id="photo-bar">
+
+                            </div>
+                            
+                        </fieldset>
+                    </div>
+                   
+                </article>
+            </div>
+
+
+        </main>
+
+    </div>
+    <footer><code>CC NC SA 2024 Alianza por Nuestra Tortilla – Hecha con ♥ en México.</code></footer>
+
+    <template id="template-fotografía">
+        
+        <img src="" alt="">
+
+    </template>
+
+    <section id="image-formatter-code">
+
+        <script>
+            function despliegaMenú(event) {
+                document.getElementById('side-menu').classList.toggle("show");
+            }
+        </script>      
+        
+        <script>
+            const lasOpciones = {
+                "fotografías-del-e-lote": true
+            };
+
+        </script>
+        <script src="../js/despliegaOpciones.js"></script>
+        <script>
+            void despliegalasOpciones(lasOpciones);
+        </script>
+            
+       
+        <script>
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const tipoDeEdición = urlParams.get('tMu');
+            // http://localhost:5500/edita-elote/muestra-elote.html?tMu=verificar
+            // http://localhost:5500/edita-elote/muestra-elote.html?tMu=ver
+            //?product=shirt&color=blue&newuser&size=m
+
+            const posDocVars = {
+                "verificar": {
+                    "título": "verificar e-lote",
+                    "subtítulo": "verificando nuevo registro",
+                    "btn-submit": "confirmar registro"
+                },
+                "ver": {
+                    "título": "consultando e-lote",
+                    "subtítulo": "consultando",
+                    "btn-submit": "regresar"
+                }
+            }
+            let cual
+            switch (tipoDeEdición) {
+
+
+                case "verificar":
+                    cual = posDocVars["verificar"];
+                    break;
+                case 'ver':
+                default:
+                    cual = posDocVars["ver"];
+                    break;
+            }
+
+            const docVars = cual;
+
+            document.title = docVars["título"];
+            document.getElementById('el-subtítulo').innerHTML = docVars["subtítulo"];
+            document.getElementById('btn-submit-text').innerHTML = docVars["btn-submit"];
+
+        </script>
+       
+</body>
+
+</html>
