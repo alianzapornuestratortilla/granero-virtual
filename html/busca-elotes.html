@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-lotes disponibles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+    <script src="../js/switch.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        :root {
+            --current-main-max-width: 800px;
+        }
+
+        @media screen and (min-width: 100px) {
+
+            /* teléfonos */
+
+            @media screen and (min-width: 577px) {
+
+                /* tablets */
+            }
+
+            @media screen and (min-width: 993px) {
+                /* escritorio desktop*/
+
+                body main div#contenido-main {
+                    max-width: 100%;
+                    margin: 0 auto;
+                }
+            }
+
+            @media (prefers-color-scheme: light) {}
+
+            @media (prefers-color-scheme: dark) {}
+        }
+    </style>
+</head>
+
+<body>
+    <section id="svgs-de-reuso">
+        <svg width="40px" height="40px" display="none">
+            <defs>
+                <symbol id="svg-3-puntos"  viewBox="0 0 32 32">
+                    <path 
+                    d="M19 16a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3zm0 13a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3zm0-26a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3z" />
+                </symbol>  
+            </defs>  
+        </svg>
+    </section>
+    <header class="top">
+        <div id="da-menu" onclick="despliegaMenú(event)">
+            <svg fill="#000000" width="40px" height="40px" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
+                id="Glyph" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path d="M29,16c0,1.104-0.896,2-2,2H11c-1.104,0-2-0.896-2-2s0.896-2,2-2h16C28.104,14,29,14.896,29,16z"
+                    id="XMLID_352_" />
+                <path d="M29,6c0,1.104-0.896,2-2,2H11C9.896,8,9,7.104,9,6s0.896-2,2-2h16C28.104,4,29,4.896,29,6z"
+                    id="XMLID_354_" />
+                <path d="M29,26c0,1.104-0.896,2-2,2H11c-1.104,0-2-0.896-2-2s0.896-2,2-2h16C28.104,24,29,24.896,29,26z"
+                    id="XMLID_356_" />
+                <path d="M3,6c0,1.103,0.897,2,2,2s2-0.897,2-2S6.103,4,5,4S3,4.897,3,6z" id="XMLID_358_" />
+                <path d="M3,16c0,1.103,0.897,2,2,2s2-0.897,2-2s-0.897-2-2-2S3,14.897,3,16z" id="XMLID_360_" />
+                <path d="M3,26c0,1.103,0.897,2,2,2s2-0.897,2-2s-0.897-2-2-2S3,24.897,3,26z" id="XMLID_362_" />
+            </svg>
+        </div>
+
+        <div id="logotipo">
+            <a href=""><img src="../media/images/logo.png" alt=""></a>
+        </div>
+
+    </header>
+    <div class="contenido-pantalla">
+        <aside id="side-menu">
+            <nav id="contenido-sidebar">
+                <h3>general</h3>
+                <ul>
+                    <li><a href=""><strong>mensajes</strong></a></li>
+                    <li><a href=""><strong>mi perfil</strong></a></li>
+                </ul>
+                <h3>venta de grano</h3>
+                <ul>
+                    <li><a href=""><strong>mi granero</strong></a></li>
+                    <li><a href=""><strong>crear nuevo e-lote</strong></a></li>
+                    <li><a href=""><strong>editar e-lote</strong></a></li>
+                    <li><a href=""><strong>actualización de inventarios</strong></a></li>
+                </ul>
+                <h3>compra de grano</h3>
+                <ul>
+                    <li><a href=""><strong>consultar oferta de maíz</strong></a></li>
+                </ul>
+                <h3>flete</h3>
+                <ul>
+                    <li><a href=""><strong>solicitar flete</strong></a></li>
+                    <li><a href=""><strong>fletes vacantes</strong></a></li>
+                    <li><a href=""><strong>ofertar servicio de flete</strong></a></li>
+                    <li><a href=""><strong>estatus de flete</strong></a></li>
+                </ul>
+                <h3>almacenamiento</h3>
+                <ul>
+                    <li><a href=""><strong>estatus</strong></a></li>
+                    <li><a href=""><strong>solicitud de retiro</strong></a></li>
+                    <li><a href=""><strong>solicitud de ingreso</strong></a></li>
+                </ul>
+                <h3>análisis</h3>
+                <ul>
+                    <li><a href=""><strong>solicitud de análisis</strong></a></li>
+                    <li><a href=""><strong>compartir análisis</strong></a></li>
+                    <li><a href=""><strong>añadir a e-lote</strong></a></li>
+                    <li><a href=""><strong>reporte de análisis</strong></a></li>
+                </ul>
+
+            </nav>
+        </aside>
+        <main>
+            <div id="contenido-main">
+                <header>
+                    <div id="subtítulo-izquierdo">
+                        <h4 id="subtíulo-top"><strong><span id="el-subtítulo"></span></strong></h4>
+                        <h3 id="subtíulo-bottom"><strong></strong></h3>
+                    </div>
+                    <div id="subtítulo-derecho">
+                        <a href=""><button type="button" class="botón botón-rojo" id="botón-header"><strong>Quitar
+                                    filtros</strong></button></a>
+                    </div>
+                </header>
+                <article id="article-principal">
+                    <div class="un-e-lote">
+                        <div class="multi-foto">
+                            <div class="foto principal">
+                                <img class="primaria" src="../media/images/palceholder 1.png" alt="">
+
+                            </div>
+                            <div class="foto secundaria">
+                                <div class="img-container">
+                                    <img class="secundaria" src="../media/images/palceholder 1.png" alt="">
+                                </div>
+                                <div class="img-container">
+                                    <img class="secundaria" src="../media/images/palceholder 1.png" alt="">
+                                </div>
+                                <div class="img-container">
+                                    <img class="secundaria" src="../media/images/palceholder 1.png" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="resumen compacto elote-lista">
+                            <div class="nombre-e-lote-lista dato 0 lista">
+
+                                <legend>Nombre del e-lote</legend>
+                                <strong class="valor">Nombre del e-lote</strong>
+
+
+                            </div>
+                            <div class="dato 1 lista">
+                                <legend>Cantidad registrada</legend>
+                                <strong class="valor">2.5 toneladas <span
+                                        class="show-monitor">registradas</span></strong>
+                            </div>
+                            <div class="dato 2 lista">
+                                <legend>Vendido hasta ahora</legend>
+                                <strong class="valor">1.3 toneladas <span class="show-monitor"> vendidas</span></strong>
+                            </div>
+                        </div>
+                        <div class="resumen extendido elote-lista">
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+                            <div id="">
+                                <legend>lorem ipsum</legend>
+                                <strong class="valor">dolor sit amet, consectetur adipiscing</strong>
+                            </div>
+
+
+                        </div>
+                        <button type="menu" class="le3-dots" onmousedown="void despliegaMenuEloteLista(event)">
+                            <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg">
+                                <use xlink:href="#svg-3-puntos"></use>
+                            </svg>
+                        </button>
+                        <menu class="le3-dots">
+
+                            <li class="le3-dots-inventario">INVENTARIO</li>
+                            <li class="le3-dots-ver">VER</li>
+                            <li class="le3-dots-eliminar">ELIMINAR</li>
+                            <li class="le3-dots-editar">EDITAR</li>
+                            <li class="le3-dots-chats">CHATS</li>
+
+
+                        </menu>
+
+                    </div>
+
+                </article>
+            </div>
+
+
+        </main>
+
+    </div>
+    <footer><code>CC NC SA 2024 Alianza por Nuestra Tortilla – Hecha con ♥ en México.</code></footer>
+
+    <template>
+        <svg width="40px" height="40px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            
+
+        </svg>
+    </template>
+
+    <template id="template-fotografía">
+
+        <img src="" alt="">
+
+    </template>
+
+    <section id="image-formatter-code">
+
+        <script>
+            function despliegaMenuEloteLista(event) {
+                // debugger
+                event.stopPropagation();
+                let leButton = event.currentTarget;
+                leButton.classList.toggle("pushed");
+                if (leButton.classList.contains("pushed")) {
+                    
+                    //remove the onclick
+                    leButton.removeAttribute('onmousedown');
+                    let leMenu = leButton.closest('div.un-e-lote').querySelector('menu.le3-dots');
+                    leMenu.classList.toggle("show");
+                    let listener = {
+                        leMenu: leMenu,
+                        leButton: leButton,
+                        handleEvent: function (neoevent) {
+                            if (!leMenu.contains(neoevent.target)) {
+                                // debugger
+                                neoevent.stopPropagation();
+                                document.removeEventListener('mousedown', listener);
+                                this.leMenu.classList.toggle("show");
+                                this.leButton.classList.toggle("pushed");                            
+                                this.leButton.setAttribute('onmousedown', 'despliegaMenuEloteLista(event)');
+                                
+                            }
+                           
+                        }
+                    };
+                    document.addEventListener('mousedown', listener);
+                } else {
+
+
+                }
+
+            }
+        </script>
+
+        <script>
+            function despliegaMenú(event) {
+                document.getElementById('side-menu').classList.toggle("show");
+            }
+        </script>
+
+        <script>
+            const lasOpciones = {
+            };
+
+        </script>
+        <script src="../js/despliegaOpciones.js"></script>
+        <script>
+            void despliegalasOpciones(lasOpciones);
+        </script>
+
+
+        <script>
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const tipoDeEdición = urlParams.get('tMu');
+            // http://localhost:5500/edita-elote/muestra-elote.html?tMu=verificar
+            // http://localhost:5500/edita-elote/muestra-elote.html?tMu=ver
+            //?product=shirt&color=blue&newuser&size=m
+
+            const posDocVars = {
+                "mis-e-lotes": {
+                    "título": "mis e-lotes",
+                    "subtítulo": "mis-elotes",
+                    "btn-submit": "regresar",
+                    "subtíulo-bottom": 'que yo estoy vendiendo'
+                },
+                "comprar": {
+                    "título": "e-lotes disponibles",
+                    "subtítulo": "e-lotes disponibles para compra",
+                    "btn-submit": "borrar filtros",
+                    "subtíulo-bottom": 'Buscador de e-lotes'
+                }
+            }
+            let cual
+            switch (tipoDeEdición) {
+                case 'comprar':
+                    cual = posDocVars["comprar"];
+                    break;
+                case 'mis-e-lotes':
+                default:
+                    cual = posDocVars["mis-e-lotes"];
+                    break;
+            }
+
+            const docVars = cual;
+
+            document.title = docVars["título"];
+            document.getElementById('el-subtítulo').innerHTML = docVars["subtítulo"];
+            document.getElementById('botón-header').innerHTML = docVars["btn-submit"];
+            document.getElementById('subtíulo-bottom').querySelector('strong').innerText = docVars["subtíulo-bottom"];
+
+        </script>
+
+</body>
+
+</html>
