@@ -22,7 +22,7 @@
     <script>
         const lasOpciones = {
             "fieldset-nombre-vendedor": true,
-            "fieldset-teléfono":true,
+            "fieldset-teléfono": true,
             "switch-mismo-numero": {
                 "izquierda": {},
                 "derecha": {
@@ -69,55 +69,42 @@
                         }
                     }
                 }
-            }, "switch-ofrece-en-pié": {
+            },
+            "fieldset-precio-por-unidad-de-medida-per-sé": true,
+            "fieldset-cantidad-de-grano-disponible-per-sé": true,
+            "fieldset-cantidad-mínima-de-venta": true,
+            "switch-secado": {
+                "izquierda": {},
+                "derecha": {}
+            },
+            "switch-desgranado": {
+                "izquierda": {},
+                "derecha": {}
+            },
+            "switch-conservación": {
                 "izquierda": {},
                 "derecha": {
-                    "fieldset-precio-por-unidad-de-medida-en-pié": true,
-                    "fieldset-hectáreas-disponibles-en-pié": true,
-                    "fieldset-venta-mínima-en-pié": true
+                    "fieldset-cual-conservación": true
                 }
             },
-            "switch-ofrece-grano-per-se": {
-                "izquierda": {
-                    "fieldset-precio-por-unidad-de-medida-per-sé": true,
-                    "fieldset-cantidad-de-grano-disponible-per-sé": true,
-                    "fieldset-cantidad-mínima-de-venta": true,
-                    "switch-secado": {
-                        "izquierda": {},
-                        "derecha": {}
-                    },
-                    "switch-desgranado": {
-                        "izquierda": {},
-                        "derecha": {}
-                    },
-                    "switch-conservación": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-cual-conservación": true
-                        }
-                    },
-                    "switch-cuenta-con-análisis-de-aflatoxinas": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-análisis-de-aflatoxinas": true
-                        }
-                    },
-                    "fieldset-lugar-de-almacén": true,
-                    "switch-cuenta-con-NMX-FF-034": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-análisis-NMX-FF-034": true
-                        }
-                    },
-                    "switch-servicios": {
-                        "izquierda": {},
-                        "derecha": {
-                            "fieldset-servicios-descripción": true
-                        }
-                    }
-
-                },
-                "derecha": {}
+            "switch-cuenta-con-análisis-de-aflatoxinas": {
+                "izquierda": {},
+                "derecha": {
+                    "fieldset-análisis-de-aflatoxinas": true
+                }
+            },
+            "fieldset-lugar-de-almacén": true,
+            "switch-cuenta-con-NMX-FF-034": {
+                "izquierda": {},
+                "derecha": {
+                    "fieldset-análisis-NMX-FF-034": true
+                }
+            },
+            "switch-servicios": {
+                "izquierda": {},
+                "derecha": {
+                    "fieldset-servicios-descripción": true
+                }
             }
 
 
@@ -1039,7 +1026,8 @@
 
                     <div class="a-fieldset" id="fieldset-teléfono-mensaje">
                         <fieldset>
-                            <legend><strong>Teléfono de quién vende para recibir mensajes vía whatsapp o similar</strong>
+                            <legend><strong>Teléfono de quién vende para recibir mensajes vía whatsapp o
+                                    similar</strong>
                             </legend>
                             <input type="number" name="input-teléfono-mensaje" id="input-teléfono-mensaje"
                                 minlength="10" maxlength="10">
@@ -1080,7 +1068,7 @@
                                 imágenes</button>
                         </fieldset>
                     </div>
-                    
+
                     <div class="a-fieldset" id="usos-comunes">
                         <fieldset>
                             <legend><strong>son usos comunes para este maíz</strong></legend>
@@ -1452,10 +1440,10 @@
                         </div>
                     </div>
 
-                    <div class="a-fieldset" id="fieldset-certificado-orgánico"">
-                        <fieldset >
+                    <div class="a-fieldset" id="fieldset-certificado-orgánico">
+                        <fieldset>
                             <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                            <input type=" file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000">
+                            <input type="file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000" multiple>
                         </fieldset>
                     </div>
 
@@ -1485,16 +1473,16 @@
                         <fieldset>
                             <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
                             <input type="file" accept="image/*,.pdf" name="certificado-libre-de-OGM"
-                                max-size="10000000">
+                                max-size="10000000" multiple>
                         </fieldset>
                     </div>
-
+                    <!-- or de label e ID de label deben de ser iguales, el name na mas para homogeneidad 
                     <div class="switch-statement" id="switch-ofrece-en-pié">
                         <div class="texto-medio statement">
                             <strong></strong>
                         </div>
                         <div class="switch-container" onclick="void swicheaOpción(event);">
-                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            
                             <strong class="izquierda seleccionado">NO</strong>
                             <label class="switch" for="ofrece-en-pié">
                                 <input type="checkbox" name="ofrece-en-pié" id="ofrece-en-pié"
@@ -1548,13 +1536,14 @@
                             Has
                         </fieldset>
                     </div>
-
+                -->
+                    <!--  for de label e ID de label deben de ser iguales, el name na mas para homogeneidad
                     <div class="switch-statement" id="switch-ofrece-grano-per-se">
                         <div class="texto-medio statement">
                             <strong></strong>
                         </div>
                         <div class="switch-container" onclick="void swicheaOpción(event);">
-                            <!-- for de label e ID de label deben de ser iguales, el name na mas para homogeneidad -->
+                            
                             <strong class="izquierda seleccionado">SI</strong>
                             <label class="switch" for="ofrece-grano-per-se">
                                 <input type="checkbox" name="ofrece-grano-per-se" id="ofrece-grano-per-se"
@@ -1568,7 +1557,7 @@
                             <strong>considero ofrecerlo ya cosechado, secado y desgranado.</strong>
                         </div>
                     </div>
-
+                -->
                     <div class="a-fieldset" id="fieldset-precio-por-unidad-de-medida-per-sé">
                         <fieldset class="precio unidad-de-medida">
                             <legend><strong>el precio al que quiero vender este grano de maíz es de</strong></legend>
@@ -1741,7 +1730,7 @@
                     <div class="a-fieldset" id="fieldset-análisis-de-aflatoxinas">
                         <fieldset>
                             <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                            <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000">
+                            <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000" multiple>
                         </fieldset>
                     </div>
 
@@ -1992,42 +1981,6 @@
             }
         </script>
 
-        <script>
-            async function buildFormData(form) {
-
-                try {
-                    //maybe shouldn't construct from the form, as it is built again as a blob. Nope, we need the form for the files
-                    let formData = new FormData(form);
-
-                    //for (const key of formData.keys()) {
-                    //delete each input that isn't a file
-                    //}
-
-
-                    for (let index = 0; index < webpURLArrAdHoc.length; index++) {
-                        const webpURL = webpURLArrAdHoc[index];
-                        // solo append como fotografía, sin nombres distintos
-                        //formData.append('fotografía[' + index + ']', await dataURL2Blob(webpURL), nameGenerator());
-                        formData.append('fotografía', await dataURL2Blob(webpURL), nameGenerator());
-                    }
-                    //append the blob of the scraped form, named 'forms-JSON'
-                    //formData.append('forms-JSON', new Blob([JSON.stringify(formScraper(form))], { type: "application/json" }), nameGenerator())
-                    formData.append('form-obj', JSON.stringify(formScraper(form)));
-                    formData.append('form-opciones', JSON.stringify(lasOpciones));
-                    formData.append('form-árbolDentries', JSON.stringify(árbolDentries));
-                    //just to see what is in there
-                    //for (const key of formData.keys()) {console.log(key);}
-                    // console.log(formData)
-                    for (const key of formData.keys()) {
-                        console.log(key);
-                    }
-                    return formData;
-
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-        </script>
 
         <script>
 

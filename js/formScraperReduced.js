@@ -14,14 +14,16 @@ function formScraper(form) {
             // entri["hide"] = cContainer.classList.contains("hide");
             switch (variable.type) {
                 case 'checkbox':
-                    // debugger
+                    
                     valorPropiedad = variable.checked;
                     if ( variable.closest("div.switch-container") ) {
                         
                         entri["slider"] = true;
                         let sliderContainer = variable.closest("div.switch-container");
-                        entri["izquierda"] = sliderContainer.querySelector("strong.izquierda").innerText;
-                        entri["derecha"] = sliderContainer.querySelector("strong.derecha").innerText;
+                        
+                        entri["izquierda"] = sliderContainer.querySelector("strong.izquierda").innerHTML;
+                        entri["derecha"] = sliderContainer.querySelector("strong.derecha").innerHTML;
+                        // debugger
                         
                     }
                     break;
@@ -32,6 +34,7 @@ function formScraper(form) {
 
                         for (let index = 0; index < variable.files.length; index++) {
                             losFiles.push(variable.files[index].name);
+                            // debugger
                             
                         }                
                     }    

@@ -117,3 +117,32 @@ me quyedé en edita elote form submit línea 97 para evaliar el precio del maíz
 podría no más dejar para depsues la validaciñón? no, tengo que saber si lo muestro o lo ignoro ademñas de si están o no mostrados.... o na más se va a ver vacío .... hmmmm
 
 otas web para convertir y usar el File
+
+## Friday, May 17, 2024 @ 08:11:38 PM
+
+moved to mvp
+edita elote y busca elote
+
+función para elaborar la revisión de elote antes de submit
+
+diseño de look de elote en lista y pseudofullscreen
+
+## Tuesday, May 21, 2024 @ 08:51:47 PM
+
+got styles more or les working for normal and pseudofullscreen
+abandoned other functions, updated form scraper so now it has the files per se. still has to incorporate culling not shown fields (class hidden)
+made new map for form-report correspondence, still have to fill in correspondent values, and program speial and generic cases
+
+## Wednesday, May 22, 2024 @ 07:55:16 PM
+
+test buildFormData(), will h ave to JSON parse form-obj
+
+## Tuesday, May 28, 2024 @ 03:29:00 PM
+
+await buildEloteObj(await buildFormData())
+
+works now, returns eLote Obj, at least for form side, will have to do the dbrequest side
+
+dom bouildig por laspiedrtias, ya esta el resumen compacto, línea 556
+
+tal vez cambiar grano registrado por venta mínima

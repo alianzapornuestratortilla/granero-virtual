@@ -34,3 +34,4 @@
 - [ ] input background color invalid
 - [ ] sanitize values with scraper
 - [ ] remove non-file inputs in the formData while scraping
+- [ ] bototnes de cancelar no sirven en la seleción de imágen

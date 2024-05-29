@@ -1599,4 +1599,125 @@ div.un-e-lote menu.le3-dots li.le3-dots-chats {
   div.un-e-lote menu.le3-dots li.le3-dots-chats {
     color: darkcyan;
   }
+}
+
+div.un-e-lote.pseudofullscreen {
+  position: relative;
+  font-size: 3.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0.4rem 0.3rem;
+  margin: 1rem 0.2rem;
+  border: 3px;
+  border-style: solid;
+  border-radius: 1rem;
+  gap: 0.5rem;
+  border-color: #86BC42;
+}
+@media screen and (min-width: 577px) {
+  div.un-e-lote.pseudofullscreen {
+    padding: 1rem;
+    font-size: larger;
+    justify-content: start;
+  }
+}
+div.un-e-lote.pseudofullscreen * {
+  max-height: unset;
+}
+div.un-e-lote.pseudofullscreen div.resumen div.lista legend {
+  text-align: center;
+  padding-top: 1em;
+}
+div.un-e-lote.pseudofullscreen div.resumen.extendido.elote-lista {
+  max-width: unset;
+  text-align: center;
+  display: flex;
+}
+
+div.un-e-lote.pseudofullscreen div.multi-foto {
+  width: 100%;
+  min-width: 0;
+  flex-direction: row;
+  max-width: 100%;
+  max-height: unset;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal {
+  text-align: center;
+  flex-basis: 25%;
+  flex-grow: 1;
+}
+div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
+  max-width: 100%;
+}
+@media screen and (min-width: 577px) {
+  div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
+    max-width: 50%;
+  }
+}
+@media screen and (min-width: 993px) {
+  div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
+    max-width: 25%;
+  }
+}
+div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria {
+  flex-basis: 75%;
+  flex-grow: 3;
+  flex-direction: row;
+}
+div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria div.img-container {
+  text-align: center;
+}
+div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
+  max-width: 98%;
+  width: 95%;
+  max-height: unset;
+}
+@media screen and (min-width: 577px) {
+  div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
+    max-width: 30vw;
+    width: 95%;
+  }
+}
+@media screen and (min-width: 993px) {
+  div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
+    width: 95%;
+  }
+}
+div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 577px) {
+  div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria {
+    flex-direction: row;
+  }
+}
+div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria img {
+  max-width: 95%;
+  width: 95%;
+  max-height: unset;
+}
+@media screen and (min-width: 577px) {
+  div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria img {
+    width: 85%;
+  }
+}
+@media screen and (min-width: 993px) {
+  div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria img {
+    width: 85%;
+  }
+}
+
+div.un-e-lote.pseudofullscreen div.resumen {
+  font-size: larger;
+}
+
+div.un-e-lote.pseudofullscreen div.resumen.compacto.elote-lista div legend {
+  display: block;
+}
+div.un-e-lote.pseudofullscreen div.resumen.compacto.elote-lista div.dato.lista {
+  text-align: center;
 }/*# sourceMappingURL=styles.css.map */

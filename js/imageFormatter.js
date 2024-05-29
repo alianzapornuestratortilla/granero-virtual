@@ -156,6 +156,16 @@ async function handleFileInput(evt) {
             continue;
         }
 
+        const reader = new leFotoReader;
+        
+        lePhotos.push(await logImageData(file, reader))
+
+    }
+    return lePhotos;
+}
+
+class leFotoReader {
+    constructor() {
         const reader = (file) => new Promise((resolve, reject) => {
             const fr = new FileReader();
             fr.onload = () => resolve(fr);
@@ -163,11 +173,10 @@ async function handleFileInput(evt) {
             fr.readAsDataURL(file);
         });
 
-        lePhotos.push(await logImageData(file, reader))
+        return reader;
 
     }
-    return lePhotos;
-}
+  }
 
 //--------------------------------------------
 

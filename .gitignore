@@ -1,1 +1,17 @@
+.gitignore
 dev
+temp
+notas web.md
+.vscode
+/css/styles
+/css/style.css.map
+
+
+media/images/palceholder 1.png
+js/formScraper.js
+css/styles copy.css
+js/downloadBlob.js
+media/images/3dots.svg
+media/images/hamburger-list-menu-svgrepo-com.svg
+media/images/hecho-en-méxico.svg
+sass/styles copy.scss

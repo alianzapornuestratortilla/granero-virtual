@@ -1,7 +1,7 @@
 async function editaEloteInitSubmit(event) {
     //que no haga lo que tiendría que hacer con el action
     event.preventDefault();
-    let form = event.currentTarget;
+    // let form = event.currentTarget;
 
     let leDialog = document.getElementById("dialog-revisa-e-lote");
     let loaderContainer = leDialog.querySelector("div.dialog-body");
@@ -9,8 +9,13 @@ async function editaEloteInitSubmit(event) {
 
     //despliega el modal
     leDialog.showModal();
+    // let formData = (await buildFormData(document.getElementById('form-principal')));
+    // let formInput = JSON.parse(formData.get('form-obj'));    
+    // console.log(document.getElementById('form-principal'));
+    // console.log(form);
+    //Le sourceData line ->
+    replaceLoader(loaderContainer, viewELoteDOMg(JSON.parse((await buildFormData(document.getElementById('form-principal'))).get('form-obj'))));
 
-    replaceLoader(loaderContainer, viewELoteDOMg());
     //para cada input, verificar si está mostrado de acuerdo a opciones 
     //verificicar  si cumple los criterios
     //
@@ -178,55 +183,396 @@ async function validateForm(form) {
 */
 
 
-async function viewELoteDOMg(sourceData, form) {
+async function buildFormData() {
 
+    try {
+        //maybe shouldn't construct from the form, as it is built again as a blob. Nope, we need the form for the files
+        let formData = new FormData(document.getElementById('form-principal'));
+        // debugger
+        //for (const key of formData.keys()) {
+        //delete each input that isn't a file
+        //}
+
+
+        for (let index = 0; index < webpURLArrAdHoc.length; index++) {
+            const webpURL = webpURLArrAdHoc[index];
+            // solo append como fotografía, sin nombres distintos
+            //formData.append('fotografía[' + index + ']', await dataURL2Blob(webpURL), nameGenerator());
+            formData.append('fotografía', await dataURL2Blob(webpURL), nameGenerator());
+        }
+        //append the blob of the scraped form, named 'forms-JSON'
+        //formData.append('forms-JSON', new Blob([JSON.stringify(formScraper(form))], { type: "application/json" }), nameGenerator())
+        //formData.append('form-obj', JSON.stringify(formScraper(form)));
+        formData.append('form-obj', JSON.stringify(formScraper(document.getElementById('form-principal'))));
+        //formData.append('form-obj', formScraper(document.getElementById('form-principal')));
+        //formData.append('form-opciones', JSON.stringify(lasOpciones));
+        //formData.append('form-árbolDentries', JSON.stringify(árbolDentries));
+        //just to see what is in there
+        //for (const key of formData.keys()) {console.log(key);}
+        // console.log(formData)
+        //for (const key of formData.keys()) {
+        //    console.log(key);
+        //}
+        return formData;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function buildEloteObj(sourceData) {
     //obtain fields to show, current value
+    // debugger
     let eLote = new Object();
     eLote["imágenes"] = [];
+    eLote["entradas"] = new Object;
     eLote["archivos"] = new Object(); //"application/octet-stream"
-    elote["inventario"] = null;
+    //eLote["inventario"] = null;
+    try {
 
-    if (sourceData) {
-        switch (sourceData instanceof FormData) {
-            case true:
-                for (const foto of sourceData.getAll("fotografía")) {
-                    eLote["imágenes"].push(await blob2dataURL(foto));
-                }
-                eLote["entradas"] = JSON.parse(sourceData.get("form-obj"));
-                for (const key in eLote["entradas"]) {
-                    if (Object.hasOwnProperty.call(eLote["entradas"], key)) {
-                        const entrada = eLote["entradas"][key];
-                        if (!entrada["hide"]) {
-                            entrada["elements"].forEach(element => {
-                                if (element["tag"] == "INPUT" && element["tipo"] == "file") {
-                                    eLote["archivos"][element["name"]] = sourceData.get(element["name"]);
-                                }
-                            });
-                        }
+        //fotos
+        for (const foto of sourceData.getAll("fotografía")) {
+            //add photos
+            debugger
 
-                    }
-                }
-                eLote["opciones"] = JSON.parse(sourceData.get("form-opciones"));
-                eLote["dataTree"] = JSON.parse(sourceData.get("form-árbolDentries"));
+            const reader = new leFotoReader;
 
-
-                break;
-            case false:
-                //es recibido por fetch, los tresobjetos
-                //3 objetos:
-                //inputs number, text, select, text area
-                //archivos (blob) de input file
-                //fotos  
-                break;
-            default:
-                throw new Error("sourceData no es ni uno ni otro");
-                break;
+            eLote["imágenes"].push(await logImageData(foto, reader))
         }
-        // ya estando todo ahora pasar a DOM regresar DOM creado
-        //DOMgen4viewer
-    } else {
-        throw new Error("no hay sourceData");
+
+        //prune not shown
+
+        let unpruned = JSON.parse(sourceData.get("form-obj"));
+
+        for (const key in unpruned) {
+
+            if (Object.hasOwnProperty.call(unpruned, key)) {
+
+                if (!unpruned[key]["hide"]) {
+                    eLote["entradas"][key] = unpruned[key];
+                    //entrada["elements"].forEach(element => {
+                    //if (element["tag"] == "INPUT" && element["tipo"] == "file") {
+                    //    eLote["archivos"][element["name"]] = sourceData.get(element["name"]);
+                    //    debugger
+                    //}      
+                    //});
+                }
+
+            } else {
+                throw new Error("object no tiene property en el prunning");
+            }
+        }
+        //eLote["opciones"] = JSON.parse(sourceData.get("form-opciones"));
+        //eLote["dataTree"] = JSON.parse(sourceData.get("form-árbolDentries"));
+
+        //files
+        let filesElements = [
+            "fieldset-certificado-orgánico", "fieldset-certificado-libre-de-OGM", "fieldset-análisis-de-aflatoxinas", "fieldset-análisis-NMX-FF-034"
+        ];
+
+        for (const fileElement of filesElements) {
+            if (fileElement in eLote["entradas"]) {
+
+                try {
+                    listaDeArchivos = eLote["entradas"][fileElement]["elements"][Object.keys(eLote["entradas"][fileElement]["elements"])[0]]["valor"]
+                } catch (error) {
+                    console.error(error + listaDeArchivos);
+                }
+                let leName = eLote["entradas"][fileElement]["elements"][Object.keys(eLote["entradas"][fileElement]["elements"])[0]]["name"];
+                eLote["archivos"][leName] = sourceData.getAll(leName);
+            }
+        }
+
+    } catch (error) {
+        console.log(error);
     }
+
+    return eLote;
+
+
+}
+
+function buildELoteDOM(eLoteObj) {
+
+    let formELoteMap = {
+        
+        "fieldset-nombre-vendedor": {
+            "campo": "Vendedor",
+            "valor": ""
+        },
+        "fieldset-teléfono": {
+            "tipo": "10-digit-number",
+            "campo": "Teléfono",
+            "valor": ""
+        },
+        "fieldset-teléfono-mensaje": false,
+        "fieldset-nombre-maíz": {
+            "tipo": "10-digit-number",
+            "campo": "Whatsapp/Telegram",
+            "valor": ""
+        },
+        "fieldset-nombre-maíz": {
+            "tipo": "text-as-is",
+            "campo": "Nombre del maíz",
+            "valor": ""
+        },
+        "usos-comunes": {
+            "tipo": "checklist",
+            "campo": "Usos comunes",
+            "list": {
+                "tortillas-checkbox": "tortillas normales, festivas y taqueras",
+                "garnachas-checkbox": "quesadillas, gorditas, tlacoyos, sopes, huaraches, memelas, itacates, chalupas, tlaxcales, molotes, polcanes y panuchos",
+                "tamales-checkbox": "tamales",
+                "tostadas-checkbox": "tostadas",
+                "tlayudas-checkbox": "tlayudas",
+                "pozole-checkbox": "pozole",
+                "palomitas-checkbox": "palomitas",
+                "pinole-checkbox": "pinole",
+                "atole-checkbox": "atole",
+                "pozol-checkbox": "pozol",
+                "tejate-checkbox": "tejate, tejuino o tascalate",
+                "otros-checkbox": {
+                    "tipo": "text-as-is",
+                    "valor": ""
+                }
+
+
+            }
+        },
+        "switch-semilla-propia": {
+            "tipo": "dichotomous",
+            "campo": "Orígen de la semilla",
+            "valor": {
+                "es propia": "propia del agricultor, de ciclos pasados",
+                "la conseguí": "la consiguió de alguien más, en otro lado"
+            }
+        },
+        "switch-comprada-truequeada": {
+            "tipo": "dichotomous",
+            "campo": "La obtuvo mediante",
+            "valor": {
+                "la compré": "compra",
+                "la intercambié": "intercambio o trueque"
+            }
+        },
+        "switch-nativo": {
+            "tipo": "dichotomous",
+            "campo": "Tipo de semilla",
+            "valor": {
+                "nativo o criollito": "nativo / criollo",
+                "híbrido": "híbrido"
+            }
+        },
+        "switch-origen-distinto": false,
+        "fieldset-nombre-origen-distinto": {
+            "tipo": "dichotomous",
+            "campo": "Nombre de quién me facilitó la semilla",
+            "valor": ""
+        },
+        "fieldset-lugar-de-origen": {
+            "tipo": "text-as-is",
+            "campo": "lugar de orígen de la semilla",
+            "valor": ""
+        },
+        "switch-diversidad-de-cultivo": {
+            "tipo": "dichotomous",
+            "campo": "Diversidad del cultivo",
+            "valor": {
+                "acompañado": "En milpa, con frijol, calabaza, quelites",
+                "solito": "Maíz solo: monocultivo"
+            }
+        },
+        "switch-uso-de-agroquímicos": {
+            "tipo": "dichotomous",
+            "campo": "Uso de fertilizantes químicos",
+            "valor": {
+                "NO": "No usó",
+                "SI": "Sí usó"
+            }
+        },
+        "switch-uso-de-abonos": {
+            "tipo": "dichotomous",
+            "campo": "Uso de abonos naturales",
+            "valor": {
+                "NO": "No usó",
+                "SI": "Sí usó"
+            }
+        },
+        "switch-uso-de-venenos": {
+            "tipo": "dichotomous",
+            "campo": "Uso de agroquímicos para el control de bichos y/o hierbas",
+            "valor": {
+                "NO": "No usó",
+                "SI": "Sí usó"
+            }
+        },
+        "switch-uso-de-control-biológico": {
+            "tipo": "dichotomous",
+            "campo": "Uso de productos biológios, orgánicos o naturales para el control de bichos y/o hierbas",
+            "valor": {
+                "NO": "No usó",
+                "SI": "Sí usó"
+            }
+        },
+        "switch-uso-de-rastrojo": {
+            "tipo": "dichotomous",
+            "campo": "Permanencia de rastrojo sobre el suelo",
+            "valor": {
+                "NO": "No, el suelo quedó desprotegido",
+                "SI": "Si, el suelo quedó protegido"
+            }
+        },
+        "switch-cuenta-con-certificación": false,
+        "switch-cuenta-con-certificación-orgánica": false,
+        "fieldset-certificado-orgánico": {
+            "tipo": "files",
+            "campo": "Certificado orgánico",
+            "valor": true
+        },
+        "switch-cuenta-con-certificación-libre-de-OGM": false,
+        "fieldset-certificado-libre-de-OGM": {
+            "tipo": "files",
+            "campo": "Certificado libre de OGM",
+            "valor": true
+        },
+        "fieldset-precio-por-unidad-de-medida-per-sé": {
+            "tipo": "price",
+            "campo": "Precio",
+            "valor": true
+        },
+        "fieldset-cantidad-de-grano-disponible-per-sé": {
+            "tipo": "amount",
+            "campo": "Disponible para la compra",
+            "valor": true
+        },
+        "fieldset-cantidad-mínima-de-venta": {
+            "tipo": "amount",
+            "campo": "Cantidad mínima de compra",
+            "valor": true
+        },
+        "switch-secado": {
+            "tipo": "dichotomous",
+            "campo": "Tipo de secado",
+            "valor": {
+                "artesanal": "artesanal",
+                "tecnificada": "tecnificado"
+            }
+        },
+        "switch-desgranado": {
+            "tipo": "dichotomous",
+            "campo": "Desgranado",
+            "valor": {
+                "artesanal": "artesanal",
+                "tecnificada": "tecnificado"
+            }
+        },
+        "switch-conservación": {
+            "tipo": "dichotomous",
+            "campo": "Preservación del grano",
+            "valor": {
+                "NO": "No implemento medidas de protección para el grano",
+                "SI": "Si implemento medidas de protección para el grano"
+            }
+        },
+        "fieldset-cual-conservación": {
+            "tipo": "checklist",
+            "campo": "Método de preservación del grano",
+            "list": {
+                "cal-checkbox": "Se utilizó cal ",
+                "fosfuro-checkbox": "Se utilizaron pastillas de fosfuro"
+            }
+        },
+        "fieldset-lugar-de-almacén": {
+            "tipo": "5-digit-number",
+            "campo": "Código postal donde se enuentra el grano",
+            "valor": ""
+        },
+        "switch-cuenta-con-análisis-de-aflatoxinas": false,
+        "fieldset-análisis-de-aflatoxinas": {
+            "tipo": "files",
+            "campo": "Análisis de aflatoxinas",
+            "valor": true
+        },
+        "switch-cuenta-con-NMX-FF-034": false,
+        "fieldset-análisis-NMX-FF-034": {
+            "tipo": "files",
+            "campo": "Análisis NMX-FF-03",
+            "valor": true
+        },
+        "switch-servicios": false,
+        "fieldset-servicios-descripción": {
+            "tipo": "text-as-is",
+            "campo": "Servicios adicionales que se pueden prestae",
+            "valor": ""
+        },
+        "fieldset-notas-del-vendedor": {
+            "tipo": "text-as-is",
+            "campo": "Notas adicionales del vendedor",
+            "valor": ""
+        },
+    };
+    
+    let leELote = document.createElement("div");
+    leElote.classList.add("un-e-lote");
+    let leMultiFoto = document.createElement("div");
+    leMultiFoto.classList.add("multi-foto");
+
+    if (eLoteObj["imágenes"].length > 0) {
+        let leFotoPrincipal = document.createElement("div");
+        leFotoPrincipal.classList.add(...["foto","principal"]);
+        let leImgPrimaria = document.createElement("img");
+        leImgPrimaria.classList.add("primaria");
+        leImgPrimaria.setAttribute("src", eLoteObj["imágenes"][0]);
+        leFotoPrincipal.appendChild(leImgPrimaria);
+        leMultiFoto.appendChild(leFotoPrincipal);
+        let leFotoSecundaria = document.createElement("div");
+        leFotoSecundaria.classList.add(...["foto","secundaria"]);
+        let restoImágenes = eLoteObj["imágenes"];
+        restoImágenes.shift();
+        for (let index = 0; index < ( (restoImágenes.length < 3) ? restoImágenes.length : 3  ); index++) {
+            
+            let leImgCont = document.createElement("div");
+            leImgCont.classList.add("img-container");
+            let leImgSec = document.createElement("img");
+            leImgSec.classList.add("secundaria");
+            leImgSec.setAttribute("src", restoImágenes[index]);
+            leImgCont.appendChild(leImgSec);
+            leFotoSecundaria.appendChild(leImgCont);
+        }
+        leMultiFoto.appendChild(leFotoSecundaria);        
+
+    }
+
+    leELote.appendChild(leMultiFoto);
+    let leResumenCompacto = document.createElement("div");
+    leResumenCompacto.classList.add(...["resumen", "compacto", "elote-lista"]);
+    
+    leResumenCompacto.appendChild(buildItemResumen(["nombre-e-lote-lista", "dato", "0", "lista"],"Nombre del maíz",eLoteObj["entradas"]["fieldset-nombre-maíz"]["elements"]["input-nombre-completo"]["valor"]));
+    delete eLoteObj["entradas"]["fieldset-nombre-maíz"]; 
+    leResumenCompacto.appendChild(buildItemResumen(["dato", "1", "lista"],"Cantidad registrada",eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"]["elements"]["cantidad-de-grano-disponible-per-sé"]["valor"] + " " + eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"]["elements"]["unidad-de-medida-cantidad-per-sé"]["valor"]));
+    delete eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"];
+    leResumenCompacto.appendChild(buildItemResumen(["dato", "2", "lista"],"Precio","$ "+ eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"]["elements"]["precio-por-unidad-de-medida-per-sé"]["valor"] + eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"]["elements"]["unidad-de-medida-precio-per-sé"]["valor"]));
+    delete eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"];
+    leELote.appendChild(leResumenCompacto);
+}
+
+function buildItemResumen(classes,legend,strong) {
+    let leDAto = document.createElement("div");
+    leDAto.classList.add(...classes);
+    let leLegend = document.createElement("legend");
+    leLegend.innerText = legend;
+    leDAto.appendChild(leLegend);
+    let leStrong = document.createElement("strong");
+    leStrong.classList.add("valor");
+    leStrong.innerText = strong;
+    leDAto.appendChild(leStrong);
+    return leDAto;
+}
+
+
+async function viewELoteDOMg(eLoteObj) {
+
+
 
 
 
@@ -282,18 +628,18 @@ function DOMgen4viewer(sizeOfView, typeOfView, eLote) {
     //resumen compacto e-lote-lista
     elem0 = document.createElement("div");
     elem0.classList.add(...["resumen", "compacto", "elote-lista"]);
-    elem0.appendChild(createDatoLista({ "classList": ["nombre-e-lote-lista", "dato", "0", "lista"] }, { "classList": [], "texto": eLote["dataTree"]["input-nombre-completo"]["título"] }, { "texto": eLote["entradas"]["fieldset-nombre-maíz"]["elements"]["input-nombre-completo"]["valor"], "classList": "valor"}));
+    elem0.appendChild(createDatoLista({ "classList": ["nombre-e-lote-lista", "dato", "0", "lista"] }, { "classList": [], "texto": eLote["dataTree"]["input-nombre-completo"]["título"] }, { "texto": eLote["entradas"]["fieldset-nombre-maíz"]["elements"]["input-nombre-completo"]["valor"], "classList": "valor" }));
 
     let decis = {
-        "verificar-edición": {            
+        "verificar-edición": {
             "per-sé": {
                 "items": [
-                    {"origen": "form", "item":"precio-por-unidad-de-medida-per-sé"},
-                    {"origen": "form", "item":"cantidad-de-grano-disponible-per-sé"}
+                    { "origen": "form", "item": "precio-por-unidad-de-medida-per-sé" },
+                    { "origen": "form", "item": "cantidad-de-grano-disponible-per-sé" }
                 ],
-                1:{
-                    "div":  {
-                        "classList": ["dato", "1","lista"],
+                1: {
+                    "div": {
+                        "classList": ["dato", "1", "lista"],
                         "children": {
                             "legend": {
                                 "classList": ["valor"],
@@ -307,9 +653,9 @@ function DOMgen4viewer(sizeOfView, typeOfView, eLote) {
                         }
                     }
                 },
-                2:{
-                    "div":  {
-                        "classList": ["dato", "2","lista"],
+                2: {
+                    "div": {
+                        "classList": ["dato", "2", "lista"],
                         "children": {
                             "legend": {
                                 "classList": ["valor"],
@@ -328,9 +674,9 @@ function DOMgen4viewer(sizeOfView, typeOfView, eLote) {
         "visar": true
     }
     const segundosCompacto = decis[typeOfView]["per-sé"];
-    
-    elem0.appendChild(createDatoLista(segundosCompacto[1]["div"]["classList"],segundosCompacto[1]["div"]["children"]["legend"],segundosCompacto[1]["div"]["children"]["strong"]));
-    elem0.appendChild(createDatoLista(segundosCompacto[2]["div"]["classList"],segundosCompacto[2]["div"]["children"]["legend"],segundosCompacto[2]["div"]["children"]["strong"]));
+
+    elem0.appendChild(createDatoLista(segundosCompacto[1]["div"]["classList"], segundosCompacto[1]["div"]["children"]["legend"], segundosCompacto[1]["div"]["children"]["strong"]));
+    elem0.appendChild(createDatoLista(segundosCompacto[2]["div"]["classList"], segundosCompacto[2]["div"]["children"]["legend"], segundosCompacto[2]["div"]["children"]["strong"]));
     children.push(elem0);
     //los demás
     let doneAlreadyList = [];
@@ -356,9 +702,9 @@ function DOMgen4viewer(sizeOfView, typeOfView, eLote) {
                             switch (elemenN) {
                                 case 'unidad-de-medida-cantidad-per-sé':
                                 case "unidad-de-medida-precio-per-sé":
-                                    
+
                                     break;
-                            
+
                                 default:
                                     break;
                             }
@@ -366,10 +712,10 @@ function DOMgen4viewer(sizeOfView, typeOfView, eLote) {
                         }
                     }
                 }
-                
-            }        
-            
-            
+
+            }
+
+
         }
     }
 }
@@ -380,7 +726,7 @@ function addClasses(classes, element) {
 }
 
 function buildarams() {
-    
+
 }
 
 function createDatoLista(div, legend, strong) {

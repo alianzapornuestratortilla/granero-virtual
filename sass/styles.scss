@@ -1525,6 +1525,11 @@ div.opción {
     max-height: var(--alto-foto-lista)
 }
 
+@mixin altura-normal {
+
+    max-height: unset;
+}
+
 div.un-e-lote {
     position: relative;
     font-size: 3.5vw;
@@ -1825,5 +1830,139 @@ div.un-e-lote menu.le3-dots {
                 color: darkcyan;
             }
         }
+    }
+}
+
+// un-e-lote fullscreen
+
+div.un-e-lote.pseudofullscreen {
+    position: relative;
+    font-size: 3.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0.4rem 0.3rem;
+    margin: 1rem 0.2rem;
+    border: $ancho-border-foto-secundaria;
+    border-style: solid;
+    border-radius: 1rem;
+    gap: 0.5rem;
+
+    
+
+    @media #{$tablet} {
+        padding: 1rem;
+        font-size: larger;
+        justify-content: start;
+
+    }
+    border-color: $verde-palido;
+
+    & * {
+        @include altura-normal;
+    }
+    
+
+    div.resumen div.lista legend {
+        text-align: center;
+        padding-top: 1em;
+    }
+
+    div.resumen.extendido.elote-lista {
+        max-width: unset;
+        text-align: center;
+        display: flex;
+    }
+    
+
+}
+
+div.un-e-lote.pseudofullscreen div.multi-foto {
+    width: 100%;
+    min-width: 0;
+    flex-direction: row;
+    max-width: 100%;    
+    max-height: unset;
+    gap: 0.3rem;
+
+    flex-wrap: wrap;
+
+    div.foto.principal {
+        text-align: center;
+        flex-basis: 25%;
+        flex-grow: 1;
+        
+        img {
+            max-width: 100%;
+            @media #{$tablet} {
+                max-width: 50%;
+            } 
+            @media #{$desktop} {
+                max-width: 25%;
+            }
+        }
+    }
+
+    div.foto.secundaria {
+        
+        flex-basis: 75%;
+        flex-grow: 3;
+        flex-direction: row;
+        div.img-container {
+            text-align: center;
+        }
+    }
+
+    div.foto.principal img {
+        max-width: 98%;
+        width: 95%;
+        max-height: unset;
+        @media #{$tablet} {
+            max-width: 30vw;
+            width: 95%;
+        } 
+        @media #{$desktop} {
+            width: 95%;
+        }
+        
+    }
+
+    div.foto.secundaria {
+        display: flex;
+        flex-direction: column;
+        @media #{$tablet} {
+            flex-direction: row;
+        } 
+    }
+
+    div.foto.secundaria img {
+        
+        max-width: 95%;
+        width: 95%;
+        max-height: unset;
+        @media #{$tablet} {
+            
+            width: 85%;
+        } 
+        @media #{$desktop} {
+            
+            width: 85%;
+        }
+    }
+    
+}
+
+div.un-e-lote.pseudofullscreen div.resumen {
+    font-size: larger;
+}
+
+div.un-e-lote.pseudofullscreen div.resumen.compacto.elote-lista {
+    div legend {
+        display: block;
+        
+    }
+
+    div.dato.lista {
+        text-align: center;
     }
 }
