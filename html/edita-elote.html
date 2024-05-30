@@ -1044,7 +1044,7 @@
                         </fieldset>
                     </div>
 
-                    <div class="a-fieldset">
+                    <div class="a-fieldset" id="aux-img">
                         <fieldset id="fotografías-del-e-lote">
                             <legend><strong>Fotografías de mi e-lote de maíz</strong></legend>
                             <div id="main-photo">
@@ -1133,14 +1133,15 @@
                                     <div class="check-box">
                                         <input type="checkbox" class="input-otros" name="otros-checkbox"
                                             id="otros-checkbox" otros="div.lista-de-otros button.btn-añade"
-                                            onchange="showHideOtros(event)">
+                                            >
+                                            <!-- onchange="showHideOtros(event)" -->
                                         <label onclick="checkDaBox(event)"><strong>Otros usos</strong></label>
                                     </div>
                                 </div>
                                 <div class="lista-de-otros" id="otros-usos" style="display: none;"></div>
-                                <button type="button" class="btn-añade"
+                                <!-- <button type="button" class="btn-añade"
                                     onclick="void añadeOtro('otros-usos','template-otro-uso');"
-                                    style="display: none;">&plus;</button>
+                                    style="display: none;">&plus;</button> -->
                             </fieldset>
 
 
@@ -1565,7 +1566,8 @@
                                 <div class="cifra">
                                     <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
                                         class="valor-medido" min="0" name="precio-por-unidad-de-medida-per-sé"
-                                        id="precio-por-unidad-de-medida-per-sé" onchange="void valorVálido(event);">
+                                        id="precio-por-unidad-de-medida-per-sé" ">
+                                        <!-- onchange="void valorVálido(event); -->
                                     <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
                                 </div>
                                 <span>&nbsp;por&nbsp;</span><select name="unidad-de-medida-precio-per-sé"
@@ -1962,13 +1964,13 @@
     <template id="template-otro-uso">
         <fieldset class="otro">
             <input class="input-otros not-required" type="text" name="otro-uso" minlength="5" maxlength="30">
-            <button type="button" class="btn-cerrar-x" onclick="void killOtro(event);">&times;</button>
+            <!-- <button type="button" class="btn-cerrar-x" onclick="void killOtro(event);">&times;</button> -->
         </fieldset>
     </template>
     <template id="template-options-unidad-de-medida">
-        <option value="kg">kilogramo<span class="pluralidad s plural"></span></option>
-        <option value="ton">tonelada<span class="pluralidad s plural"></span></option>
-        <option value="costal">costal<span class="pluralidad es plural"></span> de 50 kg</option>
+        <option value="kg">kilogramo(s)<span class="pluralidad s plural"></span></option>
+        <option value="tonelada">tonelada(s)<span class="pluralidad s plural"></span></option>
+        <option value="costal">costal(es)<span class="pluralidad es plural"></span> de 50 kg</option>
     </template>
 
     <section id="image-formatter-code">

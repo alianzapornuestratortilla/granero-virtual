@@ -233,7 +233,7 @@ async function buildEloteObj(sourceData) {
         //fotos
         for (const foto of sourceData.getAll("fotografía")) {
             //add photos
-            debugger
+            //debugger
 
             const reader = new leFotoReader;
 
@@ -295,8 +295,9 @@ async function buildEloteObj(sourceData) {
 function buildELoteDOM(eLoteObj) {
 
     let formELoteMap = {
-        
+        "aux-img": false,
         "fieldset-nombre-vendedor": {
+            "tipo": "text-as-is",
             "campo": "Vendedor",
             "valor": ""
         },
@@ -305,8 +306,8 @@ function buildELoteDOM(eLoteObj) {
             "campo": "Teléfono",
             "valor": ""
         },
-        "fieldset-teléfono-mensaje": false,
-        "fieldset-nombre-maíz": {
+        "switch-mismo-numero": false,
+        "fieldset-teléfono-mensaje": {
             "tipo": "10-digit-number",
             "campo": "Whatsapp/Telegram",
             "valor": ""
@@ -331,10 +332,7 @@ function buildELoteDOM(eLoteObj) {
                 "atole-checkbox": "atole",
                 "pozol-checkbox": "pozol",
                 "tejate-checkbox": "tejate, tejuino o tascalate",
-                "otros-checkbox": {
-                    "tipo": "text-as-is",
-                    "valor": ""
-                }
+                "otros-checkbox": "otros"
 
 
             }
@@ -343,7 +341,7 @@ function buildELoteDOM(eLoteObj) {
             "tipo": "dichotomous",
             "campo": "Orígen de la semilla",
             "valor": {
-                "es propia": "propia del agricultor, de ciclos pasados",
+                "es propia,": "propia del agricultor, de ciclos pasados",
                 "la conseguí": "la consiguió de alguien más, en otro lado"
             }
         },
@@ -365,7 +363,7 @@ function buildELoteDOM(eLoteObj) {
         },
         "switch-origen-distinto": false,
         "fieldset-nombre-origen-distinto": {
-            "tipo": "dichotomous",
+            "tipo": "text-as-is",
             "campo": "Nombre de quién me facilitó la semilla",
             "valor": ""
         },
@@ -511,26 +509,26 @@ function buildELoteDOM(eLoteObj) {
             "valor": ""
         },
     };
-    
+
     let leELote = document.createElement("div");
-    leElote.classList.add("un-e-lote");
+    leELote.classList.add("un-e-lote");
     let leMultiFoto = document.createElement("div");
     leMultiFoto.classList.add("multi-foto");
 
     if (eLoteObj["imágenes"].length > 0) {
         let leFotoPrincipal = document.createElement("div");
-        leFotoPrincipal.classList.add(...["foto","principal"]);
+        leFotoPrincipal.classList.add(...["foto", "principal"]);
         let leImgPrimaria = document.createElement("img");
         leImgPrimaria.classList.add("primaria");
         leImgPrimaria.setAttribute("src", eLoteObj["imágenes"][0]);
         leFotoPrincipal.appendChild(leImgPrimaria);
         leMultiFoto.appendChild(leFotoPrincipal);
         let leFotoSecundaria = document.createElement("div");
-        leFotoSecundaria.classList.add(...["foto","secundaria"]);
+        leFotoSecundaria.classList.add(...["foto", "secundaria"]);
         let restoImágenes = eLoteObj["imágenes"];
         restoImágenes.shift();
-        for (let index = 0; index < ( (restoImágenes.length < 3) ? restoImágenes.length : 3  ); index++) {
-            
+        for (let index = 0; index < ((restoImágenes.length < 3) ? restoImágenes.length : 3); index++) {
+
             let leImgCont = document.createElement("div");
             leImgCont.classList.add("img-container");
             let leImgSec = document.createElement("img");
@@ -539,24 +537,144 @@ function buildELoteDOM(eLoteObj) {
             leImgCont.appendChild(leImgSec);
             leFotoSecundaria.appendChild(leImgCont);
         }
-        leMultiFoto.appendChild(leFotoSecundaria);        
+        leMultiFoto.appendChild(leFotoSecundaria);
 
     }
 
     leELote.appendChild(leMultiFoto);
-    let leResumenCompacto = document.createElement("div");
-    leResumenCompacto.classList.add(...["resumen", "compacto", "elote-lista"]);
-    
-    leResumenCompacto.appendChild(buildItemResumen(["nombre-e-lote-lista", "dato", "0", "lista"],"Nombre del maíz",eLoteObj["entradas"]["fieldset-nombre-maíz"]["elements"]["input-nombre-completo"]["valor"]));
-    delete eLoteObj["entradas"]["fieldset-nombre-maíz"]; 
-    leResumenCompacto.appendChild(buildItemResumen(["dato", "1", "lista"],"Cantidad registrada",eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"]["elements"]["cantidad-de-grano-disponible-per-sé"]["valor"] + " " + eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"]["elements"]["unidad-de-medida-cantidad-per-sé"]["valor"]));
-    delete eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"];
-    leResumenCompacto.appendChild(buildItemResumen(["dato", "2", "lista"],"Precio","$ "+ eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"]["elements"]["precio-por-unidad-de-medida-per-sé"]["valor"] + eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"]["elements"]["unidad-de-medida-precio-per-sé"]["valor"]));
-    delete eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"];
-    leELote.appendChild(leResumenCompacto);
+    // let leResumenCompacto = document.createElement("div");
+    // leResumenCompacto.classList.add(...["resumen", "compacto", "elote-lista"]);
+
+    // leResumenCompacto.appendChild(buildItemResumen(["nombre-e-lote-lista", "dato", "0", "lista"],"Nombre del maíz",eLoteObj["entradas"]["fieldset-nombre-maíz"]["elements"]["input-nombre-completo"]["valor"]));
+    // delete eLoteObj["entradas"]["fieldset-nombre-maíz"]; 
+    // leResumenCompacto.appendChild(buildItemResumen(["dato", "1", "lista"],"Cantidad registrada",eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"]["elements"]["cantidad-de-grano-disponible-per-sé"]["valor"] + " " + eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"]["elements"]["unidad-de-medida-cantidad-per-sé"]["valor"]));
+    // delete eLoteObj["entradas"]["fieldset-cantidad-de-grano-disponible-per-sé"];
+    // leResumenCompacto.appendChild(buildItemResumen(["dato", "2", "lista"],"Precio","$ "+ eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"]["elements"]["precio-por-unidad-de-medida-per-sé"]["valor"] + eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"]["elements"]["unidad-de-medida-precio-per-sé"]["valor"]));
+    // delete eLoteObj["entradas"]["fieldset-precio-por-unidad-de-medida-per-sé"];
+    // leELote.appendChild(leResumenCompacto);
+
+    // let leResumenExtendido = document.createElement("div");
+    // leResumenExtendido.classList.add(...["resumen", "extendido", "elote-lista"]);
+
+    for (const key of Object.keys(eLoteObj["entradas"])) {
+        delete eLoteObj["entradas"]["aux-img"];
+        if (Object.hasOwnProperty.call(formELoteMap, key)) {
+            const leEntry = eLoteObj["entradas"][key];
+            const leKernel = formELoteMap[key]
+            //console.log(leEntry);
+            //console.log(leKernel);
+
+            switch (typeof (formELoteMap[key])) {
+                case 'object':
+                    let price = false;
+                    switch (formELoteMap[key]["tipo"]) {
+                        case "text-as-is":
+                        case "10-digit-number":
+                        case "5-digit-number":
+                            // let thisEntry = Object.keys(eLoteObj["entradas"][key]["elements"])[0];
+                            formELoteMap[key]["valor"] = eLoteObj["entradas"][key]["elements"][Object.keys(eLoteObj["entradas"][key]["elements"])[0]]["valor"];
+                            break;
+                        case "dichotomous":
+                            //get values                       
+
+                            formELoteMap[key]["valor"] = formELoteMap[key]["valor"][eLoteObj["entradas"][key]["elements"][Object.keys(eLoteObj["entradas"][key]["elements"])[0]][eLoteObj["entradas"][key]["elements"][Object.keys(eLoteObj["entradas"][key]["elements"])[0]]["valor"] ? "derecha" : "izquierda"]];
+
+                            // console.log(formELoteMap[key]["valor"]);
+
+                            break;
+                        case "price":
+                            price = true;
+                        case "amount":
+                            let leConector = "";
+                            if (price) {
+                                formELoteMap[key]["valor"] = `<span style="font-variant-caps: all-small-caps;">mxn</span>` + " $ ";
+                                leConector = " por "
+                            } else {
+                                formELoteMap[key]["valor"] = "";
+                                leConector = " "
+                            }
+
+                            formELoteMap[key]["valor"] = formELoteMap[key]["valor"] + eLoteObj["entradas"][key]["elements"][Object.keys(eLoteObj["entradas"][key]["elements"])[0]]["valor"] + leConector + eLoteObj["entradas"][key]["elements"][Object.keys(eLoteObj["entradas"][key]["elements"])[1]]["valor"];
+
+
+                            break;
+                        case "checklist":
+                            // debugger
+                            formELoteMap[key]["valor"] = "";
+                            for (const checkbox of Object.keys(eLoteObj["entradas"][key]["elements"])) {
+
+                                if (eLoteObj["entradas"][key]["elements"][checkbox]["valor"]) {
+                                    formELoteMap[key]["valor"] = formELoteMap[key]["valor"] + formELoteMap[key]["list"][checkbox] + ` &#13;`
+                                }
+                            }
+                            // console.log(formELoteMap[key]["valor"]);    
+                            // debugger
+                            break;
+                        case "files":
+
+                            // eLoteObj["entradas"][key]["elements"][Object.keys(eLoteObj["entradas"][key]["elements"])[0]]["valor"]
+                            // eLoteObj["archivos"][Object.keys(eLoteObj["entradas"][key]["elements"])[0]]
+                            formELoteMap[key]["valor"] = [];
+                            let fileArray = eLoteObj["archivos"][Object.keys(eLoteObj["entradas"][key]["elements"])[0]];
+                            if (fileArray.length > 0) {
+                                for (const daFile of fileArray) {
+
+                                    let aLink = document.createElement('a');
+                                    aLink.innerText = daFile.name;
+                                    aLink.download = daFile.name;
+                                    // const reader = new leFotoReader;
+                                    // aLink.setAttribute("href",await logImageData(daFile, reader));
+                                    aLink.setAttribute("target", "_blank");
+                                    aLink.setAttribute("href", URL.createObjectURL(daFile));
+
+                                    formELoteMap[key]["valor"].push(aLink);
+                                }
+                            } else {
+                                delete eLoteObj["archivos"][Object.keys(eLoteObj["entradas"][key])];
+                                delete eLoteObj["entradas"][Object.keys(eLoteObj["entradas"][key])];
+                            }
+
+                            break;
+                        default:
+                            throw new Error("Falto el tipo " + formELoteMap[key]["tipo"] + " en el tipo de entry del eLote");
+                            break;
+                    }
+                    break;
+                case 'boolean':
+                    if (formELoteMap[key]) {
+                        throw new Error(key + " está como true, nadie debería ser true");
+                        break;
+                    } else {
+                        delete eLoteObj["entradas"][key];
+                    }
+                    break;
+                default:
+                    throw new Error(key + " ni objeto ni booleano");
+                    break;
+            }
+
+
+
+
+        } else {
+            throw new Error("key " + key + " no se enuentra en formEloteMap");
+        }
+    }
+
+    let items = ["fieldset-nombre-maíz",
+        "fieldset-cantidad-mínima-de-venta",
+        "fieldset-precio-por-unidad-de-medida-per-sé"];
+    //console.log("como quedó al final");
+    //console.log(eLoteObj["entradas"]);
+
+    leELote.appendChild(buildResumen(formELoteMap, eLoteObj, "compacto", items));
+    leELote.appendChild(buildResumen(formELoteMap, eLoteObj, "extendido", Object.keys(eLoteObj["entradas"])));
+    document.getElementById("form-principal").appendChild(leELote);;
+    debugger
+    return leELote;
 }
 
-function buildItemResumen(classes,legend,strong) {
+function buildItemResumen(classes, legend, strong) {
     let leDAto = document.createElement("div");
     leDAto.classList.add(...classes);
     let leLegend = document.createElement("legend");
@@ -564,10 +682,81 @@ function buildItemResumen(classes,legend,strong) {
     leDAto.appendChild(leLegend);
     let leStrong = document.createElement("strong");
     leStrong.classList.add("valor");
-    leStrong.innerText = strong;
-    leDAto.appendChild(leStrong);
+    switch (typeof (strong)) {
+        case 'string':
+            leStrong.innerHTML = strong;
+            break;
+        case 'object':
+            switch (strong instanceof Array) {
+                case true:
+                    for (const sumLink of strong) {
+                        leStrong.appendChild(sumLink);
+                    }
+                    break;
+
+                default:
+                    debugger
+                    console.error(legend);
+                    console.error(strong);
+                    throw new Error("valor no es Array");
+                    break;
+            }
+
+            break
+        default:
+            debugger
+            console.error(legend);
+            console.error(strong);
+            throw new Error("valor no es ni objeto");
+            break;
+    }
+
+    //leDAto.appendChild(leStrong);
     return leDAto;
 }
+
+function buildResumen(formELoteMap, eLoteObj, tipo, items) {
+
+    let classesNstuff = {};
+
+    let leResumen = document.createElement("div");
+    leResumen.classList.add(...["resumen", tipo, "elote-lista"]);
+    switch (tipo) {
+        case "compacto":
+            if (items.length == 3) {
+                let sumClasses = [
+                    ["nombre-e-lote-lista", "dato", "0", "lista"],
+                    ["dato", "1", "lista"],
+                    ["dato", "2", "lista"]
+                ];
+                for (let index = 0; index < items.length; index++) {
+                    classesNstuff[items[index]] = sumClasses[index];
+                }
+            } else {
+                throw new Error("items for compacto different than 3");
+            }
+            break;
+        case "extendido":
+
+            for (const key of items) {
+                classesNstuff[key] = ["lista"];
+            }
+
+            break;
+        default:
+            throw new Error("tipo de resumen inexistente");
+            break;
+    }
+
+    for (const leElemen of Object.keys(classesNstuff)) {
+        
+        leResumen.appendChild(buildItemResumen(classesNstuff[leElemen], formELoteMap[leElemen]["campo"], formELoteMap[leElemen]["valor"]));
+        delete eLoteObj["entradas"][leElemen];
+    }
+    return leResumen;
+
+}
+
 
 
 async function viewELoteDOMg(eLoteObj) {

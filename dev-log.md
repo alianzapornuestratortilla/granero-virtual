@@ -146,3 +146,10 @@ works now, returns eLote Obj, at least for form side, will have to do the dbrequ
 dom bouildig por laspiedrtias, ya esta el resumen compacto, línea 556
 
 tal vez cambiar grano registrado por venta mínima
+
+## Wednesday, May 29, 2024 @ 08:11:45 PM
+
+await buildEloteObj(await buildFormData()) produce un elote funional, agregarle pseudofullsrenn
+falta ponerlo en dialogue
+
+línea 714 edita elote form submit
