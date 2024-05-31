@@ -152,4 +152,8 @@ tal vez cambiar grano registrado por venta mínima
 await buildEloteObj(await buildFormData()) produce un elote funional, agregarle pseudofullsrenn
 falta ponerlo en dialogue
 
-línea 714 edita elote form submit
+línea 674 edita elote form submit
+
+## Thursday, May 30, 2024 @ 09:30:49 PM
+
+dialog ya genera elote, falta ajustar para otras patallas además d desktop. se implementó loader para fotos. Sigue verifiar todas las entradas se muestren y no muestren conforme a form.Luego habilitar múltiples imágenes en el selector.

@@ -44,6 +44,10 @@ canvas.photo-cropping-canvas {
     z-index: 100;
 }
 
+#photo-cropping-rectangle:hover {
+    filter: brightness(1.2);
+}
+
 div#photo-bar {
     display: flex;
     flex-direction: row;

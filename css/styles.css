@@ -69,6 +69,9 @@ button.botón-rojo:hover {
   filter: brightness(1.1);
 }
 
+dialog {
+  overflow: hidden;
+}
 @media (prefers-color-scheme: dark) {
   dialog {
     background-color: #1f1f1f;
@@ -103,6 +106,7 @@ dialog.información div.dialog-body {
 @media screen and (min-width: 993px) {
   dialog.información div.dialog-body {
     min-height: 20rem;
+    max-height: 70vh;
   }
 }
 
@@ -125,17 +129,22 @@ div.cargando {
   margin: 0 auto;
 }
 div.cargando.muy-chico {
-  max-width: 10%;
+  width: 10%;
 }
 div.cargando.chico {
-  max-width: 25%;
+  width: 25%;
 }
 div.cargando.mediano {
-  max-width: 40%;
+  width: 40%;
+}
+@media screen and (min-width: 993px) {
+  div.cargando.mediano {
+    max-width: 20%;
+  }
 }
 div.cargando svg.loading-svg {
   animation: loading-spinner 5s linear infinite;
-  max-width: 100%;
+  width: 100%;
   display: block;
 }
 div.cargando strong {
@@ -596,12 +605,24 @@ aside#side-menu.show nav#contenido-sidebar {
     background-color: #1f1f1f;
   }
 }
+aside#side-menu nav#contenido-sidebar h3 {
+  padding-bottom: 0rem;
+}
 aside#side-menu nav#contenido-sidebar ul {
   list-style: disc;
   overflow: hidden;
 }
 aside#side-menu nav#contenido-sidebar ul li {
   line-height: 2;
+}
+@media (prefers-color-scheme: dark) {
+  aside#side-menu nav#contenido-sidebar ul li a {
+    color: #f4aa2e;
+  }
+  aside#side-menu nav#contenido-sidebar ul li a:visited {
+    text-decoration-color: #f2bd2d;
+    color: #f2bd2d;
+  }
 }
 
 main header {
@@ -1678,12 +1699,12 @@ div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
 @media screen and (min-width: 577px) {
   div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
     max-width: 30vw;
-    width: 95%;
+    width: 100%;
   }
 }
 @media screen and (min-width: 993px) {
   div.un-e-lote.pseudofullscreen div.multi-foto div.foto.principal img {
-    width: 95%;
+    width: 100%;
   }
 }
 div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria {
@@ -1702,12 +1723,12 @@ div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria img {
 }
 @media screen and (min-width: 577px) {
   div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria img {
-    width: 85%;
+    width: 65%;
   }
 }
 @media screen and (min-width: 993px) {
   div.un-e-lote.pseudofullscreen div.multi-foto div.foto.secundaria img {
-    width: 85%;
+    width: 65%;
   }
 }
 

@@ -25,9 +25,12 @@ async function treatImages(evt) {
     }
     //now let's a pop up tha modal
     document.getElementById('photo-cropping-modal').showModal();
+    loaderSet(document.getElementById('photo-bar'),"chico");
 
     try {
-
+        // debugger
+        loaderSet(document.getElementById("ad-hoc-canvas-container"),"mediano");
+        
         currentFoto = fotografías[0];
         if (await resizeCanvas(currentFoto)) {
             //--console.log('first render done');
@@ -37,7 +40,8 @@ async function treatImages(evt) {
             switch (leInteraction) {
                 case 'así-mero':
                     document.getElementById('photo-cropping-modal').close();
-                    lePhotoBar.appendChild(await cropAndResize(currentFoto, leCanvasWidth, leCanvasHeight, aspectRatioFoto, scaleFactor));
+                    replaceLoader(lePhotoBar, await cropAndResize(currentFoto, leCanvasWidth, leCanvasHeight, aspectRatioFoto, scaleFactor));
+                    // lePhotoBar.appendChild(await cropAndResize(currentFoto, leCanvasWidth, leCanvasHeight, aspectRatioFoto, scaleFactor));
                     let leInput = evt.target;
                     //modificar el query selector
                     leInput.closest('form').querySelector("label[for='input-fotos']").innerHTML = 'Seleccione fotografías adicionales.'
@@ -45,10 +49,12 @@ async function treatImages(evt) {
                     return 1;
 
                 default:
+                    replaceLoader(document.getElementById("ad-hoc-canvas-container"), "");
                     return 0;
             }
 
         } else {
+            replaceLoader(document.getElementById("ad-hoc-canvas-container"), "");
             document.getElementById('photo-cropping-modal').close();
             return 0;
         }
@@ -61,10 +67,15 @@ async function treatImages(evt) {
 //--------------------------------------
 
 async function resizeCanvas(foto) {
+    let firstTime = false;
     //--console.log('resizing Canvas');
     if (document.querySelector('canvas.photo-cropping-canvas') !== null) {
+        
         document.querySelector('canvas.photo-cropping-canvas').remove();
 
+    } else {
+        //first time
+        firstTime = true;
     }
     if (document.querySelector('#photo-cropping-rectangle') !== null) {
         document.querySelector('#photo-cropping-rectangle').remove();
@@ -84,6 +95,7 @@ async function resizeCanvas(foto) {
     canvas.setAttribute("class", "photo-cropping-canvas");
     canvas.style.width = '100%';
     canvas.style.height = '80%';
+    replaceLoader(document.getElementById("ad-hoc-canvas-container"), "");
     document.getElementById('canvas-container').appendChild(canvas);
     canvas = document.querySelector('canvas.photo-cropping-canvas');
 
@@ -245,6 +257,7 @@ function setPhotos(event) {
 
 function addPhoto(event) {
     let leInput = document.getElementById('input-fotos');
+    
     leInput.click();
 }
 

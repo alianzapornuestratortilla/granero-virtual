@@ -934,23 +934,23 @@
     <div class="contenido-pantalla">
         <aside id="side-menu">
             <nav id="contenido-sidebar">
-                <h3>general</h3>
+                <!-- <h3>general</h3>
                 <ul>
                     <li><a href=""><strong>mensajes</strong></a></li>
                     <li><a href=""><strong>mi perfil</strong></a></li>
-                </ul>
+                </ul> -->
                 <h3>venta de grano</h3>
                 <ul>
-                    <li><a href=""><strong>mi granero</strong></a></li>
+                    <!-- <li><a href=""><strong>mi granero</strong></a></li> -->
                     <li><a href=""><strong>crear nuevo e-lote</strong></a></li>
-                    <li><a href=""><strong>editar e-lote</strong></a></li>
-                    <li><a href=""><strong>actualización de inventarios</strong></a></li>
+                    <!-- <li><a href=""><strong>editar e-lote</strong></a></li>
+                    <li><a href=""><strong>actualización de inventarios</strong></a></li> -->
                 </ul>
                 <h3>compra de grano</h3>
                 <ul>
                     <li><a href=""><strong>consultar oferta de maíz</strong></a></li>
                 </ul>
-                <h3>flete</h3>
+                <!-- <h3>flete</h3>
                 <ul>
                     <li><a href=""><strong>solicitar flete</strong></a></li>
                     <li><a href=""><strong>fletes vacantes</strong></a></li>
@@ -969,7 +969,7 @@
                     <li><a href=""><strong>compartir análisis</strong></a></li>
                     <li><a href=""><strong>añadir a e-lote</strong></a></li>
                     <li><a href=""><strong>reporte de análisis</strong></a></li>
-                </ul>
+                </ul> -->
 
             </nav>
         </aside>
@@ -988,15 +988,14 @@
                     <div class="a-fieldset" id="fieldset-nombre-vendedor">
                         <fieldset>
                             <legend><strong>Nombre completo de quién vende el grano de maíz es</strong></legend>
-                            <input type="text" name="input-nombre-vendedor" id="input-nombre-vendedor" minlength="5"
-                                maxlength="50">
+                            <input type="text" name="input-nombre-vendedor" id="input-nombre-vendedor" minlength=5
+                                maxlength=50>
                         </fieldset>
                     </div>
                     <div class="a-fieldset" id="fieldset-teléfono">
                         <fieldset>
                             <legend><strong>Teléfono a 10 dígitos de quién vende el grano de maíz es</strong></legend>
-                            <input type="number" name="input-teléfono" id="input-teléfono" minlength="10"
-                                maxlength="10">
+                            <input type="number" name="input-teléfono" id="input-teléfono" minlength=10 maxlength=10>
                             <br>
                             <small>solo números, a 10 dígitos</small>
                         </fieldset>
@@ -1029,8 +1028,8 @@
                             <legend><strong>Teléfono de quién vende para recibir mensajes vía whatsapp o
                                     similar</strong>
                             </legend>
-                            <input type="number" name="input-teléfono-mensaje" id="input-teléfono-mensaje"
-                                minlength="10" maxlength="10">
+                            <input type="number" name="input-teléfono-mensaje" id="input-teléfono-mensaje" minlength=10
+                                maxlength=10>
                             <br>
                             <small>solo números, a 10 dígitos</small>
                         </fieldset>
@@ -1039,8 +1038,8 @@
                     <div class="a-fieldset" id="fieldset-nombre-maíz">
                         <fieldset>
                             <legend><strong>el nombre por el que le conocen a este maíz es</strong></legend>
-                            <input type="text" name="input-nombre-completo" id="input-nombre-completo" minlength="5"
-                                maxlength="30" oninput="void actualizaNombreDeElote(event);" class>
+                            <input type="text" name="input-nombre-completo" id="input-nombre-completo" minlength=3
+                                maxlength=30 oninput="void actualizaNombreDeElote(event);" class>
                         </fieldset>
                     </div>
 
@@ -1132,9 +1131,8 @@
                                 <div>
                                     <div class="check-box">
                                         <input type="checkbox" class="input-otros" name="otros-checkbox"
-                                            id="otros-checkbox" otros="div.lista-de-otros button.btn-añade"
-                                            >
-                                            <!-- onchange="showHideOtros(event)" -->
+                                            id="otros-checkbox" otros="div.lista-de-otros button.btn-añade">
+                                        <!-- onchange="showHideOtros(event)" -->
                                         <label onclick="checkDaBox(event)"><strong>Otros usos</strong></label>
                                     </div>
                                 </div>
@@ -1240,14 +1238,14 @@
                         <fieldset>
                             <legend><strong>el nombre de la persona u organización de quién la obtuve es</strong>
                             </legend>
-                            <input type="text" name="nombre-origen-distinto" minlength="15" class="not-required">
+                            <input type="text" name="nombre-origen-distinto" minlength=5 class="not-required">
                         </fieldset>
                     </div>
 
                     <div class="a-fieldset" id="fieldset-lugar-de-origen">
                         <fieldset>
                             <legend><strong>el lugar de orígen de la semilla es</strong></legend>
-                            <input type="text" name="lugar-de-origen" minlength="15" class="not-required">
+                            <input type="text" name="lugar-de-origen" minlength=5 class="not-required">
                             <br>
                             <small>ej. Comonfort, Guanajuato</small>
                         </fieldset>
@@ -1444,7 +1442,8 @@
                     <div class="a-fieldset" id="fieldset-certificado-orgánico">
                         <fieldset>
                             <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                            <input type="file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000" multiple>
+                            <input type="file" accept="image/*,.pdf" name="certificado-orgánico" max-size="10000000"
+                                multiple>
                         </fieldset>
                     </div>
 
@@ -1473,8 +1472,8 @@
                     <div class="a-fieldset" id="fieldset-certificado-libre-de-OGM">
                         <fieldset>
                             <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                            <input type="file" accept="image/*,.pdf" name="certificado-libre-de-OGM"
-                                max-size="10000000" multiple>
+                            <input type="file" accept="image/*,.pdf" name="certificado-libre-de-OGM" max-size="10000000"
+                                multiple>
                         </fieldset>
                     </div>
                     <!-- or de label e ID de label deben de ser iguales, el name na mas para homogeneidad 
@@ -1566,13 +1565,13 @@
                                 <div class="cifra">
                                     <span class="currency-companion"><strong>$&nbsp;</strong></span><input type="number"
                                         class="valor-medido" min="0" name="precio-por-unidad-de-medida-per-sé"
-                                        id="precio-por-unidad-de-medida-per-sé" ">
-                                        <!-- onchange="void valorVálido(event); -->
+                                        id="precio-por-unidad-de-medida-per-sé" placeholder="10.00">
+                                    <!-- onchange="void valorVálido(event);"" -->
                                     <span class="currency-companion all-petite-caps"><strong>mxn</strong></span>
                                 </div>
                                 <span>&nbsp;por&nbsp;</span><select name="unidad-de-medida-precio-per-sé"
-                                    class="opciones-unidad-de-medida"
-                                    onchange="void actualizaUnidades(event);"></select>
+                                    class="opciones-unidad-de-medida"></select>
+                                <!-- onchange="void actualizaUnidades(event);" -->
                             </div>
                         </fieldset>
                     </div>
@@ -1687,11 +1686,17 @@
                                         aluminio</strong></label>
                             </div>
 
-                            <div>
+                            <div class="check-box">
+                                <input type="checkbox" name="vegetal-checkbox" id="vegetal-checkbox">
+                                <label onclick="checkDaBox(event)"><strong>derivados vegetales como polvo de
+                                        chile</strong></label>
+                            </div>
+
+                            <!-- <div>
                                 <legend><strong>Otros</strong>
                                 </legend>
-                                <input type="text" name="conservación-otros" minlength="4" class="not-required">
-                            </div>
+                                <input type="text" name="conservación-otros" minlength=4 class="not-required">
+                            </div> -->
                         </fieldset>
                     </div>
 
@@ -1700,7 +1705,7 @@
                             <legend><strong>el código postal de donde está almacenado del grano es <span
                                         class="información" dialogID="dialog-código-postal"
                                         onmousedown="openModal(event)">&#9072;</span> </strong></legend>
-                            <input type="number" name="lugar-de-almacén" minlength="5" maxlength="5" min="0"
+                            <input type="number" name="lugar-de-almacén" minlength=5 maxlength=5 min="0"
                                 placeholder="77516">
                             <br>
                             <small>a 5 dígitos</small>
@@ -1732,7 +1737,8 @@
                     <div class="a-fieldset" id="fieldset-análisis-de-aflatoxinas">
                         <fieldset>
                             <legend><strong>seleccione el archivo pdf o de imágen del certificado</strong></legend>
-                            <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000" multiple>
+                            <input type="file" accept="image/*,.pdf" name="análisis-de-aflatoxinas" max-size="10000000"
+                                multiple>
                         </fieldset>
                     </div>
 
@@ -1914,15 +1920,18 @@
 
     </dialog>
 
-    <dialog id="dialog-revisa-e-lote" class="información visar-e-lote">
+    <dialog id="dialog-revisa-e-lote" class="información visar-e-lote" style="max-width: 900px;">
         <header>
             <h2>Verificar datos</h2>
             <p>Favor de verificar que todos los datos estén bien. <br>En caso de no estarlo regrese al la ventana de
                 edición con el botón regresar. </p>
 
+
         </header>
         <div class="dialog-body">
+            <article id="article-principal">
 
+            </article>
 
         </div>
         <footer>
@@ -1932,6 +1941,15 @@
 
     </dialog>
 
+    <script>
+        document.getElementById("dialog-revisa-e-lote").addEventListener('close', function (e) {
+            replaceLoader(lePhotoBar,"");
+            document.getElementById("article-principal").firstElementChild.remove()
+            
+        });
+
+    </script>
+
     <dialog id="photo-cropping-modal">
         <div class="header">
             <!-- <button class="photo-cropping-modal-close" onclick="closePhotoCroppingModal(event)">Cancelar
@@ -1939,6 +1957,7 @@
         </div>
         <div class="body">
             <p>Mantenga dentro del rectángulo lo que quiera conservar de la imágen.</p>
+            <div id="ad-hoc-canvas-container"></div>
             <div id="canvas-container">
                 <div id="rectangle-container"></div>
             </div>
@@ -1963,7 +1982,7 @@
 
     <template id="template-otro-uso">
         <fieldset class="otro">
-            <input class="input-otros not-required" type="text" name="otro-uso" minlength="5" maxlength="30">
+            <input class="input-otros not-required" type="text" name="otro-uso" minlength=5 maxlength=30>
             <!-- <button type="button" class="btn-cerrar-x" onclick="void killOtro(event);">&times;</button> -->
         </fieldset>
     </template>

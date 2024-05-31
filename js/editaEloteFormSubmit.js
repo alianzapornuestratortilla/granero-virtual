@@ -3,25 +3,53 @@ async function editaEloteInitSubmit(event) {
     event.preventDefault();
     // let form = event.currentTarget;
 
-    let leDialog = document.getElementById("dialog-revisa-e-lote");
-    let loaderContainer = leDialog.querySelector("div.dialog-body");
-    loaderSet(loaderContainer);
+    
+    let loaderContainer = document.getElementById("article-principal");
 
+    loaderSet(loaderContainer);
+    
+    //obj2FormData(await buildEloteObj(await buildFormData()))
+    // debugger
+    let eLoteObj = await buildEloteObj(await buildFormData()); //reuse later, send to server obj2FormData(eLoteObj)
+    console.log(eLoteObj["entradas"]);
+    let eLoton =  buildELoteDOM(eLoteObj) ;
+    eLoton.classList.add(["pseudofullscreen"]);
+    replaceLoader(loaderContainer, eLoton);
     //despliega el modal
-    leDialog.showModal();
+    document.getElementById("dialog-revisa-e-lote").showModal();
+    
+    
+
     // let formData = (await buildFormData(document.getElementById('form-principal')));
     // let formInput = JSON.parse(formData.get('form-obj'));    
     // console.log(document.getElementById('form-principal'));
     // console.log(form);
     //Le sourceData line ->
-    replaceLoader(loaderContainer, viewELoteDOMg(JSON.parse((await buildFormData(document.getElementById('form-principal'))).get('form-obj'))));
+    
 
     //para cada input, verificar si está mostrado de acuerdo a opciones 
     //verificicar  si cumple los criterios
     //
 }
 
-function loaderSet(loadingHost) {
+function obj2FormData(obj) {
+    let neoFormData = new FormData;
+    if (typeof(obj) === 'object' && Object.keys(obj).length > 0 ) {
+        
+
+        for (const key of Object.keys(obj)) {
+            neoFormData[key]=obj[key];
+        }
+
+    } else {
+        console.log(obj);
+        throw new Error("Objeto no tiene key-values");
+    }
+    return neoFormData;
+}
+
+
+function loaderSet(loadingHost,size) {
     //función para gestionar la aparición y desaparición del loading
     // loading host es un elemento que contendrá el loading widget. 
     // request es 
@@ -31,7 +59,10 @@ function loaderSet(loadingHost) {
         let loader = document.createElement("div");
         //  agregarle el chico y cargando class
         loader.classList.add("cargando");
-        loader.classList.add("mediano");
+        if (!size) {
+            size = "mediano"
+        }
+        loader.classList.add(size);
         //  agregarle el svg y demás
         loader.appendChild(getElementFromTemplate('loader-maíz'));
 
@@ -42,7 +73,6 @@ function loaderSet(loadingHost) {
 function loaderUnSet(loadingHost) {
     let loader = loadingHost.querySelector("div.cargando");
     if (loader) {
-
         loadingHost.removeChild(loader);
     }
 }
@@ -50,12 +80,17 @@ function loaderUnSet(loadingHost) {
 function replaceLoader(loadingHost, element) {
     //reemplaza el loader en loadinghost con element
     loaderUnSet(loadingHost);
-    loadingHost.appendChild(element);
+    if (element instanceof HTMLElement) {
+        loadingHost.appendChild(element);
+    }    
 }
 
 
 
-async function dialogueVerElote() {
+// async function dialogueVerElote() {
+
+    
+    /*
     let formData = (await buildFormData(document.getElementById('form-principal')));
     let formInput = JSON.parse(formData.get('form-obj'));
     let fotos = formData.getAll('fotografía');
@@ -68,8 +103,9 @@ async function dialogueVerElote() {
 
         }
     }
+*/
+// }
 
-}
 /*
 async function validateForm(form) {
     let validation = new Object();//regrese este objeto que dice si son o no válidos
@@ -669,12 +705,13 @@ function buildELoteDOM(eLoteObj) {
 
     leELote.appendChild(buildResumen(formELoteMap, eLoteObj, "compacto", items));
     leELote.appendChild(buildResumen(formELoteMap, eLoteObj, "extendido", Object.keys(eLoteObj["entradas"])));
-    document.getElementById("form-principal").appendChild(leELote);;
-    debugger
+    //document.getElementById("form-principal").appendChild(leELote);;
+    //debugger
     return leELote;
 }
 
 function buildItemResumen(classes, legend, strong) {
+    // debugger
     let leDAto = document.createElement("div");
     leDAto.classList.add(...classes);
     let leLegend = document.createElement("legend");
@@ -695,7 +732,7 @@ function buildItemResumen(classes, legend, strong) {
                     break;
 
                 default:
-                    debugger
+                    // debugger
                     console.error(legend);
                     console.error(strong);
                     throw new Error("valor no es Array");
@@ -704,14 +741,14 @@ function buildItemResumen(classes, legend, strong) {
 
             break
         default:
-            debugger
+            // debugger
             console.error(legend);
             console.error(strong);
             throw new Error("valor no es ni objeto");
             break;
     }
 
-    //leDAto.appendChild(leStrong);
+    leDAto.appendChild(leStrong);
     return leDAto;
 }
 
